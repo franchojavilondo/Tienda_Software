@@ -21,8 +21,11 @@ crear_filas("tabla_carro",carro,columnas)
 function crear_filas(tabla_pasada,elemento,columnas){
 var i=0;
 var celda = [];
-	var tabla = document.getElementById(tabla_pasada);
-	var fila = tabla.insertRow(-1);
+var boton = document.createElement("input");
+boton.setAttribute('name', "eliminar");
+
+var tabla = document.getElementById(tabla_pasada);
+var fila = tabla.insertRow(-1);
 /* 	
 	var celda1 = fila.insertCell(0);
 	var celda2 = fila.insertCell(1);
@@ -33,6 +36,8 @@ var celda = [];
 	celda[i] = fila.insertCell(i);
 	celda[i].innerHTML = elemento[elemento.length-columnas+i];
 	}
+	celda[columnas] = fila.insertCell(i);
+	
 }
 
 </script>
@@ -51,6 +56,7 @@ var celda = [];
 	<tr>
 	<td width='150'align="center" style='font-weight: bold'>Id Producto</td> 
 	<td width='150' align="center" style='font-weight: bold'>Precio</td>
+	<td width='150' align="center" style='font-weight: bold'>Eliminar</td>
 	</tr>
 	
 	
