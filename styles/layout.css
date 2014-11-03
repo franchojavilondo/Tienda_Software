@@ -17,10 +17,12 @@ html[xmlns] .clear{display:block;}
 
 a{outline:none; text-decoration:none;}
 
+
+
 code{font-weight:normal; font-style:normal; font-family:Georgia, "Times New Roman", Times, serif;}
 
 .fl_left{float:left;}
-.fl_right{float:right;}
+.fl_right{float:left; margin-top:250px; margin-left:-456px;}
 
 img{margin:0; padding:0; border:none; line-height:normal; vertical-align:middle;}
 .imgholder, .imgl, .imgr{padding:4px; border:1px solid #D6D6D6; text-align:center;}
@@ -41,7 +43,8 @@ div.wrapper{display:block; width:100%; margin:0; padding:0; text-align:left;}
 
 .row1, .row1 a{color:#C0BAB6; background-color:#333333;}
 .row2{color:#979797; background-color:#FFFFFF;}
-.row2 a{color:#FF9900; background-color:#FFFFFF;}
+.row2 a{color:#000000; background-color:#FFFFFF;}
+a:hover{ text-decoration: underline}
 .row3{color:#989898; background-color:#333333;}
 .row3 a{color:#FF9900; background-color:#333333;}
 .row4, .row4 a{color:#919191; background-color:#232323;}
@@ -52,7 +55,10 @@ div.wrapper{display:block; width:100%; margin:0; padding:0; text-align:left;}
 
 nav ul{margin:0; padding:0; list-style:none;}
 
-h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:16px; font-weight:bold; font-style:normal; line-height:normal; text-transform:uppercase;}
+h1, h2, h3{color:#FF9900;margin:0; padding:0; font-size:16px; font-weight:bold; font-style:normal; line-height:normal; text-transform:uppercase;}
+h4, h5, h6{color:#FF9900;margin:0; padding:0; font-size:12px; font-weight:bold; font-style:normal; line-height:normal; text-transform:uppercase;}
+
+p {color:#000000;margin-bottom:0px;}
 
 address{font-style:normal;}
 
@@ -71,6 +77,27 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 .four_quarter{width:960px; float:none; margin-right:0; clear:both;}
 .lastbox{margin-right:0;}
 
+.titulo_perfil{
+	float: right; 
+    width: 200px; 
+	margin-top:10px;
+}
+
+.botones_acceso{
+	float: right; 
+	margin-left:30px;
+    width: 200px; 
+    height: 10px; 
+}
+
+#cajon_usu {
+	float: left; 
+    width: 200px; 
+    height: 10px; 
+}
+
+
+
 /*----------------------------------------------Header-------------------------------------*/
 
 #header{}
@@ -80,16 +107,40 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 #header #hgroup h1{font-size:36px;}
 #header #hgroup h2{font-size:13px;}
 
-#header form{display:block; width:290px; float:right; margin:40px 0 0 0; padding:0;}
-#header form input{display:block; float:left; width:200px; margin:0; padding:5px; color:#C0BAB6; background-color:#232323; border:1px solid #666666;}
-#header form #sf_submit{display:block; float:right; width:70px; font-size:12px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#FF9900; border:none; cursor:pointer;}
+#header form{display:block; width:390px; float:left; margin:40px 0 0 115px; padding:0;}
+#header form input{display:block; float:left; width:300px; margin:0 0 0 0; padding:5px; color:#C0BAB6; background-color:#232323; border:1px solid #666666;}
+#header form #sf_submit{display:block; float:left; margin:1px 0 0 10px; width:40px; font-size:12px; background:url(../images/search.png) no-repeat center center; background-size: 30px 30px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#FF9900; border:none; cursor:pointer;}
 
-#header nav{display:block; width:100%; margin:0; padding:20px 0; border-top:1px solid #DEDEDE; clear:both;}
-#header nav ul{}
-#header nav li{display:inline; margin-right:25px; text-transform:uppercase;}
+.boton_login{display:block; height:24px; margin-right:24px;margin-top:7px; float:right; width:auto; font-size:12px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#FF9900; border:none; cursor:pointer;}
+.profile_img{display:block;height:auto; margin:7px 0 0 0px; float:right; width:10%;}
+.boton_registro{display:block; margin-right:24px;margin-top:7px;height:24px; float:right; width:118px; font-size:12px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#FF9900; border:none; cursor:pointer;}
+
+#header .boton_login:hover {
+    background: #DD8500;
+	-webkit-transition:  background 0.3s ease-in-out;
+    -moz-transition:  background 0.3s ease-in-out;
+    -ms-transition:  background 0.3s ease-in-out;
+    -o-transition:  background 0.3s ease-in-out;
+    transition:  background 0.3s ease-in-out;
+}
+
+#header .boton_registro:hover {
+    background: #DD8500;
+	-webkit-transition:  background 0.3s ease-in-out;
+    -moz-transition:  background 0.3s ease-in-out;
+    -ms-transition:  background 0.3s ease-in-out;
+    -o-transition:  background 0.3s ease-in-out;
+    transition:  background 0.3s ease-in-out;
+}
+
+#header nav{display:marker; width:100%; margin:0; padding:20px 0; border-top:1px solid #DEDEDE; clear:both;}
+
+#header nav ul{widht:12px}
+#header nav li{display:inline; margin-right:25px; text-transform:uppercase; padding-left:21px;}
 #header nav li.last{margin-right:0;}
 #header nav li a{}
 #header nav li a:hover{color:#FF9900; background-color:#333333;}
+
 
 /*----------------------------------------------Content Area-------------------------------------*/
 
@@ -98,25 +149,128 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 #container .last{margin:0;}
 #container .more{text-align:right;}
 
+/* ------Menu Lateral-----*/
+
+#sidebar {
+    
+    background: #FF9900;
+    width: 180px;
+    height: 0px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin-left:-80px;
+}
+#sidebar ul {
+	background: #FF9900;
+    margin-top:0;
+    padding: 0;
+    list-style: none;
+}
+#sidebar ul li {
+	background: #FF9900;
+    margin: 0;
+}
+#sidebar ul li a {
+	background: #FF9900;
+    padding: 13px;
+    font-size: 16px;
+    font-weight: 10;
+    color: white;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #DD8500;
+    -webkit-transition:  background 0.3s ease-in-out;
+    -moz-transition:  background 0.3s ease-in-out;
+    -ms-transition:  background 0.3s ease-in-out;
+    -o-transition:  background 0.3s ease-in-out;
+    transition:  background 0.3s ease-in-out;
+}
+#sidebar ul li:hover a {
+    background: #DD8500;
+}
+
 /* ------Slider-----*/
 
-#container #slider{display:block; width:100%;}
-#container #slider a{display:block; padding:9px; border:1px solid #DEDEDE;}
-#container #slider a:hover{border-color:#FF9900;}
+#container #slider{float:right; margin-left:10px; width:806px;}
+#container #slider a{display:block; padding:9px; border:1px solid #DEDEDE;float:right;}
+#container #slider a:hover{border-color:#FF9900;float:right;}
 
 /* ------Main Content-----*/
 
 #container #homepage{display:block; width:100%; line-height:1.6em;}
 #container #homepage section{margin:0;}
 
-#container #homepage .fl_left, #container #homepage .fl_right{display:block; width:455px;}
+#container #homepage .fl_left{display:block; width:455px;}
+#container #homepage .fl_right{display:block; width:455px;}
 
-#container #homepage .fl_right article{}
-#container #homepage .fl_right article figure{}
-#container #homepage .fl_right article figure img{float:left; width:125px; height:125px; margin:0; padding:4px; border:1px solid #666666;}
-#container #homepage .fl_right article figure figcaption{display:block; float:right; width:300px;}
-#container #homepage .fl_right article figure h2{font-size:14px;}
-#container #homepage .fl_right article figure footer{}
+
+.cuadro_novedades{
+	
+	background: #333333;
+	width: 1040px;
+	height: 170px;
+	margin-left:-81px;
+}
+
+.cuadro_noticias{
+	
+	background: #333333;
+	width: 960px;
+	height: 170px;
+	
+}
+
+
+.imagen_novedades:hover {
+	border: 3px solid #FF9900;
+}
+
+.imagen_novedades{
+float: left;
+width: 225px;
+height:150px;
+border: 3px solid #333333;
+margin-top:7px;
+margin-left:23px;
+}
+
+.cuadro_noticias{
+	background: #333333;
+	width: auto;
+	height: 170px;
+	margin-left:-81px;
+}
+
+.item_noticias{
+float: left;
+width: 500px;
+height:auto;
+border: 3px solid #333333;
+margin-top:7px;
+background: #FFFFFF;
+}
+
+.imagen_noticias{
+float: left;
+width: 150px;
+height:auto;
+margin-top:6px;
+margin-left:6px;
+margin-bottom:6px;
+margin-right:6px;
+}
+
+.item_noticias:hover {
+	border: 3px solid #FF9900;
+}
+
+.texto_noticias{
+	width: auto;
+}
+
+.texto_noticias:hover {
+	
+}
 
 /*----------------------------------------------Footer-------------------------------------*/
 
@@ -131,3 +285,5 @@ input, textarea, select{font-size:12px; font-family:Georgia,"Times New Roman",Ti
 
 #copyright{padding:20px 0;}
 #copyright p{margin:0; padding: 0;}
+
+
