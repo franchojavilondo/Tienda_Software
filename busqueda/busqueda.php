@@ -21,8 +21,11 @@ crear_filas("tabla_carro",carro,columnas)
 function crear_filas(tabla_pasada,elemento,columnas){
 var i=0;
 var celda = [];
+
 var boton = document.createElement("input");
+boton.setAttribute('type', 'button');
 boton.setAttribute('name', "eliminar");
+boton.setAttribute('value', "eliminar");
 
 var tabla = document.getElementById(tabla_pasada);
 var fila = tabla.insertRow(-1);
@@ -37,6 +40,7 @@ var fila = tabla.insertRow(-1);
 	celda[i].innerHTML = elemento[elemento.length-columnas+i];
 	}
 	celda[columnas] = fila.insertCell(i);
+	//document.getElementById("tabla_carro").nodeValue
 	
 }
 
