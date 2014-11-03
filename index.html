@@ -1,63 +1,112 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<title>Tienda Digital Albacete</title>
+<title>Tienda de videojuegos</title>
 <meta charset="iso-8859-1">
 <link rel="stylesheet" href="styles/layout.css" type="text/css">
+<style type="text/css">
+</style>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 </head>
 <body>
 <div class="wrapper row1">
   <header id="header" class="clear">
     <div id="hgroup">
-      <h1><a href="#">Tienda Digital Albacete</a></h1>
-      <h2>Tienda Virtual de Software</h2>
-    </div>
+    <img src="images/logo.jpg" width="120" height="63" alt="logo"> </div>
+    
     <form action="#" method="post">
       <fieldset>
-        <legend>Busqueda:</legend>
-        <input type="text" value="Busca en nuestra tienda&hellip;" onFocus="this.value=(this.value=='Search Our Website&hellip;')? '' : this.value ;">
-        <input type="submit" id="sf_submit" value="Buscar!">
+        <legend>Search:</legend>
+        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+        <input type="submit" id="sf_submit" value="">
       </fieldset>
     </form>
+    
+    <div class="cajon_usu" >
+		<div class="imagen_perfil">
+			<img src="images/profile.png" alt="Usuario" class="profile_img">
+		</div>
+			
+		<div class="titulo_perfil">
+			<h2>Usuario anónimo</h2>
+		</div>
+		
+		<div class="botones_acceso">
+			<input type="submit" class="boton_login" value="Iniciar sesión">
+			<input type="submit" class="boton_registro" value="Registrarse">
+		</div>
+	</div>
     <nav>
       <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="#">Text Link</a></li>
-        <li><a href="#">Text Link</a></li>
-        <li><a href="./cuenta/login.php">Tu cuenta</a></li>
-        <li class="last"><a href="./busqueda/busqueda.php">Listado de Productos</a></li>
-      </ul>
-    </nav>
+        <li><a href="#">Destacados</a></li>|
+        <li><a href="#">Noticias</a></li>|
+        <li><a href="#">Juegos</a></li>|
+        <li class="last"><a href="#">Software</a></li>
+    </ul>
+    </nav>      
+    
   </header>
 </div>
 <!-- content -->
 <div class="wrapper row2">
   <div id="container" class="clear">
     <!-- content body -->
-    <section id="slider"><a href="#"><img src="images/Dota2.png" alt=""  width="940" height="360" ></a></section>
+	<div id="sidebar" background="#2290c9">
+        <ul>
+            <li><a href="#">Free to Play</a></li>
+            <li><a href="#">Acceso anticipado</a></li>
+            <li><a href="#">Acción</a></li>
+            <li><a href="#">Aventura</a></li>
+			<li><a href="#">Carreras</a></li>
+            <li><a href="#">Casual</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Estrategia</a></li>
+			<li><a href="#">Indie</a></li>
+            <li><a href="#">Multijugador masivo</a></li>
+            <li><a href="#">Rol</a></li>
+            <li><a href="#">Simuladores</a></li>
+        </ul>
+    </div>
+	
+    <div id="slider" >
+		<a href="#">
+			<img src="images/acunity.jpg" width="100%" alt="">
+			<h1 ><br>Assassin's Creed Unity</h1>
+			<p color="#FFFFFF">La posibilidad de ver un videojuego de Assassin's Creed ambientado en París ha estado en el aire desde el anuncio de las primeras entregas. Ubisoft estaba esperando pacientemente para planteárnoslo, con un título destinado específicamente a la next-gen. Visitamos la Francia del siglo XVIII para luchar por la Revolución junto a los asesinos. ¿Nos unimos?</p>
+		</a>
+	</div>
     <!-- main content -->
     <div id="homepage" class="clear">
       <!-- Left Box -->
-      <section class="fl_left">
+      <div class="fl_left">
         <article>
-          <h1>DESCUBRE NUESTRA EMPRESA</h1>
-          <p>Esto es una prueba de presentacion que sera modificada</p>
-          <p>Esto es el parrafo que le sigue</p>
-        </article>
-      </section>
+		  <br><br><br>
+         <h1 style="color: #FF9900">ÚLTIMOS LANZAMIENTOS </h1>
+		  <div class="cuadro_novedades">
+		  <a href="#"><img class="imagen_novedades" src="images/shadow_of_mordor.jpg" ></a>
+		  <a href="#"><img class="imagen_novedades" src="images/ryse.jpg"></a>	
+		  <a href="#"><img class="imagen_novedades" src="images/destiny.jpg"></a>
+		  <a href="#"><img class="imagen_novedades" src="images/fifa15.jpg"></a>
+		  </div>
+		  
+		</article>
+      </div>
       <!-- Right Box -->
-      <section class="fl_right">
+      <div class="fl_right">
         <article class="clear">
-          <figure><img src="images/gaben.jpg" width="125" height="125" alt="">
-            <figcaption>
-              <h2>SERVICIO 24h</h2>
-              <p>Siempre habra un friki dispuesto a ayudarte</p>
-              <footer class="more"><a href="#">Read More &raquo;</a></footer>
-            </figcaption>
-          </figure>
+          <br><br><br>
+          <h1 style="color: #FF9900">LO ÚLTIMO</h1>
+		  <div class="cuadro_noticias">
+			<div class="item_noticias">
+				
+				<a href="#"><img class="imagen_noticias" src="images/fifa15.jpg"></a>
+				<h6><br>NOTICIA</h6>
+				<a href="#" class="texto_noticias" >Se hace oficial la resolución de Advanced Warfare en consolas: 1360x1080 en XOne y 1080p en PS4</a>
+				
+			</div>
+		  </div>
         </article>
-      </section>
+      </div>
     </div>
     <!-- / content body -->
   </div>
