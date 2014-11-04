@@ -1,34 +1,58 @@
+<?php 
+session_start();
+
+if (isset($_SESSION["carro"]))
+$carro = $_SESSION["carro"];
+
+else $_SESSION['carro']=array(); 
+
+
+//array_push($_SESSION['carro'],'apple','mango','banana');
+//echo $_SESSION['carro'][8];
+?>
+
 <script type="text/javascript">
 
-var carro = [];
 
-function carrito(x,precio){
-var cadena="Articulos del carrito:\n",i;
+var carro = <?php 
+if (isset($_SESSION["carro"]))
+echo json_encode($_SESSION["carro"]);
+else 
+echo "[]";
+?>;
+
+
+function carrito(x){
 alert("Articulo metido al carrito");
-carro.push(x);
-carro.push(precio);
 
-for(i=0;i<carro.length;i++){
-cadena+="ID: "+carro[i]+" PRECIO: "+carro[i+1]+"\n";
-i++;
-}
-alert(cadena);
+<?php
+$mivarPHP=
+    '<script type="text/javascript">;
+    document.writeln (x.toString());
+</script>';
+
+
+array_push($_SESSION['carro'],$mivarPHP);
+?>
+
+
 var columnas=2;
 crear_filas("tabla_carro",carro,columnas)
+
+
 }
 
 
 function crear_filas(tabla_pasada,elemento,columnas){
 var i=0;
 var celda = [];
-
-var boton = document.createElement("input");
-boton.setAttribute('type', 'button');
-boton.setAttribute('name', "eliminar");
-boton.setAttribute('value', "eliminar");
-
 var tabla = document.getElementById(tabla_pasada);
 var fila = tabla.insertRow(-1);
+//se crea el boton
+var boton = document.createElement("input");
+boton.setAttribute('onClick',"eliminar_filas("+tabla_pasada+","+tabla.rows+","+columnas+")"); 
+boton.setAttribute('name', "boton");
+
 /* 	
 	var celda1 = fila.insertCell(0);
 	var celda2 = fila.insertCell(1);
@@ -39,10 +63,17 @@ var fila = tabla.insertRow(-1);
 	celda[i] = fila.insertCell(i);
 	celda[i].innerHTML = elemento[elemento.length-columnas+i];
 	}
-	celda[columnas] = fila.insertCell(i);
-	//document.getElementById("tabla_carro").nodeValue
+
+
+
 	
 }
+
+function eliminar_filas(tabla_pasada,fila,columnas){
+	
+	
+	}
+
 
 </script>
 
@@ -124,7 +155,7 @@ var fila = tabla.insertRow(-1);
 				<td>".$Cantidad."</td>			
 				<td>".$Precio."</td>";
 				?><td> <IMG SRC="../images/tick.png" WIDTH="15" HEIGHT="15"></td>
-				<td><button><img src="../images/carrito.png" width="15" height="15" <?php echo 'onclick="carrito('.$Id_Producto.','.$Precio.')"' ;?>/></button></td>
+				<td><button><img src="../images/carrito.png" width="15" height="15" <?php echo 'onclick="carrito('.$Id_Producto.')"' ;?>/></button></td>
 				<?php
 			echo "</tr>";
 				}

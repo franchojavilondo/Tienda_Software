@@ -26,14 +26,14 @@
         <p class="submit"><input type="submit" name="commit" value="Login"></p>
 		
 		<?php
-
+	session_start();
 	
 	if (isset($_POST["user"],$_POST["pass"])){
 	$user = $_POST["user"];
 	$pass = $_POST["pass"];
 	
 	
-	session_start();
+	
 	
 	$_SESSION ["user"]=$user;
 	$_SESSION["idsession"] = session_id();
