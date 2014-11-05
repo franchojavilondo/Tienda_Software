@@ -7,12 +7,85 @@
 <style type="text/css">
 </style>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
+<script type='text/javascript'>
+// Botón para Ir Arriba
+jQuery(document).ready(function() {
+	jQuery("#IrArriba").hide();
+	jQuery(function () {
+		jQuery(window).scroll(function () {
+			if (jQuery(this).scrollTop() > 100) {
+				jQuery('#IrArriba').fadeIn();
+			} 
+			else {
+				jQuery('#IrArriba').fadeOut();
+			}
+		});
+		jQuery('#IrArriba a').click(function () {
+			jQuery('body,html').animate({
+				scrollTop: 0
+			}, 300);
+			return false;
+		});
+	});
+
+});
+</script>
+
+ <script type="text/javascript">
+ $(document).ready(function() {
+	 $('ul li:has(ul)').hover(
+	 function(e)
+	 {
+		$(this).find('ul').css({display: "block"});
+	 },
+	 function(e)
+	 {
+		$(this).find('ul').css({display: "none"});
+	 }
+	 );
+ });
+ </script>
+ <script type="text/javascript">
+$(function(){
+    $('#slider2 div:gt(0)').hide();
+    setInterval(function(){
+      $('#slider2 div:first-child').fadeOut(0)
+         .next('div').fadeIn(1000)
+         .end().appendTo('#slider2');}, 8000);
+});
+</script>
+
+<title>Basic 75</title>
+<meta charset="iso-8859-1">
+<link rel="stylesheet" href="styles/layout.css" type="text/css">
+<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Slicebox - 3D Image Slider with Fallback" />
+        <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
+		<meta name="author" content="Pedro Botelho for Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom.css" />
+		<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
+
 </head>
 <body>
+<div id='IrArriba'>
+<a href='#Arriba'><span/></a>
+</div>
+
+
 <div class="wrapper row1">
+<div class="cabecera"></div>
   <header id="header" class="clear">
+  
     <div id="hgroup">
-    <img src="images/logo.jpg" width="120" height="63" alt="logo"> </div>
+    <img src="images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> </div>
     
     <form action="#" method="post">
       <fieldset>
@@ -28,7 +101,7 @@
 		</div>
 			
 		<div class="titulo_perfil">
-			<h2>Usuario anónimo</h2>
+			<h1>Usuario anónimo</h1>
 		</div>
 		
 		<div class="botones_acceso">
@@ -37,21 +110,49 @@
 		</div>
 	</div>
     <nav>
+      <div class="menu">
       <ul>
-        <li><a href="#">Destacados</a></li>|
-        <li><a href="#">Noticias</a></li>|
-        <li><a href="#">Juegos</a></li>|
-        <li class="last"><a href="#">Software</a></li>
-    </ul>
+		 <li><a href="#">Destacados<div class="tri"></div></a>
+		 <ul>
+		 <div class="sub">
+		 <li><a href="#">Juegos</a></li>
+		 <li><a href="#">Software</a></li>
+		 <li><a href="#">Demos</a></li>
+		 <li><a href="#">Genero</a></li>
+		 </div>
+		 
+		 </ul>
+		 </li>
+		<li>|</li>
+	    <li><div class="enl"><a href="#">Juegos<div class="tri"></div></a></div>
+		<ul>
+		<div class="sub">
+		 <li><a href="#">Accion</a></li>
+		 <li><a href="#">Aventura</a></li>
+		 <li><a href="#">Carreras</a></li>
+		 <li><a href="#">Casual</a></li>
+		 </div>
+		 </ul>
+		</li>
+		<li>|</li>
+        <li><a href="#">Software<div class="tri"></div></a></li>
+		<li>|</li>
+        <li><a href="#">Demos<div class="tri"></div></a></li>
+		<li>|</li>
+        <li class="last"><a href="#">Noticias<div class="tri"></div></a></li>
+      </ul>
+	  </div>
     </nav>      
     
   </header>
 </div>
+
 <!-- content -->
 <div class="wrapper row2">
   <div id="container" class="clear">
     <!-- content body -->
-	<div id="sidebar" background="#2290c9">
+	<div id="sidebar" >
+	<h2>POR GÉNERO </h2>
         <ul>
             <li><a href="#">Free to Play</a></li>
             <li><a href="#">Acceso anticipado</a></li>
@@ -67,45 +168,189 @@
             <li><a href="#">Simuladores</a></li>
         </ul>
     </div>
-	
-    <div id="slider" >
-		<a href="#">
-			<img src="images/acunity.jpg" width="100%" alt="">
-			<h1 ><br>Assassin's Creed Unity</h1>
-			<p color="#FFFFFF">La posibilidad de ver un videojuego de Assassin's Creed ambientado en París ha estado en el aire desde el anuncio de las primeras entregas. Ubisoft estaba esperando pacientemente para planteárnoslo, con un título destinado específicamente a la next-gen. Visitamos la Francia del siglo XVIII para luchar por la Revolución junto a los asesinos. ¿Nos unimos?</p>
-		</a>
-	</div>
+	<div class="ppt">
+	<div class="containerslide">
+			<div class="wrapperslide">
+
+				<ul id="sb-slider" class="sb-slider">
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank"><img src="images/acunity.jpg" style="width:auto" alt="image1"/></a>
+						<div class="sb-description">
+							<h1>Assassin's Creed Unity</h1>
+							La Revolución Francesa estalla en la nueva generación.
+						</div>
+					</li>
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2968268187" target="_blank"><img src="images/COD.jpg" alt="image2"/></a>
+						<div class="sb-description">
+							<h1>CALL OF DUTY: ADVANCED WARFARE</h1>
+							Frenético y vertical. Call of Duty vuelve a sus orígenes.
+						</div>
+					</li>
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2968114825" target="_blank"><img src="images/witcher.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h1>The Witcher III: Wild Hunt</h1>
+							Geralt de Rivia vuelve a la actualidad. La Caza Salvaje se acerca.
+						</div>
+					</li>
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2968122059" target="_blank"><img src="images/batman.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h1>Batman: Arkham Knight</h1>
+							Batman vuelve a extender sus oscuras alas sobre Gotham.
+						</div>
+					</li>
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2969119944" target="_blank"><img src="images/dragon.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h1>Dragon Age: Inquisition</h1>
+							Fuego y rol inquisidor. El largo camino para salvar Ferelden acaba de comenzar.
+						</div>
+					</li>
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2968126177" target="_blank"><img src="images/nba.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h1>NBA Live 15</h1>
+							Basket a lo grande. Volvemos a visitar las canchas.
+						</div>
+					</li>
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2968945158" target="_blank"><img src="images/farcry.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h1>Far Cry 4</h1>
+							Far Cry vuelve, y lo hace como mejor sabe: con más armas, vehículos y situaciones. Hora de combatir.
+						</div>
+					</li>
+					<div id="nav-arrows" class="nav-arrows">
+					<a href="#">Next</a>
+					<a href="#">Previous</a>
+				</div>
+				</ul>
+
+				
+
+				<div id="nav-arrows" class="nav-arrows">
+					<a href="#">Next</a>
+					<a href="#">Previous</a>
+				</div>
+
+			</div><!-- /wrapper -->
+
+			
+
+		</div>
+		</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.slicebox.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				
+				var Page = (function() {
+
+					var $navArrows = $( '#nav-arrows' ).hide(),
+						$shadow = $( '#shadow' ).hide(),
+						slicebox = $( '#sb-slider' ).slicebox( {
+							onReady : function() {
+
+								$navArrows.show();
+								$shadow.show();
+
+							},
+							orientation : 'r',
+							cuboidsRandom : true
+						} ),
+						
+						init = function() {
+
+							initEvents();
+							
+						},
+						initEvents = function() {
+
+							// add navigation events
+							$navArrows.children( ':first' ).on( 'click', function() {
+
+								slicebox.next();
+								return false;
+
+							} );
+
+							$navArrows.children( ':last' ).on( 'click', function() {
+								
+								slicebox.previous();
+								return false;
+
+							} );
+
+						};
+						setInterval(function(){
+							  slicebox.next();}, 6000);
+						
+
+						return { init : init };
+
+				})();
+
+				Page.init();
+
+			});
+		</script>
     <!-- main content -->
     <div id="homepage" class="clear">
       <!-- Left Box -->
-      <div class="fl_left">
-        <article>
-		  <br><br><br>
-         <h1 style="color: #FF9900">ÚLTIMOS LANZAMIENTOS </h1>
+	  </br></br></br>
+      <h2>ÚLTIMOS LANZAMIENTOS </h2>
+	  
 		  <div class="cuadro_novedades">
 		  <a href="#"><img class="imagen_novedades" src="images/shadow_of_mordor.jpg" ></a>
 		  <a href="#"><img class="imagen_novedades" src="images/ryse.jpg"></a>	
 		  <a href="#"><img class="imagen_novedades" src="images/destiny.jpg"></a>
 		  <a href="#"><img class="imagen_novedades" src="images/fifa15.jpg"></a>
 		  </div>
-		  
-		</article>
-      </div>
       <!-- Right Box -->
       <div class="fl_right">
-        <article class="clear">
-          <br><br><br>
-          <h1 style="color: #FF9900">LO ÚLTIMO</h1>
+	  
 		  <div class="cuadro_noticias">
+		  <div class="titulo_nove">
+          <h2>LO ÚLTIMO</h2>
+		  </div>
 			<div class="item_noticias">
-				
-				<a href="#"><img class="imagen_noticias" src="images/fifa15.jpg"></a>
-				<h6><br>NOTICIA</h6>
-				<a href="#" class="texto_noticias" >Se hace oficial la resolución de Advanced Warfare en consolas: 1360x1080 en XOne y 1080p en PS4</a>
-				
+				<a href="#"><img class="imagen_noticias" src="images/destinyT.jpg"></a>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Destiny 2 ya se encuentra en los planes de futuro de Activision</a>
+			</div>
+			<div class="item_noticias">
+				<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
+			</div>
+			<div class="item_noticias">
+				<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
+			</div>
+			<div class="item_noticias">
+				<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
 			</div>
 		  </div>
-        </article>
+		  
+		   
+		  <div class="cuadro_ofertas">
+		 <div class="titulo_nove">
+          <h2>OFERTAS ESPECIALES</h2>
+		  </div>
+			<div class="item_ofertas">
+				<div class="item_noticias">
+				<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
+			</div>
+			</div>
+		  
+		  </div>
       </div>
     </div>
     <!-- / content body -->
@@ -116,53 +361,53 @@
   <div id="footer" class="clear">
     <!-- Section One -->
     <section class="one_quarter">
-      <h2 class="title">Link Block</h2>
+      <h2 class="title">Conócenos</h2>
       <nav>
+	  </br>
         <ul>
-          <li><a href="#">Lorem ipsum dolor sit</a></li>
-          <li><a href="#">Amet consectetur</a></li>
-          <li><a href="#">Praesent vel sem id</a></li>
-          <li><a href="#">Curabitur hendrerit est</a></li>
-          <li class="last"><a href="#">Sed a nulla urna</a></li>
+          <li><a href="#">Información corporativa</a></li>
+          <li><a href="#">Departamento de prensa</a></li>
+          <li><a href="#">Trabaja con nosotros</a></li>
+          <li class="last"><a href="#">La tienda en la Comunidad</a></li>
         </ul>
       </nav>
     </section>
     <!-- Section Two -->
     <section class="one_quarter">
-      <h2 class="title">Link Block</h2>
+      <h2 class="title">Métodos de pago</h2>
       <nav>
+	  </br>
         <ul>
-          <li><a href="#">Lorem ipsum dolor sit</a></li>
-          <li><a href="#">Amet consectetur</a></li>
-          <li><a href="#">Praesent vel sem id</a></li>
-          <li><a href="#">Curabitur hendrerit est</a></li>
-          <li class="last"><a href="#">Sed a nulla urna</a></li>
+          <li><a href="#">Métodos de pago</a></li>
+          <li><a href="#">Conversor de divisas</a></li>
+          <li class="last"><a href="#">Cheques Regalo</a></li>
         </ul>
       </nav>
     </section>
     <!-- Section Three -->
     <section class="one_quarter">
-      <h2 class="title">Link Block</h2>
+      <h2 class="title">Secciones</h2>
       <nav>
+	  </br>
         <ul>
-          <li><a href="#">Lorem ipsum dolor sit</a></li>
-          <li><a href="#">Amet consectetur</a></li>
-          <li><a href="#">Praesent vel sem id</a></li>
-          <li><a href="#">Curabitur hendrerit est</a></li>
-          <li class="last"><a href="#">Sed a nulla urna</a></li>
+          <li><a href="#">Noticias</a></li>
+          <li><a href="#">Artículos</a></li>
+          <li><a href="#">Lanzamientos</a></li>
+          <li class="last"><a href="#">Juegos</a></li>
         </ul>
       </nav>
     </section>
     <!-- Section Four -->
     <section class="one_quarter lastbox">
-      <h2 class="title">Link Block</h2>
+      <h2 class="title">¿Necesitas ayuda?</h2>
       <nav>
+	  </br>
         <ul>
-          <li><a href="#">Lorem ipsum dolor sit</a></li>
-          <li><a href="#">Amet consectetur</a></li>
-          <li><a href="#">Praesent vel sem id</a></li>
-          <li><a href="#">Curabitur hendrerit est</a></li>
-          <li class="last"><a href="#">Sed a nulla urna</a></li>
+          <li><a href="#">Localizar o gestionar compras</a></li>
+          <li><a href="#">Tarifas y políticas de envío</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Ayuda</a></li>
+          <li class="last"><a href="#">IVA sobre los bienes</a></li>
         </ul>
       </nav>
     </section>
@@ -172,8 +417,7 @@
 <!-- Copyright -->
 <div class="wrapper row4">
   <footer id="copyright" class="clear">
-    <p class="fl_left">Copyright &copy; 2012 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <p class="fl_left" style="color:#FFFFFF">Copyright &copy; 2012 - All Rights Reserved</p>
   </footer>
 </div>
 </body>
