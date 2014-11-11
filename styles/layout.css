@@ -61,6 +61,8 @@ h3{color:#3f7696;margin:0; padding:0; font-size:13px; font-weight:bold; font-sty
 
 h4, h5, h6{color:#FFFFFF;margin:0; padding:0; font-size:12px; font-weight:bold; font-style:normal; line-height:normal; text-transform:uppercase;}
 
+titulo_info_producto{color:#000000;margin:0; padding:0; font-size:24px; font-weight:bold; font-style:normal; line-height:normal; text-transform:uppercase;}
+
 p {color:#000000;margin-bottom:0px;}
 
 address{font-style:normal;}
@@ -79,6 +81,22 @@ input, textarea, select{font-size:12px; font-family:Arial, Helvetica, sans-serif
 .three_quarter{width:710px;}
 .four_quarter{width:960px; float:none; margin-right:0; clear:both;}
 .lastbox{margin-right:0;}
+
+
+
+
+/*----------------------------------------------Header-------------------------------------*/
+
+#header{}
+
+#header #hgroup{float:left; padding:20px 0;}
+#header #hgroup h1, #header #hgroup h2{font-weight:normal; text-transform:none;}
+#header #hgroup h1{font-size:36px;}
+#header #hgroup h2{font-size:13px;}
+
+#header form{display:block; width:auto; float:left; margin:40px 0 0 75px; padding:0;}
+#header form input{display:block; float:left; width:320px; margin:0 0 0 0; padding:5px; color:#FFFFFF; background-color:#232323; border:1px solid #666666;}
+#header form #sf_submit{display:block; float:left; margin:1px 0 0 10px; width:40px; font-size:12px; background:url(../images/search.png) no-repeat center center; background-size: 30px 30px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#3f7696; border:none; cursor:pointer;}
 
 .titulo_perfil{
 	float: right; 
@@ -99,20 +117,6 @@ input, textarea, select{font-size:12px; font-family:Arial, Helvetica, sans-serif
     height: 10px; 
 }
 
-
-
-/*----------------------------------------------Header-------------------------------------*/
-
-#header{}
-
-#header #hgroup{float:left; padding:20px 0;}
-#header #hgroup h1, #header #hgroup h2{font-weight:normal; text-transform:none;}
-#header #hgroup h1{font-size:36px;}
-#header #hgroup h2{font-size:13px;}
-
-#header form{display:block; width:auto; float:left; margin:40px 0 0 75px; padding:0;}
-#header form input{display:block; float:left; width:320px; margin:0 0 0 0; padding:5px; color:#FFFFFF; background-color:#232323; border:1px solid #666666;}
-#header form #sf_submit{display:block; float:left; margin:1px 0 0 10px; width:40px; font-size:12px; background:url(../images/search.png) no-repeat center center; background-size: 30px 30px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#3f7696; border:none; cursor:pointer;}
 
 .boton_login{display:block; height:24px; margin-right:26px;margin-top:7px; float:right; width:auto; font-size:12px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#3f7696; border:none; cursor:pointer;}
 .profile_img{display:block;height:auto; margin:13px 0 0 -10px; float:right; width:9%;}
@@ -153,175 +157,6 @@ input, textarea, select{font-size:12px; font-family:Arial, Helvetica, sans-serif
 #header nav li a{background:transparent;}
 #header nav li a:hover {color:#FF9900;}
 #header nav li a:hover .tri {margin-left:5px;background-color:#FF9900;}
-
-
-
-/*----------------------------------------------Content Area-------------------------------------*/
-
-#container{padding:30px 0;}
-#container section{display:block; width:100%; margin:0 0 30px 0; padding:0;}
-#container .last{margin:0;}
-#container .more{text-align:right;}
-
-/* ------Menu Lateral-----*/
-
-#sidebar {
-    z-index:0;
-    background: #FF9900;
-    width: 220px;
-    height: 0px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    margin-left:-50px;
-	
-}
-#sidebar ul {
-
-	background: #FF9900;
-    margin-top:0;
-    padding: 0;
-    list-style: none;
-}
-#sidebar ul li {
-	background: #FF9900;
-    margin: 0;
-}
-#sidebar ul li a {
-	background: #3f7696;
-    padding: 9px;
-    font-size: 16px;
-    font-weight: 10;
-    color: white;
-    text-decoration: none;
-    display: block;
-    -webkit-transition:  background 0.3s ease-in-out;
-    -moz-transition:  background 0.3s ease-in-out;
-    -ms-transition:  background 0.3s ease-in-out;
-    -o-transition:  background 0.3s ease-in-out;
-    transition:  background 0.3s ease-in-out;
-}
-#sidebar ul li:hover a {
-    background: #DD8500;
-}
-
-/* ------Slider-----*/
-
-#container #slider{float:right; margin-left:10px; width:6px;}
-#container #slider a{display:block; padding:9px; border:1px solid #DEDEDE;float:right;}
-#container #slider a:hover{border-color:#FF9900;float:right;}
-
-/* ------Main Content-----*/
-
-#container #homepage{display:block; width:100%; line-height:1.6em;}
-#container #homepage section{margin:0;}
-
-#container #homepage .fl_left{display:block; width:455px;margin-top:50px;}
-#container #homepage .fl_right{display:block; }
-
-
-.cuadro_novedades{
-	
-
-	width: 1040px;
-	height: 170px;
-	margin-left:-68px;
-	border: 3px solid #3f7696;
-	
-}
-
-
-
-.imagen_novedades:hover {
-	border: 3px solid #FF9900;
-}
-
-.imagen_novedades{
-float: left;
-width: 225px;
-height:150px;
-border: 3px solid #FFFFFF;
-margin-top:7px;
-margin-left:23px;
-}
-
-.cuadro_noticias{
-	background: transparent;
-	width: 520px;
-	float:left;
-	
-}
-.cuadro_ofertas{
-	background: transparent;
-	width: 520px;
-	float:right;
-	
-}
-
-.titulo_nove{
-width:220px;
-margin-left:65px;
-}
-
-.item_noticias{
-float: left;
-width: 500px;
-height:auto;
-border: 3px solid #3f7696;
-margin-top:7px;
-background: #FFFFFF;
-}
-
-.imagen_noticias{
-float: left;
-width: 150px;
-height:auto;
-margin-top:6px;
-margin-left:6px;
-margin-bottom:6px;
-margin-right:6px;
-}
-
-.item_noticias:hover {
-	border: 3px solid #FF9900;
-}
-
-.texto_noticias a{
-	width: auto;
-}
-
-.texto_noticias:hover {
-	
-}
-
-/*----------------------------------------------Footer-------------------------------------*/
-
-#footer{padding:30px 0; font-size:12px; line-height:1.4em;}
-
-#footer section h2.title{margin:0 0 25px 0; padding:0; color:#FF9900; background-color:transparent; font-size:12px; font-weight:bold; text-transform:uppercase;}
-
-#footer section nav li{margin:0 0 5px 0; padding:0 0 5px 0; border-bottom:1px solid #555555;}
-#footer section nav li.last{margin:0;}
-
-/*----------------------------------------------Copyright-------------------------------------*/
-
-#copyright{padding:20px 0;}
-#copyright p{margin:0; padding: 0;}
-
-
-/* Botón Ir Arriba
------------------------------------------------ */
-#IrArriba {
-position: fixed;
-bottom: 30px; /* Distancia desde abajo */
-right: 30px; /* Distancia desde la derecha */
-}
-
-#IrArriba span {
-width: 60px; /* Ancho del botón */
-height: 60px; /* Alto del botón */
-display: block;
-background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAAAACPI/ojfEGiaNmGw/s60/flecha-arriba.png) no-repeat center center;
-}
 
 
 
@@ -422,6 +257,62 @@ vertical-align: text-bottom;
 	
 }
 
+
+
+/*----------------------------------------------Content Area-------------------------------------*/
+
+#container{padding:30px 0;}
+#container section{display:block; width:100%; margin:0 0 30px 0; padding:0;}
+#container .last{margin:0;}
+#container .more{text-align:right;}
+
+/* ------Menu Lateral-----*/
+
+#sidebar {
+    z-index:0;
+    background: #FF9900;
+    width: 220px;
+    height: 0px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin-left:-50px;
+	
+}
+#sidebar ul {
+
+	background: #FF9900;
+    margin-top:0;
+    padding: 0;
+    list-style: none;
+}
+#sidebar ul li {
+	background: #FF9900;
+    margin: 0;
+}
+#sidebar ul li a {
+	background: #3f7696;
+    padding: 9px;
+    font-size: 16px;
+    font-weight: 10;
+    color: white;
+    text-decoration: none;
+    display: block;
+    -webkit-transition:  background 0.3s ease-in-out;
+    -moz-transition:  background 0.3s ease-in-out;
+    -ms-transition:  background 0.3s ease-in-out;
+    -o-transition:  background 0.3s ease-in-out;
+    transition:  background 0.3s ease-in-out;
+}
+#sidebar ul li:hover a {
+    background: #DD8500;
+}
+
+/* ------Slider-----*/
+
+#container #slider{float:right; margin-left:10px; width:6px;}
+#container #slider a{display:block; padding:9px; border:1px solid #DEDEDE;float:right;}
+#container #slider a:hover{border-color:#FF9900;float:right;}
+
 .ppt{
 padding-left:70px;
 }
@@ -453,5 +344,142 @@ max-height:300px;
 margin:0;
 padding:0; 
 border:0;
+}
+
+
+
+/* ------Main Content-----*/
+
+#container #homepage{display:block; width:100%; line-height:1.6em;}
+#container #homepage section{margin:0;}
+
+#container #homepage .fl_left{display:block; width:455px;margin-top:50px;}
+#container #homepage .fl_right{display:block; }
+
+
+.cuadro_novedades{
+	
+
+	width: 1040px;
+	height: 170px;
+	margin-left:-68px;
+	border: 3px solid #3f7696;
+	
+}
+
+
+
+.imagen_novedades:hover {
+	border: 3px solid #FF9900;
+}
+
+.imagen_novedades{
+float: left;
+width: 225px;
+height:150px;
+border: 3px solid #FFFFFF;
+margin-top:7px;
+margin-left:23px;
+}
+
+.cuadro_noticias{
+	background: transparent;
+	width: 520px;
+	float:left;
+	
+}
+.cuadro_ofertas{
+	background: transparent;
+	width: 520px;
+	float:right;
+	
+}
+
+.titulo_nove{
+width:220px;
+margin-left:65px;
+}
+
+.item_noticias{
+float: left;
+width: 500px;
+height:auto;
+border: 3px solid #3f7696;
+margin-top:7px;
+background: #FFFFFF;
+}
+
+.imagen_noticias{
+float: left;
+width: 150px;
+height:auto;
+margin-top:6px;
+margin-left:6px;
+margin-bottom:6px;
+margin-right:6px;
+}
+
+.item_noticias:hover {
+	border: 3px solid #FF9900;
+}
+
+.texto_noticias a{
+	width: auto;
+}
+
+.texto_noticias:hover {
+	
+}
+
+												/*------------Página de Productos---------------*/
+.imagen_producto{
+
+float:left;
+width:35%;
+
+}
+
+.info_producto{
+
+float:left;
+margin-left:30px;
+width:auto;
+
+}
+
+
+
+
+
+
+
+/*----------------------------------------------Footer-------------------------------------*/
+
+#footer{padding:30px 0; font-size:12px; line-height:1.4em;}
+
+#footer section h2.title{margin:0 0 25px 0; padding:0; color:#FF9900; background-color:transparent; font-size:12px; font-weight:bold; text-transform:uppercase;}
+
+#footer section nav li{margin:0 0 5px 0; padding:0 0 5px 0; border-bottom:1px solid #555555;}
+#footer section nav li.last{margin:0;}
+
+/*----------------------------------------------Copyright-------------------------------------*/
+
+#copyright{padding:20px 0;}
+#copyright p{margin:0; padding: 0;}
+
+
+/* Botón Ir Arriba
+----------------------------------------------- */
+#IrArriba {
+position: fixed;
+bottom: 30px; /* Distancia desde abajo */
+right: 30px; /* Distancia desde la derecha */
+}
+
+#IrArriba span {
+width: 60px; /* Ancho del botón */
+height: 60px; /* Alto del botón */
+display: block;
+background: url(http://lh5.googleusercontent.com/-luDGEoQ_WZE/T1Ak-gta5MI/AAAAAAAACPI/ojfEGiaNmGw/s60/flecha-arriba.png) no-repeat center center;
 }
 
