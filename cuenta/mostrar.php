@@ -1,7 +1,7 @@
 <html>  
 <head>  
 <TITLE>Listado de productos adquiridos</TITLE> 
-<link rel="stylesheet" href="/sistemas_web/styles/login.css"> 
+<link rel="stylesheet" href="../css/login.css"> 
 </head>  
 
 <body>  
