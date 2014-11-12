@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Accede a Tu cuenta</title>
-  <link rel="stylesheet" href="/sistemas_web/styles/login.css">
+  <link rel="stylesheet" href="../css/login.css">
   <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
