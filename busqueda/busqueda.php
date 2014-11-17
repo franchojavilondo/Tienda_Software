@@ -1,8 +1,6 @@
 <?php
-
 // If your page calls session_start() be sure to include jcart.php first
 include_once('../jcart/jcart.php');
-
 ?>
 <link rel="stylesheet" type="text/css" media="screen, projection" href="../jcart/css/jcart.css" />
 
@@ -57,7 +55,6 @@ include_once('../jcart/jcart.php');
     			<input type="text" name="my-item-url" <?php echo 'value="'.$Precio.'"' ?> />
 				<input type="image" src="../images/tick.png" WIDTH="15" HEIGHT="15"> </input>
 				<?php
-
 				}
 		if($Cantidad==0){
 			?>
