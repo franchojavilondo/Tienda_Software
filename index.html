@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+	session_start();
+?>
+
 <html lang="en" dir="ltr">
 <head>
 <title>Tienda de videojuegos</title>
@@ -167,6 +172,36 @@ $(function(){
     </form>
     
     <div class="cajon_usu" >
+	
+	
+	<?php
+	
+	if (isset($_SESSION["user"]){
+	$user = $_SESSION["user"];
+	?>
+	
+	
+	<div class="imagen_perfil">
+			<img src="images/profile.png" alt="Usuario" class="profile_img">
+		</div>
+			
+		<div class="titulo_perfil">
+			<h1><?php echo $user; ?> </h1>
+		</div>
+		
+		<div class="botones_acceso">
+			<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
+			<input type="submit" class="boton_registro" value="Cerrar Sesión">
+		</div>
+	<?php
+	
+	
+	
+	}
+	
+	else{
+	
+	?>
 		<div class="imagen_perfil">
 			<img src="images/profile.png" alt="Usuario" class="profile_img">
 		</div>
@@ -179,6 +214,13 @@ $(function(){
 			<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
 			<input type="submit" class="boton_registro" value="Registrarse">
 		</div>
+		
+		<?php
+		}
+		?>
+		
+		
+		
 	</div>
     <nav>
       <div class="menu">
