@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-
 <?php
 	session_start();
 ?>
+<!DOCTYPE html>
 
 <html lang="en" dir="ltr">
 <head>
@@ -176,8 +175,10 @@ $(function(){
 	
 	<?php
 	
-	if (isset($_SESSION["user"]){
+	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
 	$user = $_SESSION["user"];
+	$pass = $_SESSION["pass"];
+	echo $user;
 	?>
 	
 	
@@ -211,7 +212,7 @@ $(function(){
 		</div>
 		
 		<div class="botones_acceso">
-			<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
+			<a href="login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
 			<input type="submit" class="boton_registro" value="Registrarse">
 		</div>
 		
