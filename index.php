@@ -160,7 +160,7 @@ $(function(){
   <header id="header" class="clear">
   
     <div id="hgroup">
-    <img src="images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> </div>
+     <a href="index.php"> <img src="images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"></a> </div>
     
     <form action="#" method="post">
       <fieldset>
@@ -176,9 +176,33 @@ $(function(){
 	<?php
 	
 	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
-	$user = $_SESSION["user"];
-	$pass = $_SESSION["pass"];
-	echo $user;
+		$hostname = "localhost";
+		$usuario = "pma";
+		$password = "pmapass";
+		$basededatos = "tienda_software";
+		$tabla="clientes";	 
+		
+		$user= $_SESSION ["user"];
+		$contra = $_SESSION ["pass"];
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}	
+		
+	$consultaSQL ="SELECT * FROM clientes  WHERE nombre='$user' && pass='$contra'" ; 
+	  
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		
+		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+		if ($registro=$resultado->fetch_assoc()){
+			
+		
+		}
+		$registro=$resultado->free();
+		$conexion->close();
 	?>
 	
 	
@@ -192,7 +216,7 @@ $(function(){
 		
 		<div class="botones_acceso">
 			<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
-			<input type="submit" class="boton_registro" value="Cerrar Sesión">
+			<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
 		</div>
 	<?php
 	
@@ -213,7 +237,7 @@ $(function(){
 		
 		<div class="botones_acceso">
 			<a href="login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
-			<input type="submit" class="boton_registro" value="Registrarse">
+			<a href="signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
 		</div>
 		
 		<?php

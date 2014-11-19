@@ -133,56 +133,53 @@ jQuery(document).ready(function() {
     <!-- main content -->
     <div id="homepage" class="clear">
 		 <section class="container">
-<<<<<<< HEAD
-    <div class="cuadro_login">
-		<div class="titulo_nove">
-			<h2>INICIAR SESIÓN</h2>
-		</div>
-	<div class="formulario_login">
-		<form method="post" action="index.php">
-			<div class="seccion_login">
-				<div class="usuario_login">Nombre de usuario:</div>
-				<input type="text" name="user" placeholder="Usuario">
-			</div>
-			<div class="seccion_login">
-				<div class="usuario_login">Contraseña:</div>
-				<input type="password" name="pass" value="" placeholder="Contraseña">
-			</div>
-=======
     <div class="login">
-      <h1>INICIAR SESION</h1>
-      <form method="post" action="login.php">
+      <h1>CREAR UNA CUENTA</h1>
+      <form method="post" action="signin.php">
 	 
-        <p> Nombre o email de la cuenta<br><input type="text" name="user" value="" placeholder="Usuario o Email"></p>
->>>>>>> origin/master
+        <p>Nick<br><input type="text" name="usuario" value="" placeholder="Usuario"></p>
+		<p>Contraseña<br><input type="password" name="pass" value="" placeholder="Contraseña"></p>
+		<p>Direccion de email<br><input type="text" name="email" value="" placeholder="Direccion de email"></p>
+		<p>Telefono<br><input type="integer" name="telefono" value="" placeholder="Telefono"></p>
+		<p>Direccion<br><input type="text" name="direccion" value="" placeholder="Direccion"></p>
+		<p>Foto<br><input type="text" name="foto" value="" placeholder="Foto de perfil"></p>
+        <p class="submit"><input type="submit" name="commit" value="Crear la cuenta"></p>
 		
-		<div class="check_usuario">
-        <input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
-		</div>
-		
-		<input type="submit" class="boton_login" name="commit" value="Login">
 <?php
-	if (isset($_POST["user"]) && isset($_POST["pass"])){
+	if (isset($_POST["usuario"]) && isset($_POST["pass"])  && isset($_POST["email"])  && isset($_POST["telefono"])  && isset($_POST["direccion"])){
 		$hostname = "localhost";
 		$usuario = "pma";
 		$password = "pmapass";
 		$basededatos = "tienda_software";
 		$tabla="clientes";
 		
-		$user = $_POST["user"];
+		$user = $_POST["usuario"];
 		$contra = $_POST["pass"];
+		$email=$_POST["email"];
+		$telefono=$_POST["telefono"];
+		$direccion=$_POST["direccion"];
+		$foto=$_POST["foto"];
 	
 		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
 		if ($conexion->connect_errno) {
 			die('Error de conexión: ' . $conexion->connect_error);
 		}	
-		$consultaSQL ="SELECT * FROM clientes  WHERE nombre='$user' && pass='$contra'" ;
+		$consultaSQL ="SELECT * FROM clientes  WHERE nombre='$user' || email='$email'" ;
 		$resultado = $conexion->query($consultaSQL);
 		if (!$resultado) {
 			die('No se puede realizar la consulta: ' . $conexion->connect_error);
 		}
 		
 		if ($registro=$resultado->fetch_assoc()){
+			echo "Ese nick ya existe, elige otro";
+		
+		}
+		else{
+			$consultaSQL ="INSERT INTO clientes VALUES (NULL,'$email','$contra','$user',$telefono,'$direccion')" ;
+			$stmt  = $conexion->query($consultaSQL);
+			
+
+			 
 			$_SESSION ["user"]=$user;
 			$_SESSION ["pass"]=$contra;
 			
@@ -191,57 +188,16 @@ jQuery(document).ready(function() {
 				location.href = "index.php";
 				</script>
 			<?php
-		
 		}
-		else{
-			echo "incorrecto";
-		}
-		 $conexion->close();
+		$conexion ->close();
 	}
 ?>
       </form>
-<<<<<<< HEAD
-	  </div>
 	  
-    </div>
-	
-	
-	<div class="cuadro_login">
-		<div class="titulo_nove">
-			<h2>INICIAR SESIÓN</h2>
-		</div>
-	<div class="formulario_login">
-		<form method="post" action="index.php">
-			<div class="seccion_login">
-				<div class="usuario_login">Nombre de usuario:</div>
-				<input type="text" name="user" placeholder="Usuario">
-			</div>
-			<div class="seccion_login">
-				<div class="usuario_login">Contraseña:</div>
-				<input type="password" name="pass" value="" placeholder="Contraseña">
-			</div>
-		
-		<div class="check_usuario">
-        <input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
-		</div>
-		
-		<input type="submit" class="boton_login" name="commit" value="Login">
-</div>
-</div>
-=======
-	  
-	  <div class="adduser">
-		Crear
-Una nueva cuenta gratis
-
-Unirse es gratis y su uso, sencillo. 
-Continúa para crear tu cuenta, la solución digital líder entre los jugadores de PC y Mac.
-	
-	</div>
+	 
     </div>
 	
 
->>>>>>> origin/master
   </section>
 		
 		</div>
