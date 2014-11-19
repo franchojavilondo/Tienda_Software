@@ -165,7 +165,7 @@ $(function(){
     <form action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
-        <input type="text" placeholder="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
         <input type="submit" id="sf_submit" value="">
       </fieldset>
     </form>
