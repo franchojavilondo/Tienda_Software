@@ -133,20 +133,28 @@ jQuery(document).ready(function() {
     <!-- main content -->
     <div id="homepage" class="clear">
 		 <section class="container">
-    <div class="login">
-      <h1>INICIAR SESION</h1>
-      <form method="post" action="login.php">
-	 
-        <p> Nombre o email de la cuenta<br><input type="text" name="user" value="" placeholder="Usuario o Email"></p>
+    <div class="cuadro_login">
+		<div class="titulo_nove">
+			<h2>INICIAR SESIÓN</h2>
+		</div>
+	<div class="formulario_login">
+		<form method="post" action="index.php">
+			<div class="seccion_login">
+				<div class="usuario_login">Nombre de usuario:</div>
+				<input type="text" name="user" placeholder="Usuario">
+			</div>
+			<div class="seccion_login">
+				<div class="usuario_login">Contraseña:</div>
+				<input type="password" name="pass" value="" placeholder="Contraseña">
+			</div>
 		
-	  <p>Contraseña<br><input type="password" name="pass" value="" placeholder="Contraseña"></p>
-        <p class="remember_me">
-          <label>
-            <input type="checkbox" name="remember_me" id="remember_me">
-            Recuerdame en este PC
-          </label>
-        </p>
-        <p class="submit"><input type="submit" name="commit" value="Login"></p>
+		<div class="check_usuario">
+        <input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
+		</div>
+		
+		<input type="submit" class="boton_login" name="commit" value="Login">
+</div>
+</div>
 		
 <?php
 	if (isset($_POST["user"]) && isset($_POST["pass"])){
