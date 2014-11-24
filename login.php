@@ -138,7 +138,7 @@ jQuery(document).ready(function() {
 			<h2>INICIAR SESIÓN</h2>
 		</div>
 	<div class="formulario_login">
-		<form method="post" action="index.php">
+		<form method="post" action="login.php">
 			<div class="seccion_login">
 				<div class="usuario_login">Nombre de usuario:</div>
 				<input type="text" name="user" placeholder="Usuario">
