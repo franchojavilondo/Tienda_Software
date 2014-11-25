@@ -310,56 +310,54 @@ $(function(){
 	<div class="containerslide">
 			<div class="wrapperslide">
 
+			
+			
+			<?php
+   // Definimos los parámetros
+   $hostname = "localhost";
+   $usuario = "pma";
+   $password = "pmapass";
+   $basededatos = "tienda_software";
+   $tabla="destacados";
+   
+	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if(!$conexion) {
+		die ("conexion no se pudo realizar");
+		}
+		
+   	////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////
+	//STMT ORIENTADO A OBJETOS
+	
+	$stmt = $conexion->prepare("SELECT caratula,Id_Producto,nombre FROM $tabla ORDER BY Id_Producto");
+	$stmt->execute();
+	$stmt->bind_result($Caratula,$Id_Producto,$Nombre); 
+	?>
+			
 				<ul id="sb-slider" class="sb-slider">
-					<li>
-						<a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank"><img src="images/acunity.jpg" style="width:auto" alt="image1"/></a>
+				
+			<?php
+			if ($stmt->fetch())
+				{
+	// Mostramos una tabla con el resultado de la consulta
+					do {
+					
+					?><li>
+						<a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank"><img <?php echo 'src="..'.$Caratula.'"' ?> style="width:auto" /></a>
 						<div class="sb-description">
-							<h1>Assassin's Creed Unity</h1>
+							<h1><?php echo $Nombre ?></h1>
 							La Revolución Francesa estalla en la nueva generación.
 						</div>
 					</li>
-					<li>
-						<a href="http://www.flickr.com/photos/strupler/2968268187" target="_blank"><img src="images/COD.jpg" alt="image2"/></a>
-						<div class="sb-description">
-							<h1>CALL OF DUTY: ADVANCED WARFARE</h1>
-							Frenético y vertical. Call of Duty vuelve a sus orígenes.
-						</div>
-					</li>
-					<li>
-						<a href="http://www.flickr.com/photos/strupler/2968114825" target="_blank"><img src="images/witcher.jpg" alt="image1"/></a>
-						<div class="sb-description">
-							<h1>The Witcher III: Wild Hunt</h1>
-							Geralt de Rivia vuelve a la actualidad. La Caza Salvaje se acerca.
-						</div>
-					</li>
-					<li>
-						<a href="http://www.flickr.com/photos/strupler/2968122059" target="_blank"><img src="images/batman.jpg" alt="image1"/></a>
-						<div class="sb-description">
-							<h1>Batman: Arkham Knight</h1>
-							Batman vuelve a extender sus oscuras alas sobre Gotham.
-						</div>
-					</li>
-					<li>
-						<a href="http://www.flickr.com/photos/strupler/2969119944" target="_blank"><img src="images/dragon.jpg" alt="image1"/></a>
-						<div class="sb-description">
-							<h1>Dragon Age: Inquisition</h1>
-							Fuego y rol inquisidor. El largo camino para salvar Ferelden acaba de comenzar.
-						</div>
-					</li>
-					<li>
-						<a href="http://www.flickr.com/photos/strupler/2968126177" target="_blank"><img src="images/nba.jpg" alt="image1"/></a>
-						<div class="sb-description">
-							<h1>NBA Live 15</h1>
-							Basket a lo grande. Volvemos a visitar las canchas.
-						</div>
-					</li>
-					<li>
-						<a href="http://www.flickr.com/photos/strupler/2968945158" target="_blank"><img src="images/farcry.jpg" alt="image1"/></a>
-						<div class="sb-description">
-							<h1>Far Cry 4</h1>
-							Far Cry vuelve, y lo hace como mejor sabe: con más armas, vehículos y situaciones. Hora de combatir.
-						</div>
-					</li>
+					
+					<?php 
+					}
+					}
+					
+					?>
+					
+				
 					<div id="nav-arrows" class="nav-arrows">
 					<a href="#">Next</a>
 					<a href="#">Previous</a>
