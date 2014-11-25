@@ -360,17 +360,38 @@ border:0;
 #container #homepage .fl_left{display:block; width:455px;margin-top:50px;}
 #container #homepage .fl_right{display:block; }
 #container form input text, password{display:block; float:left; width:auto; margin:0 0 0 0; padding:5px; color:#000000; background-color:#FFFFFF; border:1px solid #666666;}
-#homepage p{width:50%;margin-right:-50px;}
+#homepage p{width:80%;margin-left:5%;}
 #homepage input[type="submit"]{display:block; padding-top:2%;padding-bottom:1%; height:auto; margin-right:26px; float:left; margin-top:7px; margin-bottom:3%; width:58%; font-size:16px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#3f7696; border:none; cursor:pointer;}
-#homepage input[type="text"], input[type="password"]{display:block; float:left; width:auto; padding:5px; color:#000000; background-color:#FFFFFF; border:1px solid #666666;}
+#homepage input[type="text"], input[type="password"]{display:block; float:left; width:58%; padding:5px; color:#000000; background-color:#FFFFFF; border:1px solid #666666;}
 #homepage input[type="checkbox"]{margin-top:2%;}
+#homepage titulo_desc{width:80%;margin-left:5%;color:#3f7696; font-size:13px; font-weight:bold; font-style:normal; line-height:normal; text-transform:uppercase;}
 
+.boton_submit{
 
+	margin-left:30%;
+	margin-top:6%;
+	width:auto;
+	height:auto;
 
+}
+
+.boton_registrarse{
+	display:block; 
+	height:20%; 
+	margin-top:7px;
+	float:right; 
+	width:auto; 
+	font-size:14px; 
+	font-weight:bold;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-color:#3f7696;
+	border:none; 
+	cursor:pointer;}
 
 .seccion_login{
 	width:100%;
-	height:10%;
+	height:35%;
 }
 
 .formulario_login{
@@ -378,6 +399,7 @@ border:0;
 	margin-top:8%;
 	margin-left:5%;
 	width:auto;
+	height:70%;
 }
 
 .check_usuario{
@@ -417,8 +439,24 @@ margin-left:13px;
 	background:#FFFFFF;
 	box-shadow: 2px 2px 5px #999;
 	width: 30%;
-	height:auto;
+	height:100%;
 	float:left;
+	
+}
+
+.contenido_principal{
+	width: 100%;
+	height:40%;
+	float:left;
+}
+
+
+.cuadro_nuevo{
+	background:#FFFFFF;
+	box-shadow: 2px 2px 5px #999;
+	width: 68%;
+	height:100%;
+	float:right;
 	
 }
 

@@ -132,29 +132,53 @@ jQuery(document).ready(function() {
 	
     <!-- main content -->
     <div id="homepage" class="clear">
-		 <section class="container">
-    <div class="cuadro_login">
-		<div class="titulo_nove">
-			<h2>INICIAR SESIÓN</h2>
-		</div>
-	<div class="formulario_login">
-		<form method="post" action="login.php">
-			<div class="seccion_login">
-				<div class="usuario_login">Nombre de usuario:</div>
-				<input type="text" name="user" placeholder="Usuario">
+		 
+		<div class="contenido_principal">
+			
+			<div class="cuadro_login">
+				<div class="titulo_nove">
+					<h2>INICIAR SESIÓN</h2>
+				</div>
+				<div class="formulario_login">
+					<form method="post" action="login.php">
+						<div class="seccion_login">
+							<div class="usuario_login">Nombre de usuario:</div>
+							<input type="text" name="user" placeholder="Usuario">
+						</div>
+						<div class="seccion_login">
+							<div class="usuario_login">Contraseña:</div>
+							<input type="password" name="pass" value="" placeholder="Contraseña">
+						</div>
+		
+						<div class="check_usuario">
+							<input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
+						</div>
+		
+						<input type="submit" class="boton_login" name="commit" value="Entrar">
+				</div>
 			</div>
-			<div class="seccion_login">
-				<div class="usuario_login">Contraseña:</div>
-				<input type="password" name="pass" value="" placeholder="Contraseña">
+	
+			<div class="cuadro_nuevo">
+				<div class="titulo_nove">
+					<h2>NUEVO USUARIO</h2>
+				</div>				
+				</br>
+				<titulo_desc>Una nueva cuenta gratis</titulo_desc>
+
+				<p>Unirse es gratis y su uso, sencillo.</p>
+				<p>Continúa para crear tu cuenta, la solución digital líder entre los jugadores de PC y Mac.</p>
+				<p>Pulsa en el botón siguiente para unirte:</p>
+				
+				<div class="boton_submit">
+				<a href="#"><input type="submit" class="boton_nuevo" value="Registrarse"></a>
+				</div>
+					
 			</div>
 		
-		<div class="check_usuario">
-        <input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
 		</div>
-		
-		<input type="submit" class="boton_login" name="commit" value="Login">
-</div>
-</div>
+		 
+		 
+    
 		
 <?php
 	if (isset($_POST["user"]) && isset($_POST["pass"])){
@@ -196,19 +220,10 @@ jQuery(document).ready(function() {
 ?>
       </form>
 	  
-	  <div class="adduser">
-		Crear
-Una nueva cuenta gratis
-
-Unirse es gratis y su uso, sencillo. 
-Continúa para crear tu cuenta, la solución digital líder entre los jugadores de PC y Mac.
-	
-	</div>
+	  
     </div>
 	
 
-  </section>
-		
 		</div>
     </div>
     <!-- / content body -->
