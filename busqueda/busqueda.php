@@ -51,8 +51,8 @@ include_once('../jcart/jcart.php');
                 <input type="image" name="my-item-caratula" <?php echo 'src="..'.$Caratula.'"' ?> WIDTH="50" HEIGHT="80"> </input>
                 <input type="text" name="my-item-id" <?php echo 'value="'.$Id_Producto.'"' ?>/>
 				<input type="text" name="my-item-name" <?php echo 'value="'.$Nombre.'"' ?>/>
-    			<input type="text" name="my-item-price" <?php echo 'value="'.$Cantidad.'"' ?>/>
-    			<input type="text" name="my-item-url" <?php echo 'value="'.$Precio.'"' ?> />
+    			<input type="text" name="my-item-amount" <?php echo 'value="'.$Cantidad.'"' ?>/>
+    			<input type="text" name="my-item-price" <?php echo 'value="'.$Precio.'"' ?> />
 				<input type="image" src="../images/tick.png" WIDTH="15" HEIGHT="15"> </input>
 				<?php
 				}
@@ -61,8 +61,8 @@ include_once('../jcart/jcart.php');
             	<input type="image" name="my-item-caratula" <?php echo 'src="..'.$Caratula.'"' ?> WIDTH="50" HEIGHT="80"> </input>
                 <input type="text" name="my-item-id" <?php echo 'value="'.$Id_Producto.'"' ?>/>
 				<input type="text" name="my-item-name" <?php echo 'value="'.$Nombre.'"' ?>/>
-    			<input type="text" name="my-item-price" <?php echo 'value="'.$Cantidad.'"' ?>/>
-    			<input type="text" name="my-item-url" <?php echo 'value="'.$Precio.'"' ?> />
+    			<input type="text" name="my-item-amount" <?php echo 'value="'.$Cantidad.'"' ?>/>
+    			<input type="text" name="my-item-price" <?php echo 'value="'.$Precio.'"' ?> />
 				<input type="image" src="../images/cross.png" WIDTH="15" HEIGHT="15"> </input>
 				<?php
 				}

@@ -330,37 +330,45 @@ $(function(){
 	////////////////////////////////////////////////////////////////////////////////
 	//STMT ORIENTADO A OBJETOS
 	
-	$stmt = $conexion->prepare("SELECT caratula,Id_Producto,nombre FROM $tabla ORDER BY Id_Producto");
-	$stmt->execute();
-	$stmt->bind_result($Caratula,$Id_Producto,$Nombre); 
+	$query1 = "SELECT Id_Producto,descripcion FROM $tabla ORDER BY Id_Producto";
+
+	
+	
+	
 	?>
 			
 				<ul id="sb-slider" class="sb-slider">
+				<?php 
 				
-			<?php
-			if ($stmt->fetch())
-				{
-	// Mostramos una tabla con el resultado de la consulta
-					do {
-					
-					?><li>
-						<a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank"><img <?php echo 'src="..'.$Caratula.'"' ?> style="width:auto" /></a>
+				if ($result1 = mysqli_query($conexion, $query1)) {
+				while ($row1 = mysqli_fetch_assoc($result1)) {
+				
+				$Id_Prod=$row1["Id_Producto"];
+				$query2 = "SELECT Imagen FROM imagenes_extra where Id_Producto=$Id_Prod";
+				$query3 = "SELECT nombre FROM productos where Id_Producto=$Id_Prod";
+				if ($result2 = mysqli_query($conexion, $query2)) 
+				if ($row2 = mysqli_fetch_assoc($result2))
+				if ($result3 = mysqli_query($conexion, $query3)) 
+				if ($row3 = mysqli_fetch_assoc($result3))
+				
+				?>
+			<li>
+						<a href="producto/product_info.php" target="_blank"><img <?php echo 'src=".'.$row2["Imagen"].'"' ?> style="width:auto" /></a>
 						<div class="sb-description">
-							<h1><?php echo $Nombre ?></h1>
-							La Revolución Francesa estalla en la nueva generación.
+							<h1><?php echo $row3["nombre"] ?></h1>
+							<?php echo $row1["descripcion"] ?>
 						</div>
 					</li>
-					
-					<?php 
-					}
-					}
-					
+					<?php }
+			}	
 					?>
+					
 					
 				
 					<div id="nav-arrows" class="nav-arrows">
 					<a href="#">Next</a>
 					<a href="#">Previous</a>
+					
 				</div>
 				</ul>
 
