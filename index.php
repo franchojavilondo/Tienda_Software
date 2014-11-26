@@ -318,7 +318,7 @@ $(function(){
    $usuario = "pma";
    $password = "pmapass";
    $basededatos = "tienda_software";
-   $tabla="destacados";
+
    
 	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
 		if(!$conexion) {
@@ -330,11 +330,8 @@ $(function(){
 	////////////////////////////////////////////////////////////////////////////////
 	//STMT ORIENTADO A OBJETOS
 	
-	$query1 = "SELECT Id_Producto,descripcion FROM $tabla ORDER BY Id_Producto";
+	$query1 = "SELECT Id_Producto,descripcion FROM destacados ORDER BY Id_Producto";
 
-	
-	
-	
 	?>
 			
 				<ul id="sb-slider" class="sb-slider">
@@ -350,7 +347,6 @@ $(function(){
 				if ($row2 = mysqli_fetch_assoc($result2))
 				if ($result3 = mysqli_query($conexion, $query3)) 
 				if ($row3 = mysqli_fetch_assoc($result3))
-				
 				?>
 			<li>
 						<a href="producto/product_info.php" target="_blank"><img <?php echo 'src=".'.$row2["Imagen"].'"' ?> style="width:auto" /></a>
@@ -361,10 +357,7 @@ $(function(){
 					</li>
 					<?php }
 			}	
-					?>
-					
-					
-				
+					?>	
 					<div id="nav-arrows" class="nav-arrows">
 					<a href="#">Next</a>
 					<a href="#">Previous</a>
@@ -416,14 +409,31 @@ $(function(){
 
 <div class="slider">
 <ul class="bxslider" >
-  <li><a href="#"><img class="imagen_novedades" src="images/shadow_of_mordor.jpg" ></a></li>
-  <li><a href="#"><img class="imagen_novedades" src="images/ryse.jpg"></a></li>
-  <li><a href="#"><img class="imagen_novedades" src="images/destiny.jpg"></a></li>
-  <li><a href="#"><img class="imagen_novedades" src="images/fifa15.jpg"></a></li>
-  <li><a href="#"><img class="imagen_novedades" src="images/fifa15.jpg"></a></li>
-  <li><a href="#"><img class="imagen_novedades" src="images/destiny.jpg"></a></li>
-  <li><a href="#"><img class="imagen_novedades" src="images/ryse.jpg"></a></li>
-  <li><a href="#"><img class="imagen_novedades" src="images/shadow_of_mordor.jpg"></a> </li>
+		   <?php
+		   $query1="SELECT Id_Producto,nombre from productos order by Id_Producto DESC";
+		   $contador=0;
+		  
+		   ?>
+		   
+<?php 
+		if ($result1 = mysqli_query($conexion, $query1)) {
+		  while (($row1 = mysqli_fetch_assoc($result1)) && $contador<8) {
+		 
+				$contador=$contador + 1;
+				$Id_Prod=$row1["Id_Producto"];
+				$query2 = "SELECT Imagen FROM imagenes_extra where Id_Producto=$Id_Prod";
+				if ($result2 = mysqli_query($conexion, $query2)) 
+				if ($row2 = mysqli_fetch_assoc($result2))
+
+		  ?>
+		  <li><a href="#" <?php echo 'title="'.$row1["nombre"].'"'?>><img class="imagen_novedades" <?php echo 'src=".'.$row2["Imagen"].'" '?> > </a></li>
+		  <?php
+		  
+		  }
+		  }
+?>
+
+ 
 </ul></div>
 </div>
 		</div>
@@ -470,38 +480,39 @@ $(function(){
 			</div>
 		  </div>
 		  
-		   
+		   <?php
+		   $query1="SELECT Id_Producto,Porcentaje from ofertas";
+		   ?>
 		  <div class="cuadro_ofertas">
 		 <div class="titulo_nove">
           <h2>OFERTAS ESPECIALES</h2>
 		  </div>
-			<div class="item_ofertas">
-				<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				<h3><br>OFERTA</h3>
-				<a href="#" class="texto_noticias" >Fallout 3 con un 20% de descuento!</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_ofertas">
-				<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				<h3><br>OFERTA</h3>
-				<a href="#" class="texto_noticias" >Fallout 3 con un 20% de descuento!</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_ofertas">
-				<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				<h3><br>OFERTA</h3>
-				<a href="#" class="texto_noticias" >Fallout 3 con un 20% de descuento!</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_ofertas">
-				<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				<h3><br>OFERTA</h3>
-				<a href="#" class="texto_noticias" >Fallout 3 con un 20% de descuento!</a>
-			</div>
 		  
+		  <?php  
+		  if ($result1 = mysqli_query($conexion, $query1)) {
+		  while ($row1 = mysqli_fetch_assoc($result1)) {
+		        $Id_Prod=$row1["Id_Producto"];
+				$Porct=$row1["Porcentaje"];
+				
+				$query2 = "SELECT Imagen FROM imagenes_extra where Id_Producto=$Id_Prod";
+				$query3 = "SELECT nombre FROM productos where Id_Producto=$Id_Prod";
+				if ($result2 = mysqli_query($conexion, $query2)) 
+				if ($row2 = mysqli_fetch_assoc($result2))
+				if ($result3 = mysqli_query($conexion, $query3)) 
+				if ($row3 = mysqli_fetch_assoc($result3))
+		  ?>
+			<div class="item_ofertas">
+				<a href="#"><img class="imagen_noticias" <?php echo 'src=".'.$row2["Imagen"].'"' ?>"></a>
+				<h3><br>OFERTA</h3>
+				<a href="#" class="texto_noticias" ><?php echo $row3["nombre"].' Ahora con un '.$row1["Porcentaje"].'% de descuento' ?></a>
+			</div>
+			
+			<div class="separador_items">
+			</div>
+		  <?php 
+		  }
+		  }
+		  ?>
 		  </div>
       </div>
     </div>
