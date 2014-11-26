@@ -3,7 +3,7 @@
 <head>
 <title>Tienda de videojuegos</title>
 <meta charset="iso-8859-1">
-<link rel="stylesheet" href="styles/layout.css" type="text/css">
+<link rel="stylesheet" href="../styles/layout.css" type="text/css">
 <style type="text/css">
 </style>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
@@ -65,9 +65,9 @@ $(function(){
         <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
 		<meta name="author" content="Pedro Botelho for Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="css/demo.css" />
-		<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
-		<link rel="stylesheet" type="text/css" href="css/custom.css" />
+        <link rel="stylesheet" type="text/css" href="../css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="../css/slicebox.css" />
+		<link rel="stylesheet" type="text/css" href="../css/custom.css" />
 		<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
 
 </head>
