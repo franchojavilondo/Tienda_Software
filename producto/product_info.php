@@ -153,18 +153,91 @@ $(function(){
     <div id="homepage" class="clear">
 		<div class="cont_imagen_producto">
 		
-			<img class="imagen_producto" src="images/rocksmith.jpg" alt="logo"> </div>
+			<img class="imagen_producto" src="images/rocksmith.jpg" alt="logo"> 
+		
+		</div>
 			
 			<div class="info_producto">
 				
-				<titulo_info_producto>Rocksmith</titulo_info_producto>
-				<p>De Ubisoft.</p>
-				<p>Fecha de lanzamiento: 18 de Oct, 2012</p>
+				<div  class="titulo_producto"><h2>ROCKSMITH</h2></div>
+				<dl id="titulo_producto">
+					<dt>Plataforma: </dt>
+						<dd>PC</dd>
+					<dt>Desarrollador: </dt>
+						<dd>Ubisoft</dd>
+					<dt>Distribuidor: </dt>
+						<dd>Ubisoft</dd>
+					<dt>Género: </dt>
+						<dd>Música</dd>
+					<dt>Jugadores: </dt>
+						<dd>1</dd>
+					<dt>Idioma: </dt>
+						<dd>Manual: Español, Textos: Español</dd>
+					<dt>Lanzamiento: </dt>
+						<dd>25 de octubre de 2012</dd>
+						
+				</dl>
 				
 			</div>
+			
+			<div class="precio_producto">
+				
+				<div class="titulo_precio_producto"><h2>PRECIO</h2></div>
+				<div class="cantidad_precio"><precio>29.99€</precio></div>
+				<p>Precio con IVA incluido.</p>
+				<a href="login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
+					Añadir al carrito</button></a>
+				<p>O también puedes guardarlo:</p>
+				<a href="login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
+					Añadir a la lista de deseos</button></a>
+				
+			</div>
+			
+			<div class="desc_producto">
+				
+				<div  class="titulo_producto"><h2>Descripción del producto</h2></div>
+				<p>Videojuego que viene acompañado de una guitarra eléctrica y que pretende enseñar a tocar la 
+				guitarra real incluyendo un plug-in que permite que se enchufen directamente a PlayStation 3 
+				la mayor parte de 'seis cuerdas' con su dispositivo, en un título que traerá consigo 45 canciones 
+				entre las que se incluyen pistas de Rolling Stones, David Bowie o Nirvana.</p>
+				
+				<div class="requisitos">
+				
+					<h3>Requisitos del sistema</h3>
+					
+					<dl id="requisitos_producto">
+					<dt>OS: </dt>
+						<dd>Windows Vista, Windows 7</dd>
+					<dt>Procesador: </dt>
+						<dd>2.0 GHz Intel® Core™2 Duo E4400 o 2.0 GHz AMD Athlon™ 64 X2 3800+</dd>
+					<dt>RAM: </dt>
+						<dd>2 GB</dd>
+					<dt>Tarjeta gráfica: </dt>
+						<dd>256 MB DirectX 9 / NVIDIA® GeForce® 8600 GT o ATI Radeon™ HD 2600 XT</dd>
+					<dt>DirectX®: </dt>
+						<dd>9.0</dd>
+					<dt>Disco Duro: </dt>
+						<dd>12 GB</dd>
+					<dt>Sonido: </dt>
+						<dd>DirectX 9.0</dd>
+						
+				</dl>
+
+				
+				</div>
+				
+			</div>
+			
+			<div class="comentarios_producto">
+				<div  class="titulo_producto"><h2>Comentarios de usuarios</h2></div>
+				hola
+				
+			</div>
+			
+			
 		
-		</div>
-    </div>
+	</div>
+  </div>
     <!-- / content body -->
   </div>
 </div>
