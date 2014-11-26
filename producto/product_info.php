@@ -1,4 +1,31 @@
 <!DOCTYPE html>
+
+<?
+$Id_Prod=$HTTP_GET_VARS["id"];
+
+
+// Definimos los parámetros
+   $hostname = "localhost";
+   $usuario = "pma";
+   $password = "pmapass";
+   $basededatos = "tienda_software";
+
+   
+	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if(!$conexion) {
+		die ("conexion no se pudo realizar");
+		}
+		
+   	////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////
+	//STMT ORIENTADO A OBJETOS
+	
+	$query1 = "SELECT * FROM product_info where Id_Producto=$Id_Prod";
+	
+	if($result1 = mysqli_query($conexion, $query1)) 
+	if($row1 = mysqli_fetch_assoc($result1)){
+?>
 <html lang="en" dir="ltr">
 <head>
 <title>Tienda de videojuegos</title>
@@ -162,19 +189,19 @@ $(function(){
 				<div  class="titulo_producto"><h2>ROCKSMITH</h2></div>
 				<dl id="titulo_producto">
 					<dt>Plataforma: </dt>
-						<dd>PC</dd>
+						<dd><?php echo $row1["Plataforma"] ?></dd>
 					<dt>Desarrollador: </dt>
-						<dd>Ubisoft</dd>
+						<dd><?php echo $row1["Desarrollador"] ?></dd>
 					<dt>Distribuidor: </dt>
-						<dd>Ubisoft</dd>
+						<dd><?php echo $row1["Distribuidor"] ?></dd>
 					<dt>Género: </dt>
-						<dd>Música</dd>
+						<dd><?php echo $row1["Genero"] ?></dd>
 					<dt>Jugadores: </dt>
-						<dd>1</dd>
+						<dd><?php echo $row1["Jugadores"] ?></dd>
 					<dt>Idioma: </dt>
-						<dd>Manual: Español, Textos: Español</dd>
+						<dd><?php echo $row1["Idioma"] ?></dd>
 					<dt>Lanzamiento: </dt>
-						<dd>25 de octubre de 2012</dd>
+						<dd><?php echo $row1["Lanzamiento"] ?></dd>
 						
 				</dl>
 				
@@ -183,7 +210,7 @@ $(function(){
 			<div class="precio_producto">
 				
 				<div class="titulo_precio_producto"><h2>PRECIO</h2></div>
-				<div class="cantidad_precio"><precio>29.99€</precio></div>
+				<div class="cantidad_precio"><precio>€</precio></div>
 				<p>Precio con IVA incluido.</p>
 				<a href="login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
 					Añadir al carrito</button></a>
@@ -207,19 +234,19 @@ $(function(){
 					
 					<dl id="requisitos_producto">
 					<dt>OS: </dt>
-						<dd>Windows Vista, Windows 7</dd>
+						<dd><?php echo $row1["OS"] ?></dd>
 					<dt>Procesador: </dt>
-						<dd>2.0 GHz Intel® Core™2 Duo E4400 o 2.0 GHz AMD Athlon™ 64 X2 3800+</dd>
+						<dd><?php echo $row1["Procesador"] ?></dd>
 					<dt>RAM: </dt>
-						<dd>2 GB</dd>
+						<dd><?php echo $row1["Ram"] ?></dd>
 					<dt>Tarjeta gráfica: </dt>
-						<dd>256 MB DirectX 9 / NVIDIA® GeForce® 8600 GT o ATI Radeon™ HD 2600 XT</dd>
+						<dd><?php echo $row1["Grafica"] ?></dd>
 					<dt>DirectX®: </dt>
-						<dd>9.0</dd>
+						<dd><?php echo $row1["Directx"] ?></dd>
 					<dt>Disco Duro: </dt>
-						<dd>12 GB</dd>
+						<dd><?php echo $row1["HDD"] ?></dd>
 					<dt>Sonido: </dt>
-						<dd>DirectX 9.0</dd>
+						<dd><?php echo $row1["Sonido"] ?></dd>
 						
 				</dl>
 

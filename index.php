@@ -349,7 +349,7 @@ $(function(){
 				if ($row3 = mysqli_fetch_assoc($result3))
 				?>
 			<li>
-						<a href="/producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?> target="_blank"><img <?php echo 'src=".'.$row2["Imagen"].'"' ?> style="width:auto" /></a>
+						<a href="./producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?> target="_blank"><img <?php echo 'src=".'.$row2["Imagen"].'"' ?> style="width:auto" /></a>
 						<div class="sb-description">
 							<h1><?php echo $row3["nombre"] ?></h1>
 							<?php echo $row1["descripcion"] ?>
@@ -426,7 +426,7 @@ $(function(){
 				if ($row2 = mysqli_fetch_assoc($result2))
 
 		  ?>
-		  <li><a href="/producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row1["nombre"].'"'?>><img class="imagen_novedades" <?php echo 'src=".'.$row2["Imagen"].'" '?> > </a></li>
+		  <li><a href="./producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row1["nombre"].'"'?>><img class="imagen_novedades" <?php echo 'src=".'.$row2["Imagen"].'" '?> > </a></li>
 		  <?php
 		  
 		  }
@@ -502,9 +502,9 @@ $(function(){
 				if ($row3 = mysqli_fetch_assoc($result3))
 		  ?>
 			<div class="item_ofertas">
-				<a href="/producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?>><img class="imagen_noticias" <?php echo 'src=".'.$row2["Imagen"].'"' ?>></a>
+				<a href="./producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?>><img class="imagen_noticias" <?php echo 'src=".'.$row2["Imagen"].'"' ?>></a>
 				<h3><br>OFERTA</br></h3>
-				<a title="" href="/producto/product_info.php?id=<?php echo $Id_Prod ?>"  class="texto_noticias" ><?php echo $row3["nombre"].' Ahora con un '.$row1["Porcentaje"].'% de descuento' ?></a>
+				<a title="" href="./producto/product_info.php?id=<?php echo $Id_Prod ?>"  class="texto_noticias" ><?php echo $row3["nombre"].' Ahora con un '.$row1["Porcentaje"].'% de descuento' ?></a>
 			</div>
 			
 			<div class="separador_items">
