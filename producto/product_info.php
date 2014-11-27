@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 
-<?
-$Id_Prod=$HTTP_GET_VARS["id"];
+
+<html lang="en" dir="ltr">
+
+<?php
+$Id_Prod=$_GET["id"];
 
 
 // Definimos los parámetros
@@ -22,11 +25,14 @@ $Id_Prod=$HTTP_GET_VARS["id"];
 	//STMT ORIENTADO A OBJETOS
 	
 	$query1 = "SELECT * FROM product_info where Id_Producto=$Id_Prod";
+	$query2 = "SELECT * FROM productos where Id_Producto=$Id_Prod";
 	
-	if($result1 = mysqli_query($conexion, $query1)) 
-	if($row1 = mysqli_fetch_assoc($result1)){
+
+				
+				
+				
+	
 ?>
-<html lang="en" dir="ltr">
 <head>
 <title>Tienda de videojuegos</title>
 <meta charset="iso-8859-1">
@@ -104,12 +110,14 @@ $(function(){
 </div>
 
 
+
+
 <div class="wrapper row1">
 <div class="cabecera"></div>
   <header id="header" class="clear">
   
     <div id="hgroup">
-    <img src="images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> </div>
+    <img src="../images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> </div>
     
     <form action="#" method="post">
       <fieldset>
@@ -121,7 +129,7 @@ $(function(){
     
     <div class="cajon_usu" >
 		<div class="imagen_perfil">
-			<img src="images/profile.png" alt="Usuario" class="profile_img">
+			<img src="../images/profile.png" alt="Usuario" class="profile_img">
 		</div>
 			
 		<div class="titulo_perfil">
@@ -172,21 +180,28 @@ $(function(){
 </div>
 
 <!-- content -->
+
+
 <div class="wrapper row2">
   <div id="container" class="clear">
     
-	
     <!-- main content -->
     <div id="homepage" class="clear">
+	
+	<?php if($result1 = mysqli_query($conexion, $query1)) 
+					if($row1 = mysqli_fetch_assoc($result1))
+						if($result2 = mysqli_query($conexion, $query2)) 
+						if($row2 = mysqli_fetch_assoc($result2)){?>
+						
 		<div class="cont_imagen_producto">
 		
-			<img class="imagen_producto" src="images/rocksmith.jpg" alt="logo"> 
+			<img class="imagen_producto" <?php echo 'src="..'.$row2["Caratula"].'"' ?> alt="logo"> 
 		
 		</div>
 			
 			<div class="info_producto">
 				
-				<div  class="titulo_producto"><h2>ROCKSMITH</h2></div>
+				<div  class="titulo_producto"><h2><?php echo $row2["Nombre"]?></h2></div>
 				<dl id="titulo_producto">
 					<dt>Plataforma: </dt>
 						<dd><?php echo $row1["Plataforma"] ?></dd>
@@ -210,7 +225,7 @@ $(function(){
 			<div class="precio_producto">
 				
 				<div class="titulo_precio_producto"><h2>PRECIO</h2></div>
-				<div class="cantidad_precio"><precio>€</precio></div>
+				<div class="cantidad_precio"><precio><?php echo $row2["Precio"]?>€</precio></div>
 				<p>Precio con IVA incluido.</p>
 				<a href="login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
 					Añadir al carrito</button></a>
@@ -223,10 +238,7 @@ $(function(){
 			<div class="desc_producto">
 				
 				<div  class="titulo_producto"><h2>Descripción del producto</h2></div>
-				<p>Videojuego que viene acompañado de una guitarra eléctrica y que pretende enseñar a tocar la 
-				guitarra real incluyendo un plug-in que permite que se enchufen directamente a PlayStation 3 
-				la mayor parte de 'seis cuerdas' con su dispositivo, en un título que traerá consigo 45 canciones 
-				entre las que se incluyen pistas de Rolling Stones, David Bowie o Nirvana.</p>
+				<p><?php echo $row1['Descripcion']?></p>
 				
 				<div class="requisitos">
 				
@@ -263,10 +275,23 @@ $(function(){
 			
 			
 		
+		<?php }else{ echo "error";
+ ?>
+ <div class="comentarios_producto">
+				<div  class="titulo_producto"><h2>ERROR, PRODUCTO NO DISPONIBLE</h2></div>
+			</div>
+ <?php
+ }
+ ?>
+		
 	</div>
+	
+	
   </div>
+ 
     <!-- / content body -->
   </div>
+   
 </div>
 <!-- Footer -->
 <div class="wrapper row3">
@@ -332,5 +357,8 @@ $(function(){
     <p class="fl_left" style="color:#FFFFFF">Copyright &copy; 2012 - All Rights Reserved</p>
   </footer>
 </div>
+
 </body>
+
+
 </html>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-11-2014 a las 18:58:25
+-- Tiempo de generación: 27-11-2014 a las 11:42:02
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -187,10 +187,10 @@ INSERT INTO `pedidos` (`Id_Pedido`, `Id_Cliente`, `estado`, `Precio_Total`) VALU
 
 CREATE TABLE IF NOT EXISTS `productos` (
   `Id_Producto` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(30) NOT NULL,
+  `Nombre` varchar(30) NOT NULL,
   `Caratula` varchar(40) NOT NULL,
   `Cantidad` int(11) NOT NULL,
-  `precio` double NOT NULL,
+  `Precio` double NOT NULL,
   PRIMARY KEY (`Id_Producto`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`Id_Producto`, `nombre`, `Caratula`, `Cantidad`, `precio`) VALUES
+INSERT INTO `productos` (`Id_Producto`, `Nombre`, `Caratula`, `Cantidad`, `Precio`) VALUES
 (1, 'Modern Warfare 3', '/images/caratulas/mw3.png', 15, 59.99),
 (2, 'Team Fortress 2', '/images/caratulas/tf2.jpg', 50, 14.99),
 (3, 'Dota 2', '/images/caratulas/dota2.jpg', 5, 0),
@@ -224,6 +224,43 @@ INSERT INTO `productos` (`Id_Producto`, `nombre`, `Caratula`, `Cantidad`, `preci
 (23, 'Rocksmith', '/images/caratulas/rocksmith.jpg', 5, 25),
 (24, 'Thief', '/images/caratulas/thief.jpg', 0, 25),
 (25, 'Witcher', '/images/caratulas/witcher.jpg', 0, 60);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `product_info`
+--
+
+CREATE TABLE IF NOT EXISTS `product_info` (
+  `Id_Producto` int(3) NOT NULL,
+  `Plataforma` varchar(40) NOT NULL,
+  `Desarrollador` varchar(40) NOT NULL,
+  `Distribuidor` varchar(40) NOT NULL,
+  `Genero` varchar(40) NOT NULL,
+  `Jugadores` varchar(3) NOT NULL,
+  `Idioma` varchar(40) NOT NULL,
+  `Lanzamiento` varchar(40) NOT NULL,
+  `OS` varchar(100) NOT NULL,
+  `Procesador` varchar(100) NOT NULL,
+  `Ram` varchar(10) NOT NULL,
+  `Grafica` varchar(100) NOT NULL,
+  `Directx` varchar(10) NOT NULL,
+  `HDD` varchar(10) NOT NULL,
+  `Sonido` varchar(40) NOT NULL,
+  `Descripcion` varchar(1000) NOT NULL,
+  PRIMARY KEY (`Id_Producto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `product_info`
+--
+
+INSERT INTO `product_info` (`Id_Producto`, `Plataforma`, `Desarrollador`, `Distribuidor`, `Genero`, `Jugadores`, `Idioma`, `Lanzamiento`, `OS`, `Procesador`, `Ram`, `Grafica`, `Directx`, `HDD`, `Sonido`, `Descripcion`) VALUES
+(1, 'PC,Mac', 'Infinity Ward', 'Activision', 'Accion', '1-3', 'Español, Ingles, Alemán, Frances', '7 de Nov, 2011', 'Windows® XP / Windows® Vista / Windows® 7 ', 'Intel® Core™ 2 Duo E6600 o AMD Phenom™ X3 8750 (o superior) ', '2 GB de RA', 'NVIDIA® GeForce™ 8600GT de 256 MB compatible con Shader 3.0 / ATI® Radeon™ X1950 o superior ', 'DirectX® 9', '16 GB', 'Realtek HD', ' Prepárate para una emocionante vivencia cinematográfica que sólo Call of Duty puede ofrecer. La experiencia multijugador definitiva regresa más grande y mejor que nunca, cargada con nuevos mapas, modos y características. El juego cooperativo ha evolucionado con misiones Spec-Ops y tablas de clasificación completamente nuevas, así como el Modo Supervivencia, un avance en el combate lleno de acción como ningún otro.'),
+(2, 'PC,Mac,Linux', 'Valve', 'Steam', 'Accion, Free to Play', '1-3', 'Español, Ingles, Alemán, Frances', '10 de Oct, 2007', 'Windows® 7 (32/64-bit) ', 'Pentium 4 processor (3.0GHz, or better) ', '1 GB RAM ', 'nVidia GeForce 8600/9600GT, ATI/AMD Radeon HD2600/3600 (Graphic Drivers: nVidia 310, AMD 12.11), Ope', 'Version 9.', '15 GB', 'Realtek HD', 'Nueve clases diferentes ofrecen una amplia variedad de habilidades tácticas y personalidades. Constantemente actualizado con nuevos modos de juego, mapas, equipamiento y, lo que es más importante, ¡sombreros!'),
+(3, 'Pc, Mac, Linux', 'Valve, IceFrog', 'Steam', 'Accion, Estrategia, Free to Play', '10', 'Español, Ingles, Alemán, Frances', '9 de Jul, 2013', ' Windows 7 ', 'Dual core from Intel or AMD at 2.8 GHz ', '4 GB', ' nVidia GeForce 8600/9600GT, ATI/AMD Radeon HD2600/3600 ', 'Version 9.', '8 GB', 'Realtek HD', 'Dota comenzó como una modificación para Warcraft 3 creada por usuarios del mismo título y se ha convertido en uno de los juegos online más jugados del mundo. Siguiendo la tradición de Counter-Strike, Day of Defeat, Team Fortress, Portal y Alien Swarm, Dota 2 es el resultado de la contratación por parte de Valve de la comunidad de desarrolladores que creó el mod, ofreciéndole una oportunidad para, finalmente, desarrollar un producto completo, con sus ideas y la ayuda de un equipo profesional de programadores y artistas de Valve.'),
+(4, 'Pc, Mac', 'Ubisoft Montreal', 'Ubisoft', 'Acción, Aventura', '1', 'Español, Ingles, Alemán, Frances', '9 de Abr, 2008', 'Windows® XP / Windows Vista® (sólo) ', 'Intel® Pentium® D Dual Core a 2.6 GHz o AMD Athlon™ 64 X2 3800+ (Intel Core® 2 Duo a 2.2 GHz o AMD A', ' 1 GB', 'Familias ATI® RADEON® X1600** /1650**- 1950/ HD 2000/3000, familias nVidia GeForce® 6800**/7/8/9. ', 'Direct X 9', '8 GB', 'Realtek HD', 'Estamos en el año 1191 d.C., y la Tercera Cruzada está asolando la Tierra Santa. Tú, Altair, intentarás poner fin a las hostilidades eliminando ambas partes del conflicto. \r\nEres un Asesino, un guerrero envuelto en un halo de misterio y temido por tu crueldad. Tus acciones pueden sembrar el caos en tu entorno más cercano y tu existencia dará forma a los acontecimientos durante este momento clave de la historia. '),
+(19, 'PC, Steam', 'Ubisoft', 'Steam, Valve', 'Accion, Aventuras', '1-8', 'Español, Ingles, Frances, Aleman', '17 de Nov, 2014', 'Windows® 7 (SP1) / Windows® 8 / Windows® 8.1 / (64-bit only) ', '2.5 GHz Intel® Core™ i5-2400S or 4.0 GHz AMD FX-8350 or better ', '8 GB', 'NVIDIA GeForce GTX 680 or AMD Radeon R9 290X or better (2 GB VRAM) ', '11.0', '30 GB', 'Realtek HD', 'Oculto en la recóndita cordillera del Himalaya se encuentra Kyrat, un país anclado en la tradición y la violencia. Eres Ajay Ghale. Viajarás a Kyrat para cumplir con el último deseo de tu madre, pero una vez allí te verás atrapado en una guerra civil desatada para acabar con el régimen opresivo del dictador Pagan Min. Explora y navega este gigantesco mundo de juego, en el que el peligro y los imprevistos acechan a la vuelta de cualquier esquina. Cada decisión que tomes aquí cuenta, y cada segundo es una historia. Bienvenido a Kyrat.');
 
 --
 -- Restricciones para tablas volcadas
