@@ -156,7 +156,7 @@ $(function(){
 		 </ul>
 		 </li>
 		<li>|</li>
-	    <li><div class="enl"><a href="#">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="../juegos/listado.php">Juegos<div class="tri"></div></a></div>
 		<ul>
 		<div class="sub">
 		 <li><a href="#">Accion</a></li>
@@ -227,7 +227,7 @@ $(function(){
 				<div class="titulo_precio_producto"><h2>PRECIO</h2></div>
 				<div class="cantidad_precio"><precio><?php echo $row2["Precio"]?>€</precio></div>
 				<p>Precio con IVA incluido.</p>
-				<a href="login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
+				<a href="../carro/agregacar.php?id=<?php echo $Id_Prod ?>" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
 					Añadir al carrito</button></a>
 				<p>O también puedes guardarlo:</p>
 				<a href="login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
