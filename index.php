@@ -262,7 +262,7 @@ $(function(){
 		 </ul>
 		 </li>
 		<li>|</li>
-	    <li><div class="enl"><a href="./juegos/listado.php">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="./juegos/listado.php" target="_parent">Juegos<div class="tri"></div></a></div>
 		<ul>
 		<div class="sub">
 		 <li><a href="#">Accion</a></li>

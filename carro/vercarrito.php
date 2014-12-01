@@ -39,11 +39,11 @@ if($carro){
 //si el carro no está vacío, 
 //mostramos los productos  
 ?> 
-<table width="720" border="0" cellspacing="0" cellpadding="0" align="center"> 
+<table width="500" border="0" cellspacing="0" cellpadding="0" align="center"> 
 <tr bgcolor="#333333" class="tit">  
-<td width="105">Producto</td> 
-<td width="207">Precio</td> 
-<td width="100" align="center">Borrar</td> 
+<td align="center">Producto</td> 
+<td align="center">Precio</td> 
+<td align="center">Borrar</td> 
 </tr> 
 <?php 
 $color=array("#ffffff","#F0F0F0"); 
@@ -73,9 +73,9 @@ $contador++;
 //para los colores alternos  
 ?> 
 <tr bgcolor="<?php echo $color[$contador%2]; ?>" class='prod'>  
-<td><?php echo $v['Nombre'] ?></td> 
-<td><?php echo $v['Precio'] ?></td> 
-<td align="center"><a href="borrarcar.php?<?php echo SID ?>&id=<?php echo $v['id'] ?>"><img src="trash.gif" width="12" height="14" border="0"></a></td> 
+<td align="center"><?php echo $v['Nombre'] ?></td> 
+<td align="center"><?php echo $v['Precio'] ?></td> 
+<td align="center"><a href="borrarcar.php?&id=<?php echo $v['id'] ?>"><img src="trash.gif" width="12" height="14" border="0"></a></td> 
 </tr>
 <?php 
 //por cada item creamos un 

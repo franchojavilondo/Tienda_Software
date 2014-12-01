@@ -117,7 +117,7 @@ $(function(){
   <header id="header" class="clear">
   
     <div id="hgroup">
-    <img src="../images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> </div>
+    <a href="../index.php"> <img src="../images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> <a/> </div>
     
     <form action="#" method="post">
       <fieldset>
@@ -188,10 +188,13 @@ $(function(){
     <!-- main content -->
     <div id="homepage" class="clear">
 	
-	<?php if($result1 = mysqli_query($conexion, $query1)) 
+	<?php $error=1;
+	if($result1 = mysqli_query($conexion, $query1)) 
 					if($row1 = mysqli_fetch_assoc($result1))
-						if($result2 = mysqli_query($conexion, $query2)) 
-						if($row2 = mysqli_fetch_assoc($result2)){?>
+						if($result2 = mysqli_query($conexion, $query2))
+						if($row2 = mysqli_fetch_assoc($result2)){
+						$error=0;
+						?>
 						
 		<div class="cont_imagen_producto">
 		
@@ -269,16 +272,22 @@ $(function(){
 			
 			<div class="comentarios_producto">
 				<div  class="titulo_producto"><h2>Comentarios de usuarios</h2></div>
-				hola
+			
 				
 			</div>
 			
 			
 		
-		<?php }else{ echo "error";
+		<?php }if($error==1){ ;
  ?>
- <div class="comentarios_producto">
-				<div  class="titulo_producto"><h2>ERROR, PRODUCTO NO DISPONIBLE</h2></div>
+ <div ><center>
+				<div  class="titulo_producto"><h2>ERROR, PRODUCTO NO DISPONIBLE</h2> 
+				
+
+				
+				</div> 
+				
+				<img   src="../images/error404.png" height="400" width="800" alt="error"> </center>
 			</div>
  <?php
  }

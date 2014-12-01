@@ -87,7 +87,7 @@ $(function(){
   <header id="header" class="clear">
   
     <div id="hgroup">
-    <img src="../images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> </div>
+	<a href="../index.php"> <img src="../images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> <a/> </div>
     
     <form action="#" method="post">
       <fieldset>
