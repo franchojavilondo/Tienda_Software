@@ -13,7 +13,7 @@ $carro=$_SESSION['carro'];
 //Asignamos a la variable 
 //$carro los valores 
 //guardados en la sessión 
-unset($carro[md5($id)]); 
+unset($carro[$id]); 
 //la función unset borra 
 //el elemento de un array  
 //que le pasemos por 
