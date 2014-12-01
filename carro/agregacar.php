@@ -105,5 +105,5 @@ $_SESSION['carro']=$carro;
 //Pero para que nuestro carro funcione, 
 //independientemente de esos factores, 
 //conviene escribirla siempre. 
-header("Location:vercarrito.php?".SID); 
+header("Location:vercarrito.php"); 
 ?> 

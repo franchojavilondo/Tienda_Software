@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-12-2014 a las 17:42:00
+-- Tiempo de generación: 01-12-2014 a las 17:53:44
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -217,7 +217,7 @@ INSERT INTO `productos` (`Id_Producto`, `Nombre`, `Caratula`, `Cantidad`, `Preci
 (16, 'Destiny', '/images/caratulas/destiny.jpg', 1, 40),
 (17, 'Dragon Age Inquisition', '/images/caratulas/dai.jpg', 1, 30),
 (18, 'Fallout', '/images/caratulas/fallout.jpg', 1, 10),
-(19, 'far cry 4', '/images/caratulas/farcry4.png', 1, 60),
+(19, 'Far Cry 4', '/images/caratulas/farcry4.png', 1, 60),
 (20, 'Just Cause', '/images/caratulas/justcause.jpg', 1, 20),
 (21, 'Fifa 15', '/images/caratulas/fifa15.jpg', 1, 49.99),
 (22, 'NBA', '/images/caratulas/nba.jpg', 1, 30),

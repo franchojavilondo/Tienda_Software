@@ -72,12 +72,11 @@ $contador++;
 //este es el contador que usamos 
 //para los colores alternos  
 ?> 
-<form name="a<?php echo $v['id'] ?>" method="post" action="agregacar.php?<?php echo SID ?>" id="a<?php echo $v['id'] ?>"> 
 <tr bgcolor="<?php echo $color[$contador%2]; ?>" class='prod'>  
 <td><?php echo $v['Nombre'] ?></td> 
 <td><?php echo $v['Precio'] ?></td> 
-<td align="center"><a href="borracar.php?<?php echo SID ?>&id=<?php echo $v['id'] ?>"><img src="trash.gif" width="12" height="14" border="0"></a></td> 
-</tr></form> 
+<td align="center"><a href="borrarcar.php?<?php echo SID ?>&id=<?php echo $v['id'] ?>"><img src="trash.gif" width="12" height="14" border="0"></a></td> 
+</tr>
 <?php 
 //por cada item creamos un 
 //formulario que submite a 
