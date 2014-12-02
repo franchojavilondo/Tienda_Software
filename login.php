@@ -173,7 +173,7 @@ function validar(){
 							<input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
 						</div>
 		
-						<input type="button" class="boton_login" name="commit" value="Entrar" onclick="validar()">
+						<input type="button" class="boton_login_pagina" name="commit" value="Entrar" onclick="validar()">
 				</div>
 			</div>
 	
@@ -189,7 +189,7 @@ function validar(){
 				<p>Pulsa en el botón siguiente para unirte:</p>
 				
 				<div class="boton_submit">
-				<a href="#"><input type="submit" class="boton_nuevo" value="Registrarse"></a>
+					<a href="#"><input type="submit" class="boton_nuevo" value="Registrarse"></a>
 				</div>
 					
 			</div>

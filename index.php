@@ -205,7 +205,7 @@ $(function(){
 	
 	
 			<div class="imagen_perfil">
-					<img <?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" class="profile_img">
+					<img <?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" >
 				</div>
 					
 				<div class="titulo_perfil">
@@ -233,7 +233,8 @@ $(function(){
 	
 		
 				<div class="imagen_perfil">
-						<img src="./images/usuarios/admin.png" alt="Usuario" class="profile_img">
+				
+						<img src="./images/usuarios/admin.png" alt="Usuario" >
 					</div>
 						
 					<div class="titulo_perfil">
@@ -281,35 +282,50 @@ $(function(){
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="#">Destacados<div class="tri"></div></a>
-		 <ul>
-		 <div class="sub">
-		 <li><a href="#">Juegos</a></li>
-		 <li><a href="#">Software</a></li>
-		 <li><a href="#">Demos</a></li>
-		 <li><a href="#">Genero</a></li>
-		 </div>
-		 
-		 </ul>
-		 </li>
+		 <li><a href="#">PÁGINA PRINCIPAL</a></li>
 		<li>|</li>
-	    <li><div class="enl"><a href="./juegos/listado.php" target="_parent">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="#">Juegos<div class="tri"></div></a></div>
 		<ul>
 		<div class="sub">
-		 <li><a href="#">Accion</a></li>
-		 <li><a href="#">Aventura</a></li>
-		 <li><a href="#">Carreras</a></li>
-		 <li><a href="#">Casual</a></li>
+			<li><a href="#">Free to Play</a></li>
+            <li><a href="#">Acceso anticipado</a></li>
+            <li><a href="#">Acción</a></li>
+            <li><a href="#">Aventura</a></li>
+			<li><a href="#">Carreras</a></li>
+            <li><a href="#">Casual</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Estrategia</a></li>
+			<li><a href="#">Indie</a></li>
+            <li><a href="#">Multijugador masivo</a></li>
+            <li><a href="#">Rol</a></li>
+            <li><a href="#">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
 		<li>|</li>
-        <li><a href="#">Software<div class="tri"></div></a></li>
+        <li><a href="#">Secciones<div class="tri"></div></a>
+		<ul>
+		<div class="sub">
+			<li><a href="#">Noticias</a></li>
+            <li><a href="#">Lo último</a></li>
+            <li><a href="#">Ofertas</a></li>
+		 </div>
+		 </ul>
+		
+		</li>
 		<li>|</li>
-        <li><a href="#">Demos<div class="tri"></div></a></li>
-		<li>|</li>
-        <li class="last"><a href="#">Noticias<div class="tri"></div></a></li>
+        <li class="last"><a href="#">Demos</a></li>
+        
       </ul>
+	  
+	  
+	  <div class="seccion_carrito">
+	  <ul>
+	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+      </ul>
+	  </div>
+	  
+	  
 	  </div>
     </nav>      
     
@@ -321,7 +337,7 @@ $(function(){
   <div id="container" class="clear">
     <!-- content body -->
 	<div id="sidebar" >
-	<h6>POR GÉNERO </h6>
+	<h6>Explorar por género</h6>
         <ul>
             <li><a href="#">Free to Play</a></li>
             <li><a href="#">Acceso anticipado</a></li>
@@ -477,37 +493,47 @@ $(function(){
 		  
 		  </div>
       <!-- Right Box -->
-      <div class="fl_right">
+     
 	  
 		  <div class="cuadro_noticias">
 		  <div class="titulo_nove">
           <h2>LO ÚLTIMO</h2>
 		  </div>
 			<div class="item_noticias">
-				<a href="#"><img class="imagen_noticias" src="images/destinyT.jpg"></a>
+				<div class="imagen_noticias">
+					<a href="#"><img class="imagen_noticias" src="images/destinyT.jpg"></a>
+				</div>
 				<h3><br>NOTICIA</h3>
 				<a href="#" class="texto_noticias" >Destiny 2 ya se encuentra en los planes de futuro de Activision</a>
 			</div>
 			<div class="separador_items">
 			</div>
 			<div class="item_noticias">
-				<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
+				<div class="imagen_noticias">
+					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
+				</div>
 				<h3><br>NOTICIA</h3>
 				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
 			</div>
 			<div class="separador_items">
 			</div>
 			<div class="item_noticias">
-				<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
+				<div class="imagen_noticias">
+					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
+				</div>
 				<h3><br>NOTICIA</h3>
 				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
 			</div>
 			<div class="separador_items">
 			</div>
 			<div class="item_noticias">
-				<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
+				<div class="imagen_noticias">
+					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
+				</div>
 				<h3><br>NOTICIA</h3>
 				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
+			</div>
+			<div class="separador_items">
 			</div>
 		  </div>
 		  
@@ -533,9 +559,11 @@ $(function(){
 				if ($row3 = mysqli_fetch_assoc($result3))
 		  ?>
 			<div class="item_ofertas">
-				<a href="./producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?>><img class="imagen_noticias" <?php echo 'src=".'.$row2["Imagen"].'"' ?>></a>
+				<div class="imagen_noticias">
+					<a href="/producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?>><img <?php echo 'src=".'.$row2["Imagen"].'"' ?>></a>
+				</div>
 				<h3><br>OFERTA</br></h3>
-				<a title="" href="./producto/product_info.php?id=<?php echo $Id_Prod ?>"  class="texto_noticias" ><?php echo $row3["nombre"].' Ahora con un '.$row1["Porcentaje"].'% de descuento' ?></a>
+				<a title="" href="/producto/product_info.php?id=<?php echo $Id_Prod ?>"  class="texto_noticias" ><?php echo $row3["nombre"].' Ahora con un '.$row1["Porcentaje"].'% de descuento' ?></a>
 			</div>
 			
 			<div class="separador_items">
@@ -545,7 +573,7 @@ $(function(){
 		  }
 		  ?>
 		  </div>
-      </div>
+		  
     </div>
     <!-- / content body -->
   </div>

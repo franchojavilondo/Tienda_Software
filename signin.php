@@ -204,16 +204,20 @@ function validar(){
     <!-- main content -->
     <div id="homepage" class="clear">
 		 <section class="container">
-    <div class="login">
-      <h1>CREAR UNA CUENTA</h1>
-      <form method="post" ENCTYPE="multipart/form-data" action="signin.php" name="formu">
+    <div class="cuadro_registro">
+      <div class="titulo_nove">
+					<h2>CREAR UNA CUENTA</h2>
+				</div>
+				
+		<div class="contenedor_formulario_registro">
+      <form method="post" ENCTYPE="multipart/form-data" action="signin.php" name="formu" class="formulario_registro">
 	 
-        <p>Nick<br><input type="text" name="usuario" value="<?php if (isset($_SESSION['regnombre'])){ echo $_SESSION['regnombre']; } ?>" ></p>
-		<p>Contraseña<br><input type="password" name="pass" value="<?php if (isset($_SESSION['regcontra'])){ echo $_SESSION['regcontra']; } ?>"></p>
-		<p>Repite la Contraseña<br><input type="password" name="pass2" value="<?php if (isset($_SESSION['regcontra2'])){ echo $_SESSION['regcontra2']; } ?>"></p>
-		<p>Direccion de email<br><input type="text" name="email" value="<?php if (isset($_SESSION['regemail'])){ echo $_SESSION['regemail']; } ?>"></p>
-		<p>Foto<br><input type="file" name="nom_del_archivo"></p>
-		<p class="submit"><input type="button" name="commit" value="Crear la cuenta" onclick="validar()"></p>
+        <p>Nick:<br><input type="text" name="usuario" value="<?php if (isset($_SESSION['regnombre'])){ echo $_SESSION['regnombre']; } ?>" ></p>
+		<p>Contraseña:<br><input type="password" name="pass" value="<?php if (isset($_SESSION['regcontra'])){ echo $_SESSION['regcontra']; } ?>"></p>
+		<p>Repite la Contraseña:<br><input type="password" name="pass2" value="<?php if (isset($_SESSION['regcontra2'])){ echo $_SESSION['regcontra2']; } ?>"></p>
+		<p>Direccion de email:<br><input type="text" name="email" value="<?php if (isset($_SESSION['regemail'])){ echo $_SESSION['regemail']; } ?>"></p>
+		<p>Foto:<br><input type="file" name="nom_del_archivo"></p>
+		<input class="boton_registrar_nuevo" type="button" name="commit" value="Crear la cuenta" onclick="validar()">
 		
 <?php
 	
@@ -288,8 +292,14 @@ function validar(){
 	
 ?>
       </form>
-	  
+	  </div>
 	 
+	 <div class="contenedor_imagen_catalogo">
+	 
+		<img src="images/catalogo.jpg" class="imagen_catalogo" alt="logo">
+		<p>¡Accede a estos juegos y más!</p>
+	</div>
+	
     </div>
 	
 
