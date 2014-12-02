@@ -2,8 +2,8 @@
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 01-12-2014 a las 17:53:44
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 02-12-2014 a las 19:34:19
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -23,27 +23,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `administradores`
+--
+
+CREATE TABLE IF NOT EXISTS `administradores` (
+  `nombre` varchar(20) NOT NULL,
+  `pass` varchar(20) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`nombre`, `pass`, `id`) VALUES
+('santi', 'santi', 1),
+('sergio', 'sergio', 2),
+('fran', 'fran', 3),
+('Uno', 'fdsfsfsdfs', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `clientes`
 --
 
 CREATE TABLE IF NOT EXISTS `clientes` (
   `Id_Cliente` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(25) NOT NULL,
-  `pass` varchar(15) NOT NULL,
+  `pass` varchar(400) NOT NULL,
   `nombre` varchar(25) NOT NULL,
-  `telefono` int(11) NOT NULL,
-  `direccion` varchar(50) NOT NULL,
+  `foto` varchar(200) NOT NULL,
   PRIMARY KEY (`Id_Cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`Id_Cliente`, `email`, `pass`, `nombre`, `telefono`, `direccion`) VALUES
-(1, 'uno@gmail.com', 'uno', 'Uno', 0, ''),
-(6, 'dos@uclm.es', 'dos', 'Dos', 0, ''),
-(7, 'tres@gmail.com', 'tres', 'Tres', 0, '');
+INSERT INTO `clientes` (`Id_Cliente`, `email`, `pass`, `nombre`, `foto`) VALUES
+(1, 'uno@gmail.com', 'uno', 'Uno', ''),
+(6, 'dos@uclm.es', 'dos', 'Dos', ''),
+(7, 'tres@gmail.com', 'tres', 'Tres', ''),
+(11, 'pepe@gmail.com', '$2y$10$T0B.KA9NN02jK9OSx2CYQuJkRJS5X8kCbFcfPkD66VWqaOAIPaLpS', 'pepe', './images/usuarios/pepe.png');
 
 -- --------------------------------------------------------
 
