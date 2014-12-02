@@ -37,7 +37,78 @@ jQuery(document).ready(function() {
 });
 </script>
 
- 
+ <script type='text/javascript'>
+function validar(){ 
+   	extensiones_permitidas = new Array(".png", ".jpg"); 
+	
+   	if (document.formu.usuario.value.length==0){ 
+      	alert("Tienes que escribir su nick") 
+      	document.formu.nombre.focus() 
+      	return 0; 
+   	} 
+
+   	if (document.formu.pass.value.length==0){ 
+      	alert("Tienes que escribir tu contraseña") 
+      	document.formu.pass.focus() 
+      	return 0; 
+   	} 
+	if (document.formu.pass2.value.length==0){ 
+      	alert("Tienes que repetir tu contraseña") 
+      	document.formu.pass2.focus() 
+      	return 0; 
+   	} 
+	if(document.formu.pass2.value!=document.formu.pass.value){
+		alert("Las contraseñas no coinciden") 
+      	document.formu.pass2.focus() 
+      	return 0; 
+	}
+	if (document.formu.email.value.length==0){ 
+      	alert("Tienes que escribir tu email") 
+      	document.formu.email.focus() 
+      	return 0; 
+   	} 
+	email=document.formu.email.value;
+	mail_correcto = false; 
+	if ( email.indexOf('@') > -1){
+		if (email.indexOf("'") <0 && email.indexOf("\"") <0 && email.indexOf("\\") <0 && email.indexOf("\$") <0 && email.indexOf(" ") <0) {
+			//miro si tiene caracter . 
+			if (email.indexOf('.') > -1){ 	
+				mail_correcto = true; 
+			} 
+		} 		
+	}
+	if (!mail_correcto) {
+		alert("Tienes que escribir un email valido") 
+		document.formu.email.focus() 
+		return 0;
+	}
+	
+	if (document.formu.nom_del_archivo.value.length==0 ){ 
+      	alert("Tienes que subir una foto") 
+      	document.formu.nom_del_archivo.focus() 
+      	return 0; 
+   	} 
+	
+	
+	permitida=false;
+	extension=(document.formu.nom_del_archivo.value.substring(document.formu.nom_del_archivo.value.lastIndexOf("."))).toLowerCase();
+   	for (var i = 0; i < extensiones_permitidas.length; i++) { 
+         if (extensiones_permitidas[i] == extension) { 
+         permitida = true; 
+         break; 
+         } 
+      } 
+	if (!permitida){ 
+      	alert("No puedes subir un archivo que no sea una imagen") 
+      	document.formu.nom_del_archivo.focus() 
+      	return 0; 
+   	} 
+	
+	
+	document.formu.submit(); 
+}	
+				
+ </script>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -135,30 +206,33 @@ jQuery(document).ready(function() {
 		 <section class="container">
     <div class="login">
       <h1>CREAR UNA CUENTA</h1>
-      <form method="post" action="signin.php">
+      <form method="post" ENCTYPE="multipart/form-data" action="signin.php" name="formu">
 	 
-        <p>Nick<br><input type="text" name="usuario" value="" placeholder="Usuario"></p>
-		<p>Contraseña<br><input type="password" name="pass" value="" placeholder="Contraseña"></p>
-		<p>Direccion de email<br><input type="text" name="email" value="" placeholder="Direccion de email"></p>
-		<p>Telefono<br><input type="integer" name="telefono" value="" placeholder="Telefono"></p>
-		<p>Direccion<br><input type="text" name="direccion" value="" placeholder="Direccion"></p>
-		<p>Foto<br><input type="text" name="foto" value="" placeholder="Foto de perfil"></p>
-        <p class="submit"><input type="submit" name="commit" value="Crear la cuenta"></p>
+        <p>Nick<br><input type="text" name="usuario" value="<?php if (isset($_SESSION['regnombre'])){ echo $_SESSION['regnombre']; } ?>" ></p>
+		<p>Contraseña<br><input type="password" name="pass" value="<?php if (isset($_SESSION['regcontra'])){ echo $_SESSION['regcontra']; } ?>"></p>
+		<p>Repite la Contraseña<br><input type="password" name="pass2" value="<?php if (isset($_SESSION['regcontra2'])){ echo $_SESSION['regcontra2']; } ?>"></p>
+		<p>Direccion de email<br><input type="text" name="email" value="<?php if (isset($_SESSION['regemail'])){ echo $_SESSION['regemail']; } ?>"></p>
+		<p>Foto<br><input type="file" name="nom_del_archivo"></p>
+		<p class="submit"><input type="button" name="commit" value="Crear la cuenta" onclick="validar()"></p>
 		
 <?php
-	if (isset($_POST["usuario"]) && isset($_POST["pass"])  && isset($_POST["email"])  && isset($_POST["telefono"])  && isset($_POST["direccion"])){
+	
+	if (isset($_POST["usuario"]) && isset($_POST["pass"]) && isset($_POST["pass2"]) && isset($_POST["email"]) && isset($_FILES["nom_del_archivo"])){
 		$hostname = "localhost";
 		$usuario = "pma";
 		$password = "pmapass";
 		$basededatos = "tienda_software";
 		$tabla="clientes";
+	
 		
+		
+		$ruta='./images/usuarios/';
 		$user = $_POST["usuario"];
 		$contra = $_POST["pass"];
+		$contra2 = $_POST["pass2"];
 		$email=$_POST["email"];
-		$telefono=$_POST["telefono"];
-		$direccion=$_POST["direccion"];
-		$foto=$_POST["foto"];
+		$extension=$_FILES["nom_del_archivo"]['name'];
+		$foto=$ruta.$_POST["usuario"].".".pathinfo($extension,PATHINFO_EXTENSION);
 	
 		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
 		if ($conexion->connect_errno) {
@@ -171,26 +245,47 @@ jQuery(document).ready(function() {
 		}
 		
 		if ($registro=$resultado->fetch_assoc()){
-			echo "Ese nick ya existe, elige otro";
-		
+			
+			$_SESSION ["regnombre"] = $_POST["usuario"]; 
+			$_SESSION ["regcontra"] = $_POST["pass"]; 
+			$_SESSION ["regcontra2"] = $_POST["pass2"]; 
+			$_SESSION ["regemail"] =  $_POST["email"];	
+			?>
+				<script languaje="javascript">
+				location.href = "signin.php";
+				</script>
+			<?php
 		}
 		else{
-			$consultaSQL ="INSERT INTO clientes VALUES (NULL,'$email','$contra','$user',$telefono,'$direccion')" ;
+			$_SESSION ["regnombre"] = " "; 
+			$_SESSION ["regcontra"] = " "; 
+			$_SESSION ["regemail"] =  " ";	
+			$_SESSION ["regcontra2"] = " "; 
+			//añadimos el usuario a la base de datos con su contraseña encriptada
+			$encriptada=password_hash ( $contra ,PASSWORD_BCRYPT );
+			$consultaSQL ="INSERT INTO clientes VALUES (NULL,'$email','$encriptada','$user','$foto')" ;
 			$stmt  = $conexion->query($consultaSQL);
-			
-
 			 
 			$_SESSION ["user"]=$user;
-			$_SESSION ["pass"]=$contra;
-			
+			$_SESSION ["pass"]=$encriptada;
+	
+			//comprobar carga de la foto
+			move_uploaded_file($_FILES['nom_del_archivo']['tmp_name'], $foto);
 			?>
 				<script languaje="javascript">
 				location.href = "index.php";
 				</script>
 			<?php
+			
 		}
 		$conexion ->close();
 	}
+	if(isset($_SESSION["regnombre"])){
+		if($_SESSION["regnombre"]!=" "){
+			echo "Ese nick ya existe, o ese email ya figura como usuario";
+		}
+	}
+	
 ?>
       </form>
 	  

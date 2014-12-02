@@ -189,7 +189,7 @@ $(function(){
 			die('Error de conexión: ' . $conexion->connect_error);
 		}	
 		
-	$consultaSQL ="SELECT * FROM clientes  WHERE nombre='$user' && pass='$contra'" ; 
+		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
 	  
 		$resultado = $conexion->query($consultaSQL);
 		if (!$resultado) {
@@ -198,27 +198,58 @@ $(function(){
 		
 		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
 		if ($registro=$resultado->fetch_assoc()){
-			
 		
+			$ruta=$registro['foto'];
+			
+			?>
+	
+	
+			<div class="imagen_perfil">
+					<img <?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" class="profile_img">
+				</div>
+					
+				<div class="titulo_perfil">
+					<h1><?php echo $registro["nombre"]; ?> </h1>
+				</div>
+				
+				<div class="botones_acceso">
+					<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
+					<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+				</div>
+			<?php
+		
+		}
+		else{
+			$consultaSQL ="SELECT * FROM administradores WHERE nombre='$user' && pass='$contra'" ; 
+	  
+			$resultado = $conexion->query($consultaSQL);
+			if (!$resultado) {
+				die('No se puede realizar la consulta: ' . $conexion->connect_error);
+			}
+			
+			//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+			if ($registro=$resultado->fetch_assoc()){
+				?>
+	
+		
+				<div class="imagen_perfil">
+						<img src="./images/usuarios/admin.png" alt="Usuario" class="profile_img">
+					</div>
+						
+					<div class="titulo_perfil">
+						<h1><?php echo "Administrador: ".$registro["nombre"]; ?> </h1>
+					</div>
+					
+					<div class="botones_acceso">
+						<a href="admin.php"><input type="submit" class="boton_login" value="Pagina administracion"></a>
+						<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+					</div>
+				<?php
+			}
 		}
 		$registro=$resultado->free();
 		$conexion->close();
-	?>
 	
-	
-	<div class="imagen_perfil">
-			<img src="images/profile.png" alt="Usuario" class="profile_img">
-		</div>
-			
-		<div class="titulo_perfil">
-			<h1><?php echo $user; ?> </h1>
-		</div>
-		
-		<div class="botones_acceso">
-			<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
-			<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
-		</div>
-	<?php
 	
 	
 	

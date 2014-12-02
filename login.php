@@ -36,7 +36,26 @@ jQuery(document).ready(function() {
 
 });
 </script>
+<script type='text/javascript'>
+function validar(){ 
+   	
+	
+   	if (document.formu.user.value.length==0){ 
+      	alert("Tienes que escribir su nick") 
+      	document.formu.nombre.focus() 
+      	return 0; 
+   	} 
 
+   	if (document.formu.pass.value.length==0){ 
+      	alert("Tienes que escribir tu contraseña") 
+      	document.formu.pass.focus() 
+      	return 0; 
+   	} 
+	
+	document.formu.submit(); 
+}	
+				
+ </script>
  
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 <meta charset="UTF-8" />
@@ -140,21 +159,21 @@ jQuery(document).ready(function() {
 					<h2>INICIAR SESIÓN</h2>
 				</div>
 				<div class="formulario_login">
-					<form method="post" action="login.php">
+					<form method="post" action="login.php"  name="formu">
 						<div class="seccion_login">
-							<div class="usuario_login">Nombre de usuario:</div>
-							<input type="text" name="user" placeholder="Usuario">
+							<div class="usuario_login">Nombre o email de la cuenta:</div>
+							<input type="text" name="user" value="<?php if (isset($_SESSION['lognombre'])){ echo $_SESSION['lognombre']; } ?>">
 						</div>
 						<div class="seccion_login">
 							<div class="usuario_login">Contraseña:</div>
-							<input type="password" name="pass" value="" placeholder="Contraseña">
+							<input type="password" name="pass" value="<?php if (isset($_SESSION['logcontra'])){ echo $_SESSION['logcontra']; } ?>">
 						</div>
 		
 						<div class="check_usuario">
 							<input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
 						</div>
 		
-						<input type="submit" class="boton_login" name="commit" value="Entrar">
+						<input type="button" class="boton_login" name="commit" value="Entrar" onclick="validar()">
 				</div>
 			</div>
 	
@@ -177,9 +196,6 @@ jQuery(document).ready(function() {
 		
 		</div>
 		 
-		 
-    
-		
 <?php
 	if (isset($_POST["user"]) && isset($_POST["pass"])){
 		$hostname = "localhost";
@@ -190,33 +206,80 @@ jQuery(document).ready(function() {
 		
 		$user = $_POST["user"];
 		$contra = $_POST["pass"];
-	
+		//ciframos la contraseña introducidad para compararla con la de la base de datos
+		
 		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
 		if ($conexion->connect_errno) {
 			die('Error de conexión: ' . $conexion->connect_error);
 		}	
-		$consultaSQL ="SELECT * FROM clientes  WHERE nombre='$user' && pass='$contra'" ;
+		$consultaSQL ="SELECT * FROM clientes  WHERE nombre='$user' || email='$user'";
 		$resultado = $conexion->query($consultaSQL);
 		if (!$resultado) {
 			die('No se puede realizar la consulta: ' . $conexion->connect_error);
 		}
 		
 		if ($registro=$resultado->fetch_assoc()){
-			$_SESSION ["user"]=$user;
-			$_SESSION ["pass"]=$contra;
+			$verdadera=$registro['pass'];
 			
-			?>
+			$_SESSION ["lognombre"] = $_POST["user"]; 
+			
+			if(password_verify($contra,$verdadera)){
+				$_SESSION ["user"]=$user;
+				$_SESSION ["pass"]=$verdadera;
+				$_SESSION ["lognombre"] ="";
+				?>
+					<script languaje="javascript">
+					location.href = "index.php";
+					</script>
+				<?php
+			}
+			else{
+				?>
 				<script languaje="javascript">
-				location.href = "index.php";
+				location.href = "login.php";
 				</script>
-			<?php
-		
+				<?php
+				$_SESSION ["logcontra"] = ""; 
+				echo "El nick o la contraseña no son correctos, o no estas registrado como usuario";
+			}
 		}
+		//comprobar si es un administrador
 		else{
-			echo "incorrecto";
+			$consultaSQL ="SELECT * FROM administradores  WHERE nombre='$user' && pass='$contra'";
+			$resultado = $conexion->query($consultaSQL);
+			if (!$resultado) {
+				die('No se puede realizar la consulta: ' . $conexion->connect_error);
+			}
+			
+			if ($registro=$resultado->fetch_assoc()){
+				$_SESSION ["user"]=$user;
+				$_SESSION ["pass"]=$contra;
+				$_SESSION ["lognombre"]="";
+				?>
+				<script languaje="javascript">
+				location.href = "admin.php";
+				</script>
+				<?php
+			}
+			else{
+				$_SESSION ["lognombre"] =  $_POST["user"]; 
+				?>
+				<script languaje="javascript">
+				location.href = "login.php";
+				</script>
+				<?php
+			}
 		}
+		$registro=$resultado->free();
 		 $conexion->close();
 	}
+	if(isset($_SESSION["lognombre"])){
+		if($_SESSION["lognombre"]!=""){
+			echo "El nick o la contraseña no son correctos, o no estas registrado";
+		}
+	}
+		
+		
 ?>
       </form>
 	  
