@@ -198,7 +198,7 @@ float:right;
 
 #header nav{display:block; width:100%; padding:20px 0 35px 0; clear:both;}
 #header nav ul{}
-#header nav li{display:inline;  text-transform:uppercase;}
+#header nav li{display:inline;text-transform:uppercase; }
 
 #header nav li.last{margin-right:0;}
 #header nav li a{background:transparent;}
@@ -207,6 +207,12 @@ float:right;
 #header nav li a:hover {color:#FF9900; }
 #header nav li a:hover .tri {margin-left:5px;background-color:#FF9900;}
 
+.iconos_navegacion{
+float: left;
+margin-top:-2%;
+margin-left:5%;
+height:20px;
+}
 
 
 ul.menu {
@@ -221,10 +227,37 @@ ul.menu {
  position:relative;
  float:left;
  text-align:justify;
+ margin-left:1%;
  }
  
  .seccion_carrito{
  float:right;
+ width:39%;
+ margin-right:-3%;
+ }
+ 
+ .icono_deseos{
+height:40px;
+margin-top:-8%;
+float:left;
+ }
+ 
+ .seccion_carrito ul li{
+ 
+  margin-left:1%;
+ 
+ }
+ 
+ 
+ .contador_lista{
+	z-index:5;
+ color:#0D47A1;
+ font-size:122%;
+ position:absolute;
+ left:6%;
+ width:12%;
+ text-align: center;
+ margin-top:-1.5%;
  }
  
  .imagen_carrito{
