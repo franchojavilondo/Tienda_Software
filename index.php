@@ -284,21 +284,25 @@ $(function(){
       <ul>
 		 <li><a href="./index.php">PÁGINA PRINCIPAL</a></li>
 		<li>|</li>
+<<<<<<< HEAD
 	    <li><a href="#">Juegos<div class="tri"></div></a>
+=======
+	    <li><div class="enl"><a href="./juegos/listado.php">Juegos<div class="tri"></div></a></div>
+>>>>>>> origin/master
 		<ul>
 		<div class="sub">
-			<li><a href="#">Free to Play</a></li>
-            <li><a href="#">Acceso anticipado</a></li>
-            <li><a href="#">Acción</a></li>
-            <li><a href="#">Aventura</a></li>
-			<li><a href="#">Carreras</a></li>
-            <li><a href="#">Casual</a></li>
-            <li><a href="#">Deportes</a></li>
-            <li><a href="#">Estrategia</a></li>
-			<li><a href="#">Indie</a></li>
-            <li><a href="#">Multijugador masivo</a></li>
-            <li><a href="#">Rol</a></li>
-            <li><a href="#">Simuladores</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=accion">Acción</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=aventura">Aventura</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=carreras">Carreras</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=casual">Casual</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=deportes">Deportes</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=estrategia">Estrategia</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=indie">Indie</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=rol">Rol</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=simuladores">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -339,18 +343,18 @@ $(function(){
 	<div id="sidebar" >
 	<h6>Explorar por género</h6>
         <ul>
-            <li><a href="#">Free to Play</a></li>
-            <li><a href="#">Acceso anticipado</a></li>
-            <li><a href="#">Acción</a></li>
-            <li><a href="#">Aventura</a></li>
-			<li><a href="#">Carreras</a></li>
-            <li><a href="#">Casual</a></li>
-            <li><a href="#">Deportes</a></li>
-            <li><a href="#">Estrategia</a></li>
-			<li><a href="#">Indie</a></li>
-            <li><a href="#">Multijugador masivo</a></li>
-            <li><a href="#">Rol</a></li>
-            <li><a href="#">Simuladores</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=accion">Acción</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=aventura">Aventura</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=carreras">Carreras</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=casual">Casual</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=deportes">Deportes</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=estrategia">Estrategia</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=indie">Indie</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=rol">Rol</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=simuladores">Simuladores</a></li>
         </ul>
     </div>
 	<div class="ppt">
