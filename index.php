@@ -1,5 +1,11 @@
 <?php
 	session_start();
+	if(isset($_SESSION['carro'])) {
+$carro=$_SESSION['carro'];
+$contador = count($carro);
+}
+
+else $carro=false; 
 ?>
 <!DOCTYPE html>
 
@@ -322,7 +328,7 @@ $(function(){
 	  
 	  <div class="seccion_carrito">
 	  <ul>
-	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
       </ul>
 	  </div>
 	  
