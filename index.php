@@ -19,6 +19,7 @@ else $carro=false;
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
 <script type='text/javascript'>
 // Botón para Ir Arriba
 jQuery(document).ready(function() {
@@ -97,6 +98,28 @@ $(function(){
 <script src="js/jquery.bxslider.js"></script>
 <script src="js/rainbow.min.js"></script>
 <script src="js/scripts.js"></script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+ 
+ $(document).ready(function() {
+  $("#parametro").keyup( //Evento de soltar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+</script>
 	
 	
 <script type="text/javascript">
@@ -171,8 +194,12 @@ $(function(){
     <form action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
-        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
-        <input type="submit" id="sf_submit" value="">
+        <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+		<input type="submit" id="sf_submit" value="">
+        <br />
+<br />
+<div id="resultado" style="border: solid black 1px;" style="z-index: 5;"></div>
+
       </fieldset>
     </form>
     
@@ -290,7 +317,7 @@ $(function(){
       <ul>
 		 <li><a href="./index.php">PÁGINA PRINCIPAL</a></li>
 		<li>|</li>
-	    <li><a href="#">Juegos<div class="tri"></div></a>
+	    <li><a href="./juegos/listado.php">Juegos<div class="tri"></div></a>
 	    <li><div class="enl"><a href="./juegos/listado.php">Juegos<div class="tri"></div></a></div>
 		<ul>
 		<div class="sub">
