@@ -284,11 +284,8 @@ $(function(){
       <ul>
 		 <li><a href="./index.php">PÁGINA PRINCIPAL</a></li>
 		<li>|</li>
-<<<<<<< HEAD
 	    <li><a href="#">Juegos<div class="tri"></div></a>
-=======
 	    <li><div class="enl"><a href="./juegos/listado.php">Juegos<div class="tri"></div></a></div>
->>>>>>> origin/master
 		<ul>
 		<div class="sub">
 			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
