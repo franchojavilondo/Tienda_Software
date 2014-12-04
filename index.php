@@ -507,13 +507,13 @@ $(function(){
 		  if ($resultn = mysqli_query($conexion, $queryn)) 
 		  while (($rown = mysqli_fetch_assoc($resultn)) && $contador<4) {
 		  $ID=$rown["Id_Producto"];
-		  $queryn2="SELECT Caratula from productos where Id_Producto=$ID";
+		  $queryn2="SELECT Imagen from imagenes_extra where Id_Producto=$ID";
 		  if ($resultn2 = mysqli_query($conexion, $queryn2)) 
 		  if($rown2 = mysqli_fetch_assoc($resultn2)){
 		  ?>
 			<div class="item_noticias">
 				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" <?php echo 'src=".'.$rown2["Caratula"].'"' ?>></a>
+					<a href="#"><img class="imagen_noticias" <?php echo 'src=".'.$rown2["Imagen"].'"' ?>></a>
 				</div>
 				<h3><br>NOTICIA</h3>
 				<a href="#" class="texto_noticias" ><?php echo $rown["Titular"]?></a>
