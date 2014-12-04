@@ -1,5 +1,11 @@
 <?php
 	session_start();
+	if(isset($_SESSION['carro'])) {
+$carro=$_SESSION['carro'];
+$contador = count($carro);
+}
+
+else $carro=false; 
 ?>
 <!DOCTYPE html>
 
@@ -13,6 +19,7 @@
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
 <script type='text/javascript'>
 // Botón para Ir Arriba
 jQuery(document).ready(function() {
@@ -91,6 +98,28 @@ $(function(){
 <script src="js/jquery.bxslider.js"></script>
 <script src="js/rainbow.min.js"></script>
 <script src="js/scripts.js"></script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+ 
+ $(document).ready(function() {
+  $("#parametro").keyup( //Evento de soltar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+</script>
 	
 	
 <script type="text/javascript">
@@ -165,8 +194,12 @@ $(function(){
     <form action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
-        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
-        <input type="submit" id="sf_submit" value="">
+        <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+		<input type="submit" id="sf_submit" value="">
+        <br />
+<br />
+<div id="resultado" style="border: solid black 1px;" style="z-index: 5;"></div>
+
       </fieldset>
     </form>
     
@@ -284,7 +317,12 @@ $(function(){
       <ul>
 		 <li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
+<<<<<<< HEAD
 	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
+=======
+	    <li><a href="./juegos/listado.php">Juegos<div class="tri"></div></a>
+	    <li><div class="enl"><a href="./juegos/listado.php">Juegos<div class="tri"></div></a></div>
+>>>>>>> origin/master
 		<ul>
 		<div class="sub">
 			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
@@ -320,9 +358,13 @@ $(function(){
 	  
 	  <div class="seccion_carrito">
 	  <ul>
+<<<<<<< HEAD
 	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
 		<li>|</li>
 	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+=======
+	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+>>>>>>> origin/master
       </ul>
 	  </div>
 	  
@@ -500,42 +542,32 @@ $(function(){
 		  <div class="titulo_nove">
           <h2>ÚLTIMAS NOTICIAS</h2>
 		  </div>
+		  
+		  <?php $queryn="SELECT * from noticias";
+		  
+		  $contador = 0;
+		  if ($resultn = mysqli_query($conexion, $queryn)) 
+		  while (($rown = mysqli_fetch_assoc($resultn)) && $contador<4) {
+		  $ID=$rown["Id_Producto"];
+		  $queryn2="SELECT Imagen from imagenes_extra where Id_Producto=$ID";
+		  if ($resultn2 = mysqli_query($conexion, $queryn2)) 
+		  if($rown2 = mysqli_fetch_assoc($resultn2)){
+		  ?>
 			<div class="item_noticias">
 				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/destinyT.jpg"></a>
+					<a href="#"><img class="imagen_noticias" <?php echo 'src=".'.$rown2["Imagen"].'"' ?>></a>
 				</div>
 				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Destiny 2 ya se encuentra en los planes de futuro de Activision</a>
+				<a href="#" class="texto_noticias" ><?php echo $rown["Titular"]?></a>
 			</div>
+			
+			
 			<div class="separador_items">
 			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
-			</div>
-			<div class="separador_items">
-			</div>
+			<?php }}?>
+			
+			
+			
 		  </div>
 		  
 		   <?php
