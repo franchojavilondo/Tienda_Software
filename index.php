@@ -500,42 +500,32 @@ $(function(){
 		  <div class="titulo_nove">
           <h2>ÚLTIMAS NOTICIAS</h2>
 		  </div>
+		  
+		  <?php $queryn="SELECT * from noticias";
+		  
+		  $contador = 0;
+		  if ($resultn = mysqli_query($conexion, $queryn)) 
+		  while (($rown = mysqli_fetch_assoc($resultn)) && $contador<4) {
+		  $ID=$rown["Id_Producto"];
+		  $queryn2="SELECT Caratula from productos where Id_Producto=$ID";
+		  if ($resultn2 = mysqli_query($conexion, $queryn2)) 
+		  if($rown2 = mysqli_fetch_assoc($resultn2)){
+		  ?>
 			<div class="item_noticias">
 				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/destinyT.jpg"></a>
+					<a href="#"><img class="imagen_noticias" <?php echo 'src=".'.$rown2["Caratula"].'"' ?>></a>
 				</div>
 				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Destiny 2 ya se encuentra en los planes de futuro de Activision</a>
+				<a href="#" class="texto_noticias" ><?php echo $rown["Titular"]?></a>
 			</div>
+			
+			
 			<div class="separador_items">
 			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
-			</div>
-			<div class="separador_items">
-			</div>
+			<?php }}?>
+			
+			
+			
 		  </div>
 		  
 		   <?php
