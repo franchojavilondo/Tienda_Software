@@ -36,7 +36,20 @@ jQuery(document).ready(function() {
 
 });
 </script>
-
+<script type="text/javascript">
+ $(document).ready(function() {
+	 $('ul li:has(ul)').hover(
+	 function(e)
+	 {
+		$(this).find('ul').css({display: "block"});
+	 },
+	 function(e)
+	 {
+		$(this).find('ul').css({display: "none"});
+	 }
+	 );
+ });
+ </script>
  <script type='text/javascript'>
 function validar(){ 
    	extensiones_permitidas = new Array(".png", ".jpg"); 
@@ -161,35 +174,50 @@ function validar(){
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="#">Destacados<div class="tri"></div></a>
-		 <ul>
-		 <div class="sub">
-		 <li><a href="#">Juegos</a></li>
-		 <li><a href="#">Software</a></li>
-		 <li><a href="#">Demos</a></li>
-		 <li><a href="#">Genero</a></li>
-		 </div>
-		 
-		 </ul>
-		 </li>
+		 <li><a href="#">PÁGINA PRINCIPAL</a></li>
 		<li>|</li>
 	    <li><div class="enl"><a href="#">Juegos<div class="tri"></div></a></div>
 		<ul>
 		<div class="sub">
-		 <li><a href="#">Accion</a></li>
-		 <li><a href="#">Aventura</a></li>
-		 <li><a href="#">Carreras</a></li>
-		 <li><a href="#">Casual</a></li>
+			<li><a href="#">Free to Play</a></li>
+            <li><a href="#">Acceso anticipado</a></li>
+            <li><a href="#">Acción</a></li>
+            <li><a href="#">Aventura</a></li>
+			<li><a href="#">Carreras</a></li>
+            <li><a href="#">Casual</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Estrategia</a></li>
+			<li><a href="#">Indie</a></li>
+            <li><a href="#">Multijugador masivo</a></li>
+            <li><a href="#">Rol</a></li>
+            <li><a href="#">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
 		<li>|</li>
-        <li><a href="#">Software<div class="tri"></div></a></li>
+        <li><a href="#">Secciones<div class="tri"></div></a>
+		<ul>
+		<div class="sub">
+			<li><a href="./news.php">Noticias</a></li>
+            <li><a href="#">Lo último</a></li>
+            <li><a href="#">Ofertas</a></li>
+		 </div>
+		 </ul>
+		
+		</li>
 		<li>|</li>
-        <li><a href="#">Demos<div class="tri"></div></a></li>
-		<li>|</li>
-        <li class="last"><a href="#">Noticias<div class="tri"></div></a></li>
+        <li class="last"><a href="#">Demos</a></li>
+        
       </ul>
+	  
+	  
+	  <div class="seccion_carrito">
+	  <ul>
+	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+      </ul>
+	  </div>
+	  
+	  
 	  </div>
     </nav>      
     
@@ -213,10 +241,15 @@ function validar(){
       <form method="post" ENCTYPE="multipart/form-data" action="signin.php" name="formu" class="formulario_registro">
 	 
         <p>Nick:<br><input type="text" name="usuario" value="<?php if (isset($_SESSION['regnombre'])){ echo $_SESSION['regnombre']; } ?>" ></p>
+		<br>
 		<p>Contraseña:<br><input type="password" name="pass" value="<?php if (isset($_SESSION['regcontra'])){ echo $_SESSION['regcontra']; } ?>"></p>
+		<br>
 		<p>Repite la Contraseña:<br><input type="password" name="pass2" value="<?php if (isset($_SESSION['regcontra2'])){ echo $_SESSION['regcontra2']; } ?>"></p>
+		<br>
 		<p>Direccion de email:<br><input type="text" name="email" value="<?php if (isset($_SESSION['regemail'])){ echo $_SESSION['regemail']; } ?>"></p>
+		<br>
 		<p>Foto:<br><input type="file" name="nom_del_archivo"></p>
+		<br>
 		<input class="boton_registrar_nuevo" type="button" name="commit" value="Crear la cuenta" onclick="validar()">
 		
 <?php

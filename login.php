@@ -36,6 +36,21 @@ jQuery(document).ready(function() {
 
 });
 </script>
+<script type="text/javascript">
+ $(document).ready(function() {
+	 $('ul li:has(ul)').hover(
+	 function(e)
+	 {
+		$(this).find('ul').css({display: "block"});
+	 },
+	 function(e)
+	 {
+		$(this).find('ul').css({display: "none"});
+	 }
+	 );
+ });
+ </script>
+
 <script type='text/javascript'>
 function validar(){ 
    	
@@ -109,35 +124,50 @@ function validar(){
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="#">Destacados<div class="tri"></div></a>
-		 <ul>
-		 <div class="sub">
-		 <li><a href="#">Juegos</a></li>
-		 <li><a href="#">Software</a></li>
-		 <li><a href="#">Demos</a></li>
-		 <li><a href="#">Genero</a></li>
-		 </div>
-		 
-		 </ul>
-		 </li>
+		 <li><a href="./index.php">PÁGINA PRINCIPAL</a></li>
 		<li>|</li>
-	    <li><div class="enl"><a href="#">Juegos<div class="tri"></div></a></div>
+	    <li><a href="#">Juegos<div class="tri"></div></a>
 		<ul>
 		<div class="sub">
-		 <li><a href="#">Accion</a></li>
-		 <li><a href="#">Aventura</a></li>
-		 <li><a href="#">Carreras</a></li>
-		 <li><a href="#">Casual</a></li>
+			<li><a href="#">Free to Play</a></li>
+            <li><a href="#">Acceso anticipado</a></li>
+            <li><a href="#">Acción</a></li>
+            <li><a href="#">Aventura</a></li>
+			<li><a href="#">Carreras</a></li>
+            <li><a href="#">Casual</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Estrategia</a></li>
+			<li><a href="#">Indie</a></li>
+            <li><a href="#">Multijugador masivo</a></li>
+            <li><a href="#">Rol</a></li>
+            <li><a href="#">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
 		<li>|</li>
-        <li><a href="#">Software<div class="tri"></div></a></li>
+        <li><a href="#">Secciones<div class="tri"></div></a>
+		<ul>
+		<div class="sub">
+			<li><a href="./news.php">Noticias</a></li>
+            <li><a href="#">Lo último</a></li>
+            <li><a href="#">Ofertas</a></li>
+		 </div>
+		 </ul>
+		
+		</li>
 		<li>|</li>
-        <li><a href="#">Demos<div class="tri"></div></a></li>
-		<li>|</li>
-        <li class="last"><a href="#">Noticias<div class="tri"></div></a></li>
+        <li class="last"><a href="#">Demos</a></li>
+        
       </ul>
+	  
+	  
+	  <div class="seccion_carrito">
+	  <ul>
+	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+      </ul>
+	  </div>
+	  
+	  
 	  </div>
     </nav>      
     
@@ -154,29 +184,6 @@ function validar(){
 		 
 		<div class="contenido_principal">
 			
-			<div class="cuadro_login">
-				<div class="titulo_nove">
-					<h2>INICIAR SESIÓN</h2>
-				</div>
-				<div class="formulario_login">
-					<form method="post" action="login.php"  name="formu">
-						<div class="seccion_login">
-							<div class="usuario_login">Nombre o email de la cuenta:</div>
-							<input type="text" name="user" value="<?php if (isset($_SESSION['lognombre'])){ echo $_SESSION['lognombre']; } ?>">
-						</div>
-						<div class="seccion_login">
-							<div class="usuario_login">Contraseña:</div>
-							<input type="password" name="pass" value="<?php if (isset($_SESSION['logcontra'])){ echo $_SESSION['logcontra']; } ?>">
-						</div>
-		
-						<div class="check_usuario">
-							<input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
-						</div>
-		
-						<input type="button" class="boton_login_pagina" name="commit" value="Entrar" onclick="validar()">
-				</div>
-			</div>
-	
 			<div class="cuadro_nuevo">
 				<div class="titulo_nove">
 					<h2>NUEVO USUARIO</h2>
@@ -189,12 +196,37 @@ function validar(){
 				<p>Pulsa en el botón siguiente para unirte:</p>
 				
 				<div class="boton_submit">
-					<a href="#"><input type="submit" class="boton_nuevo" value="Registrarse"></a>
+					<a href="./signin.php"><input type="submit" class="boton_nuevo" value="Registrarse"></a>
 				</div>
 					
 			</div>
+			
+			<div class="cuadro_login">
+				<div class="titulo_nove">
+					<h2>INICIAR SESIÓN</h2>
+				</div>
+				<div class="formulario_login">
+					<form method="post" action="login.php"  name="formu">
+						<div class="seccion_login">
+							<div class="usuario_login">Nombre o email de la cuenta:</div>
+							<input type="text" name="user" value="<?php if (isset($_SESSION['lognombre'])){ echo $_SESSION['lognombre']; } ?>">
+						</div>
+						</br></br>
+						<div class="seccion_login">
+							<div class="usuario_login">Contraseña:</div>
+							<input type="password" name="pass" value="<?php if (isset($_SESSION['logcontra'])){ echo $_SESSION['logcontra']; } ?>">
+						</div>
+						</br></br>
+						<div class="check_usuario">
+							<input type="checkbox" name="remember_me" id="remember_me">Recuérdame en este PC
+						</div>
 		
-		</div>
+						<input type="button" class="boton_login_pagina" name="commit" value="Entrar" onclick="validar()">
+				</div>
+			</div>
+	
+		
+		
 		 
 <?php
 	if (isset($_POST["user"]) && isset($_POST["pass"])){
@@ -275,7 +307,9 @@ function validar(){
 	}
 	if(isset($_SESSION["lognombre"])){
 		if($_SESSION["lognombre"]!=""){
-			echo "El nick o la contraseña no son correctos, o no estas registrado";
+		?><div class="mensaje_login">
+			<?php echo "El nick o la contraseña no son correctos, o no estas registrado";?>
+			</div><?php
 		}
 	}
 		
@@ -284,6 +318,9 @@ function validar(){
       </form>
 	  
 	  
+		
+		</div>
+	  </div>
     </div>
 	
 

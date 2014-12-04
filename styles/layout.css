@@ -436,27 +436,46 @@ border:0;
 .cuadro_nuevo input[type="submit"]{display:block; 
 	float:left; 
 	width:30%; 
+	padding-bottom:1%;
+	padding-top:1%;
 	font-size:14px; 
 	font-weight:bold; 
-	height:100%;
 	text-transform:uppercase; 
 	color:#FFFFFF; 
 	background-color:#3f7696; 
 	border:none; 
 	cursor:pointer;}
 .cuadro_login input[type="submit"]{display:block; padding-top:2%;padding-bottom:1%; height:auto; margin-right:26px; float:left; margin-top:7px; margin-bottom:3%; width:58%; font-size:16px; font-weight:bold; text-transform:uppercase; color:#FFFFFF; background-color:#3f7696; border:none; cursor:pointer;}
-.formulario_login input[type="text"], input[type="password"]{display:block; float:left; width:58%; padding:5px; color:#000000; background-color:#FFFFFF; border:1px solid #666666;}
+.formulario_login input[type="password"]{display:block; float:left; width:58%; padding:5px; color:#000000; background-color:#FFFFFF; border:1px solid #666666;}
+.formulario_login input[type="text"]{display:block; float:left; width:58%; padding:5px; color:#000000; background-color:#FFFFFF; border:1px solid #666666;}
 .formulario_login input[type="checkbox"]{margin-top:2%;}
 #homepage titulo_desc{width:80%;margin-left:5%;color:#3f7696; font-size:13px; font-weight:bold; font-style:normal; line-height:normal; text-transform:uppercase;}
 
 .boton_submit{
 
 	width:100%;
-	height:11%;
-	margin-top:7.5%;
+	margin-top:4.2%;
 	margin-left:35%;
+	margin-bottom:1%;
 
 }
+
+.boton_submit input[type="submit"]{
+	display:block; 
+	padding-top:1%;
+	padding-bottom:1%;
+	margin-top:2%; 
+	margin-bottom:2%; 
+	width:38%; 
+	margin-left:-5%;
+	font-size:16px; 
+	font-weight:bold; 
+	text-transform:uppercase; 
+	color:#FFFFFF; 
+	background-color:#3f7696; 
+	border:none; 
+	cursor:pointer;}
+
 
 .boton_registrarse{
 	display:block; 
@@ -474,18 +493,19 @@ border:0;
 
 .seccion_login{
 	width:100%;
-	height:35%;
 }
 
 .boton_login_pagina{
 	display:block; 
 	float:left; 
 	width:58%; 
+	
 	font-size:14px; 
 	font-weight:bold; 
 	padding-top:2%;
 	padding-bottom:2%;
 	margin-top:4%;
+	margin-bottom:5%;
 	text-transform:uppercase; 
 	color:#FFFFFF; 
 	background-color:#3f7696; 
@@ -498,7 +518,6 @@ border:0;
 	margin-top:8%;
 	margin-left:5%;
 	width:auto;
-	height:70%;
 }
 
 .check_usuario{
@@ -517,7 +536,7 @@ border:0;
 	float:center;
 	margin-left:-5.5%;
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 }
 
 
@@ -532,14 +551,15 @@ width: 225px;
 height: 150px;
 border: 3px solid #FFFFFF;
 
+
 margin-left:13px;
 }
 
 .cuadro_login{
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	width: 30%;
-	height:100%;
+	height:auto;
 	float:left;
 	
 }
@@ -553,16 +573,27 @@ margin-top:5%;
 
 .contenido_principal{
 	width: 100%;
-	height:40%;
 	float:left;
+	height:50%;
 }
 
+.mensaje_login{
+
+	color:#FFFFFF;
+	float:left;
+	box-shadow: 2px 2px 5px 2px #999;
+	margin-top:2%;
+	padding-left:1%;
+	padding-right:1%;
+	background-color:#3f7696;
+
+}
 
 .cuadro_nuevo{
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	width: 68%;
-	height:100%;
+	height:auto;
 	float:right;
 	
 }
@@ -576,7 +607,7 @@ margin-left:5%;
 
 .cuadro_noticias{
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	width: 52%;
 	height:auto;
 	float:left;
@@ -597,7 +628,7 @@ margin-top:1%;
 
 .cuadro_ofertas{
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	width: 52%;
 	float:right;
 	height:auto;
@@ -680,6 +711,66 @@ margin-bottom:1%;
 	
 }
 
+											/*------------Página de Noticias---------------*/
+
+
+.contenedor_noticias{
+
+	background:#FFFFFF;
+	box-shadow: 2px 2px 5px 2px #999;
+	width: 65%;
+	height:auto;
+	float:left;
+	margin-top:3%;
+
+}
+
+
+.bimagen img{
+
+	width:98%;
+	margin-top:1%;
+	margin-left:1%;
+	margin-right:1%;
+	margin-bottom:1%;
+
+}
+
+
+.imagen_noticias_pagina img{
+float: left;
+height:80px;
+width:25%;
+margin-right:1%;
+margin-bottom:1%;
+margin-left:1%;
+margin-top:1%;
+}
+
+.titulo_noticias{
+
+	padding-top:10px;
+	padding-left:5%;
+	width:95.2%;
+	color:#FFFFFF;
+	background:#3f7696;
+	padding-bottom:1%;
+
+}
+
+
+.banner_imagenes{
+
+	background:#FFFFFF;
+	box-shadow: 2px 2px 5px 2px #999;
+	width: 30%;
+	height:auto;
+	float:right;
+	margin-top:3%;
+
+}
+
+
 
 
 											/*------------Página Listado Productos---------------*/
@@ -689,8 +780,9 @@ margin-bottom:1%;
 .cuadro_registro{
 	width:100%;
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
-height:58%;
+	box-shadow: 2px 2px 5px 2px #999;
+	height:350px;
+	margin-bottom:10%;
 }
 	
 .formulario_registro{
@@ -730,18 +822,18 @@ margin-right:-40%;
 
 .imagen_catalogo{
 
-margin-top:-27%;
+margin-top:-31%;
 margin-right:4%;
 width:45%;
 float:right;
 }
 
 .contenedor_imagen_catalogo p{
-margin-top:2%;
 float:right;
 font-size:14px;
-margin-right:-33%;
-
+font-weight:bold; 
+margin-top:-2%;
+margin-right:15%;
 }
 											
 .formulario_registro input[type="text"],input[type="password"]{
@@ -911,7 +1003,7 @@ font-size:12px;
 .info_producto{
 
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	height:100%;
 	width:35%;
 	float:left;
@@ -921,7 +1013,7 @@ font-size:12px;
 .desc_producto{
 
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	height:100%;
 	width:60%;
 	float:left;
@@ -932,7 +1024,7 @@ font-size:12px;
 .comentarios_producto{
 
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	height:100%;
 	width:100%;
 	float:left;
@@ -942,7 +1034,7 @@ font-size:12px;
 .comentario_usuario{
 
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	height:auto;
 	width:90%;
 	float:left;
@@ -1019,7 +1111,7 @@ text-decoration:underline;
 .precio_producto{
 
 	background:#FFFFFF;
-	box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px 2px #999;
 	width: 23%;
 	height:100%;
 	margin-left:2%;

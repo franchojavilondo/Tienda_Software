@@ -51,16 +51,7 @@ jQuery(document).ready(function() {
 	 );
  });
  </script>
- <script type="text/javascript">
-$(function(){
-    $('#slider2 div:gt(0)').hide();
-    setInterval(function(){
-      $('#slider2 div:first-child').fadeOut(0)
-         .next('div').fadeIn(1000)
-         .end().appendTo('#slider2');}, 8000);
-});
-</script>
-
+ 
 <title>Basic 75</title>
 <meta charset="iso-8859-1">
 <link rel="stylesheet" href="styles/layout.css" type="text/css">
@@ -91,61 +82,6 @@ $(function(){
 <script src="js/jquery.bxslider.js"></script>
 <script src="js/rainbow.min.js"></script>
 <script src="js/scripts.js"></script>
-	
-	
-<script type="text/javascript">
-			$(function() {
-				
-				var Page = (function() {
-
-					var $navArrows = $( '#nav-arrows' ).hide(),
-						$shadow = $( '#shadow' ).hide(),
-						slicebox = $( '#sb-slider' ).slicebox( {
-							onReady : function() {
-
-								$navArrows.show();
-								$shadow.show();
-
-							},
-							orientation : 'r',
-							cuboidsRandom : true
-						} ),
-						
-						init = function() {
-
-							initEvents();
-							
-						},
-						initEvents = function() {
-
-							// add navigation events
-							$navArrows.children( ':first' ).on( 'click', function() {
-
-								slicebox.next();
-								return false;
-
-							} );
-
-							$navArrows.children( ':last' ).on( 'click', function() {
-								
-								slicebox.previous();
-								return false;
-
-							} );
-
-						};
-						setInterval(function(){
-							  slicebox.next();}, 6000);
-						
-
-						return { init : init };
-
-				})();
-
-				Page.init();
-
-			});
-		</script>
 	
 
 </head>
@@ -284,7 +220,7 @@ $(function(){
       <ul>
 		 <li><a href="./index.php">PÁGINA PRINCIPAL</a></li>
 		<li>|</li>
-	    <li><a href="#">Juegos<div class="tri"></div></a>
+	    <li><div class="enl"><a href="#">Juegos<div class="tri"></div></a></div>
 		<ul>
 		<div class="sub">
 			<li><a href="#">Free to Play</a></li>
@@ -306,7 +242,7 @@ $(function(){
         <li><a href="#">Secciones<div class="tri"></div></a>
 		<ul>
 		<div class="sub">
-			<li><a href="./news.php">Noticias</a></li>
+			<li><a href="#">Noticias</a></li>
             <li><a href="#">Lo último</a></li>
             <li><a href="#">Ofertas</a></li>
 		 </div>
@@ -336,172 +272,22 @@ $(function(){
 <div class="wrapper row2">
   <div id="container" class="clear">
     <!-- content body -->
-	<div id="sidebar" >
-	<h6>Explorar por género</h6>
-        <ul>
-            <li><a href="#">Free to Play</a></li>
-            <li><a href="#">Acceso anticipado</a></li>
-            <li><a href="#">Acción</a></li>
-            <li><a href="#">Aventura</a></li>
-			<li><a href="#">Carreras</a></li>
-            <li><a href="#">Casual</a></li>
-            <li><a href="#">Deportes</a></li>
-            <li><a href="#">Estrategia</a></li>
-			<li><a href="#">Indie</a></li>
-            <li><a href="#">Multijugador masivo</a></li>
-            <li><a href="#">Rol</a></li>
-            <li><a href="#">Simuladores</a></li>
-        </ul>
-    </div>
-	<div class="ppt">
-	<div class="containerslide">
-			<div class="wrapperslide">
-
-			
-			
-			<?php
-   // Definimos los parámetros
-   $hostname = "localhost";
-   $usuario = "pma";
-   $password = "pmapass";
-   $basededatos = "tienda_software";
-
-   
-	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
-		if(!$conexion) {
-		die ("conexion no se pudo realizar");
-		}
-		
-   	////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////////////////////
-	//STMT ORIENTADO A OBJETOS
 	
-	$query1 = "SELECT Id_Producto,descripcion FROM destacados ORDER BY Id_Producto";
-
-	?>
-			
-				<ul id="sb-slider" class="sb-slider">
-				<?php 
-				
-				if ($result1 = mysqli_query($conexion, $query1)) {
-				while ($row1 = mysqli_fetch_assoc($result1)) {
-				
-				$Id_Prod=$row1["Id_Producto"];
-				$query2 = "SELECT Imagen FROM imagenes_extra where Id_Producto=$Id_Prod";
-				$query3 = "SELECT nombre FROM productos where Id_Producto=$Id_Prod";
-				if ($result2 = mysqli_query($conexion, $query2)) 
-				if ($row2 = mysqli_fetch_assoc($result2))
-				if ($result3 = mysqli_query($conexion, $query3)) 
-				if ($row3 = mysqli_fetch_assoc($result3))
-				?>
-			<li>
-						<a href="./producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?> target="_blank"><img <?php echo 'src=".'.$row2["Imagen"].'"' ?> style="width:auto" /></a>
-						<div class="sb-description">
-							<h1><?php echo $row3["nombre"] ?></h1>
-							<?php echo $row1["descripcion"] ?>
-						</div>
-					</li>
-					<?php }
-			}	
-					?>	
-					<div id="nav-arrows" class="nav-arrows">
-					<a href="#">Next</a>
-					<a href="#">Previous</a>
-					
-				</div>
-				</ul>
-
-				
-
-				<div id="nav-arrows" class="nav-arrows">
-					<a href="#">Next</a>
-					<a href="#">Previous</a>
-				</div>
-
-			</div><!-- /wrapper -->
-
-			
-
-		</div>
-		</div>
-		
-		<script type="text/javascript" src="js/jquery.slicebox.js"></script>
 		
     <!-- main content -->
     <div id="homepage" class="clear">
-      <!-- Left Box -->
-	  </br></br></br>
-		  <div class="cuadro_novedades">
-		  <div class="titulo_nove">
-			<h2>ÚLTIMOS LANZAMIENTOS </h2>
-		  </div>
-		  <section id="main">
-		<div class="inner clearfix">
-			<div id="primary">
-
-				<script type="text/javascript">
-					$(document).ready(function(){
-    
-						$('.bxslider').bxSlider({
-							minSlides: 4,
-							maxSlides: 4,
-							slideWidth: 1038,
-							slideMargin: 5
-						});
-					});
-				</script>
-
-
-
-<div class="slider">
-<ul class="bxslider" >
-		   <?php
-		   $query1="SELECT Id_Producto,nombre from productos order by Id_Producto DESC";
-		   $contador=0;
-		  
-		   ?>
-		   
-<?php 
-		if ($result1 = mysqli_query($conexion, $query1)) {
-		  while (($row1 = mysqli_fetch_assoc($result1)) && $contador<8) {
-		 
-				$contador=$contador + 1;
-				$Id_Prod=$row1["Id_Producto"];
-				$query2 = "SELECT Imagen FROM imagenes_extra where Id_Producto=$Id_Prod";
-				if ($result2 = mysqli_query($conexion, $query2)) 
-				if ($row2 = mysqli_fetch_assoc($result2))
-
-		  ?>
-		  <li><a href="./producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row1["nombre"].'"'?>><img class="imagen_novedades" <?php echo 'src=".'.$row2["Imagen"].'" '?> > </a></li>
-		  <?php
-		  
-		  }
-		  }
-?>
-
- 
-</ul></div>
-</div>
-		</div>
-	</section>
-		  
-		  
-		  
-		  	
-		  
-		  
-		  </div>
-      <!-- Right Box -->
-     
-	  
-		  <div class="cuadro_noticias">
-		  <div class="titulo_nove">
-          <h2>ÚLTIMAS NOTICIAS</h2>
-		  </div>
+	
+		<div class="contenedor_noticias">
+		
+			<div class="titulo_noticias">
+			
+				<h2>ÚLTIMAS NOTICIAS EN NUESTRA PÁGINA</h2>
+			
+			</div>
+			
 			<div class="item_noticias">
-				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" src="images/destinyT.jpg"></a>
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
 				</div>
 				<h3><br>NOTICIA</h3>
 				<a href="#" class="texto_noticias" >Destiny 2 ya se encuentra en los planes de futuro de Activision</a>
@@ -509,7 +295,7 @@ $(function(){
 			<div class="separador_items">
 			</div>
 			<div class="item_noticias">
-				<div class="imagen_noticias">
+				<div class="imagen_noticias_pagina">
 					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
 				</div>
 				<h3><br>NOTICIA</h3>
@@ -518,7 +304,7 @@ $(function(){
 			<div class="separador_items">
 			</div>
 			<div class="item_noticias">
-				<div class="imagen_noticias">
+				<div class="imagen_noticias_pagina">
 					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
 				</div>
 				<h3><br>NOTICIA</h3>
@@ -527,7 +313,7 @@ $(function(){
 			<div class="separador_items">
 			</div>
 			<div class="item_noticias">
-				<div class="imagen_noticias">
+				<div class="imagen_noticias_pagina">
 					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
 				</div>
 				<h3><br>NOTICIA</h3>
@@ -535,45 +321,87 @@ $(function(){
 			</div>
 			<div class="separador_items">
 			</div>
-		  </div>
-		  
-		   <?php
-		   $query1="SELECT Id_Producto,Porcentaje from ofertas";
-		   ?>
-		  <div class="cuadro_ofertas">
-		 <div class="titulo_nove">
-          <h2>OFERTAS ESPECIALES</h2>
-		  </div>
-		  
-		  <?php  
-		  if ($result1 = mysqli_query($conexion, $query1)) {
-		  while ($row1 = mysqli_fetch_assoc($result1)) {
-		        $Id_Prod=$row1["Id_Producto"];
-				$Porct=$row1["Porcentaje"];
-				
-				$query2 = "SELECT Imagen FROM imagenes_extra where Id_Producto=$Id_Prod";
-				$query3 = "SELECT nombre FROM productos where Id_Producto=$Id_Prod";
-				if ($result2 = mysqli_query($conexion, $query2)) 
-				if ($row2 = mysqli_fetch_assoc($result2))
-				if ($result3 = mysqli_query($conexion, $query3)) 
-				if ($row3 = mysqli_fetch_assoc($result3))
-		  ?>
-			<div class="item_ofertas">
-				<div class="imagen_noticias">
-					<a href="/producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?>><img <?php echo 'src=".'.$row2["Imagen"].'"' ?>></a>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
 				</div>
-				<h3><br>OFERTA</br></h3>
-				<a title="" href="/producto/product_info.php?id=<?php echo $Id_Prod ?>"  class="texto_noticias" ><?php echo $row3["nombre"].' Ahora con un '.$row1["Porcentaje"].'% de descuento' ?></a>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
 			</div>
-			
 			<div class="separador_items">
 			</div>
-		  <?php 
-		  }
-		  }
-		  ?>
-		  </div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
+				</div>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
+			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
+				</div>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
+			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
+				</div>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
+			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
+				</div>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
+			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
+				</div>
+				<h3><br>NOTICIA</h3>
+				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
+			</div>
+			<div class="separador_items">
+			</div>
+		
+		</div>
+	
+	
+		<div class="banner_imagenes">
+			<div class="titulo_noticias">
+			
+				<h2>PUBLICIDAD</h2>
+			
+			</div>
+			<div class="bimagen">
+			
+				<img src="images/extras/ryse.jpg">
+				<img src="images/extras/dai.jpg">
+				<img src="images/extras/MW3.jpg">
+				<img src="images/extras/batman.jpg">
+				
+			</div>
+		
+		</div>
+	
+	
+     
+	  
 		  
+		  
+		   
     </div>
     <!-- / content body -->
   </div>

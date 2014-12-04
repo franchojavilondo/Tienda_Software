@@ -144,35 +144,50 @@ $(function(){
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="#">Destacados<div class="tri"></div></a>
-		 <ul>
-		 <div class="sub">
-		 <li><a href="#">Juegos</a></li>
-		 <li><a href="#">Software</a></li>
-		 <li><a href="#">Demos</a></li>
-		 <li><a href="#">Genero</a></li>
-		 </div>
-		 
-		 </ul>
-		 </li>
+		 <li><a href="../index.php">PÁGINA PRINCIPAL</a></li>
 		<li>|</li>
-	    <li><div class="enl"><a href="../juegos/listado.php">Juegos<div class="tri"></div></a></div>
+	    <li><a href="#">Juegos<div class="tri"></div></a>
 		<ul>
 		<div class="sub">
-		 <li><a href="#">Accion</a></li>
-		 <li><a href="#">Aventura</a></li>
-		 <li><a href="#">Carreras</a></li>
-		 <li><a href="#">Casual</a></li>
+			<li><a href="#">Free to Play</a></li>
+            <li><a href="#">Acceso anticipado</a></li>
+            <li><a href="#">Acción</a></li>
+            <li><a href="#">Aventura</a></li>
+			<li><a href="#">Carreras</a></li>
+            <li><a href="#">Casual</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Estrategia</a></li>
+			<li><a href="#">Indie</a></li>
+            <li><a href="#">Multijugador masivo</a></li>
+            <li><a href="#">Rol</a></li>
+            <li><a href="#">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
 		<li>|</li>
-        <li><a href="#">Software<div class="tri"></div></a></li>
+        <li><a href="#">Secciones<div class="tri"></div></a>
+		<ul>
+		<div class="sub">
+			<li><a href="../news.php">Noticias</a></li>
+            <li><a href="#">Lo último</a></li>
+            <li><a href="#">Ofertas</a></li>
+		 </div>
+		 </ul>
+		
+		</li>
 		<li>|</li>
-        <li><a href="#">Demos<div class="tri"></div></a></li>
-		<li>|</li>
-        <li class="last"><a href="#">Noticias<div class="tri"></div></a></li>
+        <li class="last"><a href="#">Demos</a></li>
+        
       </ul>
+	  
+	  
+	  <div class="seccion_carrito">
+	  <ul>
+	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="../images/cart.png">Mi Cesta</a></li>
+      </ul>
+	  </div>
+	  
+	  
 	  </div>
     </nav>      
     
@@ -272,7 +287,21 @@ $(function(){
 			
 			<div class="comentarios_producto">
 				<div  class="titulo_producto"><h2>Comentarios de usuarios</h2></div>
-			
+				
+				<div class="comentario_usuario">
+					<div  class="titulo_comentario"><h2>Nombre de usuario</h2></div>
+					<div  class="imagen_comentario"><img src="../images/gaben.jpg" alt="Usuario"></div>
+					<div  class="comentario_texto">
+					
+						<p>El sitio web Códigos de colores HTML le proporciona herramientas gratuitas de colores para encontrar colores HTML para su sitio web. Las excelentes herramientas Tabla de colores HTML y Selector de colores HTML harán que esta tarea sea pan comido.
+
+Para empezar rápidamente a usar Colores HTML en su sitio web, échele un vistazo a ¿Cómo usar los códigos de colores HTML?. Si desea aprender qué significa realmente esta combinación de caracteres en Códigos de colores HTML échele un vistazo a la sección Teoría sobre los códigos de colores HTML.
+
+Colores seguros para la Web es la lista de colores que se ven igual en todos los sistemas operativos. Si es daltónico consulte los Nombres de colores HTML para superar ese problema.</p>
+					
+					</div>				
+				
+				</div>
 				
 			</div>
 			
