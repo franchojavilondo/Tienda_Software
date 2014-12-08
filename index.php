@@ -361,7 +361,7 @@ $(function(){
 
 	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
 		<li>|</li>
-	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+	  
 
 	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
 
