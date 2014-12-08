@@ -5,7 +5,7 @@ $carro=$_SESSION['carro'];
 $contador = count($carro);
 }
 
-else $carro=false; 
+else {$carro=false; $contador=0;}
 ?>
 <!DOCTYPE html>
 
@@ -317,12 +317,12 @@ $(function(){
       <ul>
 		 <li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
-<<<<<<< HEAD
+
 	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
-=======
+
 	    <li><a href="./juegos/listado.php">Juegos<div class="tri"></div></a>
 	    <li><div class="enl"><a href="./juegos/listado.php">Juegos<div class="tri"></div></a></div>
->>>>>>> origin/master
+
 		<ul>
 		<div class="sub">
 			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
@@ -358,13 +358,13 @@ $(function(){
 	  
 	  <div class="seccion_carrito">
 	  <ul>
-<<<<<<< HEAD
+
 	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
 		<li>|</li>
 	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
-=======
+
 	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
->>>>>>> origin/master
+
       </ul>
 	  </div>
 	  
