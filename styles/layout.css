@@ -72,7 +72,7 @@ blockquote, q{display:block; padding:8px 10px; color:#979797; background-color:#
 blockquote:before, q:before{content:'“ '; font-size:26px;}
 blockquote:after, q:after{content:' „'; font-size:26px; line-height:0;}
 
-form, fieldset, legend{margin:0; padding:0; border:none;}
+form, fieldset, legend{margin:0; padding:0; border:none;z-index:5;}
 legend{display:none;}
 input, textarea, select{font-size:12px; font-family:Arial, Helvetica, sans-serif;}
 
@@ -167,7 +167,10 @@ text-align:center;
 float:right;
 }
 
+#cuadro_busqueda{
 
+z-index: 5;
+}
 #header .boton_login:hover {
     background: #DD8500;
 	-webkit-transition:  background 0.3s ease-in-out;
@@ -206,6 +209,7 @@ float:right;
 .sub li{width:10px;}
 #header nav li a:hover {color:#FF9900; }
 #header nav li a:hover .tri {margin-left:5px;background-color:#FF9900;}
+
 
 .iconos_navegacion{
 float: left;
@@ -357,6 +361,20 @@ background-position: center;
 background-repeat: no-repeat;
 cursor: pointer;
 vertical-align: text-bottom;
+}
+
+.barrabusqueda{
+ z-index:5;
+ width: 21.5%;
+ background:#3f7696;
+ border: 1px solid #3f7696;
+ border-top:none;
+ padding: 10px 20px;
+ position: absolute;
+ float:left;
+ display: block;
+ text-transform:uppercase;
+ 
 }
 
 .menu :hover .enl{

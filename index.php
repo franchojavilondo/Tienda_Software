@@ -56,6 +56,23 @@ jQuery(document).ready(function() {
 	 );
  });
  </script>
+ 
+ <script type="text/javascript">
+ $(document).ready(function() {
+	 $('').hover(
+	 function(e)
+	 {
+		$(this).find('ul').css({display: "block"});
+	 },
+	 function(e)
+	 {
+		$(this).find('ul').css({display: "none"});
+	 }
+	 );
+ });
+ </script>
+ 
+ 
  <script type="text/javascript">
 $(function(){
     $('#slider2 div:gt(0)').hide();
@@ -175,14 +192,14 @@ $(function(){
     <div id="hgroup">
      <a href="index.php"> <img src="images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"></a> </div>
     
-    <form action="#" method="post">
+    <form   action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
         <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
 		<input type="submit" id="sf_submit" value="">
         <br />
 <br />
-<div id="resultado" style="border: solid black 1px;" style="z-index: 5;"></div>
+<div id="resultado" class="cuadro_busqueda" ></div>
 
       </fieldset>
     </form>

@@ -16,22 +16,33 @@
                                 $resultados[]= $row_errs; 
                         }
                         ?>
-                        <table>
+						
+						
+						
+                        <table class="barrabusqueda" >
                         <?php
                         foreach($resultados as $post):
                                 ?>
+								
                                 <tr>
+										<td>
+										<a href="./producto/product_info.php?id=<?php echo $post['Id_Producto']?>"><img <?php echo 'src=".'.$post["Caratula"].'"' ?> width="30" height="30"></a>
+
+										</td>
                                         <td>
-                                                <?php echo $post['Nombre'].": "; ?>
+                                                <a href="./producto/product_info.php?id=<?php echo $post['Id_Producto']?>" style="background: transparent;"><?php echo $post['Nombre']." "; ?></a>
                                         </td>
                                         <td>
-                                                <?php echo $post['Precio']." Euros"; ?>
+                                                <div style="background: transparent;"><?php echo $post['Precio']." Euros"; ?></div>
                                         </td>
                                 </tr>
+								
                                 <?php
                         endforeach;
                         ?>
                         </table>
+						
+						
                         <?php
                 }
         }
