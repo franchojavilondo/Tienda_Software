@@ -4,7 +4,6 @@
 $carro=$_SESSION['carro'];
 $contador = count($carro);
 }
-
 else {$carro=false; $contador=0;}
 ?>
 <!DOCTYPE html>
@@ -40,7 +39,6 @@ jQuery(document).ready(function() {
 			return false;
 		});
 	});
-
 });
 </script>
 
@@ -126,53 +124,39 @@ $(function(){
 			$(function() {
 				
 				var Page = (function() {
-
 					var $navArrows = $( '#nav-arrows' ).hide(),
 						$shadow = $( '#shadow' ).hide(),
 						slicebox = $( '#sb-slider' ).slicebox( {
 							onReady : function() {
-
 								$navArrows.show();
 								$shadow.show();
-
 							},
 							orientation : 'r',
 							cuboidsRandom : true
 						} ),
 						
 						init = function() {
-
 							initEvents();
 							
 						},
 						initEvents = function() {
-
 							// add navigation events
 							$navArrows.children( ':first' ).on( 'click', function() {
-
 								slicebox.next();
 								return false;
-
 							} );
-
 							$navArrows.children( ':last' ).on( 'click', function() {
 								
 								slicebox.previous();
 								return false;
-
 							} );
-
 						};
 						setInterval(function(){
 							  slicebox.next();}, 6000);
 						
-
 						return { init : init };
-
 				})();
-
 				Page.init();
-
 			});
 		</script>
 	
@@ -317,22 +301,11 @@ $(function(){
       <ul>
 		 <li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
-<<<<<<< HEAD
 
 	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
 
+	    
 
-
-	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
-
-	    <li><a href="./juegos/listado.php">Juegos<div class="tri"></div></a>
-	    <li><div class="enl"><a href="./juegos/listado.php">Juegos<div class="tri"></div></a></div>
-
-
-=======
-	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
-
->>>>>>> origin/master
 		<ul>
 		<div class="sub">
 			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
@@ -368,24 +341,13 @@ $(function(){
 	  
 	  <div class="seccion_carrito">
 	  <ul>
-<<<<<<< HEAD
 
 	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
 		<li>|</li>
-	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
-
-=======
-	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
-		<li>|</li>
->>>>>>> origin/master
-
+	  
 
 	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
       </ul>
 	  </div>
 	  
@@ -429,7 +391,6 @@ $(function(){
    $usuario = "pma";
    $password = "pmapass";
    $basededatos = "tienda_software";
-
    
 	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
 		if(!$conexion) {
@@ -442,7 +403,6 @@ $(function(){
 	//STMT ORIENTADO A OBJETOS
 	
 	$query1 = "SELECT Id_Producto,descripcion FROM destacados ORDER BY Id_Producto";
-
 	?>
 			
 				<ul id="sb-slider" class="sb-slider">
@@ -535,7 +495,6 @@ $(function(){
 				$query2 = "SELECT Imagen FROM imagenes_extra where Id_Producto=$Id_Prod";
 				if ($result2 = mysqli_query($conexion, $query2)) 
 				if ($row2 = mysqli_fetch_assoc($result2))
-
 		  ?>
 		  <li><a href="./producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row1["nombre"].'"'?>><img class="imagen_novedades" <?php echo 'src=".'.$row2["Imagen"].'" '?> > </a></li>
 		  <?php
