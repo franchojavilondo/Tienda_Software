@@ -561,7 +561,7 @@ $(function(){
 			
 			<div class="separador_items">
 			</div>
-			<?php }}?>
+			<?php $contador++;}}?>
 			
 			
 			

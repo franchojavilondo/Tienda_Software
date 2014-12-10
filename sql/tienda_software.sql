@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2014 a las 16:41:24
+-- Tiempo de generación: 10-12-2014 a las 18:57:01
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -162,20 +162,24 @@ INSERT INTO `lineas` (`Id_Producto`, `Id_Pedido`, `Precio`, `Id_Linea`, `cantida
 --
 
 CREATE TABLE IF NOT EXISTS `noticias` (
+  `Id_Titular` int(11) NOT NULL AUTO_INCREMENT,
   `Id_Producto` int(3) NOT NULL,
   `Contenido` varchar(2000) NOT NULL,
-  `Titular` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Titular` varchar(200) NOT NULL,
+  `Subtitulo` varchar(200) NOT NULL,
+  PRIMARY KEY (`Id_Titular`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `noticias`
 --
 
-INSERT INTO `noticias` (`Id_Producto`, `Contenido`, `Titular`) VALUES
-(16, 'balblablalbalbalblablalblablalbl', 'Destiny 2 en ya muestra nuevas imagenes'),
-(20, 'sgfsafasdjustcausepenepnepenpenpe', 'Filtradas nuevas imagens de Just Cause 3'),
-(17, 'blablalbalpenepndragon age', 'Dragon Age: INquisition gana en ventas en europa'),
-(18, 'balblablalbalbafalloutlondon', 'Se filtran nuevas noticias de Fallout: London');
+INSERT INTO `noticias` (`Id_Titular`, `Id_Producto`, `Contenido`, `Titular`, `Subtitulo`) VALUES
+(1, 16, 'balblablalbalbalblablalblablalbl', 'Destiny 2 en ya muestra nuevas imagenes', ''),
+(2, 20, 'sgfsafasdjustcausepenepnepenpenpe', 'Filtradas nuevas imagens de Just Cause 3', ''),
+(3, 17, 'blablalbalpenepndragon age', 'Dragon Age: INquisition gana en ventas en europa', ''),
+(4, 18, 'balblablalbalbafalloutlondon', 'Se filtran nuevas noticias de Fallout: London', ''),
+(5, 25, '<p>Marcin Mormot, community manager de CD Projekt Red, ha hablado en palabras recogidas por el portal WorldsFactory en las que explica algunos aspectos muy interesantes relacionados con el segundo personaje jugable de The Witcher III: Wild Hunt que fue anunciado recientemente.</p>\n<p>"Sólo quería añadir algo importante sobre el segundo personaje jugable, que será muy importante en la historia del juego por otro lado. No podrás cambiar de manejar uno a otro a tu gusto, habrá algunos momentos en el argumento en los que asumirás el control del otro personaje. Pasarás cierto tiempo jugando con él, un tiempo significativo".</p>\n<p>Recordemos que el título, además, ha sido noticia este fin de semana por el retraso de tres meses en su fecha de lanzamiento. "Queremos decir gracias a todo el mundo que nos ha mostrado su apoyo. Sabemos que es duro cuando esperas un juego y tienes que esperar un poco más, pero os prometemos que no quedaréis decepcionados".</p>', 'Los creadores de The Witcher III explican que sólo podremos manejar al otro personaje en momentos puntuales.', '"Habrá algunos momentos concretos de la campaña en los que manejarás al otro personaje".	');
 
 -- --------------------------------------------------------
 

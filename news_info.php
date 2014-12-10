@@ -5,6 +5,8 @@ $carro=$_SESSION['carro'];
 $contador = count($carro);
 }
 else {$carro=false; $contador=0;}
+
+$Titular=$_GET["idn"];
 ?>
 <!DOCTYPE html>
 
@@ -291,26 +293,51 @@ jQuery(document).ready(function() {
     <!-- main content -->
     <div id="homepage" class="clear">
 	
+	<?php 
+			
+			// Definimos los parámetros
+   $hostname = "localhost";
+   $usuario = "pma";
+   $password = "pmapass";
+   $basededatos = "tienda_software";
+   
+	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if(!$conexion) {
+		die ("conexion no se pudo realizar");
+		}
+			$queryn="SELECT * from noticias where Id_Titular=$Titular";
+		  
+		  
+		  if ($resultn = mysqli_query($conexion, $queryn)) 
+		  if(($rown = mysqli_fetch_assoc($resultn))) {
+		  $ID=$rown["Id_Producto"];
+		  $queryn2="SELECT Imagen from imagenes_extra where Id_Producto=$ID";
+		  
+		  if ($resultn2 = mysqli_query($conexion, $queryn2)) 
+		  if($rown2 = mysqli_fetch_assoc($resultn2)){
+		  $queryn3="SELECT * from productos where Id_Producto=$ID";
+		  if ($resultn3 = mysqli_query($conexion, $queryn3)) 
+		  if($rown3 = mysqli_fetch_assoc($resultn3)){
+		  ?>
+		  
 		<div class="contenedor_noticia">
-			<div  class="encabezado_noticia"><h2>Noticia - The Witcher III Wild Hunt</h2></div>
+			<div  class="encabezado_noticia"><h2>Noticia - <?php echo $rown3["Nombre"]?></h2></div>
 			<div class="titular_noticia">
-				Los creadores de The Witcher III explican que sólo podremos manejar al otro personaje en momentos puntuales							
+				<?php echo $rown["Titular"]?>						
 			</div>
 			<div class="subtitular_noticia">
-				"Habrá algunos momentos concretos de la campaña en los que manejarás al otro personaje".			
+				<?php echo $rown["Subtitulo"]?>		
 			</div>
 			<div class="imagen_principal_noticia">
-				<img src="images/extras/the_witcher_3.jpg">
+				<img <?php echo 'src=".'.$rown2["Imagen"].'"' ?>>
 			</div>
 			<div class="contenido_noticia">
-				<p>Marcin Mormot, community manager de CD Projekt Red, ha hablado en palabras recogidas por el portal WorldsFactory en las que explica algunos aspectos muy interesantes relacionados con el segundo personaje jugable de The Witcher III: Wild Hunt que fue anunciado recientemente.</p>
-
-				<p>"Sólo quería añadir algo importante sobre el segundo personaje jugable, que será muy importante en la historia del juego por otro lado. No podrás cambiar de manejar uno a otro a tu gusto, habrá algunos momentos en el argumento en los que asumirás el control del otro personaje. Pasarás cierto tiempo jugando con él, un tiempo significativo".</p>
-
-				<p>Recordemos que el título, además, ha sido noticia este fin de semana por el retraso de tres meses en su fecha de lanzamiento. "Queremos decir gracias a todo el mundo que nos ha mostrado su apoyo. Sabemos que es duro cuando esperas un juego y tienes que esperar un poco más, pero os prometemos que no quedaréis decepcionados".</p>
-			</div>
+				<?php echo $rown["Contenido"]?>
+				</div>
 		</div>
-     
+		
+     <?php }}}?>
+	 
 	  <div class="banner_imagenes">
 			<div class="titulo_noticias">
 			
