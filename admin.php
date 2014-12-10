@@ -223,6 +223,29 @@ function  validaradmintask(){
 	document.formu13.submit(); 
 }				
 </script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+ 
+ $(document).ready(function() {
+  $("#parametro").keyup( //Evento de soltar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+</script>
+
 </head>
 <body>
 <?php
@@ -470,8 +493,9 @@ function  validaradmintask(){
 			?>
 			<h1>Eliminar productos</h1>
 			<form method="post"  name="formu11">
-			<p>Nombre<br><input type="text" name="nombre" value="" ></p>
 			
+			<p>Nombre<br><input id="parametro" type="text" name="nombre" value="" ></p>
+			<div id="resultado"></div>
 			<p><input type="button" name="commit" value="Eliminar producto" onclick="validardeleteproduct()" ></p>
 			<?php
 	
@@ -521,6 +545,7 @@ function  validaradmintask(){
 					$conexion ->close();
 				}
 			?>
+			
 			</form>
 			<?php					
 		}
@@ -529,7 +554,8 @@ function  validaradmintask(){
 			?>
 			<h1>Agregar ofertas</h1>
 			<form method="post"  name="formu3">
-			<p>Nombre<br><input type="text" name="nombre" value="" ></p>
+			<p>Nombre<br><input id="parametro" type="text" name="nombre" value="" ></p>
+			<div id="resultado"></div>
 			<p>Descuento a aplicar (en %)<br><input type="integer" name="descuento" value=""></p>
 			<p><input type="button" name="commit" value="Agregar oferta" onclick="validaraddoffers()" ></p>
 			<?php
@@ -588,7 +614,8 @@ function  validaradmintask(){
 			?>
 			<h1>Eliminar ofertas</h1>
 			<form method="post"  name="formu10">
-			<p>Nombre<br><input type="text" name="nombre" value="" ></p>
+			<p>Nombre<br><input id="parametro" type="text" name="nombre" value="" ></p>
+			<div id="resultado"></div>
 			<p><input type="button" name="commit" value="Eliminar oferta" onclick="validardeleteoffers()" ></p>
 			<?php
 	
@@ -647,7 +674,8 @@ function  validaradmintask(){
 			<h1>Agregar noticias</h1>
 			<form method="post" ENCTYPE="multipart/form-data" name="formu4">
 			<p>Titular<br><input type="text" name="titular" value="" ></p>
-			<p>Juego relacionado<br><input type="text" name="juego" value="" ></p>
+			<p>Juego relacionado<br><input id="parametro" type="text" name="juego" value="" ></p>
+			<div id="resultado"></div>
 			<p>Imagen<br><input type="file" name="imagen"></p>
 			<p>Contenido<br><textarea name="contenido" cols="40" rows="5" ></textarea></p>
 			<p><input type="button" name="commit" value="Agregar noticias" onclick="validaraddnews()" ></p>
@@ -700,8 +728,8 @@ function  validaradmintask(){
 			?>
 			<h1>Administrar noticias</h1>
 			<form method="post"  name="formu5">
-			<p>Juego relacionado con la noticia<br><input type="text" name="nombre" value="" ></p>
-			
+			<p>Juego relacionado con la noticia<br><input id="parametro" type="text" name="nombre" value="" ></p>
+			<div id="resultado"></div>
 			<p><input type="button" name="commit" value="Administrar noticias" onclick="validaradminnews()" ></p>
 			<?php			
 				if (isset($_POST["nombre"])){
