@@ -10,7 +10,7 @@ session_start();
 if(isset($_SESSION['carro'])) {
 $carro=$_SESSION['carro'];
 $contador = count($carro);
-}else $carro=false; 
+}else {$carro=false; $contador=0;} 
 //La asignamos a la variable 
 //$carro si existe o ponemos a false $carro 
 //en caso contrario 
