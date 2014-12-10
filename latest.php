@@ -223,7 +223,7 @@ jQuery(document).ready(function() {
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
+	  <li><a href="../index.html"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
 
 	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
@@ -291,27 +291,92 @@ jQuery(document).ready(function() {
     <!-- main content -->
     <div id="homepage" class="clear">
 	
-		<div class="contenedor_noticia">
-			<div  class="encabezado_noticia"><h2>Noticia - The Witcher III Wild Hunt</h2></div>
-			<div class="titular_noticia">
-				Los creadores de The Witcher III explican que sólo podremos manejar al otro personaje en momentos puntuales							
+		<div class="contenedor_noticias">
+		
+			<div class="titulo_noticias">
+			
+				<h2>ÚLTIMOS LANZAMIENTOS EN LA TIENDA</h2>
+			
 			</div>
-			<div class="subtitular_noticia">
-				"Habrá algunos momentos concretos de la campaña en los que manejarás al otro personaje".			
+			
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+				</div>
+				<h3><br>carreras</h3>
+				<a href="#" class="texto_noticias" >THE CREW</a>
+				<div class="espacio_precios">
+					<div class="discount">
+						<porcentaje>-20%</porcentaje>
+					</div>
+					<div class="price">
+						<anterior>49,99€</anterior></br>
+						<costo>39,98€</costo>
+					</div>					
+				</div>
 			</div>
-			<div class="imagen_principal_noticia">
-				<img src="images/extras/the_witcher_3.jpg">
+			<div class="separador_items">
 			</div>
-			<div class="contenido_noticia">
-				<p>Marcin Mormot, community manager de CD Projekt Red, ha hablado en palabras recogidas por el portal WorldsFactory en las que explica algunos aspectos muy interesantes relacionados con el segundo personaje jugable de The Witcher III: Wild Hunt que fue anunciado recientemente.</p>
-
-				<p>"Sólo quería añadir algo importante sobre el segundo personaje jugable, que será muy importante en la historia del juego por otro lado. No podrás cambiar de manejar uno a otro a tu gusto, habrá algunos momentos en el argumento en los que asumirás el control del otro personaje. Pasarás cierto tiempo jugando con él, un tiempo significativo".</p>
-
-				<p>Recordemos que el título, además, ha sido noticia este fin de semana por el retraso de tres meses en su fecha de lanzamiento. "Queremos decir gracias a todo el mundo que nos ha mostrado su apoyo. Sabemos que es duro cuando esperas un juego y tienes que esperar un poco más, pero os prometemos que no quedaréis decepcionados".</p>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+				</div>
+				<h3><br>carreras</h3>
+				<a href="#" class="texto_noticias">Dragon Quest III</a>
+				<div class="espacio_precios">
+					<div class="discount">
+						<porcentaje>0%</porcentaje>
+					</div>
+					<div class="price">
+						<anterior>19,99€</anterior></br>
+						<costo>19,99€</costo>
+					</div>					
+				</div>
 			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+				</div>
+				<h3><br>carreras</h3>
+				<a href="#" class="texto_noticias" >THE CREW</a>
+				<div class="espacio_precios">
+					<div class="discount">
+						<porcentaje>-20%</porcentaje>
+					</div>
+					<div class="price">
+						<anterior>49,99€</anterior></br>
+						<costo>39,98€</costo>
+					</div>					
+				</div>
+			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+				</div>
+				<h3><br>carreras</h3>
+				<a href="#" class="texto_noticias" >THE CREW</a>
+				<div class="espacio_precios">
+					<div class="discount">
+						<porcentaje>-20%</porcentaje>
+					</div>
+					<div class="price">
+						<anterior>49,99€</anterior></br>
+						<costo>39,98€</costo>
+					</div>					
+				</div>
+			</div>
+			<div class="separador_items">
+			</div>
+			
+		
 		</div>
-     
-	  <div class="banner_imagenes">
+	
+	
+		<div class="banner_imagenes">
 			<div class="titulo_noticias">
 			
 				<h2>PUBLICIDAD</h2>
@@ -327,6 +392,10 @@ jQuery(document).ready(function() {
 			</div>
 		
 		</div>
+	
+	
+     
+	  
 		  
 		  
 		   

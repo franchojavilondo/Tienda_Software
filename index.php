@@ -316,7 +316,7 @@ $(function(){
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
+		<li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
 
 	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
@@ -345,8 +345,8 @@ $(function(){
 		<ul>
 		<div class="sub">
 			<li><a href="./news.php">Noticias</a></li>
-            <li><a href="#">Lo último</a></li>
-            <li><a href="#">Ofertas</a></li>
+            <li><a href="./latest.php">Lo último</a></li>
+            <li><a href="./offers.php">Ofertas</a></li>
 		 </div>
 		 </ul>
 		</li>

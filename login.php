@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	if(isset($_SESSION['carro'])) {
+$carro=$_SESSION['carro'];
+$contador = count($carro);
+}
+else {$carro=false; $contador=0;}
 ?>
 <html lang="en" dir="ltr">
 
@@ -124,28 +129,32 @@ function validar(){
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="./index.php">PÁGINA PRINCIPAL</a></li>
+	  <li><a href="../index.html"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
-	    <li><a href="#">Juegos<div class="tri"></div></a>
+
+	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
+
+	    
+
 		<ul>
 		<div class="sub">
-			<li><a href="#">Free to Play</a></li>
-            <li><a href="#">Acceso anticipado</a></li>
-            <li><a href="#">Acción</a></li>
-            <li><a href="#">Aventura</a></li>
-			<li><a href="#">Carreras</a></li>
-            <li><a href="#">Casual</a></li>
-            <li><a href="#">Deportes</a></li>
-            <li><a href="#">Estrategia</a></li>
-			<li><a href="#">Indie</a></li>
-            <li><a href="#">Multijugador masivo</a></li>
-            <li><a href="#">Rol</a></li>
-            <li><a href="#">Simuladores</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=accion">Acción</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=aventura">Aventura</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=carreras">Carreras</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=casual">Casual</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=deportes">Deportes</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=estrategia">Estrategia</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=indie">Indie</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=rol">Rol</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=simuladores">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
 		<li>|</li>
-        <li><a href="#">Secciones<div class="tri"></div></a>
+        <li><a href="#"><img class="iconos_navegacion" src="images/menu.png">Secciones<div class="tri"></div></a>
 		<ul>
 		<div class="sub">
 			<li><a href="./news.php">Noticias</a></li>
@@ -153,17 +162,22 @@ function validar(){
             <li><a href="#">Ofertas</a></li>
 		 </div>
 		 </ul>
-		
 		</li>
 		<li>|</li>
-        <li class="last"><a href="#">Demos</a></li>
+        <li class="last"><a href="#"><img class="iconos_navegacion" src="images/demo.png">Demos</a></li>
         
       </ul>
 	  
 	  
 	  <div class="seccion_carrito">
 	  <ul>
-	  <li><a href="#"><div class="contador_carrito">0</div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+
+	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
+		<li>|</li>
+	  
+
+	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+
       </ul>
 	  </div>
 	  

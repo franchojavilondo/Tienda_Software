@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	if(isset($_SESSION['carro'])) {
+$carro=$_SESSION['carro'];
+$contador = count($carro);
+}
+else {$carro=false; $contador=0;}
 ?>
 <!DOCTYPE html>
 
@@ -51,7 +56,6 @@ jQuery(document).ready(function() {
 	 );
  });
  </script>
-
  
 <title>Basic 75</title>
 <meta charset="iso-8859-1">
@@ -76,6 +80,14 @@ jQuery(document).ready(function() {
 
 <link rel="stylesheet" href="css/jquery.bxslider.css" type="text/css" />
 <link rel="stylesheet" href="css/github.css" type="text/css" />
+
+<script src="js/jquery.min.js"></script>
+	
+	
+<script src="js/jquery.bxslider.js"></script>
+<script src="js/rainbow.min.js"></script>
+<script src="js/scripts.js"></script>
+	
 
 </head>
 <body>
@@ -118,7 +130,7 @@ jQuery(document).ready(function() {
 			die('Error de conexión: ' . $conexion->connect_error);
 		}	
 		
-	$consultaSQL ="SELECT * FROM clientes  WHERE nombre='$user' && pass='$contra'" ; 
+		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
 	  
 		$resultado = $conexion->query($consultaSQL);
 		if (!$resultado) {
@@ -127,27 +139,59 @@ jQuery(document).ready(function() {
 		
 		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
 		if ($registro=$resultado->fetch_assoc()){
-			
 		
+			$ruta=$registro['foto'];
+			
+			?>
+	
+	
+			<div class="imagen_perfil">
+					<img <?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" >
+				</div>
+					
+				<div class="titulo_perfil">
+					<h1><?php echo $registro["nombre"]; ?> </h1>
+				</div>
+				
+				<div class="botones_acceso">
+					<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
+					<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+				</div>
+			<?php
+		
+		}
+		else{
+			$consultaSQL ="SELECT * FROM administradores WHERE nombre='$user' && pass='$contra'" ; 
+	  
+			$resultado = $conexion->query($consultaSQL);
+			if (!$resultado) {
+				die('No se puede realizar la consulta: ' . $conexion->connect_error);
+			}
+			
+			//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+			if ($registro=$resultado->fetch_assoc()){
+				?>
+	
+		
+				<div class="imagen_perfil">
+				
+						<img src="./images/usuarios/admin.png" alt="Usuario" >
+					</div>
+						
+					<div class="titulo_perfil">
+						<h1><?php echo "Administrador: ".$registro["nombre"]; ?> </h1>
+					</div>
+					
+					<div class="botones_acceso">
+						<a href="admin.php"><input type="submit" class="boton_login" value="Pagina administracion"></a>
+						<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+					</div>
+				<?php
+			}
 		}
 		$registro=$resultado->free();
 		$conexion->close();
-	?>
 	
-	
-	<div class="imagen_perfil">
-			<img src="images/profile.png" alt="Usuario" class="profile_img">
-		</div>
-			
-		<div class="titulo_perfil">
-			<h1><?php echo $user; ?> </h1>
-		</div>
-		
-		<div class="botones_acceso">
-			<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
-			<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
-		</div>
-	<?php
 	
 	
 	
@@ -179,67 +223,184 @@ jQuery(document).ready(function() {
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="#">Destacados<div class="tri"></div></a>
-		 <ul>
-		 <div class="sub">
-		 <li><a href="#">Juegos</a></li>
-		 <li><a href="#">Software</a></li>
-		 <li><a href="#">Demos</a></li>
-		 <li><a href="#">Genero</a></li>
-		 </div>
-		 
-		 </ul>
-		 </li>
+	  <li><a href="../index.html"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
-	    <li><div class="enl"><a href="#">Juegos<div class="tri"></div></a></div>
+
+	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
+
+	    
+
 		<ul>
 		<div class="sub">
-		 <li><a href="#">Accion</a></li>
-		 <li><a href="#">Aventura</a></li>
-		 <li><a href="#">Carreras</a></li>
-		 <li><a href="#">Casual</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=accion">Acción</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=aventura">Aventura</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=carreras">Carreras</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=casual">Casual</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=deportes">Deportes</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=estrategia">Estrategia</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=indie">Indie</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=rol">Rol</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=simuladores">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
 		<li>|</li>
-        <li><a href="#">Software<div class="tri"></div></a></li>
+        <li><a href="#"><img class="iconos_navegacion" src="images/menu.png">Secciones<div class="tri"></div></a>
+		<ul>
+		<div class="sub">
+			<li><a href="./news.php">Noticias</a></li>
+            <li><a href="#">Lo último</a></li>
+            <li><a href="#">Ofertas</a></li>
+		 </div>
+		 </ul>
+		</li>
 		<li>|</li>
-        <li><a href="#">Demos<div class="tri"></div></a></li>
-		<li>|</li>
-        <li class="last"><a href="#">Noticias<div class="tri"></div></a></li>
+        <li class="last"><a href="#"><img class="iconos_navegacion" src="images/demo.png">Demos</a></li>
+        
       </ul>
+	  
+	  
+	  <div class="seccion_carrito">
+	  <ul>
+
+	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
+		<li>|</li>
+	  
+
+	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="images/cart.png">Mi Cesta</a></li>
+
+      </ul>
+	  </div>
+	  
+	  
 	  </div>
     </nav>      
     
   </header>
 </div>
+
+<!-- content -->
 <div class="wrapper row2">
   <div id="container" class="clear">
-  
-	<div class="navegacion_de_productos">
-		<ul class="lista_navegacion">
-			<li><a href="#">Todos los productos</a></li>
-			<li> > </li>
-			<li><a href="#">Explorar por etiquetas</a></li>
-			<li> > </li>
-			<li>Acción</li>
-		</ul>
-	</div>
-				
-		<div class="contenedor_secciones_principales">
-			<div class="secciones_principales">
-				<ul class="lista_secciones">
-					<li><a href="#">Nuevos lanzamientos</a></li>
-					<li><a href="#">Los más vendidos</a></li>
-					<li><a href="#">Especiales</a></li>
-				</ul>
-				
-				
+    <!-- content body -->
+	
+		
+    <!-- main content -->
+    <div id="homepage" class="clear">
+	
+		<div class="contenedor_noticias">
+		
+			<div class="titulo_noticias">
+			
+				<h2>OFERTAS ESPECIALES Y DESCUENTOS</h2>
+			
+			</div>
+			
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+				</div>
+				<h3><br>carreras</h3>
+				<a href="#" class="texto_noticias" >THE CREW</a>
+				<div class="espacio_precios">
+					<div class="discount">
+						<porcentaje>-20%</porcentaje>
+					</div>
+					<div class="price">
+						<anterior>49,99€</anterior></br>
+						<costo>39,98€</costo>
+					</div>					
+				</div>
+			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+				</div>
+				<h3><br>carreras</h3>
+				<a href="#" class="texto_noticias">Dragon Quest III</a>
+				<div class="espacio_precios">
+					<div class="discount">
+						<porcentaje>0%</porcentaje>
+					</div>
+					<div class="price">
+						<anterior>19,99€</anterior></br>
+						<costo>19,99€</costo>
+					</div>					
+				</div>
+			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+				</div>
+				<h3><br>carreras</h3>
+				<a href="#" class="texto_noticias" >THE CREW</a>
+				<div class="espacio_precios">
+					<div class="discount">
+						<porcentaje>-20%</porcentaje>
+					</div>
+					<div class="price">
+						<anterior>49,99€</anterior></br>
+						<costo>39,98€</costo>
+					</div>					
+				</div>
+			</div>
+			<div class="separador_items">
+			</div>
+			<div class="item_noticias">
+				<div class="imagen_noticias_pagina">
+					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+				</div>
+				<h3><br>carreras</h3>
+				<a href="#" class="texto_noticias" >THE CREW</a>
+				<div class="espacio_precios">
+					<div class="discount">
+						<porcentaje>-20%</porcentaje>
+					</div>
+					<div class="price">
+						<anterior>49,99€</anterior></br>
+						<costo>39,98€</costo>
+					</div>					
+				</div>
+			</div>
+			<div class="separador_items">
+			</div>
+			
+		
+		</div>
+	
+	
+		<div class="banner_imagenes">
+			<div class="titulo_noticias">
+			
+				<h2>PUBLICIDAD</h2>
+			
+			</div>
+			<div class="bimagen">
+			
+				<img src="images/extras/ryse.jpg">
+				<img src="images/extras/dai.jpg">
+				<img src="images/extras/MW3.jpg">
+				<img src="images/extras/batman.jpg">
 				
 			</div>
+		
 		</div>
-  
-  
+	
+	
+     
+	  
+		  
+		  
+		   
+    </div>
+    <!-- / content body -->
   </div>
 </div>
 <!-- Footer -->
@@ -308,5 +469,3 @@ jQuery(document).ready(function() {
 </div>
 </body>
 </html>
-
- 

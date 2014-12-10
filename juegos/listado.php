@@ -1,3 +1,12 @@
+<?php
+	session_start();
+	if(isset($_SESSION['carro'])) {
+$carro=$_SESSION['carro'];
+$contador = count($carro);
+}
+else {$carro=false; $contador=0;}
+?>
+
 <!DOCTYPE html>
 
 
@@ -107,42 +116,66 @@ $(function(){
 		</div>
 		
 		<div class="botones_acceso">
-			<input type="submit" class="boton_login" value="Iniciar sesión">
-			<input type="submit" class="boton_registro" value="Registrarse">
+			<a href="../login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
+			<a href="../signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
 		</div>
 	</div>
     <nav>
       <div class="menu">
       <ul>
-		 <li><a href="#">Destacados<div class="tri"></div></a>
-		 <ul>
-		 <div class="sub">
-		 <li><a href="#">Juegos</a></li>
-		 <li><a href="#">Software</a></li>
-		 <li><a href="#">Demos</a></li>
-		 <li><a href="#">Genero</a></li>
-		 </div>
-		 
-		 </ul>
-		 </li>
+	  <li><a href="../index.html"><img class="iconos_navegacion" src="../images/home.png">INICIO</a></li>
 		<li>|</li>
-	    <li><div class="enl"><a href="#">Juegos<div class="tri"></div></a></div>
+
+	    <li><div class="enl"><a href="./listado.php"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
+
+	    
+
 		<ul>
 		<div class="sub">
-		 <li><a href="#">Accion</a></li>
-		 <li><a href="#">Aventura</a></li>
-		 <li><a href="#">Carreras</a></li>
-		 <li><a href="#">Casual</a></li>
+			<li><a href="./listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
+            <li><a href="./listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
+            <li><a href="./listadofiltro.php?filtro=accion">Acción</a></li>
+            <li><a href="./listadofiltro.php?filtro=aventura">Aventura</a></li>
+			<li><a href="./listadofiltro.php?filtro=carreras">Carreras</a></li>
+            <li><a href="./listadofiltro.php?filtro=casual">Casual</a></li>
+            <li><a href="./listadofiltro.php?filtro=deportes">Deportes</a></li>
+            <li><a href="./listadofiltro.php?filtro=estrategia">Estrategia</a></li>
+			<li><a href="./listadofiltro.php?filtro=indie">Indie</a></li>
+            <li><a href="./listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
+            <li><a href="./listadofiltro.php?filtro=rol">Rol</a></li>
+            <li><a href="./listadofiltro.php?filtro=simuladores">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
 		<li>|</li>
-        <li><a href="#">Software<div class="tri"></div></a></li>
+        <li><a href="#"><img class="iconos_navegacion" src="../images/menu.png">Secciones<div class="tri"></div></a>
+		<ul>
+		<div class="sub">
+			<li><a href="../news.php">Noticias</a></li>
+            <li><a href="#">Lo último</a></li>
+            <li><a href="#">Ofertas</a></li>
+		 </div>
+		 </ul>
+		</li>
 		<li>|</li>
-        <li><a href="#">Demos<div class="tri"></div></a></li>
-		<li>|</li>
-        <li class="last"><a href="#">Noticias<div class="tri"></div></a></li>
+        <li class="last"><a href="#"><img class="iconos_navegacion" src="../images/demo.png">Demos</a></li>
+        
       </ul>
+	  
+	  
+	  <div class="seccion_carrito">
+	  <ul>
+
+	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="../images/favoritos.png">Lista de deseos</a></li>
+		<li>|</li>
+	  
+
+	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="../images/cart.png">Mi Cesta</a></li>
+
+      </ul>
+	  </div>
+	  
+	  
 	  </div>
     </nav>      
     
