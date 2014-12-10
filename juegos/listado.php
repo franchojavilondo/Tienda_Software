@@ -191,47 +191,96 @@ $(function(){
     <!-- main content -->
     
 	
-	<?php
-   // Definimos los parámetros
-   $hostname = "localhost";
-   $usuario = "pma";
-   $password = "pmapass";
-   $basededatos = "tienda_software";
-   $tabla="productos";
-   
-	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
-		if(!$conexion) {
-		die ("conexion no se pudo realizar");
-		}
-
-	$query1 = "SELECT * FROM productos ORDER BY Id_Producto";
-	if ($result1 = mysqli_query($conexion, $query1)) 
-				while ($row1 = mysqli_fetch_assoc($result1)) {
+<?php
+		$hostname = "localhost";
+		$usuario = "pma";
+		$password = "pmapass";
+		$basededatos = "tienda_software";
+		$tabla="clientes";	 
+		
 	
-	?>
-	<div>
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}		
+		//Limito la busqueda 
+		$TAMANO_PAGINA = 10; 
+
+		//examino la página a mostrar y el inicio del registro a mostrar 
+		$pagina = $_GET["pagina"]; 
+		if (!$pagina) { 
+			$inicio = 0; 
+			$pagina=1; 
+		} 
+		else { 
+			$inicio = ($pagina - 1) * $TAMANO_PAGINA; 
+		}
+		//inicializo el criterio y recibo cualquier cadena que se desee buscar 
+		$criterio = ""; 
+		$txt_criterio="";
+		if ($_GET["criterio"]!=""){ 
+			$txt_criterio = $_GET["criterio"]; 
+			$criterio = " where nombre_pais like '%" . $txt_criterio . "%'"; 
+		}
+		//miro a ver el número total de campos que hay en la tabla con esa búsqueda 
+		$consultaSQL ="SELECT * FROM productos" ; 
+		$resultado = $conexion->query($consultaSQL);
+		$num_total_registros = $resultado->num_rows;
+		//calculo el total de páginas 
+		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
+
+		?>
+		
+		<a name="Ancla"></a>
+		<?php
+		
+		$consultaSQL = "SELECT * FROM productos" . $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		if ($registro=$resultado->fetch_assoc()){
+		
+				while ($row1 = mysqli_fetch_assoc($resultado)) {
+				?>
+				<div>
 				<a href="../producto/product_info.php?id=<?php echo $row1["Id_Producto"] ?>" <?php echo 'title="'.$row1["Nombre"].'"'?> target="_blank">
 					<img <?php echo 'src="..'.$row1["Caratula"].'"' ?> WIDTH="50" HEIGHT="80" /></a>
-                <input type="text" name="my-item-id" <?php echo 'value="'.$row1["Id_Producto"].'"' ?>/>
+                <!--<input type="text" name="my-item-id" <?php echo 'value="'.$row1["Id_Producto"].'"' ?>/>-->
 				<input type="text" name="my-item-name" <?php echo 'value="'.$row1["Nombre"].'"' ?>/>
-    			<input type="text" name="my-item-amount" <?php echo 'value="'.$row1["Cantidad"].'"' ?>/>
-    			<input type="text" name="my-item-price" <?php echo 'value="'.$row1["Precio"].'"' ?> />
-			<?php
-		if($row1["Cantidad"]>0)
-				{
-                ?>
-				<input type="image" src="../images/tick.png" WIDTH="15" HEIGHT="15"> </input>
-				<?php }
-		if($row1["Cantidad"]<1){
-			?>
-				<input type="image" src="../images/cross.png" WIDTH="15" HEIGHT="15"> </input>
-				<?php }?>
+    			<!--<input type="text" name="my-item-amount" <?php echo 'value="'.$row1["Genero"].'"' ?>/>-->
+    			<input type="text" name="my-item-price" <?php echo 'value="'.$row1["Precio"]." Euros".'"' ?> />
 				</div>
-				<?php
 				
+				<?php
+				}
+		}
+		//muestro los distintos índices de las páginas, si es que hay varias páginas 
+		if(($pagina-1)>=1){
+				echo "<a href='listado.php?pagina=" . ($pagina-1) . "&criterio=" . $txt_criterio .'#Ancla'."'>Anterior</a> "; 
 			}
-	$conexion->close();
-   
+		if ($total_paginas >= 1){ 
+			for ($i=1;$i<=$total_paginas;$i++){ 
+				if ($pagina == $i) {
+					//si muestro el índice de la página actual, no coloco enlace 
+					echo $pagina . " "; 
+					
+					}
+				else {
+					//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 
+					echo "<a href='listado.php?pagina=" . $i . "&criterio=" . $txt_criterio .'#Ancla'."'>" . $i."</a> "; 
+					}
+			} 
+			
+			
+			if(($pagina+1)<=$total_paginas){
+				echo "<a href='listado.php?pagina=" . ($pagina+1) . "&criterio=" . $txt_criterio .'#Ancla'."'>Siguiente</a> "; 
+			}
+		}
+		
+		$registro=$resultado->free();
+		$conexion->close();
+		
 ?>
 			
 		
