@@ -188,57 +188,89 @@ function validar(){
   </header>
 </div>
 
-<!-- content -->
+
 <div class="wrapper row2">
   <div id="container" class="clear">
     
 	
-    <!-- main content -->
+    
     <div id="homepage" class="clear">
 		 
-		 <div class="contenido_perfil">
-		 
-			<div class="imagen_pagina_perfil">
-			
-				<img src="images/profile.png">
-
-			</div>
-			
-			<div class="tarjeta">
-				<div class="titulo_nove">
-					<h2>MI PERFIL</h2>
-				</div>
-			<p>Nombre de Usuario</p>
-			</br>
-			<p>Correo de usuario</p>
-
-					
-			</div>
+		 <div class="cont_imagen_producto">
+		
+			<img class="imagen_usuario" src="images/1.jpg" alt="logo"> 
+		
 		</div>
 		
+		<div class="tarjeta_datos">
 		
-		<div class="pedidos_cliente">
-				<div  class="titulo_producto"><h2>Historial de pedidos</h2></div>
-				
-				<div class="pedido_usuario">
-					
-					<div  class="imagen_pedido">
-						<a href="#"><img src="images/caratulas/dai.jpg" alt="Usuario"></div></a>
-					<div  class="comentario_texto">
-					</br>
-						<a href="#"><h3>Dragon Age Inquisition</h3></a>
-						
-						<p>Precio: 49.99€</p>
-						
-					</div>				
-				
+		<div class="titulo_nove">
+					<h2>MI PERFIL</h2>
 				</div>
-				
-				
+		
+			<p>Nombre de usuario</p>
+			<p>Correo electrónico</p>
+			
+		</div>
+		
+		<div>
+		
+		
+		
+		<div class="tarjeta_pedidos">
+		
+		<div class="titulo_nove">
+					<h2>MIS PEDIDOS</h2>
+				</div>
+		
+			<div class="pedido_usuario">
+			
+				<a href="#"><img class="imagen_pedido" src="images/caratulas/assasinscreed.jpg" alt="logo"></a>
+				<a href="#"><titulo_juego>Assassin's Creed</titulo_juego></a>
+				<titulo_desarrollador>Ubisoft</titulo_desarrollador>	
 			</div>
+			<div class="pedido_usuario">
+			
+				<a href="#"><img class="imagen_pedido" src="images/caratulas/dai.jpg" alt="logo"></a>
+				<a href="#"><titulo_juego>Dragon Age Inquisition</titulo_juego></a>
+				<titulo_desarrollador>BioWare</titulo_desarrollador>	
+			</div>
+			
+			<div class="pedido_usuario">
+			
+				<a href="#"><img class="imagen_pedido" src="images/caratulas/assasinscreed.jpg" alt="logo"></a> 
+				<a href="#"><titulo_juego>Assassin's Creed</titulo_juego></a>
+				<titulo_desarrollador>Ubisoft</titulo_desarrollador>	
+			</div>
+			<div class="pedido_usuario">
+			
+				<a href="#"><img class="imagen_pedido" src="images/caratulas/dai.jpg" alt="logo"> </a>
+				<a href="#"><titulo_juego>Dragon Age Inquisition</titulo_juego></a>
+				<titulo_desarrollador>BioWare</titulo_desarrollador>	
+			</div>
+			
+		</div>
 		
+		<div class="tarjeta_deseos">
 		
+		<div class="titulo_nove">
+					<h2>MIS LISTA DE DESEOS</h2>
+				</div>
 		
+			<div class="pedido_usuario">
+			
+				<a href="#"><img class="imagen_pedido" src="images/caratulas/assasinscreed.jpg" alt="logo"> </a>
+				<a href="#"><titulo_juego>Assassin's Creed</titulo_juego></a>
+				<titulo_desarrollador>Ubisoft</titulo_desarrollador>	
+			</div>
+			<div class="pedido_usuario">
+			
+				<a href="#"><img class="imagen_pedido" src="images/caratulas/dai.jpg" alt="logo"> </a>
+				<a href="#"><titulo_juego>Dragon Age Inquisition</titulo_juego></a>
+				<titulo_desarrollador>BioWare</titulo_desarrollador>	
+			</div>
+			
+		</div>
 		
 		 
 		 </div>

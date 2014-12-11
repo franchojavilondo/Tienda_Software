@@ -247,7 +247,7 @@ $(function(){
 				</div>
 				
 				<div class="botones_acceso">
-					<a href="cuenta/login.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
+					<a href="profile.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
 					<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
 				</div>
 			<?php
@@ -590,10 +590,10 @@ $(function(){
 		  ?>
 			<div class="item_ofertas">
 				<div class="imagen_noticias">
-					<a href="/producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?>><img <?php echo 'src=".'.$row2["Imagen"].'"' ?>></a>
+					<a href="./producto/product_info.php?id=<?php echo $Id_Prod ?>" <?php echo 'title="'.$row3["nombre"].'"'?>><img <?php echo 'src=".'.$row2["Imagen"].'"' ?>></a>
 				</div>
 				<h3><br>OFERTA</br></h3>
-				<a title="" href="/producto/product_info.php?id=<?php echo $Id_Prod ?>"  class="texto_noticias" ><?php echo $row3["nombre"].' Ahora con un '.$row1["Porcentaje"].'% de descuento' ?></a>
+				<a title="" href="./producto/product_info.php?id=<?php echo $Id_Prod ?>"  class="texto_noticias" ><?php echo $row3["nombre"].' Ahora con un '.$row1["Porcentaje"].'% de descuento' ?></a>
 			</div>
 			
 			<div class="separador_items">
