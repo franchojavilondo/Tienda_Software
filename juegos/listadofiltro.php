@@ -116,6 +116,92 @@ function  recargar(){
     </form>
     
     <div class="cajon_usu" >
+			<?php
+	
+	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+		$hostname = "localhost";
+		$usuario = "pma";
+		$password = "pmapass";
+		$basededatos = "tienda_software";
+		$tabla="clientes";	 
+		
+		$user= $_SESSION ["user"];
+		$contra = $_SESSION ["pass"];
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}	
+		
+		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
+	  
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		
+		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+		if ($registro=$resultado->fetch_assoc()){
+		
+			$ruta=$registro['foto'];
+			
+			?>
+	
+	
+			<div class="imagen_perfil">
+					<img <?php echo 'src=".'.$ruta.'"'; ?> alt="Usuario" >
+				</div>
+					
+				<div class="titulo_perfil">
+					<h1><?php echo $registro["nombre"]; ?> </h1>
+				</div>
+				
+				<div class="botones_acceso">
+					<a href="profile.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
+					<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+				</div>
+			<?php
+		
+		}
+		else{
+			$consultaSQL ="SELECT * FROM administradores WHERE nombre='$user' && pass='$contra'" ; 
+	  
+			$resultado = $conexion->query($consultaSQL);
+			if (!$resultado) {
+				die('No se puede realizar la consulta: ' . $conexion->connect_error);
+			}
+			
+			//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+			if ($registro=$resultado->fetch_assoc()){
+				?>
+	
+		
+				<div class="imagen_perfil">
+				
+						<img src="../images/usuarios/admin.png" alt="Usuario" >
+					</div>
+						
+					<div class="titulo_perfil">
+						<h1><?php echo "Administrador: ".$registro["nombre"]; ?> </h1>
+					</div>
+					
+					<div class="botones_acceso">
+						<a href="admin.php"><input type="submit" class="boton_login" value="Pagina administracion"></a>
+						<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+					</div>
+				<?php
+			}
+		}
+		$registro=$resultado->free();
+		$conexion->close();
+	
+	
+	
+	
+	}
+	
+	else{
+	
+	?>
 		<div class="imagen_perfil">
 			<img src="../images/profile.png" alt="Usuario" class="profile_img">
 		</div>
@@ -125,9 +211,13 @@ function  recargar(){
 		</div>
 		
 		<div class="botones_acceso">
-			<a href="../login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
-			<a href="../signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
+			<a href="login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
+			<a href="signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
 		</div>
+		
+		<?php
+		}
+		?>
 	</div>
 	
 	
