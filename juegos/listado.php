@@ -206,32 +206,47 @@ function  recargar(){
 			<option value="predesc">Precio (Mayor a Menor)</option>
 			<option value="preasc">Precio (Menor a mayor)</option>
 			<option value="genero">Genero</option>
+			<option value="oferta" >Oferta</option>
 			<?php
 		}
-		if ($_GET["criterio"]=="preasc"){ 
+		if ($_GET["criterio"]=="predesc"){ 
+			
 			?>
 			<option value="alfa" >Alfabetico</option>
 			<option value="predesc" selected="selected">Precio (Mayor a Menor)</option>
 			<option value="preasc">Precio (Menor a mayor)</option>
 			<option value="genero">Genero</option>
+			<option value="oferta" >Oferta</option>
 			<?php
 		}
-		if ($_GET["criterio"]=="predesc"){ 
-			$criterio = " order by Precio desc"; 
+		if ($_GET["criterio"]=="preasc"){ 
+			
 			?>
 			<option value="alfa" >Alfabetico</option>
 			<option value="predesc" >Precio (Mayor a Menor)</option>
 			<option value="preasc" selected="selected">Precio (Menor a mayor)</option>
 			<option value="genero">Genero</option>
+			<option value="oferta" >Oferta</option>
 			<?php
 		}
 		if ($_GET["criterio"]=="genero"){ 
-			$criterio = " order by Genero desc";
+			
 			?>
 			<option value="alfa" >Alfabetico</option>
 			<option value="predesc" >Precio (Mayor a Menor)</option>
 			<option value="preasc" >Precio (Menor a mayor)</option>
 			<option value="genero" selected="selected">Genero</option>
+			<option value="oferta" >Oferta</option>
+			<?php			
+		}
+		if ($_GET["criterio"]=="oferta"){ 
+			
+			?>
+			<option value="alfa" >Alfabetico</option>
+			<option value="predesc" >Precio (Mayor a Menor)</option>
+			<option value="preasc" >Precio (Menor a mayor)</option>
+			<option value="genero" >Genero</option>
+			<option value="oferta" selected="selected">Oferta</option>
 			<?php			
 		}
 		?>
@@ -274,17 +289,21 @@ function  recargar(){
 				$criterio = " order by Nombre asc";
 				$_SESSION["elegido"]="alfa";
 			}
-			if ($_GET["criterio"]=="preasc"){ 
-				$criterio = " order by Precio asc"; 
-				$_SESSION["elegido"]="preasc";
-			}
 			if ($_GET["criterio"]=="predesc"){ 
-				$criterio = " order by Precio desc";
-				$_SESSION["elegido"]="predesc";				
+				$criterio = " order by Precio desc"; 
+				$_SESSION["elegido"]="predesc";
+			}
+			if ($_GET["criterio"]=="preasc"){ 
+				$criterio = " order by Precio asc";
+				$_SESSION["elegido"]="preasc";				
 			}
 			if ($_GET["criterio"]=="genero"){ 
-				$criterio = " order by Genero desc"; 
+				$criterio = " order by Genero asc"; 
 				$_SESSION["elegido"]="genero";
+			}
+			if ($_GET["criterio"]=="oferta"){ 
+				$criterio = " order by Porcentaje desc"; 
+				$_SESSION["elegido"]="oferta";
 			}
 		}
 		//miro a ver el número total de campos que hay en la tabla con esa búsqueda 
@@ -300,28 +319,68 @@ function  recargar(){
 		<?php
 		
 		$consultaSQL = "SELECT * FROM productos" . $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+		if($_SESSION["elegido"]=="genero"){
+			$consultaSQL = "SELECT *,Genero FROM productos,product_info where productos.Id_Producto=product_info.Id_Producto". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+			
+		}
+		if($_SESSION["elegido"]=="oferta"){
+			$consultaSQL0 ="SELECT * FROM ofertas" ; 
+			$resultado0 = $conexion->query($consultaSQL0);
+			$num_total_registros = $resultado0->num_rows;
+			//calculo el total de páginas 
+			$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
+			$consultaSQL = "SELECT *,Porcentaje FROM productos,ofertas where ofertas.Id_Producto=productos.Id_Producto". $criterio. " limit " . $inicio . "," . ($TAMANO_PAGINA+1) ; 
+			
+			
+		}
 		$resultado = $conexion->query($consultaSQL);
 		if (!$resultado) {
 			die('No se puede realizar la consulta: ' . $conexion->connect_error);
 		}
 		if ($registro=$resultado->fetch_assoc()){
 		
-				while ($row1 = mysqli_fetch_assoc($resultado)) {
+				do {
+					$id=$registro["Id_Producto"];
+					$precio=$registro["Precio"];
+					$descuento="";
+					$consultaSQL2 = "SELECT * FROM product_info where Id_Producto='$id'"; 
+					$resultado2 = $conexion->query($consultaSQL2);
+					if (!$resultado2) {
+						die('No se puede realizar la consulta: ' . $conexion->connect_error);
+					}
+					if ($registro2=$resultado2->fetch_assoc()){
+						$genero=$registro2["Genero"];
+					}
+					
+					$consultaSQL3 = "SELECT * FROM ofertas where Id_Producto='$id'"; 
+					$resultado3 = $conexion->query($consultaSQL3);
+					if (!$resultado3) {
+						die('No se puede realizar la consulta: ' . $conexion->connect_error);
+					}
+					if ($registro3=$resultado3->fetch_assoc()){
+						$descuento=$registro3["Porcentaje"]."%";
+						$precio=$precio-($precio*($descuento/100));
+					}
+					
 				?>
 				<div>
-				<a href="../producto/product_info.php?id=<?php echo $row1["Id_Producto"] ?>" <?php echo 'title="'.$row1["Nombre"].'"'?> target="_blank">
-					<img <?php echo 'src="..'.$row1["Caratula"].'"' ?> WIDTH="50" HEIGHT="80" /></a>
-                <!--<input type="text" name="my-item-id" <?php echo 'value="'.$row1["Id_Producto"].'"' ?>/>-->
-				<input type="text" name="my-item-name" <?php echo 'value="'.$row1["Nombre"].'"' ?>/>
-    			<!--<input type="text" name="my-item-amount" <?php echo 'value="'.$row1["Genero"].'"' ?>/>-->
-    			<input type="text" name="my-item-price" <?php echo 'value="'.$row1["Precio"]." Euros".'"' ?> />
+				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> >
+				<img <?php echo 'src="..'.$registro["Caratula"].'"' ?> WIDTH="50" HEIGHT="80" /></a>
+				<input type="text" name="my-item-name" <?php echo 'value="'.$registro["Nombre"].'"' ?>/>	
+				<input type="text" name="my-item-price" <?php echo 'value="'.$registro["Precio"]." Euros".'"' ?> />
+    			<input type="text" name="my-item-price" <?php echo 'value="'.$precio." Euros".'"' ?> />
+				<input type="text" name="my-item-genero" <?php echo 'value="'.$genero.'"' ?>/>
+				<input type="text" name="my-item-descuento" <?php echo 'value="'.$descuento.'"' ?>/>
 				</div>
 				
 				<?php
-				}
+				
+				}while ($registro=$resultado->fetch_assoc());
 		}
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
+		
 		if(($pagina-1)>=1){
+				echo "<a href='listado.php?pagina=" . 1 . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'><<</a> "; 
 				echo "<a href='listado.php?pagina=" . ($pagina-1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Anterior</a> "; 
 			}
 		if ($total_paginas >= 1){ 
@@ -339,9 +398,11 @@ function  recargar(){
 			
 			
 			if(($pagina+1)<=$total_paginas){
-				echo "<a href='listado.php?pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Siguiente</a> "; 
+				echo "<a href='listado.php?pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Siguiente</a> ";
+				echo "<a href='listado.php?pagina=" . $total_paginas . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>>></a> "; 				
 			}
 		}
+		
 		$num=(($TAMANO_PAGINA*$pagina)-$TAMANO_PAGINA);
 		$total=($TAMANO_PAGINA*$pagina);
 		if($num<=0){
@@ -350,6 +411,7 @@ function  recargar(){
 		if($total_paginas==$pagina){
 			$total=$num_total_registros ;
 		}
+		
 		echo "Mostrando " .$num."-".$total ." de " . $num_total_registros . " resultados"."<br>"; 
 		
 		
@@ -358,9 +420,6 @@ function  recargar(){
 		
 ?>
 			
-		
-	
-	
 	
   </div>
  
