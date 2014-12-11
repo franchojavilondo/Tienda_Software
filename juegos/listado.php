@@ -77,6 +77,27 @@ function  recargar(){
 }	
 				
 </script>
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+ 
+ $(document).ready(function() {
+  $("#parametro").keyup( //Evento de soltar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+</script>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -109,8 +130,11 @@ function  recargar(){
     <form action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
-        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+        <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
         <input type="submit" id="sf_submit" value="">
+		       <br />
+<br />
+<div id="resultado" class="cuadro_busqueda" ></div>
       </fieldset>
     </form>
     
