@@ -319,7 +319,7 @@ $(function(){
 		<li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
 
-	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="./juegos/listado.php?pagina=1&criterio="><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
 
 	    
 
@@ -561,7 +561,7 @@ $(function(){
 			
 			<div class="separador_items">
 			</div>
-			<?php }}?>
+			<?php $contador++;}}?>
 			
 			
 			

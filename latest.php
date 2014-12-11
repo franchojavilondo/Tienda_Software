@@ -299,80 +299,68 @@ jQuery(document).ready(function() {
 			
 			</div>
 			
+			
+			<?php 
+			// Definimos los parámetros
+		   $hostname = "localhost";
+		   $usuario = "pma";
+		   $password = "pmapass";
+		   $basededatos = "tienda_software";
+		   
+			$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+				if(!$conexion) {
+				die ("conexion no se pudo realizar");
+				}
+					$queryl="SELECT * from productos order by Id_Producto desc";
+					
+		  
+		  $contador = 0;
+		  if ($resultl = mysqli_query($conexion, $queryl)) 
+		  while (($rowl = mysqli_fetch_assoc($resultl)) && $contador<10) {
+		  
+		  $ID=$rowl["Id_Producto"];
+		  $queryl2="SELECT * from imagenes_extra where Id_Producto=$ID";
+		  $queryl3="SELECT * from ofertas where Id_Producto=$ID";
+		  if ($resultl2 = mysqli_query($conexion, $queryl2)) 
+			if(($rowl2 = mysqli_fetch_assoc($resultl2)))
+			
+		  ?>
 			<div class="item_noticias">
 				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+					<a href="./producto/product_info.php?id=<?php echo $ID ?>"><img class="imagen_noticias" style="width:25%" <?php echo 'src=".'.$rowl2["Imagen"].'"' ?>></a>
 				</div>
-				<h3><br>carreras</h3>
-				<a href="#" class="texto_noticias" >THE CREW</a>
+				<h3><br></h3>
+				<a href="./producto/product_info.php?id=<?php echo $ID ?>" class="texto_noticias" ><?php echo $rowl["Nombre"]?></a>
 				<div class="espacio_precios">
+				
+				<?php if ($resultl3 = mysqli_query($conexion, $queryl3)) 
+			if(($rowl3 = mysqli_fetch_assoc($resultl3))){
+			?>
 					<div class="discount">
-						<porcentaje>-20%</porcentaje>
+						<porcentaje>-<?php echo $rowl3["Porcentaje"] ?>%</porcentaje>
 					</div>
+					
 					<div class="price">
-						<anterior>49,99€</anterior></br>
-						<costo>39,98€</costo>
-					</div>					
-				</div>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
-				</div>
-				<h3><br>carreras</h3>
-				<a href="#" class="texto_noticias">Dragon Quest III</a>
-				<div class="espacio_precios">
-					<div class="discount">
-						<porcentaje>0%</porcentaje>
-					</div>
+						<anterior><?php echo $rowl["Precio"]?>€</anterior></br>
+						<costo><?php echo $rowl["Precio"]-($rowl["Precio"]*$rowl3["Porcentaje"]/100)?>€</costo>
+					</div>		
+						<?php }
+						else{
+					?>
+					
+					
+					
 					<div class="price">
-						<anterior>19,99€</anterior></br>
-						<costo>19,99€</costo>
-					</div>					
-				</div>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
-				</div>
-				<h3><br>carreras</h3>
-				<a href="#" class="texto_noticias" >THE CREW</a>
-				<div class="espacio_precios">
-					<div class="discount">
-						<porcentaje>-20%</porcentaje>
-					</div>
-					<div class="price">
-						<anterior>49,99€</anterior></br>
-						<costo>39,98€</costo>
-					</div>					
-				</div>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
-				</div>
-				<h3><br>carreras</h3>
-				<a href="#" class="texto_noticias" >THE CREW</a>
-				<div class="espacio_precios">
-					<div class="discount">
-						<porcentaje>-20%</porcentaje>
-					</div>
-					<div class="price">
-						<anterior>49,99€</anterior></br>
-						<costo>39,98€</costo>
-					</div>					
+						
+						<costo><?php echo $rowl["Precio"]?>€</costo>
+					</div>	
+					<?php }?>
 				</div>
 			</div>
 			<div class="separador_items">
 			</div>
 			
-		
+		<?php $contador++;}?>
 		</div>
 	
 	

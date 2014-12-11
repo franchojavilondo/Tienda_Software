@@ -34,7 +34,7 @@ $Id_Prod=$_GET["id"];
 	
 	$query1 = "SELECT * FROM product_info where Id_Producto=$Id_Prod";
 	$query2 = "SELECT * FROM productos where Id_Producto=$Id_Prod";
-	
+	$query3="SELECT * from ofertas where Id_Producto=$Id_Prod";
 
 				
 				
@@ -261,7 +261,25 @@ $(function(){
 			<div class="precio_producto">
 				
 				<div class="titulo_precio_producto"><h2>PRECIO</h2></div>
-				<div class="cantidad_precio"><precio><?php echo $row2["Precio"]?>€</precio></div>
+				<div class="cantidad_precio">
+				<?php
+				if($result3 = mysqli_query($conexion, $query3))
+						if($row3 = mysqli_fetch_assoc($result3)){
+				
+				?>
+				<div class="discount">
+				<porcentaje>-<?php echo $row3["Porcentaje"] ?>%</porcentaje></div>
+				<anterior><?php echo $row2["Precio"]?>€</anterior>
+				<precio><?php echo $row2["Precio"]-($row2["Precio"]*$row3["Porcentaje"]/100)?>€</precio>
+				
+				<?php }
+				
+				else{
+				?>
+				
+				<precio><?php echo $row2["Precio"]?>€</precio>
+				<?php }?>
+				</div>
 				<p>Precio con IVA incluido.</p>
 				<a href="../carro/agregacar.php?id=<?php echo $Id_Prod ?>" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
 					Añadir al carrito</button></a>

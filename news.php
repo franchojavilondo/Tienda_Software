@@ -299,97 +299,41 @@ jQuery(document).ready(function() {
 			
 			</div>
 			
+			<?php 
+			
+			// Definimos los parámetros
+   $hostname = "localhost";
+   $usuario = "pma";
+   $password = "pmapass";
+   $basededatos = "tienda_software";
+   
+	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if(!$conexion) {
+		die ("conexion no se pudo realizar");
+		}
+			$queryn="SELECT * from noticias";
+		  
+		  $contador = 0;
+		  if ($resultn = mysqli_query($conexion, $queryn)) 
+		  while (($rown = mysqli_fetch_assoc($resultn)) && $contador<4) {
+		  $ID=$rown["Id_Producto"];
+		  $queryn2="SELECT Imagen from imagenes_extra where Id_Producto=$ID";
+		  if ($resultn2 = mysqli_query($conexion, $queryn2)) 
+		  if($rown2 = mysqli_fetch_assoc($resultn2)){
+		  ?>
+			
 			<div class="item_noticias">
 				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" style="width:25%" src="images/destinyT.jpg"></a>
+					<a href="news_info.php?idn=<?php echo $rown["Id_Titular"]?>"><img class="imagen_noticias" <?php echo 'src=".'.$rown2["Imagen"].'"' ?>></a>
 				</div>
 				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Destiny 2 ya se encuentra en los planes de futuro de Activision</a>
+				<a href="news_info.php?idn=<?php echo $rown["Id_Titular"]?>" class="texto_noticias" ><?php echo $rown["Titular"]?></a>
 			</div>
 			<div class="separador_items">
 			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/justcauseT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Filtradas varias imágenes de Just Cause 3</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/thiefT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Thief y Murdered: Soul Suspect en las ofertas de Xbox Live Gold</a>
-			</div>
-			<div class="separador_items">
-			</div>
-			<div class="item_noticias">
-				<div class="imagen_noticias_pagina">
-					<a href="#"><img class="imagen_noticias" src="images/falloutT.jpg"></a>
-				</div>
-				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" >Vuelve a aparecer el nombre Fallout: Shadow of Boston</a>
-			</div>
-			<div class="separador_items">
-			</div>
-		
+			
+			<?php }}?>
+			
 		</div>
 	
 	

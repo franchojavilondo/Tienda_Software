@@ -38,6 +38,7 @@ $hostname = "localhost";
 //igual a 1 
 
 $query="select * from productos where Id_Producto='".$id."'";
+$query2="select Porcentaje from ofertas where Id_Producto='".$id."'";
 //$qry=mysql_query("select * from productos where Id_Producto='".$id."'"); 
 $result = mysqli_query($conexion, $query);
 //$row=mysql_fetch_array($qry); 
@@ -78,11 +79,26 @@ $carro=$_SESSION['carro'];
 //guardamos más de un valor en 
 //la variable $carro, valiéndonos 
 //de nuevo de la herramienta array. 
+if($result2 = mysqli_query($conexion, $query2))
+if($row2 = mysqli_fetch_assoc($result2)){
+$row = mysqli_fetch_assoc($result);
+$precio=$row['Precio']-($row['Precio']*$row2['Porcentaje']/100);
+
+
+
+$carro[md5($id)]=array('id'=>md5($id), 
+'Nombre'=>$row['Nombre'], 
+'Precio'=>$precio,'Id_Producto'=>$id); }
+
+
+else {
 
 $row = mysqli_fetch_assoc($result);
 $carro[md5($id)]=array('id'=>md5($id), 
 'Nombre'=>$row['Nombre'], 
-'Precio'=>$row['Precio'],'Id_Producto'=>$id); 
+'Precio'=>$row['Precio'],'Id_Producto'=>$id);
+
+}
 //Ahora dentro de la sesión 
 //($_SESSION['carro']) tenemos 
 //sólo los valores que teníamos 
