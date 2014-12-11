@@ -68,7 +68,15 @@ $(function(){
          .end().appendTo('#slider2');}, 8000);
 });
 </script>
-
+<script type='text/javascript'>
+function  recargar(){ 
+	cri=document.formu.criterio.value;
+   	location.href="listado.php?pagina=1&criterio="+cri;
+   	
+	
+}	
+				
+</script>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -126,7 +134,7 @@ $(function(){
 	  <li><a href="../index.html"><img class="iconos_navegacion" src="../images/home.png">INICIO</a></li>
 		<li>|</li>
 
-	    <li><div class="enl"><a href="./listado.php"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="./listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
 
 	    
 
@@ -187,10 +195,50 @@ $(function(){
 
 <div class="wrapper row2">
   <div id="container" class="clear">
-    
     <!-- main content -->
-    
-	
+	<form method="post" name="formu">
+	Ordenar por
+    <select id="list" name="criterio" onChange="recargar()">  
+		<?php
+		if ($_GET["criterio"]=="alfa"){ 
+			?>
+			<option value="alfa" selected="selected">Alfabetico</option>
+			<option value="predesc">Precio (Mayor a Menor)</option>
+			<option value="preasc">Precio (Menor a mayor)</option>
+			<option value="genero">Genero</option>
+			<?php
+		}
+		if ($_GET["criterio"]=="preasc"){ 
+			?>
+			<option value="alfa" >Alfabetico</option>
+			<option value="predesc" selected="selected">Precio (Mayor a Menor)</option>
+			<option value="preasc">Precio (Menor a mayor)</option>
+			<option value="genero">Genero</option>
+			<?php
+		}
+		if ($_GET["criterio"]=="predesc"){ 
+			$criterio = " order by Precio desc"; 
+			?>
+			<option value="alfa" >Alfabetico</option>
+			<option value="predesc" >Precio (Mayor a Menor)</option>
+			<option value="preasc" selected="selected">Precio (Menor a mayor)</option>
+			<option value="genero">Genero</option>
+			<?php
+		}
+		if ($_GET["criterio"]=="genero"){ 
+			$criterio = " order by Genero desc";
+			?>
+			<option value="alfa" >Alfabetico</option>
+			<option value="predesc" >Precio (Mayor a Menor)</option>
+			<option value="preasc" >Precio (Menor a mayor)</option>
+			<option value="genero" selected="selected">Genero</option>
+			<?php			
+		}
+		?>
+       
+   </select>
+		
+	</form><br>
 <?php
 		$hostname = "localhost";
 		$usuario = "pma";
@@ -216,11 +264,28 @@ $(function(){
 			$inicio = ($pagina - 1) * $TAMANO_PAGINA; 
 		}
 		//inicializo el criterio y recibo cualquier cadena que se desee buscar 
+		
+		if(!isset($_SESSION["elegido"])){
+			$_SESSION["elegido"]="";
+		}
 		$criterio = ""; 
-		$txt_criterio="";
 		if ($_GET["criterio"]!=""){ 
-			$txt_criterio = $_GET["criterio"]; 
-			$criterio = " where nombre_pais like '%" . $txt_criterio . "%'"; 
+			if ($_GET["criterio"]=="alfa"){ 
+				$criterio = " order by Nombre asc";
+				$_SESSION["elegido"]="alfa";
+			}
+			if ($_GET["criterio"]=="preasc"){ 
+				$criterio = " order by Precio asc"; 
+				$_SESSION["elegido"]="preasc";
+			}
+			if ($_GET["criterio"]=="predesc"){ 
+				$criterio = " order by Precio desc";
+				$_SESSION["elegido"]="predesc";				
+			}
+			if ($_GET["criterio"]=="genero"){ 
+				$criterio = " order by Genero desc"; 
+				$_SESSION["elegido"]="genero";
+			}
 		}
 		//miro a ver el número total de campos que hay en la tabla con esa búsqueda 
 		$consultaSQL ="SELECT * FROM productos" ; 
@@ -257,7 +322,7 @@ $(function(){
 		}
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
 		if(($pagina-1)>=1){
-				echo "<a href='listado.php?pagina=" . ($pagina-1) . "&criterio=" . $txt_criterio .'#Ancla'."'>Anterior</a> "; 
+				echo "<a href='listado.php?pagina=" . ($pagina-1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Anterior</a> "; 
 			}
 		if ($total_paginas >= 1){ 
 			for ($i=1;$i<=$total_paginas;$i++){ 
@@ -268,15 +333,25 @@ $(function(){
 					}
 				else {
 					//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 
-					echo "<a href='listado.php?pagina=" . $i . "&criterio=" . $txt_criterio .'#Ancla'."'>" . $i."</a> "; 
+					echo "<a href='listado.php?pagina=" . $i . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>" . $i."</a> "; 
 					}
 			} 
 			
 			
 			if(($pagina+1)<=$total_paginas){
-				echo "<a href='listado.php?pagina=" . ($pagina+1) . "&criterio=" . $txt_criterio .'#Ancla'."'>Siguiente</a> "; 
+				echo "<a href='listado.php?pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Siguiente</a> "; 
 			}
 		}
+		$num=(($TAMANO_PAGINA*$pagina)-$TAMANO_PAGINA);
+		$total=($TAMANO_PAGINA*$pagina);
+		if($num<=0){
+			$num=1;
+		}
+		if($total_paginas==$pagina){
+			$total=$num_total_registros ;
+		}
+		echo "Mostrando " .$num."-".$total ." de " . $num_total_registros . " resultados"."<br>"; 
+		
 		
 		$registro=$resultado->free();
 		$conexion->close();

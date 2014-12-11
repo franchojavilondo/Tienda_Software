@@ -474,7 +474,7 @@ function  validaradmintask(){
 							$_SESSION["addproduct"]="Producto agregado";
 							?>
 							<script languaje="javascript">
-							location.href = "admin.php";
+							//location.href = "admin.php";
 							</script>
 						<?php
 						}
