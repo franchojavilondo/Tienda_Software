@@ -166,7 +166,6 @@ vertical-align:middle;
 	float:left;
 	margin-top:5%;
 	width:49%;
-	margin-left:-38%;
 }
 
 .tarjeta_deseos{
@@ -273,6 +272,11 @@ float:left;
  
  }
  
+ .contenedor_trafico_usuario{
+ 
+ width:100%;
+ 
+ }
  
  .contador_lista{
 	z-index:5;

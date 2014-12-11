@@ -213,7 +213,7 @@ function validar(){
 			
 		</div>
 		
-		<div>
+		<div class="contenedor_trafico_usuario">
 		
 		
 		
