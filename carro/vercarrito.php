@@ -430,8 +430,8 @@ $precio=$v['Precio'];
 <?php }?>
 
 <input type="hidden" name="currency_code" value="EUR">
-<input type="hidden" name="return" value="http://localhost/control/pagorealizado.html">
-<input type="hidden" name="cancel_return" value="http://localhost/control/pagocancelado.html">
+<input type="hidden" name="return" value="http://localhost/tienda_software/carro/pagorealizado.php">
+<input type="hidden" name="cancel_return" value="http://localhost/tienda_software/index.php">
 
 <input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but6.gif" name="submit" >
 </form> 
