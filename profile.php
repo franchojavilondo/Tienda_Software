@@ -344,6 +344,21 @@ function validar(){
 			
 			
 		</div>
+		<div class="tarjeta_estadisticas">
+		
+		<div class="titulo_nove">
+		<h2>ÚLTIMOS MOVIMIENTOS</h2>
+		</div>
+				<p>Juegos comprados: </p>
+				<p>Dinero empleado: </p>
+				<p>Juego más caro: </p>
+				<p>juego más barato: </p>
+				<p>Número de deseos: </p>
+				<p>Último juego comprado: </p>
+		
+			
+			
+		</div>
 		
 		<div class="contenedor_trafico_usuario">
 		

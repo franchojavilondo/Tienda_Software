@@ -1089,9 +1089,28 @@ float:right;
 	float:right;
 	background:#FFFFFF;
 	box-shadow: 2px 2px 5px 1px #999;
-	width:60%;
+	width:30%;
+	float:left;
 	height:300px;
 	
+}
+
+.tarjeta_estadisticas{
+
+float:right;
+	background:#FFFFFF;
+	box-shadow: 2px 2px 5px 1px #999;
+	width:30%;
+	float:left;
+	height:300px;
+	margin-left:2%;
+}
+
+.tarjeta_estadisticas p{
+
+	font-size:14px;
+	padding-left:5%;
+
 }
 
 .tarjeta_datos p{
