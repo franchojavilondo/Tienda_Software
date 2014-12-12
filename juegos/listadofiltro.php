@@ -316,7 +316,13 @@ function  recargar(){
     
     <!-- main content -->
 			
-			<form method="post" name="formu">
+			
+	<div class="listado_juegos">
+					<div class="cuadro_juegos">
+					<div class="titulo_nove">
+						<h2>JUEGOS DISPONIBLES</h2>
+					
+	<form method="post" name="formu" class="formulario_juegos">
 	Ordenar por
     <select id="list" name="criterio" onChange="recargar()">  
 		<?php
@@ -364,7 +370,7 @@ function  recargar(){
        
    </select>
 		
-	</form><br>
+	</form></div><br>
 <?php
 		$filtro=$_GET["filtro"];
 		$hostname = "localhost";
@@ -468,18 +474,41 @@ function  recargar(){
 					
 				?>
 				<div>
-				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> >
-				<img <?php echo 'src="..'.$registro["Caratula"].'"' ?> WIDTH="50" HEIGHT="80" /></a>
-				<input type="text" name="my-item-name" <?php echo 'value="'.$registro["Nombre"].'"' ?>/>	
-				<input type="text" name="my-item-price" <?php echo 'value="'.$registro["Precio"]." Euros".'"' ?> />
-    			<input type="text" name="my-item-price" <?php echo 'value="'.$precio." Euros".'"' ?> />
-				<input type="text" name="my-item-genero" <?php echo 'value="'.$genero.'"' ?>/>
-				<input type="text" name="my-item-descuento" <?php echo 'value="'.$descuento.'"' ?>/>
+				
+				
+				
+			<div class="item_noticias">
+				<div class="imagen_juegos">
+					<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> >
+						<img <?php echo 'src="..'.$registro["Caratula"].'"' ?>></a>
 				</div>
+				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> ><h3><?php echo ''.$registro["Nombre"].'' ?></h3></a>
+				<genero_p><?php echo ''.$genero.'' ?></genero_p>
+				<descuento_p><?php echo 'Descuento: '.$descuento.'' ?></descuento_p></br>
+				</br>
+				<precio_sin><?php echo ''.$registro["Precio"]." Euros".'' ?></precio_sin></br>
+				<precio_con><?php echo ''.$precio." Euros".'' ?></precio_con>
+				
+				
+			</div>
+			
+			
+			<div class="separador_items">
+			</div>
+			
+			
+			
+		  </div>
 				
 				<?php
 				
 				}while ($registro=$resultado->fetch_assoc());
+				?>
+				</div>
+				
+				<div class="paginador">
+				
+				<?php
 		}
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
 		
@@ -526,7 +555,26 @@ function  recargar(){
 		$conexion->close();
 		
 ?>
-	
+	</div>
+			
+			</div>
+			
+	<div class="banner_imagenes">
+			<div class="titulo_noticias">
+			
+				<h2>PUBLICIDAD</h2>
+			
+			</div>
+			<div class="bimagen">
+			
+				<img src="../images/extras/ryse.jpg">
+				<img src="../images/extras/dai.jpg">
+				<img src="../images/extras/MW3.jpg">
+				<img src="../images/extras/batman.jpg">
+				
+			</div>
+		
+		</div>
 	
 	
   </div>
