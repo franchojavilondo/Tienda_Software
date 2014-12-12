@@ -3,6 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-12-2014 a las 19:30:28
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -134,9 +135,7 @@ INSERT INTO `imagenes_extra` (`Id_Producto`, `Imagen`) VALUES
 CREATE TABLE IF NOT EXISTS `lineas` (
   `Id_Producto` int(11) NOT NULL COMMENT 'Identificador del producto',
   `Id_Pedido` int(11) NOT NULL COMMENT 'Identificador del pedido',
-  `Precio` float NOT NULL COMMENT 'Precio del producto',
   `Id_Linea` int(11) NOT NULL COMMENT 'Identificador de la linea',
-  `cantidad` int(11) NOT NULL COMMENT 'numero de unidade del producto',
   PRIMARY KEY (`Id_Producto`,`Id_Pedido`),
   KEY `pedido` (`Id_Pedido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -145,14 +144,17 @@ CREATE TABLE IF NOT EXISTS `lineas` (
 -- Volcado de datos para la tabla `lineas`
 --
 
-INSERT INTO `lineas` (`Id_Producto`, `Id_Pedido`, `Precio`, `Id_Linea`, `cantidad`) VALUES
-(1, 1, 0, 0, 1),
-(2, 2, 0, 0, 2),
-(3, 2, 0, 0, 2),
-(4, 4, 0, 0, 4),
-(7, 1, 0, 0, 2),
-(10, 1, 0, 0, 1),
-(10, 3, 0, 0, 3);
+INSERT INTO `lineas` (`Id_Producto`, `Id_Pedido`, `Id_Linea`) VALUES
+(1, 1, 0),
+(1, 20, 50),
+(2, 2, 0),
+(3, 2, 0),
+(4, 4, 0),
+(7, 1, 0),
+(10, 1, 0),
+(10, 3, 0),
+(15, 30, 200),
+(19, 40, 500);
 
 -- --------------------------------------------------------
 
@@ -211,21 +213,23 @@ INSERT INTO `ofertas` (`Id_Producto`, `Porcentaje`) VALUES
 CREATE TABLE IF NOT EXISTS `pedidos` (
   `Id_Pedido` int(11) NOT NULL AUTO_INCREMENT,
   `Id_Cliente` int(11) NOT NULL COMMENT 'El id del cliente que ha hecho el pedido',
-  `estado` set('Enviado','Preparando','Devuelto','') NOT NULL,
   `Precio_Total` float NOT NULL,
   PRIMARY KEY (`Id_Pedido`),
   KEY `cliente` (`Id_Cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`Id_Pedido`, `Id_Cliente`, `estado`, `Precio_Total`) VALUES
-(1, 1, 'Enviado', 237.5),
-(2, 1, 'Preparando', 914),
-(3, 7, 'Enviado', 300),
-(4, 6, 'Devuelto', 444.44);
+INSERT INTO `pedidos` (`Id_Pedido`, `Id_Cliente`, `Precio_Total`) VALUES
+(1, 1, 237.5),
+(2, 1, 914),
+(3, 7, 300),
+(4, 6, 444.44),
+(20, 11, 40),
+(30, 11, 90),
+(40, 11, 100);
 
 -- --------------------------------------------------------
 
