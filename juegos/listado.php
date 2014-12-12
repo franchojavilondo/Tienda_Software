@@ -84,6 +84,7 @@ function  recargar(){
    {
     var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
     $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+	document.forms.busqueda.action="../juegos/listadobusqueda.php?pagina=1&criterio=genero&prod_name="+param;
    }
   );
  });
@@ -94,6 +95,7 @@ function  recargar(){
    {
     var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
     $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+	document.forms.busqueda.action="../juegos/listadobusqueda.php?pagina=1&criterio=genero&prod_name="+param;
    }
   );
  });
@@ -127,7 +129,7 @@ function  recargar(){
     <div id="hgroup">
 	<a href="../index.php"> <img src="../images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> <a/> </div>
     
-    <form action="#" method="post">
+    <form id="busqueda" action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
         <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">

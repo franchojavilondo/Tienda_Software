@@ -5,6 +5,7 @@ $carro=$_SESSION['carro'];
 $contador = count($carro);
 }
 else {$carro=false; $contador=0;}
+$prod_name=$_GET["prod_name"];
 
 ?>
 
@@ -15,13 +16,13 @@ else {$carro=false; $contador=0;}
 
 <head>
 <title>Tienda de videojuegos</title>
-<meta content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<meta charset="iso-8859-1">
 <link rel="stylesheet" href="../styles/layout.css" type="text/css">
 <style type="text/css">
 </style>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
 <script type='text/javascript'>
 // Botón para Ir Arriba
 jQuery(document).ready(function() {
@@ -71,14 +72,41 @@ $(function(){
 </script>
 <script type='text/javascript'>
 function  recargar(){ 
+	prod_name = getQueryVariable("prod_name");
 	cri=document.formu.criterio.value;
-   	location.href="listadofiltro.php?filtro="+"<?php echo $_GET["filtro"];?>"+"&pagina=1&criterio="+cri;
+   	location.href="listadobusqueda.php?pagina=1&criterio="+cri+"&prod_name="+prod_name;
    	
 	
 }	
+
+function getGET(){
+   var loc = document.location.href;
+   var getString = loc.split('?')[1];
+   var GET = getString.split('&');
+   var get = {};//this object will be filled with the key-value pairs and returned.
+
+   for(var i = 0, l = GET.length; i < l; i++){
+      var tmp = GET[i].split('=');
+      get[tmp[0]] = unescape(decodeURI(tmp[1]));
+   }
+   return get;
+}
+
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
 				
 </script>
 <script type="text/javascript">
+
+
  $(document).ready(function() {
   $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
    function(event)
@@ -135,13 +163,14 @@ function  recargar(){
         <legend>Search:</legend>
         <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
         <input type="submit" id="sf_submit" value="">
-		<br />
+		       <br />
+<br />
 <div id="resultado" class="cuadro_busqueda" ></div>
       </fieldset>
     </form>
     
     <div class="cajon_usu" >
-			<?php
+		<?php
 	
 	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
 		$hostname = "localhost";
@@ -244,15 +273,13 @@ function  recargar(){
 		}
 		?>
 	</div>
-	
-	
     <nav>
       <div class="menu">
       <ul>
 	  <li><a href="../index.php"><img class="iconos_navegacion" src="../images/home.png">INICIO</a></li>
 		<li>|</li>
 
-	    <li><div class="enl"><a href="./listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="./listadobusqueda.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
 
 	    
 
@@ -313,19 +340,26 @@ function  recargar(){
 
 <div class="wrapper row2">
   <div id="container" class="clear">
-    
     <!-- main content -->
-			
-			<form method="post" name="formu">
+	
+	<div class="listado_juegos">
+					<div class="cuadro_juegos">
+					<div class="titulo_nove">
+						<h2>JUEGOS DISPONIBLES</h2>
+						
+	<form method="post" name="formu" class="formulario_juegos">
 	Ordenar por
-    <select id="list" name="criterio" onChange="recargar()">  
+
+    <select id="list" name="criterio" onChange="recargar()"> 
+	
 		<?php
+		
 		if ($_GET["criterio"]=="alfa"){ 
 			?>
 			<option value="alfa" selected="selected">Alfabetico</option>
 			<option value="predesc">Precio (Mayor a Menor)</option>
 			<option value="preasc">Precio (Menor a mayor)</option>
-			
+			<option value="genero">Genero</option>
 			<option value="oferta" >Oferta</option>
 			<?php
 		}
@@ -335,7 +369,7 @@ function  recargar(){
 			<option value="alfa" >Alfabetico</option>
 			<option value="predesc" selected="selected">Precio (Mayor a Menor)</option>
 			<option value="preasc">Precio (Menor a mayor)</option>
-			
+			<option value="genero">Genero</option>
 			<option value="oferta" >Oferta</option>
 			<?php
 		}
@@ -345,9 +379,19 @@ function  recargar(){
 			<option value="alfa" >Alfabetico</option>
 			<option value="predesc" >Precio (Mayor a Menor)</option>
 			<option value="preasc" selected="selected">Precio (Menor a mayor)</option>
-			
+			<option value="genero">Genero</option>
 			<option value="oferta" >Oferta</option>
 			<?php
+		}
+		if ($_GET["criterio"]=="genero"){ 
+			
+			?>
+			<option value="alfa" >Alfabetico</option>
+			<option value="predesc" >Precio (Mayor a Menor)</option>
+			<option value="preasc" >Precio (Menor a mayor)</option>
+			<option value="genero" selected="selected">Genero</option>
+			<option value="oferta" >Oferta</option>
+			<?php			
 		}
 		if ($_GET["criterio"]=="oferta"){ 
 			
@@ -355,24 +399,21 @@ function  recargar(){
 			<option value="alfa" >Alfabetico</option>
 			<option value="predesc" >Precio (Mayor a Menor)</option>
 			<option value="preasc" >Precio (Menor a mayor)</option>
-		
+			<option value="genero" >Genero</option>
 			<option value="oferta" selected="selected">Oferta</option>
 			<?php			
 		}
-		
 		?>
        
    </select>
 		
-	</form><br>
+	</form></div><br>
 <?php
-		$filtro=$_GET["filtro"];
 		$hostname = "localhost";
 		$usuario = "pma";
 		$password = "pmapass";
 		$basededatos = "tienda_software";
 		$tabla="clientes";	 
-
 		
 	
 		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
@@ -410,33 +451,42 @@ function  recargar(){
 				$criterio = " order by Precio asc";
 				$_SESSION["elegido"]="preasc";				
 			}
+			if ($_GET["criterio"]=="genero"){ 
+				$criterio = " order by Genero asc"; 
+				$_SESSION["elegido"]="genero";
+			}
 			if ($_GET["criterio"]=="oferta"){ 
 				$criterio = " order by Porcentaje desc"; 
 				$_SESSION["elegido"]="oferta";
 			}
 		}
+		//miro a ver el número total de campos que hay en la tabla con esa búsqueda 
 		
-		
-		
+		$consultaSQL ="SELECT * FROM productos WHERE Nombre LIKE '%$prod_name%'" ; 
+		$resultado = $conexion->query($consultaSQL);
+		$num_total_registros = $resultado->num_rows;
+		//calculo el total de páginas 
+		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
+
 		?>
 		
 		<a name="Ancla"></a>
 		<?php
-		$consultaSQL = "SELECT * FROM productos where Id_Producto= any(SELECT Id_Producto from product_info where Genero='$filtro')";
-		$resultado = $conexion->query($consultaSQL);
-		$num_total_registros = $resultado->num_rows;
-		//calculo el total de páginas 
-		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
 		
-		$consultaSQL = "SELECT * FROM productos where Id_Producto= any(SELECT Id_Producto from product_info where Genero='$filtro')". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1);
+		$consultaSQL = "SELECT * FROM productos WHERE Nombre LIKE '%$prod_name%'" . $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+		
+		if($_SESSION["elegido"]=="genero"){
+			$consultaSQL = "SELECT *,Genero FROM productos,product_info where Nombre LIKE '%$prod_name%' AND productos.Id_Producto=product_info.Id_Producto". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+			
+		}
 		if($_SESSION["elegido"]=="oferta"){
-			
-			
-			$consultaSQL = "SELECT * FROM productos,ofertas where ofertas.Id_Producto=productos.Id_Producto and productos.Id_Producto= any(SELECT product_info.Id_Producto from product_info where Genero='$filtro')". $criterio. " limit " . $inicio . "," . ($TAMANO_PAGINA+1) ; 
-			$resultado0 = $conexion->query($consultaSQL);
+			$consultaSQL0 ="SELECT * FROM ofertas" ; 
+			$resultado0 = $conexion->query($consultaSQL0);
 			$num_total_registros = $resultado0->num_rows;
 			//calculo el total de páginas 
 			$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
+			$consultaSQL = "SELECT *,Porcentaje FROM productos,ofertas where Nombre LIKE '%$prod_name%' AND ofertas.Id_Producto=productos.Id_Producto". $criterio. " limit " . $inicio . "," . ($TAMANO_PAGINA+1) ; 
+			
 			
 		}
 		$resultado = $conexion->query($consultaSQL);
@@ -444,7 +494,10 @@ function  recargar(){
 			die('No se puede realizar la consulta: ' . $conexion->connect_error);
 		}
 		if ($registro=$resultado->fetch_assoc()){
-		
+		?>
+					
+					
+					<?php
 				do {
 					$id=$registro["Id_Producto"];
 					$precio=$registro["Precio"];
@@ -470,24 +523,54 @@ function  recargar(){
 					
 				?>
 				<div>
-				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> >
-				<img <?php echo 'src="..'.$registro["Caratula"].'"' ?> WIDTH="50" HEIGHT="80" /></a>
-				<input type="text" name="my-item-name" <?php echo 'value="'.$registro["Nombre"].'"' ?>/>	
-				<input type="text" name="my-item-price" <?php echo 'value="'.$registro["Precio"]." Euros".'"' ?> />
-    			<input type="text" name="my-item-price" <?php echo 'value="'.$precio." Euros".'"' ?> />
-				<input type="text" name="my-item-genero" <?php echo 'value="'.$genero.'"' ?>/>
-				<input type="text" name="my-item-descuento" <?php echo 'value="'.$descuento.'"' ?>/>
+				
+				
+				
+			<div class="item_noticias">
+				<div class="imagen_juegos">
+					<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> >
+						<img <?php echo 'src="..'.$registro["Caratula"].'"' ?>></a>
 				</div>
+				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> ><h3><?php echo ''.$registro["Nombre"].'' ?></h3></a>
+				<genero_p><?php echo ''.$genero.'' ?></genero_p>
+				<descuento_p><?php echo 'Descuento: '.$descuento.'' ?></descuento_p></br>
+				</br>
+				<precio_sin><?php echo ''.$registro["Precio"]." Euros".'' ?></precio_sin></br>
+				<precio_con><?php echo ''.$precio." Euros".'' ?></precio_con>
+				
+				
+			</div>
+			
+			
+			<div class="separador_items">
+			</div>
+			
+			
+			
+		  </div>
+				
+				
+				
+				
 				
 				<?php
 				
-				}while ($registro=$resultado->fetch_assoc());
+				}while ($registro=$resultado->fetch_assoc()); 
+				?>
+				</div>
+				
+				<div class="paginador">
+				
+				<?php
 		}
+		
+		
+		
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
 		
 		if(($pagina-1)>=1){
-				echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . 1 . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'><<</a> "; 
-				echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . ($pagina-1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Anterior</a> "; 
+				echo "<a href='listadobusqueda.php?pagina=" . 1 . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'><<</a> "; 
+				echo "<a href='listadobusqueda.php?pagina=" . ($pagina-1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Anterior</a> "; 
 			}
 		if ($total_paginas >= 1){ 
 			for ($i=1;$i<=$total_paginas;$i++){ 
@@ -498,14 +581,14 @@ function  recargar(){
 					}
 				else {
 					//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 
-					echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . $i . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>" . $i."</a> "; 
+					echo "<a href='listadobusqueda.php?pagina=" . $i . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>" . $i."</a> "; 
 					}
 			} 
 			
 			
 			if(($pagina+1)<=$total_paginas){
-				echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Siguiente</a> ";
-				echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . $total_paginas . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>>></a> "; 				
+				echo "<a href='listadobusqueda.php?pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Siguiente</a> ";
+				echo "<a href='listadobusqueda.php?pagina=" . $total_paginas . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>>></a> "; 				
 			}
 		}
 		
@@ -517,18 +600,34 @@ function  recargar(){
 		if($total_paginas==$pagina){
 			$total=$num_total_registros ;
 		}
-		if($num_total_registros==0){
-			echo "No hay ningun producto de este tipo<br>";
-		}
-		else{
-			echo "Mostrando " .$num."-".$total ." de " . $num_total_registros . " resultados"."<br>"; 
-		}
+		
+		echo "Mostrando " .$num."-".$total ." de " . $num_total_registros . " resultados"."<br>"; 
+		
 		
 		$registro=$resultado->free();
 		$conexion->close();
 		
 ?>
-	
+			</div>
+			
+			</div>
+			
+	<div class="banner_imagenes">
+			<div class="titulo_noticias">
+			
+				<h2>PUBLICIDAD</h2>
+			
+			</div>
+			<div class="bimagen">
+			
+				<img src="../images/extras/ryse.jpg">
+				<img src="../images/extras/dai.jpg">
+				<img src="../images/extras/MW3.jpg">
+				<img src="../images/extras/batman.jpg">
+				
+			</div>
+		
+		</div>
 	
 	
   </div>

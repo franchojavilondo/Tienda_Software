@@ -14,6 +14,7 @@ $contador = count($carro);
 //La asignamos a la variable 
 //$carro si existe o ponemos a false $carro 
 //en caso contrario 
+$logeado=0;
 ?>
 <head>
 <title>Tienda de videojuegos</title>
@@ -78,6 +79,7 @@ $(function(){
    {
     var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
     $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+	document.forms.busqueda.action="../juegos/listadobusqueda.php?pagina=1&criterio=genero&prod_name="+param;
    }
   );
  });
@@ -88,6 +90,7 @@ $(function(){
    {
     var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
     $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+	document.forms.busqueda.action="../juegos/listadobusqueda.php?pagina=1&criterio=genero&prod_name="+param;
    }
   );
  });
@@ -121,7 +124,7 @@ $(function(){
     <div id="hgroup">
     <a href="../index.php"> <img src="../images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> <a/> </div>
     
-    <form action="#" method="post">
+    <form id="busqueda" action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
         <input  id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
@@ -158,7 +161,7 @@ $(function(){
 		
 		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
 		if ($registro=$resultado->fetch_assoc()){
-		
+		$logeado=1;
 			$ruta=$registro['foto'];
 			
 			?>
@@ -180,6 +183,7 @@ $(function(){
 		
 		}
 		else{
+		$logeado=1;
 			$consultaSQL ="SELECT * FROM administradores WHERE nombre='$user' && pass='$contra'" ; 
 	  
 			$resultado = $conexion->query($consultaSQL);
@@ -217,6 +221,7 @@ $(function(){
 	}
 	
 	else{
+	$logueado=0;
 	
 	?>
 		<div class="imagen_perfil">
@@ -371,8 +376,10 @@ $contador++;
 //para los colores alternos  
 ?> 
 <tr bgcolor="<?php echo $color[$contador%2]; ?>" class='prod'>  
-<td align="center"><?php echo $v['Nombre'] ?></td> 
-<td align="center"><?php echo $v['Precio'] ?></td> 
+<td align="center">
+<a   href="../producto/product_info.php?id=<?php echo $v['Id_Producto']?>"><h3><?php echo $v['Nombre'] ?></h3></a>
+</td> 
+<td align="center"><h3><?php echo $v['Precio'] ?></h3></td> 
 <td align="center"><a href="borrarcar.php?&id=<?php echo $v['id'] ?>"><img src="trash.gif" width="12" height="14" border="0"></a></td> 
 </tr>
 <?php 
@@ -402,6 +409,7 @@ $contador++;
 </div> 
 
 <!--Seccion de pago con paypal-->
+<?php if($logeado!=0){?>
 <div align="center"><span class="prod">Continuar al metodo de pago</span>  
 <form action="https://www.sandbox.paypal.com/es/cgi-bin/webscr" method="post">
 
@@ -429,7 +437,8 @@ $precio=$v['Precio'];
 <input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but6.gif" name="submit" >
 </form> 
 </div> 
-<?php }else{ ?> 
+<?php }	} else{ ?> 
+
 <p align="center"> <span class="prod">No hay productos seleccionados</span> 
 <a href="../juegos/listado.php?pagina=1&criterio=alfa"> 
 <img src="continuar.gif" width="13" height="13" border="0"></a>  
