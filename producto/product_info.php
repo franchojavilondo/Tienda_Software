@@ -51,6 +51,20 @@ $Id_Prod=$_GET["id"];
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
+<link type="text/css" href="../styles/bottom.css" rel="stylesheet" />
+	
+		<script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script type="text/javascript" src="../lib/jquery.jcarousel.min.js"></script>
+		<script type="text/javascript" src="../lib/jquery.pikachoose.min.js"></script>
+		<script type="text/javascript" src="../lib/jquery.touchwipe.min.js"></script>
+		<script language="javascript">
+			$(document).ready(
+				function (){
+					$("#pikame").PikaChoose({carousel:true,carouselOptions:{wrap:'circular'}});
+				});
+		</script>
+
+
 <script type='text/javascript'>
 // Botón para Ir Arriba
 jQuery(document).ready(function() {
@@ -436,6 +450,19 @@ $(function(){
 				</div>
 				
 			</div>
+			
+			
+			<!--visor de imagenes -->
+			<div class="pikachoose">
+				<ul id="pikame" class="jcarousel-skin-pika">
+					<li><a href="http://www.pikachoose.com"><img src="1.jpg"/></a><span>This is an example of the basic theme.</span></li>
+					<li><a href="http://www.pikachoose.com"><img src="2.jpg"/></a><span>jCarousel is supported and can be integrated with PikaChoose!</span></li>
+					<li><a href="http://www.pikachoose.com"><img src="3.jpg"/></a><span>Be sure to check out <a href="http://www.pikachoose.com">PikaChoose.com</a> for updates.</span></li>
+					<li><a href="http://www.pikachoose.com"><img src="4.jpg"/></a><span>You can use any type of html you want with PikaChoose</span></li>
+					<li><a href="http://www.pikachoose.com"><img src="5.jpg"/></a><span>PikaChoose survives on your donations! Keep the project alive with a donation.</span></li>
+				</ul>
+			</div>
+			
 			
 			<div class="comentarios_producto">
 				<div  class="titulo_producto"><h2>Comentarios de usuarios</h2></div>
