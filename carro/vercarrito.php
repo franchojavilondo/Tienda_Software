@@ -71,7 +71,27 @@ $(function(){
          .end().appendTo('#slider2');}, 8000);
 });
 </script>
-
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+ 
+ $(document).ready(function() {
+  $("#parametro").keyup( //Evento de soltar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+</script>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -104,12 +124,101 @@ $(function(){
     <form action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
-        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+        <input  id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
         <input type="submit" id="sf_submit" value="">
+		        <br />
+<br />
+<div id="resultado" class="cuadro_busqueda" ></div>
       </fieldset>
     </form>
     
     <div class="cajon_usu" >
+		<?php
+	
+	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+		$hostname = "localhost";
+		$usuario = "pma";
+		$password = "pmapass";
+		$basededatos = "tienda_software";
+		$tabla="clientes";	 
+		
+		$user= $_SESSION ["user"];
+		$contra = $_SESSION ["pass"];
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}	
+		
+		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
+	  
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		
+		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+		if ($registro=$resultado->fetch_assoc()){
+		
+			$ruta=$registro['foto'];
+			
+			?>
+	
+	
+			<div class="imagen_perfil">
+					<img <?php echo 'src=".'.$ruta.'"'; ?> alt="Usuario" >
+				</div>
+					
+				<div class="titulo_perfil">
+					<h1><?php echo $registro["nombre"]; ?> </h1>
+				</div>
+				
+				<div class="botones_acceso">
+					<a href="../profile.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
+					<a href="../logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+				</div>
+			<?php
+		
+		}
+		else{
+			$consultaSQL ="SELECT * FROM administradores WHERE nombre='$user' && pass='$contra'" ; 
+	  
+			$resultado = $conexion->query($consultaSQL);
+			if (!$resultado) {
+				die('No se puede realizar la consulta: ' . $conexion->connect_error);
+			}
+			
+			//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+			if ($registro=$resultado->fetch_assoc()){
+				?>
+	
+		
+				<div class="imagen_perfil">
+				
+						<img src="../images/usuarios/admin.png" alt="Usuario" >
+					</div>
+						
+					<div class="titulo_perfil">
+						<h1><?php echo "Administrador: ".$registro["nombre"]; ?> </h1>
+					</div>
+					
+					<div class="botones_acceso">
+						<a href="../admin.php"><input type="submit" class="boton_login" value="Pagina administracion"></a>
+						<a href="../logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+					</div>
+				<?php
+			}
+		}
+		$registro=$resultado->free();
+		$conexion->close();
+	
+	
+	
+	
+	}
+	
+	else{
+	
+	?>
 		<div class="imagen_perfil">
 			<img src="../images/profile.png" alt="Usuario" class="profile_img">
 		</div>
@@ -119,53 +228,67 @@ $(function(){
 		</div>
 		
 		<div class="botones_acceso">
-			<input type="submit" class="boton_login" value="Iniciar sesión">
-			<input type="submit" class="boton_registro" value="Registrarse">
+			<a href="../login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
+			<a href="../signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
 		</div>
+		
+		<?php
+		}
+		?>
+		
 	</div>
     <nav>
       <div class="menu">
-      <ul>
-		 <li><a href="../index.php">PÁGINA PRINCIPAL</a></li>
+       <ul>
+		<li><a href="../index.php"><img class="iconos_navegacion" src="../images/home.png">INICIO</a></li>
 		<li>|</li>
-	    <li><a href="#">Juegos<div class="tri"></div></a>
+
+	    <li><div class="enl"><a href="../juegos/listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
+
+	    
+
 		<ul>
 		<div class="sub">
-			<li><a href="#">Free to Play</a></li>
-            <li><a href="#">Acceso anticipado</a></li>
-            <li><a href="#">Acción</a></li>
-            <li><a href="#">Aventura</a></li>
-			<li><a href="#">Carreras</a></li>
-            <li><a href="#">Casual</a></li>
-            <li><a href="#">Deportes</a></li>
-            <li><a href="#">Estrategia</a></li>
-			<li><a href="#">Indie</a></li>
-            <li><a href="#">Multijugador masivo</a></li>
-            <li><a href="#">Rol</a></li>
-            <li><a href="#">Simuladores</a></li>
+			<li><a href="../juegos/listadofiltro.php?filtro=free_to_play&pagina=1&criterio=alfa">Free to Play</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=acceso_anticipado&pagina=1&criterio=alfa">Acceso anticipado</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=accion&pagina=1&criterio=alfa">Acción</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=aventura&pagina=1&criterio=alfa">Aventura</a></li>
+			<li><a href="../juegos/listadofiltro.php?filtro=carreras&pagina=1&criterio=alfa">Carreras</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=casual&pagina=1&criterio=alfa">Casual</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=deportes&pagina=1&criterio=alfa">Deportes</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=estrategia&pagina=1&criterio=alfa">Estrategia</a></li>
+			<li><a href="../juegos/listadofiltro.php?filtro=indie&pagina=1&criterio=alfa">Indie</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=mmo&pagina=1&criterio=alfa">Multijugador masivo</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=rol&pagina=1&criterio=alfa">Rol</a></li>
+            <li><a href="../juegos/listadofiltro.php?filtro=simuladores&pagina=1&criterio=alfa">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
 		<li>|</li>
-        <li><a href="#">Secciones<div class="tri"></div></a>
+        <li><a href="#"><img class="iconos_navegacion" src="../images/menu.png">Secciones<div class="tri"></div></a>
 		<ul>
 		<div class="sub">
 			<li><a href="../news.php">Noticias</a></li>
-            <li><a href="#">Lo último</a></li>
-            <li><a href="#">Ofertas</a></li>
+            <li><a href="../latest.php">Lo último</a></li>
+            <li><a href="../offers.php">Ofertas</a></li>
 		 </div>
 		 </ul>
-		
 		</li>
 		<li>|</li>
-        <li class="last"><a href="#">Demos</a></li>
+        <li class="last"><a href="#"><img class="iconos_navegacion" src="../images/demo.png">Demos</a></li>
         
       </ul>
 	  
 	  
 	  <div class="seccion_carrito">
 	  <ul>
-	  <li><a href="vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="../images/cart.png">Mi Cesta</a></li>
+
+	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="../images/favoritos.png">Lista de deseos</a></li>
+		<li>|</li>
+	  
+
+	  <li><a href="../carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="../images/cart.png">Mi Cesta</a></li>
+
       </ul>
 	  </div>
 	  
@@ -308,7 +431,7 @@ $precio=$v['Precio'];
 </div> 
 <?php }else{ ?> 
 <p align="center"> <span class="prod">No hay productos seleccionados</span> 
-<a href="../juegos/listado.php"> 
+<a href="../juegos/listado.php?pagina=1&criterio=alfa"> 
 <img src="continuar.gif" width="13" height="13" border="0"></a>  
 <?php }?> 
 </p> 

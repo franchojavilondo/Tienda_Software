@@ -76,7 +76,27 @@ function validar(){
 }	
 				
  </script>
+ <script type="text/javascript">
+ $(document).ready(function() {
+  $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
  
+ $(document).ready(function() {
+  $("#parametro").keyup( //Evento de soltar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+</script>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -107,12 +127,101 @@ function validar(){
     <form action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
-        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+        <input id="parametro"type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
         <input type="submit" id="sf_submit" value="">
+		       <br />
+			<br />
+			<div id="resultado" class="cuadro_busqueda" ></div>
       </fieldset>
     </form>
     
     <div class="cajon_usu" >
+		<?php
+	
+	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+		$hostname = "localhost";
+		$usuario = "pma";
+		$password = "pmapass";
+		$basededatos = "tienda_software";
+		$tabla="clientes";	 
+		
+		$user= $_SESSION ["user"];
+		$contra = $_SESSION ["pass"];
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}	
+		
+		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
+	  
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		
+		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+		if ($registro=$resultado->fetch_assoc()){
+		
+			$ruta=$registro['foto'];
+			
+			?>
+	
+	
+			<div class="imagen_perfil">
+					<img <?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" >
+				</div>
+					
+				<div class="titulo_perfil">
+					<h1><?php echo $registro["nombre"]; ?> </h1>
+				</div>
+				
+				<div class="botones_acceso">
+					<a href="profile.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
+					<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+				</div>
+			<?php
+		
+		}
+		else{
+			$consultaSQL ="SELECT * FROM administradores WHERE nombre='$user' && pass='$contra'" ; 
+	  
+			$resultado = $conexion->query($consultaSQL);
+			if (!$resultado) {
+				die('No se puede realizar la consulta: ' . $conexion->connect_error);
+			}
+			
+			//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+			if ($registro=$resultado->fetch_assoc()){
+				?>
+	
+		
+				<div class="imagen_perfil">
+				
+						<img src="./images/usuarios/admin.png" alt="Usuario" >
+					</div>
+						
+					<div class="titulo_perfil">
+						<h1><?php echo "Administrador: ".$registro["nombre"]; ?> </h1>
+					</div>
+					
+					<div class="botones_acceso">
+						<a href="admin.php"><input type="submit" class="boton_login" value="Pagina administracion"></a>
+						<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+					</div>
+				<?php
+			}
+		}
+		$registro=$resultado->free();
+		$conexion->close();
+	
+	
+	
+	
+	}
+	
+	else{
+	
+	?>
 		<div class="imagen_perfil">
 			<img src="images/profile.png" alt="Usuario" class="profile_img">
 		</div>
@@ -125,6 +234,10 @@ function validar(){
 			<a href="login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
 			<a href="signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
 		</div>
+		
+		<?php
+		}
+		?>
 	</div>
     <nav>
       <div class="menu">
@@ -132,24 +245,24 @@ function validar(){
 		<li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
 
-	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="./juegos/listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
 
 	    
 
 		<ul>
 		<div class="sub">
-			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=accion">Acción</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=aventura">Aventura</a></li>
-			<li><a href="./juegos/listadofiltro.php?filtro=carreras">Carreras</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=casual">Casual</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=deportes">Deportes</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=estrategia">Estrategia</a></li>
-			<li><a href="./juegos/listadofiltro.php?filtro=indie">Indie</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=rol">Rol</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=simuladores">Simuladores</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play&pagina=1&criterio=alfa">Free to Play</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado&pagina=1&criterio=alfa">Acceso anticipado</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=accion&pagina=1&criterio=alfa">Acción</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=aventura&pagina=1&criterio=alfa">Aventura</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=carreras&pagina=1&criterio=alfa">Carreras</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=casual&pagina=1&criterio=alfa">Casual</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=deportes&pagina=1&criterio=alfa">Deportes</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=estrategia&pagina=1&criterio=alfa">Estrategia</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=indie&pagina=1&criterio=alfa">Indie</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=mmo&pagina=1&criterio=alfa">Multijugador masivo</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=rol&pagina=1&criterio=alfa">Rol</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=simuladores&pagina=1&criterio=alfa">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -195,21 +308,38 @@ function validar(){
 	
     
     <div id="homepage" class="clear">
-		 
-		 <div class="cont_imagen_producto">
+		 <?php
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}	
 		
-			<img class="imagen_usuario" src="images/1.jpg" alt="logo"> 
+		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
+	  
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		
+		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+		if ($registro=$resultado->fetch_assoc()){
+				$ruta=$registro['foto'];
+		?>
+		 <div class="cont_imagen_producto">
+			<img class="imagen_usuario"<?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" alt="logo" >
+			
 		
 		</div>
 		
 		<div class="tarjeta_datos">
 		
 		<div class="titulo_nove">
-					<h2>MI PERFIL</h2>
-				</div>
+		<h2>MI PERFIL</h2>
+		</div>
+				<p><?php echo $registro["nombre"]; ?> </p>
+				<p><?php echo $registro["email"]; ?> </p>
 		
-			<p>Nombre de usuario</p>
-			<p>Correo electrónico</p>
+			
 			
 		</div>
 		
@@ -222,33 +352,50 @@ function validar(){
 		<div class="titulo_nove">
 					<h2>MIS PEDIDOS</h2>
 				</div>
+		<?php
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}	
+		//consulto el cliente actual
+		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
+	  
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
 		
+		
+		if ($registro=$resultado->fetch_assoc()){
+			$id=$registro["Id_Cliente"];
+			//si existe busco sus pedidos
+			$consultaSQL ="SELECT * FROM pedidos,lineas,productos,product_info  WHERE Id_Cliente='$id' and pedidos.Id_Pedido=lineas.Id_Pedido && productos.Id_Producto=lineas.Id_Producto and productos.Id_Producto=product_info.Id_Producto" ; 
+	  
+			$resultado = $conexion->query($consultaSQL);
+			if (!$resultado) {
+				die('No se puede realizar la consulta: ' . $conexion->connect_error);
+			}
+		
+			if ($registro=$resultado->fetch_assoc()){
+				
+			do {
+			?>
 			<div class="pedido_usuario">
-			
-				<a href="#"><img class="imagen_pedido" src="images/caratulas/assasinscreed.jpg" alt="logo"></a>
-				<a href="#"><titulo_juego>Assassin's Creed</titulo_juego></a>
-				<titulo_desarrollador>Ubisoft</titulo_desarrollador>	
-			</div>
-			<div class="pedido_usuario">
-			
-				<a href="#"><img class="imagen_pedido" src="images/caratulas/dai.jpg" alt="logo"></a>
-				<a href="#"><titulo_juego>Dragon Age Inquisition</titulo_juego></a>
-				<titulo_desarrollador>BioWare</titulo_desarrollador>	
-			</div>
-			
-			<div class="pedido_usuario">
-			
-				<a href="#"><img class="imagen_pedido" src="images/caratulas/assasinscreed.jpg" alt="logo"></a> 
-				<a href="#"><titulo_juego>Assassin's Creed</titulo_juego></a>
-				<titulo_desarrollador>Ubisoft</titulo_desarrollador>	
-			</div>
-			<div class="pedido_usuario">
-			
-				<a href="#"><img class="imagen_pedido" src="images/caratulas/dai.jpg" alt="logo"> </a>
-				<a href="#"><titulo_juego>Dragon Age Inquisition</titulo_juego></a>
-				<titulo_desarrollador>BioWare</titulo_desarrollador>	
+				<?php
+					$ruta=$registro["Caratula"];
+				?>
+				<a href="producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>"><img class="imagen_pedido" <?php echo 'src=".'.$ruta.'"'; ?>  alt="logo">
+				<titulo_juego><?php echo $registro["Nombre"]; ?></titulo_juego>
+				<br><titulo_desarrollador><?php echo $registro["Desarrollador"]; ?></titulo_desarrollador>	</a>
 			</div>
 			
+			
+			<?php
+			}while ($registro=$resultado->fetch_assoc());
+			}
+			
+		}
+		?>
 		</div>
 		
 		<div class="tarjeta_deseos">
@@ -274,10 +421,10 @@ function validar(){
 		
 		 
 		 </div>
-			
 		
-		
-		
+		<?php
+		}
+		?>
 	  </div>
     </div>
 	

@@ -15,13 +15,13 @@ else {$carro=false; $contador=0;}
 
 <head>
 <title>Tienda de videojuegos</title>
-<meta charset="iso-8859-1">
+<meta content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
 <link rel="stylesheet" href="../styles/layout.css" type="text/css">
 <style type="text/css">
 </style>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 
-<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type='text/javascript'>
 // Botón para Ir Arriba
 jQuery(document).ready(function() {
@@ -78,6 +78,27 @@ function  recargar(){
 }	
 				
 </script>
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+ 
+ $(document).ready(function() {
+  $("#parametro").keyup( //Evento de soltar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+</script>
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -110,8 +131,10 @@ function  recargar(){
     <form action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
-        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+        <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
         <input type="submit" id="sf_submit" value="">
+		<br />
+<div id="resultado" class="cuadro_busqueda" ></div>
       </fieldset>
     </form>
     
@@ -224,27 +247,27 @@ function  recargar(){
     <nav>
       <div class="menu">
       <ul>
-	  <li><a href="../index.html"><img class="iconos_navegacion" src="../images/home.png">INICIO</a></li>
+	  <li><a href="../index.php"><img class="iconos_navegacion" src="../images/home.png">INICIO</a></li>
 		<li>|</li>
 
-	    <li><div class="enl"><a href="./listado.php"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="./listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
 
 	    
 
 		<ul>
 		<div class="sub">
-			<li><a href="./listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
-            <li><a href="./listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
-            <li><a href="./listadofiltro.php?filtro=accion">Acción</a></li>
-            <li><a href="./listadofiltro.php?filtro=aventura">Aventura</a></li>
-			<li><a href="./listadofiltro.php?filtro=carreras">Carreras</a></li>
-            <li><a href="./listadofiltro.php?filtro=casual">Casual</a></li>
-            <li><a href="./listadofiltro.php?filtro=deportes">Deportes</a></li>
-            <li><a href="./listadofiltro.php?filtro=estrategia">Estrategia</a></li>
-			<li><a href="./listadofiltro.php?filtro=indie">Indie</a></li>
-            <li><a href="./listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
-            <li><a href="./listadofiltro.php?filtro=rol">Rol</a></li>
-            <li><a href="./listadofiltro.php?filtro=simuladores">Simuladores</a></li>
+			<li><a href="./listadofiltro.php?filtro=free_to_play&pagina=1&criterio=alfa">Free to Play</a></li>
+            <li><a href="./listadofiltro.php?filtro=acceso_anticipado&pagina=1&criterio=alfa">Acceso anticipado</a></li>
+            <li><a href="./listadofiltro.php?filtro=accion&pagina=1&criterio=alfa">Acción</a></li>
+            <li><a href="./listadofiltro.php?filtro=aventura&pagina=1&criterio=alfa">Aventura</a></li>
+			<li><a href="./listadofiltro.php?filtro=carreras&pagina=1&criterio=alfa">Carreras</a></li>
+            <li><a href="./listadofiltro.php?filtro=casual&pagina=1&criterio=alfa">Casual</a></li>
+            <li><a href="./listadofiltro.php?filtro=deportes&pagina=1&criterio=alfa">Deportes</a></li>
+            <li><a href="./listadofiltro.php?filtro=estrategia&pagina=1&criterio=alfa">Estrategia</a></li>
+			<li><a href="./listadofiltro.php?filtro=indie&pagina=1&criterio=alfa">Indie</a></li>
+            <li><a href="./listadofiltro.php?filtro=mmo&pagina=1&criterio=alfa">Multijugador masivo</a></li>
+            <li><a href="./listadofiltro.php?filtro=rol&pagina=1&criterio=alfa">Rol</a></li>
+            <li><a href="./listadofiltro.php?filtro=simuladores&pagina=1&criterio=alfa">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -253,8 +276,8 @@ function  recargar(){
 		<ul>
 		<div class="sub">
 			<li><a href="../news.php">Noticias</a></li>
-            <li><a href="#">Lo último</a></li>
-            <li><a href="#">Ofertas</a></li>
+            <li><a href="../latest.php">Lo último</a></li>
+            <li><a href="../offers.php">Ofertas</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -271,7 +294,7 @@ function  recargar(){
 		<li>|</li>
 	  
 
-	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="../images/cart.png">Mi Cesta</a></li>
+	  <li><a href="../carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="../images/cart.png">Mi Cesta</a></li>
 
       </ul>
 	  </div>
@@ -461,8 +484,8 @@ function  recargar(){
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
 		
 		if(($pagina-1)>=1){
-				echo "<a href='listado.php?pagina=" . 1 . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'><<</a> "; 
-				echo "<a href='listado.php?pagina=" . ($pagina-1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Anterior</a> "; 
+				echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . 1 . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'><<</a> "; 
+				echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . ($pagina-1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Anterior</a> "; 
 			}
 		if ($total_paginas >= 1){ 
 			for ($i=1;$i<=$total_paginas;$i++){ 
@@ -473,14 +496,14 @@ function  recargar(){
 					}
 				else {
 					//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 
-					echo "<a href='listado.php?pagina=" . $i . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>" . $i."</a> "; 
+					echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . $i . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>" . $i."</a> "; 
 					}
 			} 
 			
 			
 			if(($pagina+1)<=$total_paginas){
-				echo "<a href='listado.php?pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Siguiente</a> ";
-				echo "<a href='listado.php?pagina=" . $total_paginas . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>>></a> "; 				
+				echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Siguiente</a> ";
+				echo "<a href='listadofiltro.php?filtro=".$filtro."&pagina=" . $total_paginas . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>>></a> "; 				
 			}
 		}
 		
@@ -492,9 +515,12 @@ function  recargar(){
 		if($total_paginas==$pagina){
 			$total=$num_total_registros ;
 		}
-		
-		echo "Mostrando " .$num."-".$total ." de " . $num_total_registros . " resultados"."<br>"; 
-		
+		if($num_total_registros==0){
+			echo "No hay ningun producto de este tipo<br>";
+		}
+		else{
+			echo "Mostrando " .$num."-".$total ." de " . $num_total_registros . " resultados"."<br>"; 
+		}
 		
 		$registro=$resultado->free();
 		$conexion->close();

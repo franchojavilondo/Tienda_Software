@@ -245,7 +245,7 @@ function  recargar(){
     <nav>
       <div class="menu">
       <ul>
-	  <li><a href="../index.html"><img class="iconos_navegacion" src="../images/home.png">INICIO</a></li>
+	  <li><a href="../index.php"><img class="iconos_navegacion" src="../images/home.png">INICIO</a></li>
 		<li>|</li>
 
 	    <li><div class="enl"><a href="./listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="../images/gamepad.png">Juegos<div class="tri"></div></a></div>
@@ -254,18 +254,18 @@ function  recargar(){
 
 		<ul>
 		<div class="sub">
-			<li><a href="./listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
-            <li><a href="./listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
-            <li><a href="./listadofiltro.php?filtro=accion">Acción</a></li>
-            <li><a href="./listadofiltro.php?filtro=aventura">Aventura</a></li>
-			<li><a href="./listadofiltro.php?filtro=carreras">Carreras</a></li>
-            <li><a href="./listadofiltro.php?filtro=casual">Casual</a></li>
-            <li><a href="./listadofiltro.php?filtro=deportes">Deportes</a></li>
-            <li><a href="./listadofiltro.php?filtro=estrategia">Estrategia</a></li>
-			<li><a href="./listadofiltro.php?filtro=indie">Indie</a></li>
-            <li><a href="./listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
-            <li><a href="./listadofiltro.php?filtro=rol">Rol</a></li>
-            <li><a href="./listadofiltro.php?filtro=simuladores">Simuladores</a></li>
+			<li><a href="./listadofiltro.php?filtro=free_to_play&pagina=1&criterio=alfa">Free to Play</a></li>
+            <li><a href="./listadofiltro.php?filtro=acceso_anticipado&pagina=1&criterio=alfa">Acceso anticipado</a></li>
+            <li><a href="./listadofiltro.php?filtro=accion&pagina=1&criterio=alfa">Acción</a></li>
+            <li><a href="./listadofiltro.php?filtro=aventura&pagina=1&criterio=alfa">Aventura</a></li>
+			<li><a href="./listadofiltro.php?filtro=carreras&pagina=1&criterio=alfa">Carreras</a></li>
+            <li><a href="./listadofiltro.php?filtro=casual&pagina=1&criterio=alfa">Casual</a></li>
+            <li><a href="./listadofiltro.php?filtro=deportes&pagina=1&criterio=alfa">Deportes</a></li>
+            <li><a href="./listadofiltro.php?filtro=estrategia&pagina=1&criterio=alfa">Estrategia</a></li>
+			<li><a href="./listadofiltro.php?filtro=indie&pagina=1&criterio=alfa">Indie</a></li>
+            <li><a href="./listadofiltro.php?filtro=mmo&pagina=1&criterio=alfa">Multijugador masivo</a></li>
+            <li><a href="./listadofiltro.php?filtro=rol&pagina=1&criterio=alfa">Rol</a></li>
+            <li><a href="./listadofiltro.php?filtro=simuladores&pagina=1&criterio=alfa">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -274,8 +274,8 @@ function  recargar(){
 		<ul>
 		<div class="sub">
 			<li><a href="../news.php">Noticias</a></li>
-            <li><a href="#">Lo último</a></li>
-            <li><a href="#">Ofertas</a></li>
+            <li><a href="../latest.php">Lo último</a></li>
+            <li><a href="../offers.php">Ofertas</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -292,7 +292,7 @@ function  recargar(){
 		<li>|</li>
 	  
 
-	  <li><a href="./carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="../images/cart.png">Mi Cesta</a></li>
+	  <li><a href="../carro/vercarrito.php"><div class="contador_carrito"><?php echo $contador?></div><img class="imagen_carrito" src="../images/cart.png">Mi Cesta</a></li>
 
       </ul>
 	  </div>

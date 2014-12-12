@@ -56,7 +56,27 @@ jQuery(document).ready(function() {
 	 );
  });
  </script>
+<script type="text/javascript">
+ $(document).ready(function() {
+  $("#parametro").keydown( //Evento de presionar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
  
+ $(document).ready(function() {
+  $("#parametro").keyup( //Evento de soltar una tecla en el campo cuyo id sea "parametro"
+   function(event)
+   {
+    var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+   }
+  );
+ });
+</script>
 <title>Basic 75</title>
 <meta charset="iso-8859-1">
 <link rel="stylesheet" href="styles/layout.css" type="text/css">
@@ -106,8 +126,11 @@ jQuery(document).ready(function() {
     <form action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
-        <input type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
+        <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
         <input type="submit" id="sf_submit" value="">
+				        <br />
+<br />
+<div id="resultado" class="cuadro_busqueda" ></div>
       </fieldset>
     </form>
     
@@ -226,24 +249,24 @@ jQuery(document).ready(function() {
 	  <li><a href="../index.html"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
 
-	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="./juegos/listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
 
 	    
 
 		<ul>
 		<div class="sub">
-			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=accion">Acción</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=aventura">Aventura</a></li>
-			<li><a href="./juegos/listadofiltro.php?filtro=carreras">Carreras</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=casual">Casual</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=deportes">Deportes</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=estrategia">Estrategia</a></li>
-			<li><a href="./juegos/listadofiltro.php?filtro=indie">Indie</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=rol">Rol</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=simuladores">Simuladores</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play&pagina=1&criterio=alfa">Free to Play</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado&pagina=1&criterio=alfa">Acceso anticipado</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=accion&pagina=1&criterio=alfa">Acción</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=aventura&pagina=1&criterio=alfa">Aventura</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=carreras&pagina=1&criterio=alfa">Carreras</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=casual&pagina=1&criterio=alfa">Casual</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=deportes&pagina=1&criterio=alfa">Deportes</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=estrategia&pagina=1&criterio=alfa">Estrategia</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=indie&pagina=1&criterio=alfa">Indie</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=mmo&pagina=1&criterio=alfa">Multijugador masivo</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=rol&pagina=1&criterio=alfa">Rol</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=simuladores&pagina=1&criterio=alfa">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -252,8 +275,8 @@ jQuery(document).ready(function() {
 		<ul>
 		<div class="sub">
 			<li><a href="./news.php">Noticias</a></li>
-            <li><a href="#">Lo último</a></li>
-            <li><a href="#">Ofertas</a></li>
+            <li><a href="./latest.php">Lo último</a></li>
+            <li><a href="./offers.php">Ofertas</a></li>
 		 </div>
 		 </ul>
 		</li>
