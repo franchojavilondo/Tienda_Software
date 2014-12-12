@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2014 a las 19:30:28
+-- Tiempo de generación: 12-12-2014 a las 20:29:56
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -136,6 +136,7 @@ CREATE TABLE IF NOT EXISTS `lineas` (
   `Id_Producto` int(11) NOT NULL COMMENT 'Identificador del producto',
   `Id_Pedido` int(11) NOT NULL COMMENT 'Identificador del pedido',
   `Id_Linea` int(11) NOT NULL COMMENT 'Identificador de la linea',
+  `Precio` float NOT NULL,
   PRIMARY KEY (`Id_Producto`,`Id_Pedido`),
   KEY `pedido` (`Id_Pedido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -144,17 +145,19 @@ CREATE TABLE IF NOT EXISTS `lineas` (
 -- Volcado de datos para la tabla `lineas`
 --
 
-INSERT INTO `lineas` (`Id_Producto`, `Id_Pedido`, `Id_Linea`) VALUES
-(1, 1, 0),
-(1, 20, 50),
-(2, 2, 0),
-(3, 2, 0),
-(4, 4, 0),
-(7, 1, 0),
-(10, 1, 0),
-(10, 3, 0),
-(15, 30, 200),
-(19, 40, 500);
+INSERT INTO `lineas` (`Id_Producto`, `Id_Pedido`, `Id_Linea`, `Precio`) VALUES
+(1, 50, 3, 59.99),
+(1, 51, 3, 59.99),
+(1, 52, 3, 59.99),
+(13, 50, 1, 50),
+(13, 51, 1, 50),
+(13, 52, 1, 50),
+(14, 50, 2, 40),
+(14, 51, 2, 40),
+(14, 52, 2, 40),
+(23, 50, 4, 16.75),
+(23, 51, 4, 16.75),
+(23, 52, 4, 16.75);
 
 -- --------------------------------------------------------
 
@@ -216,20 +219,16 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `Precio_Total` float NOT NULL,
   PRIMARY KEY (`Id_Pedido`),
   KEY `cliente` (`Id_Cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Volcado de datos para la tabla `pedidos`
 --
 
 INSERT INTO `pedidos` (`Id_Pedido`, `Id_Cliente`, `Precio_Total`) VALUES
-(1, 1, 237.5),
-(2, 1, 914),
-(3, 7, 300),
-(4, 6, 444.44),
-(20, 11, 40),
-(30, 11, 90),
-(40, 11, 100);
+(50, 11, 166.74),
+(51, 11, 166.74),
+(52, 11, 166.74);
 
 -- --------------------------------------------------------
 
