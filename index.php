@@ -532,7 +532,7 @@ $(function(){
           <h2>ÚLTIMAS NOTICIAS</h2>
 		  </div>
 		  
-		  <?php $queryn="SELECT * from noticias";
+		  <?php $queryn="SELECT * from noticias order by Id_Titular DESC";
 		  
 		  $contador = 0;
 		  if ($resultn = mysqli_query($conexion, $queryn)) 
@@ -544,7 +544,7 @@ $(function(){
 		  ?>
 			<div class="item_noticias">
 				<div class="imagen_noticias">
-					<a href="#"><img class="imagen_noticias" <?php echo 'src=".'.$rown2["Imagen"].'"' ?>></a>
+					<a href="./news_info.php?idn=<?php echo $rown["Id_Titular"]?>"><img class="imagen_noticias" <?php echo 'src=".'.$rown2["Imagen"].'"' ?>></a>
 				</div>
 				<h3><br>NOTICIA</h3>
 				<a href="#" class="texto_noticias" ><?php echo $rown["Titular"]?></a>

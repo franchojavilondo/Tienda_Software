@@ -336,7 +336,7 @@ jQuery(document).ready(function() {
 		if(!$conexion) {
 		die ("conexion no se pudo realizar");
 		}
-			$queryn="SELECT * from noticias";
+			$queryn="SELECT * from noticias order by Id_Titular DESC";
 		  
 		  $contador = 0;
 		  if ($resultn = mysqli_query($conexion, $queryn)) 
