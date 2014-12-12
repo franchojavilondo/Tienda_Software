@@ -163,6 +163,92 @@ function validar(){
     </form>
     
     <div class="cajon_usu" >
+		<?php
+	
+	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+		$hostname = "localhost";
+		$usuario = "pma";
+		$password = "pmapass";
+		$basededatos = "tienda_software";
+		$tabla="clientes";	 
+		
+		$user= $_SESSION ["user"];
+		$contra = $_SESSION ["pass"];
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}	
+		
+		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
+	  
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		
+		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+		if ($registro=$resultado->fetch_assoc()){
+		
+			$ruta=$registro['foto'];
+			
+			?>
+	
+	
+			<div class="imagen_perfil">
+					<img <?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" >
+				</div>
+					
+				<div class="titulo_perfil">
+					<h1><?php echo $registro["nombre"]; ?> </h1>
+				</div>
+				
+				<div class="botones_acceso">
+					<a href="profile.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
+					<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+				</div>
+			<?php
+		
+		}
+		else{
+			$consultaSQL ="SELECT * FROM administradores WHERE nombre='$user' && pass='$contra'" ; 
+	  
+			$resultado = $conexion->query($consultaSQL);
+			if (!$resultado) {
+				die('No se puede realizar la consulta: ' . $conexion->connect_error);
+			}
+			
+			//  mysqli_fetch_array devuelve un array con cada fila de la consulta
+			if ($registro=$resultado->fetch_assoc()){
+				?>
+	
+		
+				<div class="imagen_perfil">
+				
+						<img src="./images/usuarios/admin.png" alt="Usuario" >
+					</div>
+						
+					<div class="titulo_perfil">
+						<h1><?php echo "Administrador: ".$registro["nombre"]; ?> </h1>
+					</div>
+					
+					<div class="botones_acceso">
+						<a href="admin.php"><input type="submit" class="boton_login" value="Pagina administracion"></a>
+						<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
+					</div>
+				<?php
+			}
+		}
+		$registro=$resultado->free();
+		$conexion->close();
+	
+	
+	
+	
+	}
+	
+	else{
+	
+	?>
 		<div class="imagen_perfil">
 			<img src="images/profile.png" alt="Usuario" class="profile_img">
 		</div>
@@ -175,31 +261,35 @@ function validar(){
 			<a href="login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
 			<a href="signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
 		</div>
+		
+		<?php
+		}
+		?>
 	</div>
     <nav>
       <div class="menu">
       <ul>
-	  <li><a href="../index.html"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
+	  <li><a href="index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
 
-	    <li><div class="enl"><a href="./juegos/listado.php"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
+	    <li><div class="enl"><a href="./juegos/listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
 
 	    
 
 		<ul>
 		<div class="sub">
-			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play">Free to Play</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado">Acceso anticipado</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=accion">Acción</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=aventura">Aventura</a></li>
-			<li><a href="./juegos/listadofiltro.php?filtro=carreras">Carreras</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=casual">Casual</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=deportes">Deportes</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=estrategia">Estrategia</a></li>
-			<li><a href="./juegos/listadofiltro.php?filtro=indie">Indie</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=mmo">Multijugador masivo</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=rol">Rol</a></li>
-            <li><a href="./juegos/listadofiltro.php?filtro=simuladores">Simuladores</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=free_to_play&pagina=1&criterio=alfa">Free to Play</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=acceso_anticipado&pagina=1&criterio=alfa">Acceso anticipado</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=accion&pagina=1&criterio=alfa">Acción</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=aventura&pagina=1&criterio=alfa">Aventura</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=carrera&pagina=1&criterio=alfa">Carreras</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=casual&pagina=1&criterio=alfa">Casual</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=deportes&pagina=1&criterio=alfa">Deportes</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=estrategia&pagina=1&criterio=alfa">Estrategia</a></li>
+			<li><a href="./juegos/listadofiltro.php?filtro=indie&pagina=1&criterio=alfa">Indie</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=mmo&pagina=1&criterio=alfa">Multijugador masivo</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=rol&pagina=1&criterio=alfa">Rol</a></li>
+            <li><a href="./juegos/listadofiltro.php?filtro=simuladores&pagina=1&criterio=alfa">Simuladores</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -208,8 +298,8 @@ function validar(){
 		<ul>
 		<div class="sub">
 			<li><a href="./news.php">Noticias</a></li>
-            <li><a href="#">Lo último</a></li>
-            <li><a href="#">Ofertas</a></li>
+            <li><a href="./latest.php">Lo último</a></li>
+            <li><a href="./offers.php">Ofertas</a></li>
 		 </div>
 		 </ul>
 		</li>
@@ -297,7 +387,7 @@ function validar(){
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">Información corporativa</a></li>
+          <li><a href="#">Información legal</a></li>
           <li><a href="#">Departamento de prensa</a></li>
           <li><a href="#">Trabaja con nosotros</a></li>
           <li class="last"><a href="#">La tienda en la Comunidad</a></li>

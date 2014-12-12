@@ -307,7 +307,7 @@ $(function(){
     
     <!-- main content -->
     <div id="homepage" class="clear">
-<head> 
+
 <title>PRODUCTOS AGREGADOS AL CARRITO</title> 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
 <style type="text/css"> 
@@ -322,16 +322,15 @@ $(function(){
     font-size: 9px; 
     color: #333333; 
 } 
-h1 { 
+ .car{ 
     font-family: Verdana, Arial, Helvetica, sans-serif; 
     font-size: 20px; 
     color: #990000; 
 } 
 --> 
 </style> 
-</head> 
-<body> 
-<h1 align="center">Carrito</h1> 
+
+<h1 align="center" class="car">Carrito</h1> 
 <?php  
 if($carro){ 
 //si el carro no está vacío, 
@@ -435,7 +434,7 @@ $precio=$v['Precio'];
 <img src="continuar.gif" width="13" height="13" border="0"></a>  
 <?php }?> 
 </p> 
-</body> 
+
 	
 		
 	</div>

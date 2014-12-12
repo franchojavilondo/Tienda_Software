@@ -22,7 +22,7 @@ else {$carro=false; $contador=0;}
 
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
 <script type='text/javascript'>
-// BotÃ³n para Ir Arriba
+// Botón para Ir Arriba
 jQuery(document).ready(function() {
 	jQuery("#IrArriba").hide();
 	jQuery(function () {
@@ -83,7 +83,7 @@ function  recargar(){
    function(event)
    {
     var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
-    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envÃ­a por vÃ­a post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
    }
   );
  });
@@ -93,7 +93,7 @@ function  recargar(){
    function(event)
    {
     var param = $("#parametro").attr("value"); //Se obtiene el valor del campo de texto
-    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envÃ­a por vÃ­a post al archivo busqueda.php para luego recargar el div con el resultado obtenido
+    $("#resultado").load('busqueda.php',{parametro:param}); //Y se envía por vía post al archivo busqueda.php para luego recargar el div con el resultado obtenido
    }
   );
  });
@@ -152,7 +152,7 @@ function  recargar(){
 		$contra = $_SESSION ["pass"];
 		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
 		if ($conexion->connect_errno) {
-			die('Error de conexiÃ³n: ' . $conexion->connect_error);
+			die('Error de conexión: ' . $conexion->connect_error);
 		}	
 		
 		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
@@ -180,7 +180,7 @@ function  recargar(){
 				
 				<div class="botones_acceso">
 					<a href="profile.php"><input type="submit" class="boton_login" value="Mi Perfil"></a>
-					<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar SesiÃ³n"></a>
+					<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
 				</div>
 			<?php
 		
@@ -209,7 +209,7 @@ function  recargar(){
 					
 					<div class="botones_acceso">
 						<a href="admin.php"><input type="submit" class="boton_login" value="Pagina administracion"></a>
-						<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar SesiÃ³n"></a>
+						<a href="logout.php"><input type="submit" class="boton_registro" value="Cerrar Sesión"></a>
 					</div>
 				<?php
 			}
@@ -230,11 +230,11 @@ function  recargar(){
 		</div>
 			
 		<div class="titulo_perfil">
-			<h1>Usuario anÃ³nimo</h1>
+			<h1>Usuario anónimo</h1>
 		</div>
 		
 		<div class="botones_acceso">
-			<a href="login.php"><input type="submit" class="boton_login" value="Iniciar sesiÃ³n"></a>
+			<a href="login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
 			<a href="signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
 		</div>
 		
@@ -256,7 +256,7 @@ function  recargar(){
 		<div class="sub">
 			<li><a href="./listadofiltro.php?filtro=free_to_play&pagina=1&criterio=alfa">Free to Play</a></li>
             <li><a href="./listadofiltro.php?filtro=acceso_anticipado&pagina=1&criterio=alfa">Acceso anticipado</a></li>
-            <li><a href="./listadofiltro.php?filtro=accion&pagina=1&criterio=alfa">AcciÃ³n</a></li>
+            <li><a href="./listadofiltro.php?filtro=accion&pagina=1&criterio=alfa">Acción</a></li>
             <li><a href="./listadofiltro.php?filtro=aventura&pagina=1&criterio=alfa">Aventura</a></li>
 			<li><a href="./listadofiltro.php?filtro=carreras&pagina=1&criterio=alfa">Carreras</a></li>
             <li><a href="./listadofiltro.php?filtro=casual&pagina=1&criterio=alfa">Casual</a></li>
@@ -274,7 +274,7 @@ function  recargar(){
 		<ul>
 		<div class="sub">
 			<li><a href="../news.php">Noticias</a></li>
-            <li><a href="../latest.php">Lo Ãºltimo</a></li>
+            <li><a href="../latest.php">Lo último</a></li>
             <li><a href="../offers.php">Ofertas</a></li>
 		 </div>
 		 </ul>
@@ -384,12 +384,12 @@ function  recargar(){
 	
 		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
 		if ($conexion->connect_errno) {
-			die('Error de conexiÃ³n: ' . $conexion->connect_error);
+			die('Error de conexión: ' . $conexion->connect_error);
 		}		
 		//Limito la busqueda 
 		$TAMANO_PAGINA = 10; 
 
-		//examino la pÃ¡gina a mostrar y el inicio del registro a mostrar 
+		//examino la página a mostrar y el inicio del registro a mostrar 
 		$pagina = $_GET["pagina"]; 
 		if (!$pagina) { 
 			$inicio = 0; 
@@ -426,11 +426,11 @@ function  recargar(){
 				$_SESSION["elegido"]="oferta";
 			}
 		}
-		//miro a ver el nÃºmero total de campos que hay en la tabla con esa bÃºsqueda 
+		//miro a ver el número total de campos que hay en la tabla con esa búsqueda 
 		$consultaSQL ="SELECT * FROM productos" ; 
 		$resultado = $conexion->query($consultaSQL);
 		$num_total_registros = $resultado->num_rows;
-		//calculo el total de pÃ¡ginas 
+		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 
 		?>
@@ -447,7 +447,7 @@ function  recargar(){
 			$consultaSQL0 ="SELECT * FROM ofertas" ; 
 			$resultado0 = $conexion->query($consultaSQL0);
 			$num_total_registros = $resultado0->num_rows;
-			//calculo el total de pÃ¡ginas 
+			//calculo el total de páginas 
 			$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
 			$consultaSQL = "SELECT *,Porcentaje FROM productos,ofertas where ofertas.Id_Producto=productos.Id_Producto". $criterio. " limit " . $inicio . "," . ($TAMANO_PAGINA+1) ; 
 			
@@ -530,7 +530,7 @@ function  recargar(){
 		
 		
 		
-		//muestro los distintos Ã­ndices de las pÃ¡ginas, si es que hay varias pÃ¡ginas 
+		//muestro los distintos índices de las páginas, si es que hay varias páginas 
 		
 		if(($pagina-1)>=1){
 				echo "<a href='listado.php?pagina=" . 1 . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'><<</a> "; 
@@ -539,12 +539,12 @@ function  recargar(){
 		if ($total_paginas >= 1){ 
 			for ($i=1;$i<=$total_paginas;$i++){ 
 				if ($pagina == $i) {
-					//si muestro el Ã­ndice de la pÃ¡gina actual, no coloco enlace 
+					//si muestro el índice de la página actual, no coloco enlace 
 					echo $pagina . " "; 
 					
 					}
 				else {
-					//si el Ã­ndice no corresponde con la pÃ¡gina mostrada actualmente, coloco el enlace para ir a esa pÃ¡gina 
+					//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 
 					echo "<a href='listado.php?pagina=" . $i . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>" . $i."</a> "; 
 					}
 			} 
@@ -605,11 +605,11 @@ function  recargar(){
   <div id="footer" class="clear">
     <!-- Section One -->
     <section class="one_quarter">
-      <h2 class="title">ConÃ³cenos</h2>
+      <h2 class="title">Conócenos</h2>
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">InformaciÃ³n corporativa</a></li>
+          <li><a href="#">Información corporativa</a></li>
           <li><a href="#">Departamento de prensa</a></li>
           <li><a href="#">Trabaja con nosotros</a></li>
           <li class="last"><a href="#">La tienda en la Comunidad</a></li>
@@ -618,11 +618,11 @@ function  recargar(){
     </section>
     <!-- Section Two -->
     <section class="one_quarter">
-      <h2 class="title">MÃ©todos de pago</h2>
+      <h2 class="title">Métodos de pago</h2>
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">MÃ©todos de pago</a></li>
+          <li><a href="#">Métodos de pago</a></li>
           <li><a href="#">Conversor de divisas</a></li>
           <li class="last"><a href="#">Cheques Regalo</a></li>
         </ul>
@@ -635,7 +635,7 @@ function  recargar(){
 	  </br>
         <ul>
           <li><a href="#">Noticias</a></li>
-          <li><a href="#">ArtÃ­culos</a></li>
+          <li><a href="#">Artículos</a></li>
           <li><a href="#">Lanzamientos</a></li>
           <li class="last"><a href="#">Juegos</a></li>
         </ul>
@@ -643,12 +643,12 @@ function  recargar(){
     </section>
     <!-- Section Four -->
     <section class="one_quarter lastbox">
-      <h2 class="title">Â¿Necesitas ayuda?</h2>
+      <h2 class="title">¿Necesitas ayuda?</h2>
       <nav>
 	  </br>
         <ul>
           <li><a href="#">Localizar o gestionar compras</a></li>
-          <li><a href="#">Tarifas y polÃ­ticas de envÃ­o</a></li>
+          <li><a href="#">Tarifas y políticas de envío</a></li>
           <li><a href="#">Devoluciones</a></li>
           <li><a href="#">Ayuda</a></li>
           <li class="last"><a href="#">IVA sobre los bienes</a></li>
