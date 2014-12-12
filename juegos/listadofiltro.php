@@ -140,7 +140,7 @@ function  recargar(){
       </fieldset>
     </form>
     
-    <div class="cajon_usu" >
+     <div class="cajon_usu" >
 			<?php
 	
 	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
@@ -372,7 +372,6 @@ function  recargar(){
 		$password = "pmapass";
 		$basededatos = "tienda_software";
 		$tabla="clientes";	 
-
 		
 	
 		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
@@ -381,7 +380,6 @@ function  recargar(){
 		}		
 		//Limito la busqueda 
 		$TAMANO_PAGINA = 10; 
-
 		//examino la página a mostrar y el inicio del registro a mostrar 
 		$pagina = $_GET["pagina"]; 
 		if (!$pagina) { 

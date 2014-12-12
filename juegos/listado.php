@@ -390,8 +390,8 @@ function  recargar(){
 		}		
 		//Limito la busqueda 
 		$TAMANO_PAGINA = 10; 
-
 		//examino la página a mostrar y el inicio del registro a mostrar 
+		if(isset($_GET["pagina"]) && isset($_GET["criterio"])){
 		$pagina = $_GET["pagina"]; 
 		if (!$pagina) { 
 			$inicio = 0; 
@@ -400,12 +400,14 @@ function  recargar(){
 		else { 
 			$inicio = ($pagina - 1) * $TAMANO_PAGINA; 
 		}
+		
 		//inicializo el criterio y recibo cualquier cadena que se desee buscar 
 		
 		if(!isset($_SESSION["elegido"])){
 			$_SESSION["elegido"]="";
 		}
 		$criterio = ""; 
+		
 		if ($_GET["criterio"]!=""){ 
 			if ($_GET["criterio"]=="alfa"){ 
 				$criterio = " order by Nombre asc";
@@ -434,7 +436,6 @@ function  recargar(){
 		$num_total_registros = $resultado->num_rows;
 		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
-
 		?>
 		
 		<a name="Ancla"></a>
@@ -483,8 +484,12 @@ function  recargar(){
 						die('No se puede realizar la consulta: ' . $conexion->connect_error);
 					}
 					if ($registro3=$resultado3->fetch_assoc()){
+						$descuentosi=true;
 						$descuento=$registro3["Porcentaje"]."%";
 						$precio=$precio-($precio*($descuento/100));
+					}
+					else{
+						$descuentosi=false;
 					}
 					
 				?>
@@ -499,11 +504,27 @@ function  recargar(){
 				</div>
 				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> ><h3><?php echo ''.$registro["Nombre"].'' ?></h3></a>
 				<genero_p><?php echo ''.$genero.'' ?></genero_p>
+				<?php
+				if($descuentosi){
+				?>
 				<descuento_p><?php echo 'Descuento: '.$descuento.'' ?></descuento_p></br>
+				<?php
+				}
+				?>
 				</br>
-				<precio_sin><?php echo ''.$registro["Precio"]." Euros".'' ?></precio_sin></br>
+				<?php
+				if($descuentosi){
+				?>
+				<precio_sin><?php echo ''."Antes: ".$registro["Precio"]." Euros".'' ?></precio_sin></br>
+				<precio_con><?php echo ''."Ahora: ".$precio." Euros".'' ?></precio_con>
+				<?php
+				}
+				else{
+				?>
 				<precio_con><?php echo ''.$precio." Euros".'' ?></precio_con>
-				
+				<?php
+				}
+				?>
 				
 			</div>
 			
@@ -572,7 +593,12 @@ function  recargar(){
 		
 		$registro=$resultado->free();
 		$conexion->close();
-		
+		}
+		else{
+			?>
+			 <p>La url introducida no es correcta, seleccione la opcion JUEGOS en la barra principal.</p>
+			<?php
+		}
 ?>
 			</div>
 			
