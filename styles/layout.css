@@ -691,10 +691,105 @@ margin-left:5%;
 	margin-top:3%;
 }
 
+.cuadro_juegos{
+	background:#FFFFFF;
+	box-shadow: 2px 2px 5px 2px #999;
+	width: 100%;
+	height:auto;
+	float:left;
+}
+
+.listado_juegos{
+
+float:left;
+width: 68%;
+
+}
+.formulario_juegos{
+float:right;
+margin-top:-3%;
+margin-right:4%;
+font-size:14px;
+text-transform:uppercase;
+font-weight: bold;
+}
+
+.paginador{
+margin-top:5%;
+width:100%;
+text-align:center;
+font-size:14px;
+color:#FFFFFF;
+float:left;
+background:#3f7696;
+box-shadow: 2px 2px 5px 2px #999;
+}
+.paginador a{
+background:#3f7696;
+color:#FF9900;
+}
+
+.cuadro_juegos h3{
+
+font-size:22px;
+margin-left:3%;
+
+}
+
+.item_noticias precio_sin{
+color:#3f7696;
+float:right;
+
+}
+.item_noticias descuento_p{
+float:right;
+color:#FFFFFF;
+font-size:18px;
+
+background:#3f7696;
+
+}
+
+.item_noticias genero_p{
+font-size:20px;
+
+}
+
+.item_noticias precio_con{
+color:#3f7696;
+float:right;
+font-size:24px;
+
+}
+
+.imagen_juegos{
+width:45%;
+padding-right:4%;
+
+}
+
+.imagen_juegos img{
+float: left;
+margin-right:1%;
+margin-bottom:1%;
+margin-left:1%;
+margin-top:1%;
+padding-right:4%;
+}
+
 .cuadro_noticias img{
 	float: left;
 height:80px;
 width:30%;
+margin-right:1%;
+margin-bottom:1%;
+margin-left:1%;
+margin-top:1%;
+	
+}
+.cuadro_juegos img{
+	float: left;
+width:40%;
 margin-right:1%;
 margin-bottom:1%;
 margin-left:1%;
@@ -721,6 +816,8 @@ background:#3f7696;
 padding-bottom: 0.6%;
 
 }
+
+
 
 .item_noticias{
 float: left;
@@ -1120,7 +1217,63 @@ float:right;
 
 											/*------------Página Listado Productos---------------*/
 											
-											
+table {
+   background:#FFFFFF;
+	box-shadow: 2px 2px 5px 1px #999; 
+	margin-bottom:3%;
+	border: 1px solid #3f7696;
+    border-collapse: collapse;
+}
+th{
+    width:230px;
+	font-size:16px;
+	text-transform:uppercase; 
+	color:#FFFFFF;
+	background:#3f7696;
+	padding-left:1%;
+}
+td{
+
+
+}
+.primero_tabla{
+
+	width:20px;
+
+}
+
+.nombrep_tabla{
+
+	width:230px;
+	font-size:16px;
+padding-left:4%;
+}
+.precioap_tabla{
+
+	width:130px;
+	font-size:12px;
+	padding-left:4%;
+}
+.preciopp_tabla{
+
+width:130px;
+	font-size:16px;
+	padding-left:4%;
+}
+.generop_tabla{
+
+width:130px;
+	font-size:16px;
+	padding-left:4%;
+}
+.descuentop_tabla{
+width:130px;
+	font-size:16px;
+	padding-left:4%;
+
+}
+
+						
 											
 .cuadro_registro{
 	width:100%;
@@ -1524,6 +1677,69 @@ background: #3f7696;
 
 #footer section nav li{margin:0 0 5px 0; padding:0 0 5px 0; border-bottom:1px solid #555555;}
 #footer section nav li.last{margin:0; float:left; width:100%;}
+
+
+.info_legal{
+
+	background:#FFFFFF;
+	box-shadow: 2px 2px 5px 2px #999;
+	width:100%;
+	height:100%;	
+
+}
+
+.info_legal ul li{
+
+color:#000000;
+margin-left:5%;
+
+}
+
+.info_legal p{
+
+margin-left:5%;
+width:70%;
+text-align:justify;
+
+}
+
+.titulo_legal{
+padding-top:10px;
+padding-left:30px;
+width:auto;
+color:#FFFFFF;
+background:#3f7696;
+padding-bottom: 0.6%;
+
+}
+
+.titulo_legal h2{
+
+font-size:38px;
+
+}
+
+.titulo_legal_seccion{
+font-size:28px;
+color:#000000;
+margin-left:5%;
+padding-top:5%;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*----------------------------------------------Copyright-------------------------------------*/
 

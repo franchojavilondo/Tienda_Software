@@ -605,8 +605,8 @@ $(function(){
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">Información corporativa</a></li>
-          <li><a href="#">Departamento de prensa</a></li>
+          <li><a href="#">Información legal</a></li>
+          <li><a href="#">Sobre la página</a></li>
           <li><a href="#">Trabaja con nosotros</a></li>
           <li class="last"><a href="#">La tienda en la Comunidad</a></li>
         </ul>
