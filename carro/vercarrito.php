@@ -403,7 +403,7 @@ $contador++;
 ?></span>  
 </div><br> 
 <div align="center"><span class="prod">Continuar la selección de productos</span>  
-<a href="../juegos/listado.php"> 
+<a href="../juegos/listado.php?pagina=1&criterio=alfa"> 
 <img src="continuar.gif" width="13" height="13" border="0"></a>  
 </div> 
 
