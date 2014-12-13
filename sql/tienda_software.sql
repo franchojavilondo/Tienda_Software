@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2014 a las 00:40:28
+-- Tiempo de generación: 13-12-2014 a las 02:08:21
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -67,6 +67,27 @@ INSERT INTO `clientes` (`Id_Cliente`, `email`, `pass`, `nombre`, `foto`) VALUES
 (6, 'dos@uclm.es', 'dos', 'Dos', ''),
 (7, 'tres@gmail.com', 'tres', 'Tres', ''),
 (11, 'pepe@gmail.com', '$2y$10$T0B.KA9NN02jK9OSx2CYQuJkRJS5X8kCbFcfPkD66VWqaOAIPaLpS', 'pepe', './images/usuarios/pepe.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `deseos`
+--
+
+CREATE TABLE IF NOT EXISTS `deseos` (
+  `Id_Cliente` int(11) NOT NULL,
+  `Id_Producto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `deseos`
+--
+
+INSERT INTO `deseos` (`Id_Cliente`, `Id_Producto`) VALUES
+(11, 14),
+(11, 13),
+(11, 25),
+(11, 9);
 
 -- --------------------------------------------------------
 
@@ -155,9 +176,12 @@ INSERT INTO `lineas` (`Id_Producto`, `Id_Pedido`, `Id_Linea`, `Precio`) VALUES
 (14, 50, 2, 40),
 (14, 51, 2, 40),
 (14, 52, 2, 40),
+(18, 53, 3, 7.5),
 (23, 50, 4, 16.75),
 (23, 51, 4, 16.75),
-(23, 52, 4, 16.75);
+(23, 52, 4, 16.75),
+(23, 53, 2, 16.75),
+(24, 53, 1, 25);
 
 -- --------------------------------------------------------
 
@@ -219,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `Precio_Total` float NOT NULL,
   PRIMARY KEY (`Id_Pedido`),
   KEY `cliente` (`Id_Cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54 ;
 
 --
 -- Volcado de datos para la tabla `pedidos`
@@ -228,7 +252,8 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
 INSERT INTO `pedidos` (`Id_Pedido`, `Id_Cliente`, `Precio_Total`) VALUES
 (50, 11, 166.74),
 (51, 11, 166.74),
-(52, 11, 166.74);
+(52, 11, 166.74),
+(53, 11, 49.25);
 
 -- --------------------------------------------------------
 
