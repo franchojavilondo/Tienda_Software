@@ -476,8 +476,8 @@ function validar(){
 					$ruta=$registro["Caratula"];
 				?>
 				<a href="producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>"><img class="imagen_pedido" <?php echo 'src=".'.$ruta.'"'; ?>  alt="logo">
-				<titulo_juego><?php echo $registro["Nombre"]; ?></titulo_juego>
-				<br><titulo_desarrollador><?php echo $registro["Desarrollador"]; ?></titulo_desarrollador>	</a>
+				<titulo_juego><?php echo $registro["Nombre"]; ?></titulo_juego></a>
+				<br><titulo_desarrollador><?php echo $registro["Desarrollador"]; ?></titulo_desarrollador>	
 			</div>
 			
 			
@@ -492,7 +492,7 @@ function validar(){
 		<div class="tarjeta_deseos">
 		
 		<div class="titulo_nove">
-					<h2>MIS LISTA DE DESEOS</h2>
+					<h2>MI LISTA DE DESEOS</h2>
 				</div>
 		
 		<?php 
@@ -518,7 +518,7 @@ function validar(){
 			
 				<a href="producto/product_info.php?id=<?php echo $Producto ?>"><img class="imagen_pedido" <?php  echo 'src=".'.$rowd2["Caratula"].'"' ?>" alt="logo"> </a>
 				<a href="producto/product_info.php?id=<?php echo $Producto ?>"><titulo_juego><?php echo $rowd2["Nombre"]?></titulo_juego></a>
-				<titulo_desarrollador><?php echo $rowd3["Desarrollador"] ?></titulo_desarrollador>	
+				</br><titulo_desarrollador><?php echo $rowd3["Desarrollador"] ?></titulo_desarrollador>	
 			</div>
 			
 			<?php }?>
