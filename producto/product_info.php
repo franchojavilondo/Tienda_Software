@@ -464,11 +464,11 @@ $(function(){
 			<!--visor de imagenes -->
 			<div class="pikachoose">
 				<ul id="pikame" class="jcarousel-skin-pika">
-					<li><a href="http://www.pikachoose.com"><img src="1.jpg"/></a><span>This is an example of the basic theme.</span></li>
-					<li><a href="http://www.pikachoose.com"><img src="2.jpg"/></a><span>jCarousel is supported and can be integrated with PikaChoose!</span></li>
-					<li><a href="http://www.pikachoose.com"><img src="3.jpg"/></a><span>Be sure to check out <a href="http://www.pikachoose.com">PikaChoose.com</a> for updates.</span></li>
-					<li><a href="http://www.pikachoose.com"><img src="4.jpg"/></a><span>You can use any type of html you want with PikaChoose</span></li>
-					<li><a href="http://www.pikachoose.com"><img src="5.jpg"/></a><span>PikaChoose survives on your donations! Keep the project alive with a donation.</span></li>
+					<li><img src="1.jpg"/></li>
+					<li><img src="2.jpg"/></li>
+					<li><img src="3.jpg"/></li>
+					<li><img src="4.jpg"/></li>
+					<li><img src="5.jpg"/></li>
 				</ul>
 			</div>
 			
