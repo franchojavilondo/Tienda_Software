@@ -326,6 +326,7 @@ function validar(){
 		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
 		if ($registro=$resultado->fetch_assoc()){
 				$ruta=$registro['foto'];
+				$id=$registro["Id_Cliente"];
 		?>
 		 <div class="cont_imagen_producto">
 			<img class="imagen_usuario"<?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" alt="logo" >
@@ -338,8 +339,8 @@ function validar(){
 		<div class="titulo_nove">
 		<h2>MI PERFIL</h2>
 		</div>
-				<p><?php echo $registro["nombre"]; ?> </p>
-				<p><?php echo $registro["email"]; ?> </p>
+				<p><b>Nombre de usuario: </b><br><br><?php echo $registro["nombre"]; ?> </p>
+				<p><b>Email: </b><br><br><?php echo $registro["email"]; ?> </p>
 		
 			
 			
@@ -394,6 +395,24 @@ function validar(){
 		$rowe3 = mysqli_fetch_assoc($resulte3);
 		$contador_deseos = count($rowe3);
 		
+		//juego mas caro
+		$consultaSQL ="SELECT * FROM pedidos,lineas,productos  WHERE Id_Cliente='$id' and 
+		pedidos.Id_Pedido=lineas.Id_Pedido and productos.Id_Producto=lineas.Id_Producto and lineas.Precio= (SELECT max(Precio)from lineas)" ;
+		$resultado1 = $conexion->query($consultaSQL);
+		$registro1=$resultado1->fetch_assoc();
+		if (!$resultado1) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		
+		//juego mas barato
+		$consultaSQL ="SELECT * FROM pedidos,lineas,productos  WHERE Id_Cliente='$id' and 
+		pedidos.Id_Pedido=lineas.Id_Pedido and productos.Id_Producto=lineas.Id_Producto and lineas.Precio= (SELECT min(Precio)from lineas)" ;
+		$resultado2 = $conexion->query($consultaSQL);
+		$registro2=$resultado2->fetch_assoc();
+		if (!$resultado2) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		
 		//Ultimo juego
 		$querye4 = "SELECT * from productos where Id_Producto=$ultimo_juego";
 		$resulte4 = mysqli_query($conexion, $querye4);
@@ -404,12 +423,12 @@ function validar(){
 		<div class="titulo_nove">
 		<h2>ÚLTIMOS MOVIMIENTOS</h2>
 		</div>
-				<p>Juegos comprados: <?php echo $contador_juegos?></p>
-				<p>Dinero empleado: <?php echo $dinero_total?> €</p>
-				<p>Juego más caro: </p>
-				<p>juego más barato: </p>
-				<p>Número de deseos: <?php echo $contador_deseos?></p>
-				<p>Último juego comprado: <?php echo $rowe4["Nombre"]?></p>
+				<p><b>Juegos comprados:</b> <?php echo $contador_juegos?></p>
+				<p><b>Dinero empleado:</b> <?php echo $dinero_total?> €</p>
+				<p><b>Juego más caro:</b> <?php echo $registro1["Nombre"]." con un precio de ".$registro1["Precio"]."€ "; ?></p>
+				<p><b>juego más barato:</b> <?php echo $registro2["Nombre"]." con un precio de ".$registro2["Precio"]."€ "; ?></p>
+				<p><b>Número de deseos:</b> <?php echo $contador_deseos?></p>
+				<p><b>Último juego comprado:</b> <?php echo $rowe4["Nombre"]?></p>
 		
 			
 			
