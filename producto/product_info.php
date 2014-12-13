@@ -406,9 +406,12 @@ $(function(){
 						if($row3 = mysqli_fetch_assoc($result3)){
 				
 				?>
+				
+				<div class="precio_sin_d"><anterior><?php echo $row2["Precio"]?>€</anterior>
+				</div>
 				<div class="discount">
-				<porcentaje>-<?php echo $row3["Porcentaje"] ?>%</porcentaje></div>
-				<anterior><?php echo $row2["Precio"]?>€</anterior>
+				<porcentaje>-<?php echo $row3["Porcentaje"] ?>%</porcentaje>
+				</div>
 				<precio><?php echo $row2["Precio"]-($row2["Precio"]*$row3["Porcentaje"]/100)?>€</precio>
 				
 				<?php }
