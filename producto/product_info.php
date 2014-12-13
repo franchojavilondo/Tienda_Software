@@ -5,6 +5,9 @@ $carro=$_SESSION['carro'];
 $contador = count($carro);
 }
 else {$carro=false; $contador=0;}
+
+
+
 ?>
 <!DOCTYPE html>
 
@@ -27,6 +30,12 @@ $Id_Prod=$_GET["id"];
 		die ("conexion no se pudo realizar");
 		}
 		
+		if(ISSET ($_SESSION ["user"])){
+			$nombre= $_SESSION ["user"];
+			$queryx="SELECT Id_Cliente from clientes where nombre='$nombre'";	
+			$resultx = mysqli_query($conexion, $queryx);
+			$rowx = mysqli_fetch_assoc($resultx);
+			$Cliente = $rowx["Id_Cliente"];}	
    	////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////
@@ -414,7 +423,7 @@ $(function(){
 				<a href="../carro/agregacar.php?id=<?php echo $Id_Prod ?>" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
 					Añadir al carrito</button></a>
 				<p>O también puedes guardarlo:</p>
-				<a href="login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
+				<a href="./agregadeseo.php?idp=<?php echo $Id_Prod?>&idc=<?php echo $Cliente?>" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
 					Añadir a la lista de deseos</button></a>
 				
 			</div>

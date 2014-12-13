@@ -346,15 +346,70 @@ function validar(){
 		</div>
 		<div class="tarjeta_estadisticas">
 		
+		<?php
+		
+		$hostname = "localhost";
+		$usuario = "pma";
+		$password = "pmapass";
+		$basededatos = "tienda_software";
+
+   
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+			if(!$conexion) {
+				die ("conexion no se pudo realizar");
+			}
+		//Sacamos el Id_Cliente
+		$nombre= $_SESSION ["user"];
+		$query1="SELECT Id_Cliente from clientes where nombre='$nombre'";	
+		$result1 = mysqli_query($conexion, $query1);
+		$row1 = mysqli_fetch_assoc($result1);
+		$Cliente = $row1["Id_Cliente"];
+		//Variables a declarar
+		$contador_juegos = 0;
+		$dinero_total = 0;
+		$contador_deseos = 0;
+		$ultimo_juego = 0;
+	
+		//Contamos los juegos y el dinero
+		
+		$querye1 = "SELECT * from pedidos where Id_Cliente=$Cliente";
+		$resulte1 = mysqli_query($conexion, $querye1);
+		while ($rowe1 = mysqli_fetch_assoc($resulte1))
+		{
+		$Pedido = $rowe1["Id_Pedido"];
+		$querye2 = "SELECT * from lineas where Id_Pedido=$Pedido order by Id_Linea ASC";
+		$resulte2 = mysqli_query($conexion, $querye2);
+		$rowe2 = mysqli_fetch_assoc($resulte2);
+		
+		
+		$contador_juegos = $contador_juegos + count($rowe2);
+		$dinero_total = $dinero_total + $rowe1["Precio_Total"];
+		while($rowe2 = mysqli_fetch_assoc($resulte2))
+		$ultimo_juego = $rowe2["Id_Producto"];
+		}
+		
+		//contamos los deseos
+		$querye3 = "SELECT * from deseos where Id_Cliente=$Cliente";
+		$resulte3 = mysqli_query($conexion, $querye3);
+		$rowe3 = mysqli_fetch_assoc($resulte3);
+		$contador_deseos = count($rowe3);
+		
+		//Ultimo juego
+		$querye4 = "SELECT * from productos where Id_Producto=$ultimo_juego";
+		$resulte4 = mysqli_query($conexion, $querye4);
+		$rowe4 = mysqli_fetch_assoc($resulte4);
+		
+		?>
+		
 		<div class="titulo_nove">
 		<h2>ÚLTIMOS MOVIMIENTOS</h2>
 		</div>
-				<p>Juegos comprados: </p>
-				<p>Dinero empleado: </p>
+				<p>Juegos comprados: <?php echo $contador_juegos?></p>
+				<p>Dinero empleado: <?php echo $dinero_total?> €</p>
 				<p>Juego más caro: </p>
 				<p>juego más barato: </p>
-				<p>Número de deseos: </p>
-				<p>Último juego comprado: </p>
+				<p>Número de deseos: <?php echo $contador_deseos?></p>
+				<p>Último juego comprado: <?php echo $rowe4["Nombre"]?></p>
 		
 			
 			
