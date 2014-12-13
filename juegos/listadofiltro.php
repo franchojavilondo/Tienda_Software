@@ -484,7 +484,8 @@ function  recargar(){
 				</div>
 				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> ><h3><?php echo ''.$registro["Nombre"].'' ?></h3></a>
 				<genero_p><?php echo ''.$genero.'' ?></genero_p>
-				<descuento_p><?php echo 'Descuento: '.$descuento.'' ?></descuento_p></br>
+				<?php if($descuento!=""){?>
+				<descuento_p><?php echo 'Descuento: '.$descuento.'' ?></descuento_p> <?php }?></br>
 				</br>
 				<precio_sin><?php echo ''.$registro["Precio"]." Euros".'' ?></precio_sin></br>
 				<precio_con><?php echo ''.$precio." Euros".'' ?></precio_con>
