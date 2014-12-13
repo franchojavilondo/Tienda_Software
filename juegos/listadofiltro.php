@@ -372,7 +372,7 @@ function  recargar(){
 		
 	</form></div><br>
 <?php
-		$filtro=$_GET["filtro"];
+		
 		$hostname = "localhost";
 		$usuario = "pma";
 		$password = "pmapass";
@@ -387,6 +387,8 @@ function  recargar(){
 		//Limito la busqueda 
 		$TAMANO_PAGINA = 10; 
 		//examino la página a mostrar y el inicio del registro a mostrar 
+		if(isset($_GET["pagina"]) && isset($_GET["criterio"]) && isset($_GET["filtro"])){
+		$filtro=$_GET["filtro"];
 		$pagina = $_GET["pagina"]; 
 		if (!$pagina) { 
 			$inicio = 0; 
@@ -470,8 +472,11 @@ function  recargar(){
 					if ($registro3=$resultado3->fetch_assoc()){
 						$descuento=$registro3["Porcentaje"]."%";
 						$precio=$precio-($precio*($descuento/100));
+						$descuentosi=true;
 					}
-					
+					else{
+						$descuentosi=false;
+					}
 				?>
 				<div>
 				
@@ -484,13 +489,27 @@ function  recargar(){
 				</div>
 				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> ><h3><?php echo ''.$registro["Nombre"].'' ?></h3></a>
 				<genero_p><?php echo ''.$genero.'' ?></genero_p>
-				<?php if($descuento!=""){?>
-				<descuento_p><?php echo 'Descuento: '.$descuento.'' ?></descuento_p> <?php }?></br>
+				<?php
+				if($descuentosi){
+				?>
+				<descuento_p><?php echo 'Descuento: '.$descuento.'' ?></descuento_p></br>
+				<?php
+				}
+				?>
 				</br>
-				<precio_sin><?php echo ''.$registro["Precio"]." Euros".'' ?></precio_sin></br>
+				<?php
+				if($descuentosi){
+				?>
+				<precio_sin><?php echo ''."Antes: ".$registro["Precio"]." Euros".'' ?></precio_sin></br>
+				<precio_con><?php echo ''."Ahora: ".$precio." Euros".'' ?></precio_con>
+				<?php
+				}
+				else{
+				?>
 				<precio_con><?php echo ''.$precio." Euros".'' ?></precio_con>
-				
-				
+				<?php
+				}
+				?>
 			</div>
 			
 			
@@ -554,7 +573,12 @@ function  recargar(){
 		
 		$registro=$resultado->free();
 		$conexion->close();
-		
+		}
+		else{
+			?>
+			 <p>La url introducida no es correcta, seleccione la opcion JUEGOS en la barra principal.</p>
+			<?php
+		}
 ?>
 	</div>
 			
