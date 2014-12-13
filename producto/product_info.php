@@ -35,7 +35,8 @@ $Id_Prod=$_GET["id"];
 			$queryx="SELECT Id_Cliente from clientes where nombre='$nombre'";	
 			$resultx = mysqli_query($conexion, $queryx);
 			$rowx = mysqli_fetch_assoc($resultx);
-			$Cliente = $rowx["Id_Cliente"];}	
+			$Cliente = $rowx["Id_Cliente"];}
+		else $Cliente = -1;
    	////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////
@@ -425,9 +426,11 @@ $(function(){
 				<p>Precio con IVA incluido.</p>
 				<a href="../carro/agregacar.php?id=<?php echo $Id_Prod ?>" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
 					Añadir al carrito</button></a>
+					<?php if($Cliente != -1) {?>
 				<p>O también puedes guardarlo:</p>
+				
 				<a href="./agregadeseo.php?idp=<?php echo $Id_Prod?>&idc=<?php echo $Cliente?>" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
-					Añadir a la lista de deseos</button></a>
+					Añadir a la lista de deseos</button></a><?php }?>
 				
 			</div>
 			
