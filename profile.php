@@ -326,6 +326,7 @@ function validar(){
 		//  mysqli_fetch_array devuelve un array con cada fila de la consulta
 		if ($registro=$resultado->fetch_assoc()){
 				$ruta=$registro['foto'];
+				$id=$registro["Id_Cliente"];
 		?>
 		 <div class="cont_imagen_producto">
 			<img class="imagen_usuario"<?php echo 'src="'.$ruta.'"'; ?> alt="Usuario" alt="logo" >
@@ -338,8 +339,8 @@ function validar(){
 		<div class="titulo_nove">
 		<h2>MI PERFIL</h2>
 		</div>
-				<p><?php echo $registro["nombre"]; ?> </p>
-				<p><?php echo $registro["email"]; ?> </p>
+				<p><b>Nombre de usuario: </b><br><br><?php echo $registro["nombre"]; ?> </p>
+				<p><b>Email: </b><br><br><?php echo $registro["email"]; ?> </p>
 		
 			
 			
@@ -349,15 +350,75 @@ function validar(){
 		<div class="titulo_nove">
 		<h2>ÚLTIMOS MOVIMIENTOS</h2>
 		</div>
-				<p>Juegos comprados: </p>
-				<p>Dinero empleado: </p>
-				<p>Juego más caro: </p>
-				<p>juego más barato: </p>
-				<p>Número de deseos: </p>
-				<p>Último juego comprado: </p>
+		<?php
+		$consultaSQL ="SELECT * FROM pedidos,lineas,productos  WHERE Id_Cliente='$id' and 
+		pedidos.Id_Pedido=lineas.Id_Pedido and productos.Id_Producto=lineas.Id_Producto and lineas.Precio= (SELECT max(Precio)from lineas)" ;
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		if ($registro=$resultado->fetch_assoc()){
+			?>
+			<p><b>Juego más caro:</b> <?php echo $registro["Nombre"]." con un precio de ".$registro["Precio"]." €"; ?></p>
+			<?php
+		}
 		
+		$consultaSQL ="SELECT * FROM pedidos,lineas,productos  WHERE Id_Cliente='$id' and 
+		pedidos.Id_Pedido=lineas.Id_Pedido and productos.Id_Producto=lineas.Id_Producto and lineas.Precio= (SELECT min(Precio)from lineas)" ;
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		if ($registro=$resultado->fetch_assoc()){
+			?>
+			<p><b>Juego más barato:</b> <?php echo $registro["Nombre"]." con un precio de ".$registro["Precio"]." €"; ?></p>
+			<?php
+		}
+		
+		$consultaSQL ="SELECT * FROM pedidos,lineas WHERE Id_Cliente='$id' and 
+		pedidos.Id_Pedido=lineas.Id_Pedido" ;
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		if ($registro=$resultado->fetch_assoc()){
+			$cantidad=0;
+			do {
+				$cantidad=$cantidad+$registro["Precio"];
+			
+			}while ($registro=$resultado->fetch_assoc()); 
+			?>
+			<p><b>Dinero empleado: </b> <?php echo "Un total de ".$cantidad." €"; ?></p>
+			<?php
+		}
+		
+		$consultaSQL ="SELECT * FROM pedidos,lineas WHERE Id_Cliente='$id' and 
+		pedidos.Id_Pedido=lineas.Id_Pedido" ;
+		$resultado = $conexion->query($consultaSQL);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		if ($registro=$resultado->fetch_assoc()){
+			$cantidad=0;
+			do {
+				$cantidad=$cantidad+$registro["Precio"];
+			
+			}while ($registro=$resultado->fetch_assoc()); 
+			?>
+			<p><b>Último juego comprado:  </b> <?php echo $registro["Nombre"]; ?></p>
+			<?php
+		}
+		
+		
+		?>
 			
 			
+			<p>Juegos comprados: </p>
+				
+				
+				
+				<p>Número de deseos: </p>
+				
 		</div>
 		
 		<div class="contenedor_trafico_usuario">
