@@ -430,7 +430,15 @@ $(function(){
 				<p>O también puedes guardarlo:</p>
 				
 				<a href="./agregadeseo.php?idp=<?php echo $Id_Prod?>&idc=<?php echo $Cliente?>" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
-					Añadir a la lista de deseos</button></a><?php }?>
+					Añadir a la lista de deseos</button></a>
+					<?php 
+					}else{?>
+					
+					<p>O también puedes guardarlo:</p>
+				
+				<a href="../login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
+					Añadir a la lista de deseos</button></a>
+					<?php }?>
 				
 			</div>
 			
