@@ -426,7 +426,7 @@ function validar(){
 				<p><b>Juegos comprados:</b> <?php echo $contador_juegos?></p>
 				<p><b>Dinero empleado:</b> <?php echo $dinero_total?> €</p>
 				<p><b>Juego más caro:</b> <?php echo $registro1["Nombre"]." con un precio de ".$registro1["Precio"]."€ "; ?></p>
-				<p><b>juego más barato:</b> <?php echo $registro2["Nombre"]." con un precio de ".$registro2["Precio"]."€ "; ?></p>
+				<p><b>Juego más barato:</b> <?php echo $registro2["Nombre"]." con un precio de ".$registro2["Precio"]."€ "; ?></p>
 				<p><b>Número de deseos:</b> <?php echo $contador_deseos?></p>
 				<p><b>Último juego comprado:</b> <?php echo $rowe4["Nombre"]?></p>
 		
