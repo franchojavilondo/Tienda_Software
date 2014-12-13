@@ -392,8 +392,8 @@ function validar(){
 		//contamos los deseos
 		$querye3 = "SELECT * from deseos where Id_Cliente=$Cliente";
 		$resulte3 = mysqli_query($conexion, $querye3);
-		$rowe3 = mysqli_fetch_assoc($resulte3);
-		$contador_deseos = count($rowe3);
+		while($rowe3 = mysqli_fetch_assoc($resulte3))
+		$contador_deseos ++;
 		
 		//juego mas caro
 		$consultaSQL ="SELECT * FROM pedidos,lineas,productos  WHERE Id_Cliente='$id' and 
@@ -495,19 +495,33 @@ function validar(){
 					<h2>MIS LISTA DE DESEOS</h2>
 				</div>
 		
+		<?php 
+		
+		$queryd1= "SELECT * from deseos where Id_Cliente = $Cliente";
+		$resultd1 = mysqli_query($conexion, $queryd1);
+		while($rowd1 = mysqli_fetch_assoc($resultd1)){
+		
+		
+		$Producto = $rowd1["Id_Producto"];
+		$queryd2= "SELECT * from productos where Id_Producto = $Producto";
+		$resultd2 = mysqli_query($conexion, $queryd2);
+		$rowd2 = mysqli_fetch_assoc($resultd2);
+		
+		$queryd3= "SELECT * from product_info where Id_Producto = $Producto";
+		$resultd3 = mysqli_query($conexion, $queryd3);
+		$rowd3 = mysqli_fetch_assoc($resultd3);
+		
+		
+		
+		?>
 			<div class="pedido_usuario">
 			
-				<a href="#"><img class="imagen_pedido" src="images/caratulas/assasinscreed.jpg" alt="logo"> </a>
-				<a href="#"><titulo_juego>Assassin's Creed</titulo_juego></a>
-				<titulo_desarrollador>Ubisoft</titulo_desarrollador>	
-			</div>
-			<div class="pedido_usuario">
-			
-				<a href="#"><img class="imagen_pedido" src="images/caratulas/dai.jpg" alt="logo"> </a>
-				<a href="#"><titulo_juego>Dragon Age Inquisition</titulo_juego></a>
-				<titulo_desarrollador>BioWare</titulo_desarrollador>	
+				<a href="producto/product_info.php?id=<?php echo $Producto ?>"><img class="imagen_pedido" <?php  echo 'src=".'.$rowd2["Caratula"].'"' ?>" alt="logo"> </a>
+				<a href="producto/product_info.php?id=<?php echo $Producto ?>"><titulo_juego><?php echo $rowd2["Nombre"]?></titulo_juego></a>
+				<titulo_desarrollador><?php echo $rowd3["Desarrollador"] ?></titulo_desarrollador>	
 			</div>
 			
+			<?php }?>
 		</div>
 		
 		 
