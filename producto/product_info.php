@@ -478,11 +478,28 @@ $(function(){
 			<!--visor de imagenes -->
 			<div class="pikachoose">
 				<ul id="pikame" class="jcarousel-skin-pika">
-					<li><img src="1.jpg"/></li>
-					<li><img src="2.jpg"/></li>
-					<li><img src="3.jpg"/></li>
-					<li><img src="4.jpg"/></li>
-					<li><img src="5.jpg"/></li>
+				<?php
+				$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+				if ($conexion->connect_errno) {
+					die('Error de conexión: ' . $conexion->connect_error);
+				}		
+				
+				
+				$consultaSQL ="SELECT * FROM capturas,productos where productos.Id_Producto=capturas.Id_Producto" ; 
+				$resultado = $conexion->query($consultaSQL);
+				if (!$resultado) {
+					die('No se puede realizar la consulta: ' . $conexion->connect_error);
+				}
+				if ($registro=$resultado->fetch_assoc()){
+				do {
+				?>
+					<li><img  <?php echo 'src="..'.$registro["ruta"].'"' ?>/></li>
+					
+					<?php
+				
+				}while ($registro=$resultado->fetch_assoc()); 
+				}
+				?>
 				</ul>
 			</div>
 			
