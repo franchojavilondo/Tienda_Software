@@ -1,7 +1,8 @@
 /* Just for the example. Fee free to delete these three lines */
 body{font-family:Helvetica, sans-serif;}
 a{color:white;}
-.pikachoose {width: 520px; margin: 0 auto;}
+.pikachoose {width: 100%; margin: 0 auto; float:left;margin-top:3%;background:#FFFFFF;
+	box-shadow: 2px 2px 5px 1px #999;}
 
 /* Style the thumbnails */
 .pika-thumbs{ padding: 0 16px; height: 75px; }
@@ -10,8 +11,8 @@ a{color:white;}
 	.pika-thumbs li .clip {position:relative;height:100%;text-align: center; vertical-align: middle; overflow: hidden;}
 	
 /* The stage is the wrapper. The image fills 100% the height of the stage */
-.pika-stage, .pika-textnav {width: 500px;}
-.pika-stage {position: relative; background: #fafafa; border: 1px solid #e5e5e5; padding: 10px 10px 40px 10px; text-align:center; height:250px;}
+.pika-stage, .pika-textnav {width: 100%;}
+.pika-stage {position: relative;   padding: 10px 10px 40px 10px; text-align:center; height:250px;}
 .pika-stage img{height:100%;}
 .pika-stage .caption {position: absolute; background: #000; background: rgba(0,0,0,0.75);  border: 1px solid #141414; font-size: 11px; 
 			color: #fafafa; padding: 10px; text-align: right; bottom: 50px; right: 10px;}
@@ -20,7 +21,7 @@ a{color:white;}
 /* Ths play, pause, prev and next buttons */
 .pika-imgnav a {position: absolute; text-indent: -5000px; display: block;z-index:3;}
 	.pika-imgnav a.previous {background: url(prev.png) no-repeat left 45%; height: 100%; width: 50px; top: 10px; left: 10px;cursor:pointer;}
-	.pika-imgnav a.next {background: url(next.png) no-repeat right 45%; height: 100%; width: 50px; top: 10px; right: 10px;cursor:pointer;}
+	.pika-imgnav a.next {background: url(next.png) no-repeat right 45%; height: 100%; width: 50px; top: 10px; right: 10px;cursor:pointer; margin-right:2%;}
 	.pika-imgnav a.play {background: url(play.png) no-repeat 0% 50%; height: 100px; width: 44px;top:0;left:50%;display: none;cursor:pointer;}
 	.pika-imgnav a.pause {background: url(pause.png) no-repeat 0% 50%; height: 100px; width: 44px;top:0;left:50%;display:none;cursor:pointer;}
 
@@ -28,7 +29,7 @@ a{color:white;}
 .pika-textnav {overflow: hidden; margin: 10px 0 0 0;bottom:10px; position:absolute;}
 .pika-textnav a {font-size: 12px; text-decoration: none; color: #333; padding: 4px;}
 	.pika-textnav a.previous {float: left; width: auto; display: block;}
-	.pika-textnav a.next {float: right; width: auto; display: block;}
+	.pika-textnav a.next {float: right; width: auto; display: block;margin-right:4%;margin-bottom:8%;}
 
 /*for the tool tips*/
 .pika-tooltip{font-size:12px;position:absolute;color:white;padding:3px; background-color: rgba(0,0,0,0.7);border:3px solid black;}
