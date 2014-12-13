@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2014 a las 02:08:21
+-- Tiempo de generación: 13-12-2014 a las 19:06:21
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -42,6 +42,29 @@ INSERT INTO `administradores` (`nombre`, `pass`, `id`) VALUES
 ('sergio', 'sergio', 2),
 ('fran', 'fran', 3),
 ('Uno', 'fdsfsfsdfs', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `capturas`
+--
+
+CREATE TABLE IF NOT EXISTS `capturas` (
+  `Id_Producto` int(11) NOT NULL,
+  `ruta` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `capturas`
+--
+
+INSERT INTO `capturas` (`Id_Producto`, `ruta`) VALUES
+(13, '/images/capturas/acu2.jpg'),
+(13, '/images/capturas/acu1.png'),
+(13, '/images/capturas/acu3.jpg'),
+(13, '/images/capturas/acu4.png'),
+(13, '/images/capturas/acu5.png'),
+(13, '/images/capturas/acu.jpg');
 
 -- --------------------------------------------------------
 
@@ -87,7 +110,8 @@ INSERT INTO `deseos` (`Id_Cliente`, `Id_Producto`) VALUES
 (11, 14),
 (11, 13),
 (11, 25),
-(11, 9);
+(11, 9),
+(11, 14);
 
 -- --------------------------------------------------------
 
