@@ -215,7 +215,7 @@ $(function(){
     <div id="hgroup">
      <a href="index.php"> <img src="images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"></a> </div>
     
-    <form   id="busqueda" action="./juegos/listadobusqueda.php?pagina=1&criterio=genero&prod_name=" method="post">
+    <form   id="busqueda" action="./juegos/listadobusqueda.php?pagina=1&criterio=genero&prod_name=" method="post" autocomplete="off">
       <fieldset>
         <legend>Search:</legend>
         <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
