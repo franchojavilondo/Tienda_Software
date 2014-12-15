@@ -576,7 +576,11 @@ function  recargar(){
 		}
 		else{
 			?>
-			 <p>La url introducida no es correcta, seleccione la opcion JUEGOS en la barra principal.</p>
+			
+			<script languaje="javascript">
+					location.href = "listadofiltro.php?filtro=accion&pagina=1&criterio=alfa";
+					</script>
+			
 			<?php
 		}
 ?>

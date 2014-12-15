@@ -5,7 +5,7 @@ $carro=$_SESSION['carro'];
 $contador = count($carro);
 }
 else {$carro=false; $contador=0;}
-$prod_name=$_GET["prod_name"];
+
 
 ?>
 
@@ -173,6 +173,7 @@ function getQueryVariable(variable)
 		<?php
 	
 	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+		
 		$hostname = "localhost";
 		$usuario = "pma";
 		$password = "pmapass";
@@ -424,6 +425,8 @@ function getQueryVariable(variable)
 		$TAMANO_PAGINA = 10; 
 
 		//examino la página a mostrar y el inicio del registro a mostrar 
+		if(isset($_GET["pagina"]) && isset($_GET["criterio"]) && isset($_GET["prod_name"])){
+		$prod_name=$_GET["prod_name"];
 		$pagina = $_GET["pagina"]; 
 		if (!$pagina) { 
 			$inicio = 0; 
@@ -626,6 +629,16 @@ function getQueryVariable(variable)
 		
 		$registro=$resultado->free();
 		$conexion->close();
+		}
+		else{
+			?>
+			
+			<script languaje="javascript">
+					location.href = "listadobusqueda.php?pagina=1&criterio=genero&prod_name=";
+					</script>
+			
+			<?php
+		}
 		
 ?>
 			</div>
