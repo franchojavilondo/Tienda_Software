@@ -5,7 +5,7 @@ $carro=$_SESSION['carro'];
 $contador = count($carro);
 }
 else {$carro=false; $contador=0;}
-
+$contador_deseos=0;
 
 ?>
 
@@ -187,6 +187,17 @@ function getQueryVariable(variable)
 			die('Error de conexión: ' . $conexion->connect_error);
 		}	
 		
+		$querydes = "SELECT * from clientes where Nombre='$user'";
+		$resultdes = mysqli_query($conexion, $querydes); 
+		$rowdes = mysqli_fetch_assoc($resultdes);
+		$Cliente = $rowdes["Id_Cliente"];
+		
+		$querydes = "SELECT * from deseos where Id_Cliente=$Cliente";
+		$resultdes = mysqli_query($conexion, $querydes); 
+		while($rowdes = mysqli_fetch_assoc($resultdes)){
+		$contador_deseos ++;
+		}
+		
 		$consultaSQL ="SELECT * FROM clientes  WHERE (nombre='$user' || email='$user')&& pass='$contra'" ; 
 	  
 		$resultado = $conexion->query($consultaSQL);
@@ -320,7 +331,12 @@ function getQueryVariable(variable)
 	  <div class="seccion_carrito">
 	  <ul>
 
-	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="../images/favoritos.png">Lista de deseos</a></li>
+	  <?php 
+	  if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+	  $variable = "../profile.php";}
+	  else $variable = "../login.php";
+	  ?>
+	  <li><a href="<?php echo $variable?>"><div class="contador_lista"><?php echo $contador_deseos?></div><img class="icono_deseos" src="../images/favoritos.png">Lista de deseos</a></li>
 		<li>|</li>
 	  
 
