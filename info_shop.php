@@ -342,7 +342,12 @@ function validar(){
 	  <div class="seccion_carrito">
 	  <ul>
 
-	  <li><a href="./profile.php"><div class="contador_lista"><?php echo $contador_deseos?></div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
+	 <?php 
+	  if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+	  $variable = "./profile.php";}
+	  else $variable = "./login.php";
+	  ?>
+	  <li><a href="<?php echo $variable?>"><div class="contador_lista"><?php echo $contador_deseos?></div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
 		<li>|</li>
 	  
 
