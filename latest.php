@@ -5,6 +5,36 @@ $carro=$_SESSION['carro'];
 $contador = count($carro);
 }
 else {$carro=false; $contador=0;}
+
+$contador_deseos=0;
+if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+                                      
+		$hostname = "localhost";
+		$usuario = "pma";
+		$password = "pmapass";
+		$basededatos = "tienda_software";
+		$user = $_SESSION["user"];
+		
+		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if ($conexion->connect_errno) {
+			die('Error de conexión: ' . $conexion->connect_error);
+		}	
+		
+		$querydes = "SELECT * from clientes where Nombre='$user'";
+		$resultdes = mysqli_query($conexion, $querydes); 
+		$rowdes = mysqli_fetch_assoc($resultdes);
+		$Cliente = $rowdes["Id_Cliente"];
+		
+		$querydes = "SELECT * from deseos where Id_Cliente=$Cliente";
+		$resultdes = mysqli_query($conexion, $querydes); 
+		while($rowdes = mysqli_fetch_assoc($resultdes)){
+		$contador_deseos ++;
+		}
+		
+		
+		
+}
+
 ?>
 <!DOCTYPE html>
 
@@ -291,7 +321,7 @@ jQuery(document).ready(function() {
 	  <div class="seccion_carrito">
 	  <ul>
 
-	  <li><a href="#"><div class="contador_lista">0</div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
+	 <li><a href="./profile.php"><div class="contador_lista"><?php echo $contador_deseos?></div><img class="icono_deseos" src="images/favoritos.png">Lista de deseos</a></li>
 		<li>|</li>
 	  
 
