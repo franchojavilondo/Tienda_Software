@@ -236,8 +236,8 @@ function  recargar(){
 		</div>
 		
 		<div class="botones_acceso">
-			<a href="login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
-			<a href="signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
+			<a href="../login.php"><input type="submit" class="boton_login" value="Iniciar sesión"></a>
+			<a href="../signin.php"><input type="submit" class="boton_registro" value="Registrarse"></a>
 		</div>
 		
 		<?php
