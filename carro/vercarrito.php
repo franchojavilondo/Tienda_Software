@@ -363,11 +363,51 @@ $suma=0;
 //del costo de cada item por la 
 //cantidad de unidades que se 
 //especifiquen  
+$hostname = "localhost";
+   $usuario = "pma";
+   $password = "pmapass";
+   $basededatos = "tienda_software";
+
+   
+	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
+		if(!$conexion) {
+		die ("conexion no se pudo realizar");
+		}
+		
+	function existe($conexion,$id,$carro) {
+
+
+
+	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+	$user = $_SESSION["user"];
+	$querydes = "SELECT * from clientes where Nombre='$user'";
+	$resultdes = mysqli_query($conexion, $querydes); 
+	$rowdes = mysqli_fetch_assoc($resultdes);
+	$Cliente = $rowdes["Id_Cliente"];
+	
+    $querye = "SELECT * from claves where Id_Producto=$id AND Id_Cliente=$Cliente";
+	$resulte = $conexion->query($querye);
+	
+	if($registro = $resulte->fetch_assoc()){
+	unset($carro[md5($id)]); 
+	$_SESSION['carro']=$carro;
+	return true;
+	}
+	else return false;
+	}
+	else return false;
+}
+
 foreach($carro as $k => $v){ 
 //recorremos la matriz que tiene 
 //todos los valores del carro,  
 //calculamos el subtotal y el 
 // total  
+
+
+
+
+if (!existe($conexion,$v['Id_Producto'],$carro)){
 $subto=$v['Precio']; 
 $suma=$suma+$subto; 
 $contador++; 
@@ -386,7 +426,7 @@ $contador++;
 //formulario que submite a 
 //agregar producto y un link 
 //que permite eliminarlos  
-} 
+} }
 ?> 
 </table> 
 <div align="center"><span class="prod">Total de Artículos: <?php echo count($carro); 

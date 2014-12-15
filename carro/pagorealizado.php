@@ -9,6 +9,17 @@
    $usuario = "pma";
    $password = "pmapass";
    $basededatos = "tienda_software";
+   
+   function generateRandomString() {
+    $length = 10;
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 
    
 	$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
@@ -50,10 +61,18 @@
 		$Precio=$v['Precio']; 
 		$query2="INSERT INTO lineas (Id_Producto, Id_Pedido, Id_Linea, Precio) VALUES ($Id_Producto,$Id_Pedido, $contador, $Precio)";
 		$conexion->query($query2);
+		
+		//Generamos la clave y la insertamos
+		$Clave = generateRandomString();
+		$queryclave= "INSERT INTO claves (Id_Producto, Id_Cliente, Clave) VALUES ($Id_Producto,$Cliente, '$Clave')";
+		$conexion->query($queryclave);
 		unset($carro[$id]); 
 		
 		}
 		$_SESSION['carro']=$carro;
+		
+		
+		
 		$conexion->close();
 		header("Location:../index.php"); 
 		

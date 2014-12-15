@@ -15,8 +15,12 @@ extract($_REQUEST);
 //trabajo de escribir 
 //$id=$_GET['id'];  
 
-/* mysql_connect("localhost","pma","pmapass"); 
-mysql_select_db("tienda_software");  */
+
+
+
+
+
+
 
 $hostname = "localhost";
    $usuario = "pma";
@@ -37,6 +41,30 @@ $hostname = "localhost";
 //la misma no esté indicada sea 
 //igual a 1 
 
+
+function existe($conexion,$id) {
+
+	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+	$user = $_SESSION["user"];
+	$querydes = "SELECT * from clientes where Nombre='$user'";
+	$resultdes = mysqli_query($conexion, $querydes); 
+	$rowdes = mysqli_fetch_assoc($resultdes);
+	$Cliente = $rowdes["Id_Cliente"];
+	
+    $querye = "SELECT * from claves where Id_Producto=$id AND Id_Cliente=$Cliente";
+	$resulte = $conexion->query($querye);
+	echo $id;
+	echo $Cliente;
+	if($registro = $resulte->fetch_assoc()){
+	echo "entra";
+	return true;
+	}
+	else return false;
+	}
+	else return false;
+}
+
+if (!existe($conexion,$id)){
 $query="select * from productos where Id_Producto='".$id."'";
 $query2="select Porcentaje from ofertas where Id_Producto='".$id."'";
 //$qry=mysql_query("select * from productos where Id_Producto='".$id."'"); 
@@ -121,5 +149,6 @@ $_SESSION['carro']=$carro;
 //Pero para que nuestro carro funcione, 
 //independientemente de esos factores, 
 //conviene escribirla siempre. 
+}
 header("Location:vercarrito.php"); 
 ?> 
