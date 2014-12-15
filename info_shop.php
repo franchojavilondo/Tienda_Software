@@ -377,11 +377,10 @@ function validar(){
 				¿Qué es KCAPG?
 			
 			</div>
-			<p>Una revista online especializada en videojuegos y líder de audiencia en España. Un equipo de periodistas y 
-			profesionales a los que ante todo les encanta disfrutar con los juegos. Un medio independiente donde tu opinión 
-			es muy importante y además, cuenta de verdad. Una revista de videojuegos abierta de par en par a ideas nuevas y 
-			a todo tipo de jugadores. Una comunidad que se construye en equipo y que gira alrededor del videojuego, la 
-			cultura del videojuego.</p>
+			<p>Una tienda online especializada en videojuegos. Un equipo de profesionales a los que ante todo les encanta 
+			disfrutar con los juegos. Un medio independiente donde tu opinión es muy importante y además, cuenta de verdad. 
+			Una tienda de videojuegos abierta de par en par a ideas nuevas y a todo tipo de jugadores. Una comunidad que se
+			construye en equipo y que gira alrededor del videojuego, la cultura del videojuego.</p>
 
 			
 		
@@ -392,8 +391,8 @@ function validar(){
 			</div>
 		
 		
-			<p>Lectores con inquietudes que busquen contenidos editoriales, multimedia o de actualidad sobre videojuegos en
-			los que se conjugue el rigor del periodismo profesional con la filosofía y posibilidades de internet.</p>
+			<p>Jugadores con inquietudes que busquen contenidos rápidamente y sobre la actualidad de los videojuegos,
+			que puedan comprar de manera ágil y profesional con la filosofía y posibilidades de internet.</p>
 			
 		<div class="titulo_legal_seccion">
 			
@@ -402,9 +401,37 @@ function validar(){
 		</div>
 		
 		
-			<p>En 3DJuegos nacimos con capacidad para acoger a todo jugador que tenga algo interesante que descubrir a los demás.
-			Somos parte de un proyecto online masivo donde lo más importante son los jugadores (lectores) y sus mundos virtuales
+			<p>En KCAPG nacimos con capacidad para acoger a todo jugador que tenga algo interesante que descubrir a los demás.
+			Somos parte de un proyecto online masivo donde lo más importante son los jugadores (clientes) y sus mundos virtuales
 			(videojuegos).</p>
+		
+		<div class="titulo_legal_seccion">
+			
+				 Ficha
+				 
+			
+		</div>
+			<dl id="listado_legal">
+					<dt>Fecha de lanzamiento: </dt>
+						<dd>19 de diciembre de 2014<dd>
+					<dt>Desarrollador: </dt>
+						<dd>CEYTYSW S.L.</dd>
+					<dt>Distribuidor: </dt>
+						<dd>PC</dd>
+					<dt>Género: </dt>
+						<dd>Mayormente masculino (XD)</dd>
+					<dt>Jugadores: </dt>
+						<dd>3</dd>
+					<dt>Idioma: </dt>
+						<dd>Español</dd>
+					<dt>Precio: </dt>
+						<dd>Gratuito</dd>
+					<dt>Web Oficial: </dt>
+						<dd><a href="./index.php">http://localhost/tienda_software/index.php</a></dd>
+						
+				</dl>
+				
+		</br>
 
 		
 		</div>
