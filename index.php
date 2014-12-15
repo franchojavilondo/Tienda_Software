@@ -547,7 +547,7 @@ $(function(){
 					<a href="./news_info.php?idn=<?php echo $rown["Id_Titular"]?>"><img class="imagen_noticias" <?php echo 'src=".'.$rown2["Imagen"].'"' ?>></a>
 				</div>
 				<h3><br>NOTICIA</h3>
-				<a href="#" class="texto_noticias" ><?php echo $rown["Titular"]?></a>
+				<a href="./news_info.php?idn=<?php echo $rown["Id_Titular"]?>" class="texto_noticias" ><?php echo $rown["Titular"]?></a>
 			</div>
 			
 			
