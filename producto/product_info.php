@@ -174,12 +174,12 @@ $(function(){
     <div id="hgroup">
     <a href="../index.php"> <img src="../images/keep.png" width="220" style="margin-left:-50px" height="63" alt="logo"> <a/> </div>
     
-    <form id="busqueda" action="#" method="post">
+     <form id="busqueda" action="#" method="post">
       <fieldset>
         <legend>Search:</legend>
         <input id="parametro" type="text" value="Buscar en la tienda&hellip;" onFocus="this.value=(this.value=='Buscar en la tienda&hellip;')? '' : this.value ;">
         <input type="submit" id="sf_submit" value="">
-						        <br />
+		       <br />
 <br />
 <div id="resultado" class="cuadro_busqueda" ></div>
       </fieldset>
