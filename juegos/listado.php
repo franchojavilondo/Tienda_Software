@@ -441,9 +441,9 @@ function  recargar(){
 		<a name="Ancla"></a>
 		<?php
 		
-		$consultaSQL = "SELECT * FROM productos" . $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+		$consultaSQL = "SELECT * FROM productos" . $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA); 
 		if($_SESSION["elegido"]=="genero"){
-			$consultaSQL = "SELECT *,Genero FROM productos,product_info where productos.Id_Producto=product_info.Id_Producto". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+			$consultaSQL = "SELECT *,Genero FROM productos,product_info where productos.Id_Producto=product_info.Id_Producto". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA); 
 			
 		}
 		if($_SESSION["elegido"]=="oferta"){

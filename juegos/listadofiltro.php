@@ -434,11 +434,11 @@ function  recargar(){
 		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
 		
-		$consultaSQL = "SELECT * FROM productos where Id_Producto= any(SELECT Id_Producto from product_info where Genero='$filtro')". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1);
+		$consultaSQL = "SELECT * FROM productos where Id_Producto= any(SELECT Id_Producto from product_info where Genero='$filtro')". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA);
 		if($_SESSION["elegido"]=="oferta"){
 			
 			
-			$consultaSQL = "SELECT * FROM productos,ofertas where ofertas.Id_Producto=productos.Id_Producto and productos.Id_Producto= any(SELECT product_info.Id_Producto from product_info where Genero='$filtro')". $criterio. " limit " . $inicio . "," . ($TAMANO_PAGINA+1) ; 
+			$consultaSQL = "SELECT * FROM productos,ofertas where ofertas.Id_Producto=productos.Id_Producto and productos.Id_Producto= any(SELECT product_info.Id_Producto from product_info where Genero='$filtro')". $criterio. " limit " . $inicio . "," . ($TAMANO_PAGINA) ; 
 			$resultado0 = $conexion->query($consultaSQL);
 			$num_total_registros = $resultado0->num_rows;
 			//calculo el total de páginas 

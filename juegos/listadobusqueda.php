@@ -473,10 +473,10 @@ function getQueryVariable(variable)
 		<a name="Ancla"></a>
 		<?php
 		
-		$consultaSQL = "SELECT * FROM productos WHERE Nombre LIKE '%$prod_name%'" . $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+		$consultaSQL = "SELECT * FROM productos WHERE Nombre LIKE '%$prod_name%'" . $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA); 
 		
 		if($_SESSION["elegido"]=="genero"){
-			$consultaSQL = "SELECT *,Genero FROM productos,product_info where Nombre LIKE '%$prod_name%' AND productos.Id_Producto=product_info.Id_Producto". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA+1); 
+			$consultaSQL = "SELECT *,Genero FROM productos,product_info where Nombre LIKE '%$prod_name%' AND productos.Id_Producto=product_info.Id_Producto". $criterio . " limit " . $inicio . "," . ($TAMANO_PAGINA); 
 			
 		}
 		if($_SESSION["elegido"]=="oferta"){
@@ -485,7 +485,7 @@ function getQueryVariable(variable)
 			$num_total_registros = $resultado0->num_rows;
 			//calculo el total de páginas 
 			$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
-			$consultaSQL = "SELECT *,Porcentaje FROM productos,ofertas where Nombre LIKE '%$prod_name%' AND ofertas.Id_Producto=productos.Id_Producto". $criterio. " limit " . $inicio . "," . ($TAMANO_PAGINA+1) ; 
+			$consultaSQL = "SELECT *,Porcentaje FROM productos,ofertas where Nombre LIKE '%$prod_name%' AND ofertas.Id_Producto=productos.Id_Producto". $criterio. " limit " . $inicio . "," . ($TAMANO_PAGINA) ; 
 			
 			
 		}
@@ -517,8 +517,12 @@ function getQueryVariable(variable)
 						die('No se puede realizar la consulta: ' . $conexion->connect_error);
 					}
 					if ($registro3=$resultado3->fetch_assoc()){
+						$descuentosi=true;
 						$descuento=$registro3["Porcentaje"]."%";
 						$precio=$precio-($precio*($descuento/100));
+					}
+					else{
+						$descuentosi=false;
 					}
 					
 				?>
@@ -533,11 +537,27 @@ function getQueryVariable(variable)
 				</div>
 				<a href="../producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>" <?php echo 'title="'.$registro["Nombre"].'"'?> ><h3><?php echo ''.$registro["Nombre"].'' ?></h3></a>
 				<genero_p><?php echo ''.$genero.'' ?></genero_p>
+				<?php
+				if($descuentosi){
+				?>
 				<descuento_p><?php echo 'Descuento: '.$descuento.'' ?></descuento_p></br>
+				<?php
+				}
+				?>
 				</br>
-				<precio_sin><?php echo ''.$registro["Precio"]." Euros".'' ?></precio_sin></br>
+				<?php
+				if($descuentosi){
+				?>
+				<precio_sin><?php echo ''."Antes: ".$registro["Precio"]." Euros".'' ?></precio_sin></br>
+				<precio_con><?php echo ''."Ahora: ".$precio." Euros".'' ?></precio_con>
+				<?php
+				}
+				else{
+				?>
 				<precio_con><?php echo ''.$precio." Euros".'' ?></precio_con>
-				
+				<?php
+				}
+				?>
 				
 			</div>
 			
@@ -569,8 +589,8 @@ function getQueryVariable(variable)
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
 		
 		if(($pagina-1)>=1){
-				echo "<a href='listadobusqueda.php?pagina=" . 1 . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'><<</a> "; 
-				echo "<a href='listadobusqueda.php?pagina=" . ($pagina-1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Anterior</a> "; 
+				echo "<a href='listadobusqueda.php?pagina=" . 1 . "&criterio=" . $_SESSION["elegido"] ."&prod_name=".$prod_name.'#Ancla'."'><<</a> "; 
+				echo "<a href='listadobusqueda.php?pagina=" . ($pagina-1) . "&criterio=" . $_SESSION["elegido"] ."&prod_name=".$prod_name.'#Ancla'."'>Anterior</a> "; 
 			}
 		if ($total_paginas >= 1){ 
 			for ($i=1;$i<=$total_paginas;$i++){ 
@@ -581,14 +601,14 @@ function getQueryVariable(variable)
 					}
 				else {
 					//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 
-					echo "<a href='listadobusqueda.php?pagina=" . $i . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>" . $i."</a> "; 
+					echo "<a href='listadobusqueda.php?pagina=" . $i . "&criterio=" . $_SESSION["elegido"] ."&prod_name=".$prod_name.'#Ancla'."'>" . $i."</a> "; 
 					}
 			} 
 			
 			
 			if(($pagina+1)<=$total_paginas){
-				echo "<a href='listadobusqueda.php?pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>Siguiente</a> ";
-				echo "<a href='listadobusqueda.php?pagina=" . $total_paginas . "&criterio=" . $_SESSION["elegido"] .'#Ancla'."'>>></a> "; 				
+				echo "<a href='listadobusqueda.php?pagina=" . ($pagina+1) . "&criterio=" . $_SESSION["elegido"]."&prod_name=".$prod_name .'#Ancla'."'>Siguiente</a> ";
+				echo "<a href='listadobusqueda.php?pagina=" . $total_paginas . "&criterio=" . $_SESSION["elegido"] ."&prod_name=".$prod_name.'#Ancla'."'>>></a> "; 				
 			}
 		}
 		
