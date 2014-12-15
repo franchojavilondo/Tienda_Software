@@ -389,20 +389,21 @@ jQuery(document).ready(function() {
 				<div class="imagen_noticias_pagina">
 					<a href="./producto/product_info.php?id=<?php echo $ID ?>"><img class="imagen_noticias" style="width:25%" <?php echo 'src=".'.$rowl2["Imagen"].'"' ?>></a>
 				</div>
-				<h3><br></h3>
-				<a href="./producto/product_info.php?id=<?php echo $ID ?>" class="texto_noticias" ><?php echo $rowl["Nombre"]?></a>
+				<a href="./producto/product_info.php?id=<?php echo $ID ?>" class="texto_noticias" ><h3><?php echo $rowl["Nombre"]?></h3></a>
+				
 				<div class="espacio_precios">
 				
 				<?php if ($resultl3 = mysqli_query($conexion, $queryl3)) 
 			if(($rowl3 = mysqli_fetch_assoc($resultl3))){
 			?>
 					<div class="discount">
-						<porcentaje>-<?php echo $rowl3["Porcentaje"] ?>%</porcentaje>
+						
+						<descuento_p><?php echo 'Descuento: '.$rowl3["Porcentaje"].'%' ?></descuento_p>
 					</div>
-					
+					</br>
 					<div class="price">
-						<anterior><?php echo $rowl["Precio"]?>€</anterior></br>
-						<costo><?php echo $rowl["Precio"]-($rowl["Precio"]*$rowl3["Porcentaje"]/100)?>€</costo>
+						<anterior><?php echo 'Antes: '.$rowl["Precio"].' €'?></anterior></br>
+						<costo><?php echo 'Ahora: '.($rowl["Precio"]-($rowl["Precio"]*$rowl3["Porcentaje"]/100)).' €'?></costo>
 					</div>		
 						<?php }
 						else{
@@ -411,8 +412,8 @@ jQuery(document).ready(function() {
 					
 					
 					<div class="price">
-						
-						<costo><?php echo $rowl["Precio"]?>€</costo>
+						</br>
+						<costo><?php echo $rowl["Precio"].' €'?></costo>
 					</div>	
 					<?php }?>
 				</div>
@@ -474,7 +475,7 @@ jQuery(document).ready(function() {
 	  </br>
         <ul>
           <li><a href="#">Métodos de pago</a></li>
-          <li><a href="#">Conversor de divisas</a></li>
+          <li><a href="http://www.xe.com/es/currencyconverter/Conversor de divisas">Conversor de divisas</a></li>
           <li class="last"><a href="#">Cheques Regalo</a></li>
         </ul>
       </nav>
@@ -485,10 +486,9 @@ jQuery(document).ready(function() {
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">Noticias</a></li>
-          <li><a href="#">Artículos</a></li>
-          <li><a href="#">Lanzamientos</a></li>
-          <li class="last"><a href="#">Juegos</a></li>
+          <li><a href="./news.php">Noticias</a></li>
+          <li><a href="./latest.php">Lo último</a></li>
+          <li class="last"><a href="./offers.php">Ofertas</a></li>
         </ul>
       </nav>
     </section>
@@ -512,7 +512,7 @@ jQuery(document).ready(function() {
 <!-- Copyright -->
 <div class="wrapper row4">
   <footer id="copyright" class="clear">
-    <p class="fl_left" style="color:#FFFFFF">Copyright &copy; 2012 - All Rights Reserved</p>
+    <p class="fl_left" style="color:#FFFFFF">Copyright &copy KCAPG. 2014. Todos los derechos reservados.</p>
   </footer>
 </div>
 </body>

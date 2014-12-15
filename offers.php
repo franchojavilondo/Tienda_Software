@@ -391,15 +391,17 @@ jQuery(document).ready(function() {
 				<div class="imagen_noticias_pagina">
 					<a href="./producto/product_info.php?id=<?php echo $ID ?>"	><img class="imagen_noticias" style="width:25%" <?php echo 'src=".'.$rowo4["Imagen"].'"' ?>></a>
 				</div>
-				<h3></br></h3>
-				<a href="./producto/product_info.php?id=<?php echo $ID ?>" class="texto_noticias" ><?php echo $rowo2["Nombre"]?></a>
+				
+				<a href="./producto/product_info.php?id=<?php echo $ID ?>" class="texto_noticias" ><h3><?php echo $rowo2["Nombre"]?></h3></a>
+				</br>
 				<div class="espacio_precios">
 					<div class="discount">
-						<porcentaje>-<?php echo $rowo["Porcentaje"]?>%</porcentaje>
+						<descuento_p><?php echo 'Descuento: '.$rowo["Porcentaje"].'%'?></descuento_p>
 					</div>
+					</br>
 					<div class="price">
-						<anterior><?php echo $rowo2["Precio"]?>€</anterior></br>
-						<costo><?php echo $rowo2["Precio"]-($rowo2["Precio"]*$rowo["Porcentaje"]/100)?>€</costo>
+						<anterior><?php echo 'Antes: '.$rowo2["Precio"].' €'?></anterior></br>
+						<costo><?php echo 'Ahora: '.($rowo2["Precio"]-($rowo2["Precio"]*$rowo["Porcentaje"]/100)).' €'?></costo>
 					</div>					
 				</div>
 			</div>

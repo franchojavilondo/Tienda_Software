@@ -594,8 +594,8 @@ Colores seguros para la Web es la lista de colores que se ven igual en todos los
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">Información corporativa</a></li>
-          <li><a href="#">Departamento de prensa</a></li>
+          <li><a href="info_corp.php">Información legal</a></li>
+          <li><a href="info_shop.php">Sobre la página</a></li>
           <li><a href="#">Trabaja con nosotros</a></li>
           <li class="last"><a href="#">La tienda en la Comunidad</a></li>
         </ul>
@@ -608,7 +608,7 @@ Colores seguros para la Web es la lista de colores que se ven igual en todos los
 	  </br>
         <ul>
           <li><a href="#">Métodos de pago</a></li>
-          <li><a href="#">Conversor de divisas</a></li>
+          <li><a href="http://www.xe.com/es/currencyconverter/Conversor de divisas">Conversor de divisas</a></li>
           <li class="last"><a href="#">Cheques Regalo</a></li>
         </ul>
       </nav>
@@ -619,10 +619,9 @@ Colores seguros para la Web es la lista de colores que se ven igual en todos los
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">Noticias</a></li>
-          <li><a href="#">Artículos</a></li>
-          <li><a href="#">Lanzamientos</a></li>
-          <li class="last"><a href="#">Juegos</a></li>
+          <li><a href="./news.php">Noticias</a></li>
+          <li><a href="./latest.php">Lo último</a></li>
+          <li class="last"><a href="./offers.php">Ofertas</a></li>
         </ul>
       </nav>
     </section>
@@ -646,7 +645,7 @@ Colores seguros para la Web es la lista de colores que se ven igual en todos los
 <!-- Copyright -->
 <div class="wrapper row4">
   <footer id="copyright" class="clear">
-    <p class="fl_left" style="color:#FFFFFF">Copyright &copy; 2012 - All Rights Reserved</p>
+    <p class="fl_left" style="color:#FFFFFF">Copyright &copy KCAPG. 2014. Todos los derechos reservados.</p>
   </footer>
 </div>
 

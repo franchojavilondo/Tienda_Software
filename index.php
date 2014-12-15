@@ -659,7 +659,7 @@ $(function(){
 	  </br>
         <ul>
           <li><a href="#">Métodos de pago</a></li>
-          <li><a href="#">Conversor de divisas</a></li>
+          <li><a href="http://www.xe.com/es/currencyconverter/">Conversor de divisas</a></li>
           <li class="last"><a href="#">Cheques Regalo</a></li>
         </ul>
       </nav>
@@ -670,10 +670,9 @@ $(function(){
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">Noticias</a></li>
-          <li><a href="#">Artículos</a></li>
-          <li><a href="#">Lanzamientos</a></li>
-          <li class="last"><a href="#">Juegos</a></li>
+          <li><a href="./news.php">Noticias</a></li>
+          <li><a href="./latest.php">Lo último</a></li>
+          <li class="last"><a href="./offers.php">Ofertas</a></li>
         </ul>
       </nav>
     </section>
@@ -697,7 +696,7 @@ $(function(){
 <!-- Copyright -->
 <div class="wrapper row4">
   <footer id="copyright" class="clear">
-    <p class="fl_left" style="color:#FFFFFF">Copyright &copy; 2012 - All Rights Reserved</p>
+    <p class="fl_left" style="color:#FFFFFF">Copyright &copy KCAPG. 2014. Todos los derechos reservados.</p>
   </footer>
 </div>
 </body>
