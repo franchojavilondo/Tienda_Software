@@ -520,9 +520,8 @@ function validar(){
 				<a href="producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>"><img class="imagen_pedido" <?php echo 'src=".'.$ruta.'"'; ?>  alt="logo">
 				<titulo_juego><?php echo $registro["Nombre"]; ?></titulo_juego></a>
 				<br><titulo_desarrollador><?php echo $registro["Desarrollador"]; ?></titulo_desarrollador>
-				<br><titulo_juego>Clave:<?php echo $registro2["Clave"]; ?></titulo_juego>
 				<div style="vertical-align:bottom;" style="position:absolute;">
-				<button type="button"  class="boton_ver_clave">Ver clave</button>
+				<button type="button"  class="boton_ver_clave"  onClick="alert('<?php echo $registro2["Clave"];?>')">Ver clave</button>
 				</div>
 			</div>
 			
