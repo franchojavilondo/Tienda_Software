@@ -453,8 +453,22 @@ $(function(){
 				<?php }?>
 				</div>
 				<p>Precio con IVA incluido.</p>
+				<?php
+				$consultaSQL2 = "SELECT * from claves where Id_Cliente='$Cliente' AND Id_Producto='$Id_Prod'";
+				$resultado2 = $conexion ->query($consultaSQL2);
+				if(!$registro2=$resultado2->fetch_assoc()){
+				
+				
+				?>
 				<a href="../carro/agregacar.php?id=<?php echo $Id_Prod ?>" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
 					Añadir al carrito</button></a>
+						
+					<?php } else{?>
+					
+					<a href="#" style="text-decoration:none;"><button type="button" onClick="alert('Ya tienes ese juego en tu cuenta')" class="boton_añadir_carrito">
+					Añadir al carrito</button></a>
+					
+					<?php }?>
 					<?php 
 					
 					$consultaSQL2 = "SELECT * from claves where Id_Cliente='$Cliente' AND Id_Producto='$Id_Prod'";
