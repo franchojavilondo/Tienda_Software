@@ -68,6 +68,22 @@
 		$conexion->query($queryclave);
 		unset($carro[$id]); 
 		
+		//Si existe en la lista de deseos, lo eliminamos
+		$consultaSQL2 = "SELECT * from claves where Id_Cliente='$Cliente' AND Id_Producto='$Id_Producto'";
+		$resultado2 = $conexion ->query($consultaSQL2);
+		echo $Id_Producto;
+		echo $Id_Cliente;
+		
+		if(!$registro2=$resultado2->fetch_assoc())
+		echo "no existe deseo";
+		
+		else{
+		echo "entra";
+		$sqldelete = "DELETE FROM deseos WHERE Id_Producto='$Id_Producto' AND Id_Cliente='$Cliente'";
+		$conexion -> query($sqldelete);	}
+		
+		
+		
 		}
 		$_SESSION['carro']=$carro;
 		
