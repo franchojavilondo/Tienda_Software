@@ -346,6 +346,7 @@ function validar(){
     
     <div id="homepage" class="clear">
 		 <?php
+		 if(isset($hostname)){
 		$conexion = new mysqli($hostname, $usuario, $password,$basededatos);
 		if ($conexion->connect_errno) {
 			die('Error de conexión: ' . $conexion->connect_error);
@@ -586,8 +587,16 @@ function validar(){
 		 </div>
 		
 		<?php
+		}}else{?>
+			
+			<script languaje="javascript">
+					location.href = "login.php";
+					</script>
+			
+			<?php
 		}
-		?>
+?>
+		
 	  </div>
     </div>
 	
