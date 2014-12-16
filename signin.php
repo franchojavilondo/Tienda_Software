@@ -235,7 +235,7 @@ function validar(){
     <nav>
       <div class="menu">
       <ul>
-	  <li><a href="../index.html"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
+	  <li><a href="./index.php"><img class="iconos_navegacion" src="images/home.png">INICIO</a></li>
 		<li>|</li>
 
 	    <li><div class="enl"><a href="./juegos/listado.php?pagina=1&criterio=alfa"><img class="iconos_navegacion" src="images/gamepad.png">Juegos<div class="tri"></div></a></div>
@@ -427,8 +427,8 @@ function validar(){
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">Información corporativa</a></li>
-          <li><a href="#">Departamento de prensa</a></li>
+          <li><a href="info_corp.php">Información legal</a></li>
+          <li><a href="info_shop.php">Sobre la página</a></li>
           <li><a href="#">Trabaja con nosotros</a></li>
           <li class="last"><a href="#">La tienda en la Comunidad</a></li>
         </ul>
@@ -441,7 +441,7 @@ function validar(){
 	  </br>
         <ul>
           <li><a href="#">Métodos de pago</a></li>
-          <li><a href="#">Conversor de divisas</a></li>
+          <li><a href="http://www.xe.com/es/currencyconverter/Conversor de divisas">Conversor de divisas</a></li>
           <li class="last"><a href="#">Cheques Regalo</a></li>
         </ul>
       </nav>
@@ -452,10 +452,9 @@ function validar(){
       <nav>
 	  </br>
         <ul>
-          <li><a href="#">Noticias</a></li>
-          <li><a href="#">Artículos</a></li>
-          <li><a href="#">Lanzamientos</a></li>
-          <li class="last"><a href="#">Juegos</a></li>
+          <li><a href="./news.php">Noticias</a></li>
+          <li><a href="./latest.php">Lo último</a></li>
+          <li class="last"><a href="./offers.php">Ofertas</a></li>
         </ul>
       </nav>
     </section>
@@ -479,7 +478,7 @@ function validar(){
 <!-- Copyright -->
 <div class="wrapper row4">
   <footer id="copyright" class="clear">
-    <p class="fl_left" style="color:#FFFFFF">Copyright &copy; 2012 - All Rights Reserved</p>
+    <p class="fl_left" style="color:#FFFFFF">Copyright &copy KCAPG. 2014. Todos los derechos reservados.</p>
   </footer>
 </div>
 </body>

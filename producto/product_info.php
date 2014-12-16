@@ -638,8 +638,8 @@ Colores seguros para la Web es la lista de colores que se ven igual en todos los
       <nav>
 	  </br>
         <ul>
-          <li><a href="info_corp.php">Información legal</a></li>
-          <li><a href="info_shop.php">Sobre la página</a></li>
+          <li><a href="../info_corp.php">Información legal</a></li>
+          <li><a href="../info_shop.php">Sobre la página</a></li>
           <li><a href="#">Trabaja con nosotros</a></li>
           <li class="last"><a href="#">La tienda en la Comunidad</a></li>
         </ul>
@@ -663,9 +663,9 @@ Colores seguros para la Web es la lista de colores que se ven igual en todos los
       <nav>
 	  </br>
         <ul>
-          <li><a href="./news.php">Noticias</a></li>
-          <li><a href="./latest.php">Lo último</a></li>
-          <li class="last"><a href="./offers.php">Ofertas</a></li>
+          <li><a href="../news.php">Noticias</a></li>
+          <li><a href="../latest.php">Lo último</a></li>
+          <li class="last"><a href="../offers.php">Ofertas</a></li>
         </ul>
       </nav>
     </section>
