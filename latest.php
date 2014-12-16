@@ -351,7 +351,7 @@ jQuery(document).ready(function() {
     <!-- main content -->
     <div id="homepage" class="clear">
 	
-		<div class="contenedor_noticias">
+		<div class="contenedor_ultimos">
 		
 			<div class="titulo_noticias">
 			
