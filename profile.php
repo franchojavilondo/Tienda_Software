@@ -414,14 +414,19 @@ function validar(){
 		{
 		$Pedido = $rowe1["Id_Pedido"];
 		$querye2 = "SELECT * from lineas where Id_Pedido=$Pedido order by Id_Linea ASC";
-		$resulte2 = mysqli_query($conexion, $querye2);
-		$rowe2 = mysqli_fetch_assoc($resulte2);
-		
-		
-		$contador_juegos = $contador_juegos + count($rowe2);
-		$dinero_total = $dinero_total + $rowe1["Precio_Total"];
-		while($rowe2 = mysqli_fetch_assoc($resulte2))
-		$ultimo_juego = $rowe2["Id_Producto"];
+		$resultado = $conexion->query($querye2);
+		if (!$resultado) {
+			die('No se puede realizar la consulta: ' . $conexion->connect_error);
+		}
+		if ($registro=$resultado->fetch_assoc()){
+		$contador_juegos = $contador_juegos + count($registro["Id_Producto"]);
+				do {
+				$ultimo_juego = $registro["Id_Producto"];
+				$dinero_total = $dinero_total + $registro["Precio"];
+				}while ($registro=$resultado->fetch_assoc()); 
+				
+			
+		}
 		}
 		
 		//contamos los deseos
