@@ -1046,7 +1046,7 @@ width:100%;
 .pedido_usuario {
 background: #FFFFFF;
 box-shadow: 2px 2px 5px 2px #999;
-height: 270px;
+height: 300px;
 width: 30%;
 float: left;
 margin-left: 2.4%;
@@ -1461,6 +1461,22 @@ text-transform:uppercase;
 	border:none; 
 	cursor:pointer;}
 
+.boton_ver_clave{
+	display:block; 
+	padding-top:2%;
+	padding-bottom:1%; 
+	margin-left:5%;
+	height:auto;  
+	margin-top:7px; 
+	margin-bottom:3%; 
+	width:90%; 
+	font-size:12px; 
+	font-weight:bold; 
+	text-transform:uppercase; 
+	color:#FFFFFF; 
+	background-color:#5CACDA; 
+	border:none; 
+	cursor:pointer;}
 
 .boton_añadir_lista:hover {
 	background: #DD8500;
