@@ -18,6 +18,29 @@ $contador = count($carro);
 $logeado=0;
 
 $contador_deseos=0;
+function existe($conexion,$id,$carro) {
+
+
+
+	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
+	$user = $_SESSION["user"];
+	$querydes = "SELECT * from clientes where Nombre='$user'";
+	$resultdes = mysqli_query($conexion, $querydes); 
+	$rowdes = mysqli_fetch_assoc($resultdes);
+	$Cliente = $rowdes["Id_Cliente"];
+	
+    $querye = "SELECT * from claves where Id_Producto=$id AND Id_Cliente=$Cliente";
+	$resulte = $conexion->query($querye);
+	
+	if($registro = $resulte->fetch_assoc()){
+	unset($carro[md5($id)]); 
+	$_SESSION['carro']=$carro;
+	return true;
+	}
+	else return false;
+	}
+	else return false;
+}
 ?>
 <head>
 <title>Tienda de videojuegos</title>
@@ -398,29 +421,7 @@ $hostname = "localhost";
 		die ("conexion no se pudo realizar");
 		}
 		
-	function existe($conexion,$id,$carro) {
-
-
-
-	if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
-	$user = $_SESSION["user"];
-	$querydes = "SELECT * from clientes where Nombre='$user'";
-	$resultdes = mysqli_query($conexion, $querydes); 
-	$rowdes = mysqli_fetch_assoc($resultdes);
-	$Cliente = $rowdes["Id_Cliente"];
 	
-    $querye = "SELECT * from claves where Id_Producto=$id AND Id_Cliente=$Cliente";
-	$resulte = $conexion->query($querye);
-	
-	if($registro = $resulte->fetch_assoc()){
-	unset($carro[md5($id)]); 
-	$_SESSION['carro']=$carro;
-	return true;
-	}
-	else return false;
-	}
-	else return false;
-}
 
 foreach($carro as $k => $v){ 
 //recorremos la matriz que tiene 
