@@ -32,7 +32,7 @@ if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
 		$contador_deseos ++;
 		}
 		
-		
+		if(is_array($carro))
 		foreach($carro as $k => $v){
 		existe($conexion,$v['Id_Producto'],$carro);
 		$contador = count ($carro);

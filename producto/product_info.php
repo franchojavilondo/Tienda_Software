@@ -455,19 +455,35 @@ $(function(){
 				<p>Precio con IVA incluido.</p>
 				<a href="../carro/agregacar.php?id=<?php echo $Id_Prod ?>" style="text-decoration:none;"><button type="button" class="boton_añadir_carrito">
 					Añadir al carrito</button></a>
-					<?php if($Cliente != -1) {?>
+					<?php 
+					
+					$consultaSQL2 = "SELECT * from claves where Id_Cliente='$Cliente' AND Id_Producto='$Id_Prod'";
+					$resultado2 = $conexion ->query($consultaSQL2);
+					
+					if(($Cliente != -1) && (!$registro2=$resultado2->fetch_assoc())) {?>
 				<p>O también puedes guardarlo:</p>
 				
 				<a href="./agregadeseo.php?idp=<?php echo $Id_Prod?>&idc=<?php echo $Cliente?>" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
 					Añadir a la lista de deseos</button></a>
+					
 					<?php 
-					}else{?>
+					}if($Cliente == -1){?>
 					
 					<p>O también puedes guardarlo:</p>
 				
 				<a href="../login.php" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
 					Añadir a la lista de deseos</button></a>
+					<?php 
+					} 
+					else{?>
+					
+					<p>O también puedes guardarlo:</p>
+				
+				<a href="#" style="text-decoration:none;"><button type="button" onClick="alert('Ya tienes ese juego en tu cuenta')" class="boton_añadir_lista">
+					Añadir a la lista de deseos</button></a>
+					
 					<?php }?>
+					
 				
 			</div>
 			

@@ -22,7 +22,7 @@ if (isset($_SESSION["user"])  && isset($_SESSION["pass"])){
 		
 		$querydes = "SELECT * from clientes where Nombre='$user'";
 		$resultdes = mysqli_query($conexion, $querydes); 
-		$rowdes = mysqli_fetch_assoc($resultdes);
+		$rowdes = mysqli_fetch_assoc($resultdes);	
 		$Cliente = $rowdes["Id_Cliente"];
 		
 		$querydes = "SELECT * from deseos where Id_Cliente=$Cliente";
@@ -502,9 +502,16 @@ function validar(){
 				die('No se puede realizar la consulta: ' . $conexion->connect_error);
 			}
 		
+			
 			if ($registro=$resultado->fetch_assoc()){
-				
+			
 			do {
+			
+			$producto=$registro["Id_Producto"];
+			$consultaSQL2 = "SELECT * from claves where Id_Cliente='$id' AND Id_Producto='$producto'";
+			
+			$resultado2 = $conexion ->query($consultaSQL2);
+			if ($registro2=$resultado2->fetch_assoc()){
 			?>
 			<div class="pedido_usuario">
 				<?php
@@ -512,12 +519,13 @@ function validar(){
 				?>
 				<a href="producto/product_info.php?id=<?php echo $registro["Id_Producto"] ?>"><img class="imagen_pedido" <?php echo 'src=".'.$ruta.'"'; ?>  alt="logo">
 				<titulo_juego><?php echo $registro["Nombre"]; ?></titulo_juego></a>
-				<br><titulo_desarrollador><?php echo $registro["Desarrollador"]; ?></titulo_desarrollador>	
+				<br><titulo_desarrollador><?php echo $registro["Desarrollador"]; ?></titulo_desarrollador>
+				<br><titulo_juego>Clave:<?php echo $registro2["Clave"]; ?></titulo_juego>
 			</div>
 			
 			
 			<?php
-			}while ($registro=$resultado->fetch_assoc());
+			}}while ($registro=$resultado->fetch_assoc());
 			}
 			
 		}
@@ -546,6 +554,10 @@ function validar(){
 		$resultd3 = mysqli_query($conexion, $queryd3);
 		$rowd3 = mysqli_fetch_assoc($resultd3);
 		
+		$consultaSQL2 = "SELECT * from claves where Id_Cliente='$Cliente' AND Id_Producto='$Producto'";
+		$resultado2 = $conexion ->query($consultaSQL2);
+		
+		if(!$registro2=$resultado2->fetch_assoc()){
 		
 		
 		?>
@@ -556,7 +568,11 @@ function validar(){
 				</br><titulo_desarrollador><?php echo $rowd3["Desarrollador"] ?></titulo_desarrollador>	
 			</div>
 			
-			<?php }?>
+			<?php }
+			else {$sqldelete = "DELETE FROM deseos WHERE Id_Producto='$Producto' AND Id_Cliente='$Cliente'";
+					$conexion -> query($sqldelete);	
+					}
+			}?>
 		</div>
 		
 		 
