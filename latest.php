@@ -396,7 +396,7 @@ jQuery(document).ready(function() {
 				<?php if ($resultl3 = mysqli_query($conexion, $queryl3)) 
 			if(($rowl3 = mysqli_fetch_assoc($resultl3))){
 			?>
-					<div class="discount">
+					<div class="discount_right">
 						
 						<descuento_p><?php echo 'Descuento: '.$rowl3["Porcentaje"].'%' ?></descuento_p>
 					</div>

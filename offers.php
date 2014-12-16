@@ -395,7 +395,7 @@ jQuery(document).ready(function() {
 				<a href="./producto/product_info.php?id=<?php echo $ID ?>" class="texto_noticias" ><h3><?php echo $rowo2["Nombre"]?></h3></a>
 				</br>
 				<div class="espacio_precios">
-					<div class="discount">
+					<div class="discount_right">
 						<descuento_p><?php echo 'Descuento: '.$rowo["Porcentaje"].'%'?></descuento_p>
 					</div>
 					</br>

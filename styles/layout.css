@@ -1208,14 +1208,22 @@ float:right;
 }
 
 .discount{
+	float:left;
+	background:#3f7696;
+	text-align:center-vertical;
+	margin-top:4.5%;
+	padding-left:1.5%;
+	margin-left:5%;
+	padding-right:0.5%;
+}
+
+.discount_right{
 	float:right;
 	background:#3f7696;
 	text-align:center-vertical;
 	margin-top:-8%;
 	padding-left:1.5%;
 	margin-left:5%;
-	
-	margin-bottom:2%;
 	padding-right:0.5%;
 }
 
