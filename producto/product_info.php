@@ -460,14 +460,31 @@ $(function(){
 					$consultaSQL2 = "SELECT * from claves where Id_Cliente='$Cliente' AND Id_Producto='$Id_Prod'";
 					$resultado2 = $conexion ->query($consultaSQL2);
 					
-					if(($Cliente != -1) && (!$registro2=$resultado2->fetch_assoc())) {?>
+					$consultaSQL3 = "SELECT * from deseos where Id_Cliente='$Cliente' AND Id_Producto='$Id_Prod'";
+					$resultado3 = $conexion ->query($consultaSQL3);
+					
+					if(($Cliente != -1)){
+					if(!$registro2=$resultado2->fetch_assoc()) {?>
 				<p>O también puedes guardarlo:</p>
 				
+				
+				<?php if(!$registro3=$resultado3->fetch_assoc()){?>
 				<a href="./agregadeseo.php?idp=<?php echo $Id_Prod?>&idc=<?php echo $Cliente?>" style="text-decoration:none;"><button type="button" class="boton_añadir_lista">
+					Añadir a la lista de deseos</button></a>
+					<?php } else {?>
+					<a href="#" style="text-decoration:none;"><button type="button" onClick="alert('Ya tienes ese juego en tus deseados')" class="boton_añadir_lista">
 					Añadir a la lista de deseos</button></a>
 					
 					<?php 
-					}if($Cliente == -1){?>
+					}}
+					else {?>
+					<p>O también puedes guardarlo:</p>
+				
+					<a href="#" style="text-decoration:none;"><button type="button" onClick="alert('Ya tienes ese juego en tu cuenta')" class="boton_añadir_lista">
+					Añadir a la lista de deseos</button></a>
+					
+					<?php
+					}}if($Cliente == -1){?>
 					
 					<p>O también puedes guardarlo:</p>
 				
@@ -475,14 +492,11 @@ $(function(){
 					Añadir a la lista de deseos</button></a>
 					<?php 
 					} 
-					else{?>
+					?>
 					
-					<p>O también puedes guardarlo:</p>
-				
-				<a href="#" style="text-decoration:none;"><button type="button" onClick="alert('Ya tienes ese juego en tu cuenta')" class="boton_añadir_lista">
-					Añadir a la lista de deseos</button></a>
 					
-					<?php }?>
+					
+					
 					
 				
 			</div>
