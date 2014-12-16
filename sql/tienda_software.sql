@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2014 a las 11:35:22
+-- Tiempo de generación: 16-12-2014 a las 11:51:07
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -83,7 +83,8 @@ CREATE TABLE IF NOT EXISTS `claves` (
 --
 
 INSERT INTO `claves` (`Id_Cliente`, `Id_Producto`, `Clave`) VALUES
-(11, 13, '6ILtbWPeO8');
+(11, 13, '6ILtbWPeO8'),
+(11, 14, 'YP1157urgH');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,6 @@ CREATE TABLE IF NOT EXISTS `deseos` (
 --
 
 INSERT INTO `deseos` (`Id_Cliente`, `Id_Producto`) VALUES
-(11, 14),
 (11, 2);
 
 -- --------------------------------------------------------
@@ -207,7 +207,8 @@ CREATE TABLE IF NOT EXISTS `lineas` (
 --
 
 INSERT INTO `lineas` (`Id_Producto`, `Id_Pedido`, `Id_Linea`, `Precio`) VALUES
-(13, 59, 1, 50);
+(13, 59, 1, 50),
+(14, 60, 1, 40);
 
 -- --------------------------------------------------------
 
@@ -269,14 +270,16 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `Precio_Total` float NOT NULL,
   PRIMARY KEY (`Id_Pedido`),
   KEY `cliente` (`Id_Cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
 
 --
 -- Volcado de datos para la tabla `pedidos`
 --
 
 INSERT INTO `pedidos` (`Id_Pedido`, `Id_Cliente`, `Precio_Total`) VALUES
-(59, 11, 50);
+(59, 11, 50),
+(60, 11, 40),
+(61, 11, 0);
 
 -- --------------------------------------------------------
 
